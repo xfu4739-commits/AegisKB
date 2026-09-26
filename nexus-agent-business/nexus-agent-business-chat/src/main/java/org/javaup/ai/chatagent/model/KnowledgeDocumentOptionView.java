@@ -1,0 +1,16 @@
+package org.javaup.ai.chatagent.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class KnowledgeDocumentOptionView {
+
+    private String documentId;
+    private String documentName;
+    private String knowledgeBaseId;
+    private String knowledgeBaseName;
+}
