@@ -1,0 +1,9 @@
+package org.aegiskb.ai.chatagent.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.aegiskb.ai.chatagent.data.GraphCheckpoint;
+
+@Mapper
+public interface GraphCheckpointMapper extends BaseMapper<GraphCheckpoint> {
+}

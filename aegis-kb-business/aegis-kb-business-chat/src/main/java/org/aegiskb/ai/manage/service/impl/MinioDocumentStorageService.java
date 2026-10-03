@@ -1,0 +1,181 @@
+package org.aegiskb.ai.manage.service.impl;
+
+import lombok.AllArgsConstructor;
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.StrUtil;
+import io.minio.BucketExistsArgs;
+import io.minio.GetObjectArgs;
+import io.minio.MakeBucketArgs;
+import io.minio.MinioClient;
+import io.minio.PutObjectArgs;
+import io.minio.RemoveObjectArgs;
+import io.minio.StatObjectArgs;
+import io.minio.StatObjectResponse;
+import org.aegiskb.ai.manage.config.DocumentManageProperties;
+import org.aegiskb.ai.manage.service.DocumentStorageService;
+import org.aegiskb.ai.manage.support.StoredObjectInfo;
+import org.aegiskb.ai.manage.support.StoredObjectMetadata;
+import org.aegiskb.enums.DocumentManageCode;
+import org.aegiskb.exception.SuperAgentFrameException;
+import org.springframework.stereotype.Service;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+
+@AllArgsConstructor
+@Service
+public class MinioDocumentStorageService implements DocumentStorageService {
+
+    private final MinioClient minioClient;
+
+    private final DocumentManageProperties properties;
+
+    @Override
+    public StoredObjectInfo uploadOriginalFile(Long documentId, String originalFileName, byte[] bytes, String contentType) {
+
+        // 时间戳避免同名文件直接覆盖；当前原始文件名未做路径字符清洗。
+        String objectName = properties.getMinio().getObjectPrefix() + "/" + documentId + "/" + System.currentTimeMillis() + "-" + originalFileName;
+        upload(objectName, bytes, contentType);
+        return new StoredObjectInfo(properties.getMinio().getBucketName(), objectName, buildObjectUrl(objectName));
+    }
+
+    @Override
+    public String uploadParsedText(Long documentId, String parsedText) {
+
+        // 每个文档只保留一个当前 parsed text，同 documentId 再解析会覆盖该对象。
+        String objectName = properties.getMinio().getParsedTextPrefix() + "/" + documentId + ".txt";
+        upload(objectName, parsedText.getBytes(StandardCharsets.UTF_8), "text/plain;charset=UTF-8");
+        return objectName;
+    }
+
+    @Override
+    public String uploadParseArtifact(Long documentId, Long taskId, String fileName, byte[] bytes, String contentType) {
+        // artifact 名来自解析器，进入对象路径前需要消除斜杠，避免改变目录层级。
+        String safeFileName = StrUtil.blankToDefault(fileName, "artifact.bin")
+            .replace("/", "-")
+            .replace("\\", "-");
+        String objectName = properties.getMinio().getParseArtifactPrefix()
+            + "/" + documentId
+            + "/" + taskId
+            + "/" + System.currentTimeMillis()
+            + "-" + safeFileName;
+        upload(objectName, bytes == null ? new byte[0] : bytes, contentType);
+        return objectName;
+    }
+
+    @Override
+    public byte[] downloadObject(String objectName) {
+        try (InputStream inputStream = minioClient.getObject(
+            GetObjectArgs.builder()
+                .bucket(properties.getMinio().getBucketName())
+                .object(objectName)
+                .build())) {
+
+            return inputStream.readAllBytes();
+        }
+        catch (Exception exception) {
+            throw new SuperAgentFrameException(DocumentManageCode.DOCUMENT_STORAGE_FAILED.getCode(),
+                "下载 MinIO 文件失败: " + exception.getMessage(), exception);
+        }
+    }
+
+    @Override
+    public String downloadText(String objectName) {
+
+        return new String(downloadObject(objectName), StandardCharsets.UTF_8);
+    }
+
+    @Override
+    public StoredObjectMetadata getObjectMetadata(String objectName) {
+        try {
+            StatObjectResponse response = minioClient.statObject(
+                StatObjectArgs.builder()
+                    .bucket(properties.getMinio().getBucketName())
+                    .object(objectName)
+                    .build());
+            return new StoredObjectMetadata(objectName, response.size(), response.contentType());
+        }
+        catch (Exception exception) {
+            throw new SuperAgentFrameException(DocumentManageCode.DOCUMENT_STORAGE_FAILED.getCode(),
+                "读取 MinIO 文件元数据失败: " + exception.getMessage(), exception);
+        }
+    }
+
+    @Override
+    public void deleteObjects(List<String> objectNameList) {
+        if (CollUtil.isEmpty(objectNameList)) {
+            return;
+        }
+
+        List<String> validObjectNameList = objectNameList.stream()
+            .filter(StrUtil::isNotBlank)
+            .map(String::trim)
+            .distinct()
+            .toList();
+        if (validObjectNameList.isEmpty()) {
+            return;
+        }
+
+        try {
+
+            if (!bucketExists()) {
+                return;
+            }
+
+            for (String objectName : validObjectNameList) {
+                minioClient.removeObject(
+                    RemoveObjectArgs.builder()
+                        .bucket(properties.getMinio().getBucketName())
+                        .object(objectName)
+                        .build()
+                );
+            }
+        }
+        catch (Exception exception) {
+            throw new SuperAgentFrameException(DocumentManageCode.DOCUMENT_STORAGE_FAILED.getCode(),
+                "删除 MinIO 文件失败: " + exception.getMessage(), exception);
+        }
+    }
+
+    private void upload(String objectName, byte[] bytes, String contentType) {
+        try {
+
+            ensureBucketExists();
+            minioClient.putObject(
+                PutObjectArgs.builder()
+                    .bucket(properties.getMinio().getBucketName())
+                    .object(objectName)
+                    .contentType(StrUtil.isNotBlank(contentType) ? contentType : "application/octet-stream")
+                    .stream(new ByteArrayInputStream(bytes), bytes.length, -1)
+                    .build()
+            );
+        }
+        catch (Exception exception) {
+            throw new SuperAgentFrameException(DocumentManageCode.DOCUMENT_STORAGE_FAILED.getCode(),
+                "上传 MinIO 文件失败: " + exception.getMessage(), exception);
+        }
+    }
+
+    private void ensureBucketExists() throws Exception {
+        if (!bucketExists()) {
+
+            minioClient.makeBucket(MakeBucketArgs.builder().bucket(properties.getMinio().getBucketName()).build());
+        }
+    }
+
+    private boolean bucketExists() throws Exception {
+        String bucketName = properties.getMinio().getBucketName();
+        return minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
+    }
+
+    private String buildObjectUrl(String objectName) {
+        String endpoint = properties.getMinio().getEndpoint();
+        if (endpoint.endsWith("/")) {
+
+            endpoint = endpoint.substring(0, endpoint.length() - 1);
+        }
+        return endpoint + "/" + properties.getMinio().getBucketName() + "/" + objectName;
+    }
+}

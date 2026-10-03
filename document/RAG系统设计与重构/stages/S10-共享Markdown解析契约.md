@@ -18,9 +18,9 @@ Python 和 Java 分别解释 Markdown 会让标题、编号、列表、表格和
 
 核心文件：
 
-- `nexus-agent-rag-tools/rag_tools/document_parser.py`
+- `aegis-kb-rag-tools/rag_tools/document_parser.py`
 - Python parser schema/DTO。
-- `nexus-agent-rag-tools/tests/test_document_parser_providers.py`
+- `aegis-kb-rag-tools/tests/test_document_parser_providers.py`
 - 新增 `tests/test_document_parser_markdown.py`
 - Java `RagToolsDocumentParserService` 及 DTO 映射测试。
 

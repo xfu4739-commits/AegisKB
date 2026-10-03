@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import router from './index'
 
-const TOKEN_KEY = 'nexus-agent-admin-token'
+const TOKEN_KEY = 'aegis-kb-admin-token'
 
 function validToken() {
   const header = window.btoa(JSON.stringify({ alg: 'none', typ: 'JWT' }))

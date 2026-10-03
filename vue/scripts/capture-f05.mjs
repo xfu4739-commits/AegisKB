@@ -198,7 +198,7 @@ try {
   await captureRoute({ name: 'login-390', path: '/admin/login', width: 390, height: 844, ready: 'Boolean(document.querySelector("#login-password"))' })
 
   await navigate('/admin/login')
-  await evaluate(`localStorage.setItem('nexus-agent-admin-token', ${JSON.stringify(token)}); localStorage.setItem('nexus-agent-admin-user', ${JSON.stringify(username)}); true`)
+  await evaluate(`localStorage.setItem('aegis-kb-admin-token', ${JSON.stringify(token)}); localStorage.setItem('aegis-kb-admin-user', ${JSON.stringify(username)}); true`)
 
   await captureRoute({ name: 'dashboard-1440', path: '/admin/dashboard', width: 1440, height: 1000, ready: 'Boolean(document.querySelector("#admin-main-content"))' })
   await cdp.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 })

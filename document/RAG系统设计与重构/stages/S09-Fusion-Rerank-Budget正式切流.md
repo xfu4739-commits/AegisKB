@@ -308,7 +308,7 @@ S05 因当前 `DocumentKnowledgeService` 的独立 vector/keyword gateway 暂时
 开工 characterization 矩阵，只允许在修改生产代码前运行并记录旧链事实，不是退出门禁：
 
 ~~~bash
-mvn -pl nexus-agent-business/nexus-agent-business-chat -am \
+mvn -pl aegis-kb-business/aegis-kb-business-chat -am \
   -DfailIfNoTests=false \
   -Dtest=HybridFusionServiceTest,RagRetrievalEngineTest,EvidenceBudgetAllocatorTest,RankFeatureServiceTest,RagRerankServiceTest \
   -Dsurefire.failIfNoSpecifiedTests=false test
@@ -317,7 +317,7 @@ mvn -pl nexus-agent-business/nexus-agent-business-chat -am \
 切流退出矩阵不得包含已删除的 allocator 测试：
 
 ~~~bash
-mvn -pl nexus-agent-business/nexus-agent-business-chat -am \
+mvn -pl aegis-kb-business/aegis-kb-business-chat -am \
   -DfailIfNoTests=false \
   -Dtest=FinalEvidenceSelectionPolicyTest,SourceRankingWindowTest,HybridFusionServiceTest,RagRetrievalEngineTest,RankFeatureServiceTest,RagRerankServiceTest,RagPromptAssemblyServiceTest,RagChatExecutorTest,RetrievalPlanAssemblerTest,KnowledgeBaseRuntimeConfigResolverTest,RerankIntentBoundaryTest,DocumentKnowledgeServiceImplTest \
   -Dsurefire.failIfNoSpecifiedTests=false test

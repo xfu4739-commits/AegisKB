@@ -62,7 +62,7 @@ S01 最初实施时使用的 citation repair/matcher/NLI 最终协议，已由 S
 定向测试：
 
 ~~~bash
-mvn -pl nexus-agent-business/nexus-agent-business-chat -am \
+mvn -pl aegis-kb-business/aegis-kb-business-chat -am \
   -DfailIfNoTests=false \
   -Dtest=RagPromptAssemblyServiceTest,RagChatExecutorTest,ExplicitCitationBindingServiceTest \
   -Dsurefire.failIfNoSpecifiedTests=false test

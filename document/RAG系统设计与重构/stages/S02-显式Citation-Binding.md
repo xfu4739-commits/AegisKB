@@ -24,8 +24,8 @@
 - `ragtools/client/RagToolsClient.java`
 - `ExplicitCitationBindingServiceTest.java`
 - `RagChatExecutorTest.java`
-- `nexus-agent-rag-tools/rag_tools/main.py`
-- `nexus-agent-rag-tools/rag_tools/semantic_model.py`
+- `aegis-kb-rag-tools/rag_tools/main.py`
+- `aegis-kb-rag-tools/rag_tools/semantic_model.py`
 
 约束：
 
@@ -52,7 +52,7 @@
 测试：
 
 ~~~bash
-mvn -pl nexus-agent-business/nexus-agent-business-chat -am \
+mvn -pl aegis-kb-business/aegis-kb-business-chat -am \
   -DfailIfNoTests=false \
   -Dtest=ExplicitCitationBindingServiceTest,RagPromptAssemblyServiceTest,RagChatExecutorTest,TableRetrievalChannelTest,SearchReferenceMapperTest \
   -Dsurefire.failIfNoSpecifiedTests=false test

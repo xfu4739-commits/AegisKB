@@ -4,11 +4,11 @@
 -- 总分类和小分类使用独立关系表维护，不写入 config_json，也不改变 schemaVersion。
 -- 首次初始化时先执行 create_table_mysql.sql，再执行本脚本写入分类和默认配置。
 
-USE nexus_agent_pro;
+USE aegis_kb;
     
 START TRANSACTION;
 
-INSERT IGNORE INTO nexus_agent_system_config_group
+INSERT IGNORE INTO aegis_kb_system_config_group
     (id, group_key, group_label, group_description, sort_order, create_time, edit_time, status)
 VALUES
     (1, 'retrieval', '检索与排序', '控制召回、通道、阈值、融合和执行边界。', 10, NOW(), NOW(), 1),
@@ -16,7 +16,7 @@ VALUES
     (3, 'documentBuild', '文档与索引', '控制切块、内容增强、索引和 RAPTOR 构建。', 30, NOW(), NOW(), 1),
     (4, 'graphRag', 'GraphRAG', '控制知识图谱构建和 LLM 受控增强。', 40, NOW(), NOW(), 1);
 
-INSERT IGNORE INTO nexus_agent_system_config_category
+INSERT IGNORE INTO aegis_kb_system_config_category
     (id, group_key, category_key, category_label, category_description, sort_order, create_time, edit_time, status)
 VALUES
     (101, 'retrieval', 'retrievalWindow', '召回与窗口', '控制各通道召回规模和候选裁剪窗口。', 10, NOW(), NOW(), 1),
@@ -34,7 +34,7 @@ VALUES
     (113, 'graphRag', 'graphRagBuild', 'GraphRAG 构建', '控制构建租约、尝试次数和重试等待。', 10, NOW(), NOW(), 1),
     (114, 'graphRag', 'graphRagEnhancement', 'GraphRAG 增强', '控制受控抽取、社区报告和实体消歧。', 20, NOW(), NOW(), 1);
 
-INSERT INTO nexus_agent_system_config
+INSERT INTO aegis_kb_system_config
     (id, config_version, config_json, create_time, edit_time, status)
 SELECT
     1,
@@ -150,7 +150,7 @@ SELECT
     1
 WHERE NOT EXISTS (
     SELECT 1
-    FROM nexus_agent_system_config
+    FROM aegis_kb_system_config
     WHERE id = 1
 );
 

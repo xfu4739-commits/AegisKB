@@ -1,1 +1,1 @@
-CREATE DATABASE nexus_agent_pro_pgvector WITH ENCODING 'UTF8';
+CREATE DATABASE aegis_kb_pgvector WITH ENCODING 'UTF8';

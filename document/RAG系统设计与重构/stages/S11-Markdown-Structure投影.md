@@ -38,7 +38,7 @@
 - `markdown-syntax.v1` 经 S10 Python schema 和 Java protocol 校验后的 typed syntax 是 Markdown 唯一语法权威。Java 构建期内存中的 `DocumentMarkdownSyntaxCandidate` 与持久化 `MARKDOWN_SYNTAX_JSON` 只是同一契约的内存形态和存储/审计形态，不得分别解释 heading、list、table、parent 或 span。
 - 正常构建路径应直接消费已校验 typed DTO；需要从 artifact 重放或只读验收时，必须反序列化回同一 versioned DTO、执行同一校验并调用同一 projector。禁止为 JSON artifact 再写一套结构 parser，也禁止 typed DTO 失败后回退 `parsedText`/正则猜测。
 - 当前已知旧链必须在修改生产代码前完成 characterization：Python `document_parser._build_structure_nodes()` 生产 `DocumentParseResponse.structureNodes`，Java `RagToolsDocumentParserService.toStructureNodes()` 映射到 `DocumentAnalysisResult.structureNodes`，`DocumentAsyncProcessServiceImpl` 再经 `replaceDocumentNodes()` 持久化并同步导航索引、图投影和 profile；`DocumentStrategyServiceImpl`、结构图服务、route/navigation 等消费持久化业务结构节点。阶段记录必须补齐所有 producer、transition、consumer 和最后一个迁移消费者，不能只依据类名推断。
-- S11 的默认目标流是 `markdown-syntax.v1 -> 一个 Java structure projector -> DocumentStructureNodeCandidate -> task-scoped nexus_agent_document_structure_node`。持久化 structure node 可以保留为职责稳定的业务/导航投影，但必须可逐节点追溯到 typed syntax，且不得再拥有独立 Markdown 语法解释权。
+- S11 的默认目标流是 `markdown-syntax.v1 -> 一个 Java structure projector -> DocumentStructureNodeCandidate -> task-scoped aegis_kb_document_structure_node`。持久化 structure node 可以保留为职责稳定的业务/导航投影，但必须可逐节点追溯到 typed syntax，且不得再拥有独立 Markdown 语法解释权。
 - Markdown 路径的 Python `_build_structure_nodes`、response `StructureNode/structureNodes`、Java `toStructureNodes` 和任何从 `parsedText` 重新猜 Markdown 的 extractor 都属于待迁移旧语法链。S11 退出时应删除最后一个 Markdown 消费者对应的旧字段/分支；如果非 Markdown provider 经事实核验仍需同名 transport，必须限定为不解释 Markdown 的稳定 provider 投影，记录保留理由和边界，不能作为 Markdown fallback 或 compatibility facade。
 - `CODE_CONFIRMED`：原 Java `DocumentStructureNodeExtractor -> DocumentStructureSignalExtractor -> DocumentStructureHierarchyResolver -> DocumentStructureTreeValidator` 链在当前生产代码中无调用点，只有测试保护其 raw-text/正则第二解释器。S11 不将这组死链改造成新 adapter，而是删除并由 `DocumentStructureProjector` 直接消费 typed syntax。
 - `CODE_CONFIRMED`：非 Markdown provider 已生产 typed `DocumentBlock` 的 `TITLE`/layout 事实，而旧 Python `structureNodes` 只把这些 `TITLE` 投影成扁平章节。S11 将该行为作为非 Markdown 业务投影迁入同一 Java projector 的独立入口，并完全删除 Python/HTTP `structureNodes` transport；该入口不消费 `parsedText` 猜 heading，也不能成为 Markdown fallback。
@@ -94,7 +94,7 @@ S11 必须服从 S10 已确认的 typed event、origin 和 UTF-8 byte span：若
 
 数据库验收：
 
-- 所有结构节点必须满足 `structure_node.parse_task_id = document.last_parse_task_id`，且对应 `nexus_agent_document_task.task_status=3`。
+- 所有结构节点必须满足 `structure_node.parse_task_id = document.last_parse_task_id`，且对应 `aegis_kb_document_task.task_status=3`。
 - ROOT 恰为 1。
 - 存在 `depth > 1`。
 - 通过 structure node 自连接验证 10.1/10.2/10.3 的 parent 是“十、机器人策略设计”。

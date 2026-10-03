@@ -84,10 +84,10 @@ last_index_task_id 不为空
 
 完整重建验收时，知识库和文档上传完成且 AI 只读确认构建产物通过后，由用户执行初始化脚本；AI 只负责准备或校验命令。
 
-脚本固定使用 `nexus_agent_pro` 库、上述 3 个固定知识库名和 ID 段起点 `9000000000000000000`，不需要设置 `O2_O8_RUN_CODE`、`O2_O8_BASE_ID` 或 MySQL 会话变量，直接执行：
+脚本固定使用 `aegis_kb` 库、上述 3 个固定知识库名和 ID 段起点 `9000000000000000000`，不需要设置 `O2_O8_RUN_CODE`、`O2_O8_BASE_ID` 或 MySQL 会话变量，直接执行：
 
 ```bash
-mysql -uroot -proot nexus_agent_pro \
+mysql -uroot -proot aegis_kb \
   < 'sql/表数据/Mysql/知识路由初始化(需要文档例子演示中文档上传解析完).sql'
 ```
 
@@ -114,7 +114,7 @@ SELECT d.original_file_name,
        d.strategy_status,
        d.index_status,
        d.last_index_task_id
-FROM nexus_agent_document d
+FROM aegis_kb_document d
 WHERE d.status = 1
   AND d.original_file_name IN (
     'O2-provider-artifact验收样例.pdf',
@@ -395,7 +395,7 @@ channel execution 与 retrieval result 是否守恒：
 - 分组数量固定为 O2=3、O8=16、ROUTE=7、O3=4、O6=7、O7=4、TABLE=7。
 - 48 个 case ID 对应 44 个唯一问题文本；O3-01/02/03/04 分别复用 ROUTE-07、ROUTE-03、TABLE-04、O6-04，但仍须在 O3 专用对话产生独立 exchange。
 - Q-O2-01/Q-O2-02/Q-O2-03 必须补跑，不能继续只验收构建产物。
-- 每轮运行前记录 `SELECT MAX(id) FROM nexus_agent_chat_exchange`，完成证据只统计水位之后的新 exchange。
+- 每轮运行前记录 `SELECT MAX(id) FROM aegis_kb_chat_exchange`，完成证据只统计水位之后的新 exchange。
 - 旧反例 exchange 只用于理解旧问题：Q-ROUTE-03 `2313953969052923334`、Q-TABLE-05 `2313953969052924516`、O8-10 `2313953969052922745`、O8-11 `2313953969052922796`。
 - 完整终验只做验收，不现场添加问题文本、文档名、部门、金额或关系类型补丁；失败后回到接力计划中的责任阶段，在新会话修复。
 - 只有 `BLOCKING_FAIL` 才产生修复 owner；`OBSERVATION_ONLY` 不要求重启、重建、补跑或生产代码修改。

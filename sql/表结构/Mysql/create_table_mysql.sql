@@ -1,6 +1,6 @@
-USE nexus_agent_pro;
+USE aegis_kb;
     
-CREATE TABLE IF NOT EXISTS nexus_agent_chat_dialogue (
+CREATE TABLE IF NOT EXISTS aegis_kb_chat_dialogue (
                                                          id BIGINT NOT NULL COMMENT '主键id',
                                                          dialogue_code VARCHAR(64) NOT NULL COMMENT '业务会话编号',
     dialogue_stage TINYINT(1) NOT NULL DEFAULT '1' COMMENT '1:空闲 2:进行中',
@@ -14,12 +14,12 @@ CREATE TABLE IF NOT EXISTS nexus_agent_chat_dialogue (
     edit_time DATETIME DEFAULT NULL COMMENT '编辑时间',
     status TINYINT(1) DEFAULT '1' COMMENT '1:正常 0:删除',
     PRIMARY KEY (id),
-    KEY idx_nexus_agent_chat_dialogue_code_status (dialogue_code, status),
-    KEY idx_nexus_agent_chat_dialogue_stage_status (dialogue_stage, status),
-    KEY idx_nexus_agent_chat_dialogue_edit_time (edit_time)
+    KEY idx_aegis_kb_chat_dialogue_code_status (dialogue_code, status),
+    KEY idx_aegis_kb_chat_dialogue_stage_status (dialogue_stage, status),
+    KEY idx_aegis_kb_chat_dialogue_edit_time (edit_time)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='业务对话归档主表';
 
-CREATE TABLE IF NOT EXISTS nexus_agent_chat_exchange (
+CREATE TABLE IF NOT EXISTS aegis_kb_chat_exchange (
                                                          id BIGINT NOT NULL COMMENT '主键id',
                                                          dialogue_code VARCHAR(64) NOT NULL COMMENT '所属业务会话编号',
     user_prompt TEXT NOT NULL COMMENT '用户提问',
@@ -41,12 +41,12 @@ CREATE TABLE IF NOT EXISTS nexus_agent_chat_exchange (
     edit_time DATETIME DEFAULT NULL COMMENT '编辑时间',
     status TINYINT(1) DEFAULT '1' COMMENT '1:正常 0:删除',
     PRIMARY KEY (id),
-    KEY idx_nexus_agent_chat_exchange_dialogue_status (dialogue_code, status),
-    KEY idx_nexus_agent_chat_exchange_state_status (exchange_state, status),
-    KEY idx_nexus_agent_chat_exchange_create_time (create_time)
+    KEY idx_aegis_kb_chat_exchange_dialogue_status (dialogue_code, status),
+    KEY idx_aegis_kb_chat_exchange_state_status (exchange_state, status),
+    KEY idx_aegis_kb_chat_exchange_create_time (create_time)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='业务对话轮次归档表';
 
-CREATE TABLE IF NOT EXISTS nexus_agent_chat_memory_summary (
+CREATE TABLE IF NOT EXISTS aegis_kb_chat_memory_summary (
                                                                id BIGINT NOT NULL COMMENT '主键id',
                                                                dialogue_code VARCHAR(64) NOT NULL COMMENT '所属业务会话编号',
     covered_exchange_id BIGINT NOT NULL DEFAULT '0' COMMENT '长期摘要已覆盖到的最后一条exchangeId',
@@ -60,12 +60,12 @@ CREATE TABLE IF NOT EXISTS nexus_agent_chat_memory_summary (
     edit_time DATETIME DEFAULT NULL COMMENT '编辑时间',
     status TINYINT(1) DEFAULT '1' COMMENT '1:正常 0:删除',
     PRIMARY KEY (id),
-    UNIQUE KEY uk_nexus_agent_chat_memory_summary_dialogue (dialogue_code),
-    KEY idx_nexus_agent_chat_memory_summary_cover (covered_exchange_id),
-    KEY idx_nexus_agent_chat_memory_summary_edit_time (edit_time)
+    UNIQUE KEY uk_aegis_kb_chat_memory_summary_dialogue (dialogue_code),
+    KEY idx_aegis_kb_chat_memory_summary_cover (covered_exchange_id),
+    KEY idx_aegis_kb_chat_memory_summary_edit_time (edit_time)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='业务对话长期记忆摘要快照表';
 
-CREATE TABLE IF NOT EXISTS nexus_agent_chat_exchange_trace_stage (
+CREATE TABLE IF NOT EXISTS aegis_kb_chat_exchange_trace_stage (
                                                                      id BIGINT NOT NULL COMMENT '主键id',
                                                                      dialogue_code VARCHAR(64) NOT NULL COMMENT '所属业务会话编号',
     exchange_id BIGINT NOT NULL COMMENT '所属轮次id',
@@ -87,10 +87,10 @@ CREATE TABLE IF NOT EXISTS nexus_agent_chat_exchange_trace_stage (
     edit_time DATETIME DEFAULT NULL COMMENT '编辑时间',
     status TINYINT(1) DEFAULT '1' COMMENT '1:正常 0:删除',
     PRIMARY KEY (id),
-    KEY idx_nexus_agent_chat_trace_exchange (exchange_id, stage_order),
-    KEY idx_nexus_agent_chat_trace_dialogue (dialogue_code, exchange_id),
-    KEY idx_nexus_agent_chat_trace_trace_id (trace_id),
-    KEY idx_nexus_agent_chat_trace_stage_code (stage_code)
+    KEY idx_aegis_kb_chat_trace_exchange (exchange_id, stage_order),
+    KEY idx_aegis_kb_chat_trace_dialogue (dialogue_code, exchange_id),
+    KEY idx_aegis_kb_chat_trace_trace_id (trace_id),
+    KEY idx_aegis_kb_chat_trace_stage_code (stage_code)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='对话轮次执行阶段轨迹表';
 
 CREATE TABLE IF NOT EXISTS GRAPH_THREAD (
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS GRAPH_CHECKPOINT (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Spring AI Alibaba Graph checkpoint 表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_knowledge_base` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_knowledge_base` (
                                                             `id` bigint NOT NULL COMMENT '主键id',
                                                             `base_name` varchar(128) NOT NULL COMMENT '知识库名称',
     `description` varchar(1024) DEFAULT NULL COMMENT '知识库描述',
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_knowledge_base` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='轻量知识库表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document` (
                                                       `id` bigint NOT NULL COMMENT '主键id',
                                                       `document_name` varchar(255) NOT NULL COMMENT '文档名称',
     `original_file_name` varchar(255) NOT NULL COMMENT '原始文件名',
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_strategy_plan` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_strategy_plan` (
                                                                     `id` bigint NOT NULL COMMENT '主键id',
                                                                     `document_id` bigint NOT NULL COMMENT '文档id',
                                                                     `plan_version` int NOT NULL DEFAULT '1' COMMENT '方案版本号',
@@ -193,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_strategy_plan` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档策略方案表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_strategy_step` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_strategy_step` (
                                                                     `id` bigint NOT NULL COMMENT '主键id',
                                                                     `plan_id` bigint NOT NULL COMMENT '方案id',
                                                                     `document_id` bigint NOT NULL COMMENT '文档id',
@@ -215,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_strategy_step` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档策略步骤表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_task` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_task` (
                                                            `id` bigint NOT NULL COMMENT '主键id',
                                                            `document_id` bigint NOT NULL COMMENT '文档id',
                                                            `plan_id` bigint DEFAULT NULL COMMENT '执行方案id',
@@ -243,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_task` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档任务表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_task_log` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_task_log` (
                                                                `id` bigint NOT NULL COMMENT '主键id',
                                                                `task_id` bigint NOT NULL COMMENT '任务id',
                                                                `document_id` bigint NOT NULL COMMENT '文档id',
@@ -263,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_task_log` (
     KEY `idx_stage_type` (`stage_type`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档任务日志表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_parse_artifact` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_parse_artifact` (
                                                                      `id` bigint NOT NULL COMMENT '主键id',
                                                                      `document_id` bigint NOT NULL COMMENT '文档id',
                                                                      `task_id` bigint NOT NULL COMMENT '解析任务id',
@@ -281,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_parse_artifact` (
     KEY `idx_content_hash` (`content_hash`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档解析产物表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_block` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_block` (
                                                             `id` bigint NOT NULL COMMENT '主键id',
                                                             `document_id` bigint NOT NULL COMMENT '文档id',
                                                             `task_id` bigint NOT NULL COMMENT '解析任务id',
@@ -310,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_block` (
     KEY `idx_page_no` (`page_no`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档解析block表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_table` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_table` (
                                                             `id` bigint NOT NULL COMMENT '主键id',
                                                             `document_id` bigint NOT NULL COMMENT '文档id',
                                                             `task_id` bigint NOT NULL COMMENT '解析任务id',
@@ -335,7 +335,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_table` (
     KEY `idx_block_id` (`block_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档结构化表格主表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_table_column` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_table_column` (
                                                                    `id` bigint NOT NULL COMMENT '主键id',
                                                                    `document_id` bigint NOT NULL COMMENT '文档id',
                                                                    `task_id` bigint NOT NULL COMMENT '解析任务id',
@@ -353,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_table_column` (
     KEY `idx_table_normalized_name` (`table_id`, `normalized_name`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档结构化表格列';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_table_row` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_table_row` (
                                                                 `id` bigint NOT NULL COMMENT '主键id',
                                                                 `document_id` bigint NOT NULL COMMENT '文档id',
                                                                 `task_id` bigint NOT NULL COMMENT '解析任务id',
@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_table_row` (
     KEY `idx_table_id` (`table_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档结构化表格行';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_table_cell` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_table_cell` (
                                                                  `id` bigint NOT NULL COMMENT '主键id',
                                                                  `document_id` bigint NOT NULL COMMENT '文档id',
                                                                  `task_id` bigint NOT NULL COMMENT '解析任务id',
@@ -398,7 +398,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_table_cell` (
     KEY `idx_column_id` (`column_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档结构化表格单元格';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_structure_node` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_structure_node` (
                                                                      `id` bigint NOT NULL COMMENT '主键id',
                                                                      `document_id` bigint NOT NULL COMMENT '文档id',
                                                                      `parse_task_id` bigint NOT NULL COMMENT '解析任务id',
@@ -438,7 +438,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_structure_node` (
     KEY `idx_node_type` (`node_type`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档结构节点表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_parent_block` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_parent_block` (
                                                                    `id` bigint NOT NULL COMMENT '主键id',
                                                                    `document_id` bigint NOT NULL COMMENT '文档id',
                                                                    `task_id` bigint NOT NULL COMMENT '索引任务id',
@@ -468,7 +468,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_parent_block` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档父块表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_chunk` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_chunk` (
                                                             `id` bigint NOT NULL COMMENT '主键id',
                                                             `document_id` bigint NOT NULL COMMENT '文档id',
                                                             `task_id` bigint NOT NULL COMMENT '索引任务id',
@@ -508,7 +508,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_chunk` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档切块表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_kg_entity` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_kg_entity` (
                                                        `id` bigint NOT NULL COMMENT '主键id',
                                                        `document_id` bigint NOT NULL COMMENT '文档id',
                                                        `task_id` bigint NOT NULL COMMENT '索引任务id',
@@ -528,7 +528,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_kg_entity` (
     KEY `idx_kg_entity_type` (`document_id`, `entity_type`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='GraphRAG实体表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_kg_relation` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_kg_relation` (
                                                          `id` bigint NOT NULL COMMENT '主键id',
                                                          `document_id` bigint NOT NULL COMMENT '文档id',
                                                          `task_id` bigint NOT NULL COMMENT '索引任务id',
@@ -548,7 +548,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_kg_relation` (
     KEY `idx_kg_relation_type` (`document_id`, `relation_type`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='GraphRAG实体关系表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_kg_evidence` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_kg_evidence` (
                                                          `id` bigint NOT NULL COMMENT '主键id',
                                                          `document_id` bigint NOT NULL COMMENT '文档id',
                                                          `task_id` bigint NOT NULL COMMENT '索引任务id',
@@ -573,7 +573,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_kg_evidence` (
     KEY `idx_kg_evidence_parent_block` (`parent_block_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='GraphRAG证据表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_kg_community` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_kg_community` (
                                                           `id` bigint NOT NULL COMMENT '主键id',
                                                           `document_id` bigint NOT NULL COMMENT '文档id',
                                                           `task_id` bigint NOT NULL COMMENT '索引任务id',
@@ -592,7 +592,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_kg_community` (
     KEY `idx_kg_community_document_task` (`document_id`, `task_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='GraphRAG社区摘要表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_kg_canonical_entity_group` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_kg_canonical_entity_group` (
                                                                        `id` bigint NOT NULL COMMENT '主键id',
                                                                        `scope_key` varchar(255) NOT NULL COMMENT '跨文档图谱派生索引范围，默认 knowledge_scope 或 global',
     `group_key` varchar(255) NOT NULL COMMENT 'canonical实体组稳定键',
@@ -612,7 +612,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_kg_canonical_entity_group` (
     KEY `idx_kg_canonical_scope_type` (`scope_key`, `entity_type`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='GraphRAG跨文档canonical实体组派生表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_kg_canonical_entity_member` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_kg_canonical_entity_member` (
                                                                         `id` bigint NOT NULL COMMENT '主键id',
                                                                         `scope_key` varchar(255) NOT NULL COMMENT '跨文档图谱派生索引范围',
     `group_id` bigint NOT NULL COMMENT 'canonical实体组id',
@@ -633,7 +633,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_kg_canonical_entity_member` (
     KEY `idx_kg_canonical_member_document` (`document_id`, `task_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='GraphRAG跨文档canonical实体成员派生表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_kg_relation_group` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_kg_relation_group` (
                                                                `id` bigint NOT NULL COMMENT '主键id',
                                                                `scope_key` varchar(255) NOT NULL COMMENT '跨文档图谱派生索引范围',
     `group_key` varchar(255) NOT NULL COMMENT 'relation group持久化稳定键，长自然key保存在metadata_json',
@@ -655,7 +655,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_kg_relation_group` (
     KEY `idx_kg_relation_group_type` (`scope_key`, `relation_type`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='GraphRAG跨文档relation group派生表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_kg_relation_group_member` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_kg_relation_group_member` (
                                                                       `id` bigint NOT NULL COMMENT '主键id',
                                                                       `scope_key` varchar(255) NOT NULL COMMENT '跨文档图谱派生索引范围',
     `group_id` bigint NOT NULL COMMENT 'relation group id',
@@ -674,7 +674,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_kg_relation_group_member` (
     KEY `idx_kg_relation_group_member_document` (`document_id`, `task_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='GraphRAG跨文档relation group成员派生表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_kg_cross_document_community` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_kg_cross_document_community` (
                                                                          `id` bigint NOT NULL COMMENT '主键id',
                                                                          `scope_key` varchar(255) NOT NULL COMMENT '跨文档图谱派生索引范围',
     `community_key` varchar(255) NOT NULL COMMENT '跨文档community稳定键',
@@ -697,7 +697,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_kg_cross_document_community` (
     KEY `idx_kg_xdoc_community_scope_docs` (`scope_key`, `document_count`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='GraphRAG跨文档community派生表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_kg_cross_document_community_member` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_kg_cross_document_community_member` (
                                                                                 `id` bigint NOT NULL COMMENT '主键id',
                                                                                 `scope_key` varchar(255) NOT NULL COMMENT '跨文档图谱派生索引范围',
     `community_id` bigint NOT NULL COMMENT '跨文档community id',
@@ -720,7 +720,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_kg_cross_document_community_member` (
     KEY `idx_kg_xdoc_community_member_relation` (`scope_key`, `relation_group_key`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='GraphRAG跨文档community成员派生表';
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_raptor_node` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_raptor_node` (
                                                          `id` bigint NOT NULL COMMENT '主键id',
                                                          `document_id` bigint NOT NULL COMMENT '文档id',
                                                          `task_id` bigint NOT NULL COMMENT '索引任务id',
@@ -755,7 +755,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_raptor_node` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='RAPTOR层级摘要节点表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_knowledge_scope_node` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_knowledge_scope_node` (
                                                                   `id` bigint NOT NULL COMMENT '主键id',
                                                                   `knowledge_base_id` bigint NOT NULL COMMENT '所属知识库id',
                                                                   `scope_name` varchar(128) NOT NULL COMMENT '知识范围名称',
@@ -774,7 +774,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_knowledge_scope_node` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='知识范围节点表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_knowledge_topic_node` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_knowledge_topic_node` (
                                                                   `id` bigint NOT NULL COMMENT '主键id',
                                                                   `knowledge_base_id` bigint NOT NULL COMMENT '所属知识库id',
                                                                   `topic_name` varchar(128) NOT NULL COMMENT '主题名称',
@@ -795,7 +795,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_knowledge_topic_node` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='知识主题节点表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_document_profile` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_document_profile` (
                                                               `id` bigint NOT NULL COMMENT '主键id',
                                                               `document_id` bigint NOT NULL COMMENT '文档id',
                                                               `profile_version` int DEFAULT '1' COMMENT '画像版本',
@@ -821,7 +821,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_document_profile` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文档画像表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_topic_document_relation` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_topic_document_relation` (
                                                                      `id` bigint NOT NULL COMMENT '主键id',
                                                                      `knowledge_base_id` bigint NOT NULL COMMENT '所属知识库id',
                                                                      `topic_id` bigint NOT NULL COMMENT '主题id',
@@ -841,7 +841,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_topic_document_relation` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='主题文档关联表';
 
 
-CREATE TABLE IF NOT EXISTS `nexus_agent_knowledge_route_trace` (
+CREATE TABLE IF NOT EXISTS `aegis_kb_knowledge_route_trace` (
                                                                    `id` bigint NOT NULL COMMENT '主键id',
                                                                    `conversation_id` varchar(64) DEFAULT NULL COMMENT '会话id',
     `exchange_id` bigint DEFAULT NULL COMMENT '轮次id',
@@ -871,7 +871,7 @@ CREATE TABLE IF NOT EXISTS `nexus_agent_knowledge_route_trace` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='知识路由影子追踪表';
 
 
-CREATE TABLE IF NOT EXISTS nexus_agent_chat_retrieval_result (
+CREATE TABLE IF NOT EXISTS aegis_kb_chat_retrieval_result (
                                                                  id BIGINT NOT NULL COMMENT '主键id',
                                                                  dialogue_code VARCHAR(64) NOT NULL COMMENT '所属业务会话编号',
     exchange_id BIGINT NOT NULL COMMENT '所属轮次id',
@@ -925,7 +925,7 @@ CREATE TABLE IF NOT EXISTS nexus_agent_chat_retrieval_result (
     KEY idx_retrieval_result_context_only (context_only, source_evidence_resolved)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='检索结果快照表';
 
-CREATE TABLE IF NOT EXISTS nexus_agent_chat_channel_execution (
+CREATE TABLE IF NOT EXISTS aegis_kb_chat_channel_execution (
                                                                   id BIGINT NOT NULL COMMENT '主键id',
                                                                   dialogue_code VARCHAR(64) NOT NULL COMMENT '所属业务会话编号',
     exchange_id BIGINT NOT NULL COMMENT '所属轮次id',
@@ -954,7 +954,7 @@ CREATE TABLE IF NOT EXISTS nexus_agent_chat_channel_execution (
     KEY idx_channel_exec_channel (channel_type, execution_state)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='检索通道执行详情表';
 
-CREATE TABLE IF NOT EXISTS nexus_agent_chat_stage_benchmark (
+CREATE TABLE IF NOT EXISTS aegis_kb_chat_stage_benchmark (
                                                                 id BIGINT NOT NULL COMMENT '主键id',
                                                                 stage_code VARCHAR(64) NOT NULL COMMENT '阶段编码',
     execution_mode VARCHAR(32) NOT NULL COMMENT '执行模式：RETRIEVAL/GRAPH_ONLY/GRAPH_THEN_EVIDENCE/REACT_AGENT/CLARIFICATION',
@@ -974,7 +974,7 @@ CREATE TABLE IF NOT EXISTS nexus_agent_chat_stage_benchmark (
     UNIQUE KEY uk_stage_benchmark_code_mode (stage_code, execution_mode)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='阶段性能基准表';
 
-CREATE TABLE IF NOT EXISTS nexus_agent_system_config (
+CREATE TABLE IF NOT EXISTS aegis_kb_system_config (
     id BIGINT NOT NULL COMMENT '固定主键，当前全局配置使用1',
     config_version INT NOT NULL DEFAULT '0' COMMENT '乐观锁配置版本',
     config_json JSON NOT NULL COMMENT '注册表管理的完整内部配置快照，不直接暴露给前端',
@@ -984,7 +984,7 @@ CREATE TABLE IF NOT EXISTS nexus_agent_system_config (
     PRIMARY KEY (id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统当前配置表';
 
-CREATE TABLE IF NOT EXISTS nexus_agent_system_config_group (
+CREATE TABLE IF NOT EXISTS aegis_kb_system_config_group (
     id BIGINT NOT NULL COMMENT '主键id',
     group_key VARCHAR(64) NOT NULL COMMENT '总分类稳定标识',
     group_label VARCHAR(64) NOT NULL COMMENT '总分类显示名称',
@@ -998,7 +998,7 @@ CREATE TABLE IF NOT EXISTS nexus_agent_system_config_group (
     KEY idx_system_config_group_sort (status, sort_order, id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统配置总分类表';
 
-CREATE TABLE IF NOT EXISTS nexus_agent_system_config_category (
+CREATE TABLE IF NOT EXISTS aegis_kb_system_config_category (
     id BIGINT NOT NULL COMMENT '主键id',
     group_key VARCHAR(64) NOT NULL COMMENT '所属总分类稳定标识',
     category_key VARCHAR(64) NOT NULL COMMENT '小分类稳定标识',
@@ -1013,7 +1013,7 @@ CREATE TABLE IF NOT EXISTS nexus_agent_system_config_category (
     KEY idx_system_config_category_group_sort (group_key, status, sort_order, id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统配置小分类表';
 
-CREATE TABLE IF NOT EXISTS nexus_agent_system_config_history (
+CREATE TABLE IF NOT EXISTS aegis_kb_system_config_history (
     id BIGINT NOT NULL COMMENT '主键id',
     before_version INT NOT NULL COMMENT '修改前配置版本',
     after_version INT NOT NULL COMMENT '修改后配置版本',

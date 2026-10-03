@@ -76,7 +76,7 @@ RetrievalPlan
 运行时验收：分别新跑当前文档、自动知识、多文档和 follow-up；实际 channel 集合等于 Plan enabled 集合。scope 必须分两层验收，不能用第一层代替第二层：
 
 1. RAG_RETRIEVE complete snapshot 的 `$.subQuestions[*].references[*].documentId` 验证最终 references 全部落在对应 `$.executionRequests[*].documentScope`。
-2. `nexus_agent_chat_retrieval_result` 按 exchange/sub-question/channel 保存的全部 raw retrieval rows 验证每个非空 `document_id` 均落在同一 execution request 的 `documentScope`；零召回 channel 以 request enabled 集合和唯一 `channelTraces` 验证已执行，不能因没有 raw row 判为缺失 provider。
+2. `aegis_kb_chat_retrieval_result` 按 exchange/sub-question/channel 保存的全部 raw retrieval rows 验证每个非空 `document_id` 均落在同一 execution request 的 `documentScope`；零召回 channel 以 request enabled 集合和唯一 `channelTraces` 验证已执行，不能因没有 raw row 判为缺失 provider。
 
 退出条件：`rag/retrieve/channel` 不再依赖 `ConversationExecutionPlan`；每个子问题只有一个受控 execution request；不存在长期兼容接口或多层 pass-through 适配链；Plan/request 对账为零差异；主要实现边界都有已确认事实、责任边界以及长期保留理由或过渡退出 owner。
 

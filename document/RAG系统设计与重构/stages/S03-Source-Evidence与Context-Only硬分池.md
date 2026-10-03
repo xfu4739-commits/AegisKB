@@ -60,7 +60,7 @@ SELECT COALESCE(SUM(context_only = 1 AND is_selected = 1), 0) AS context_selecte
                     AND (context_only = 1
                          OR source_evidence_resolved = 0
                          OR COALESCE(citation_identity, '') = '')), 0) AS invalid_selected
-FROM nexus_agent_chat_retrieval_result
+FROM aegis_kb_chat_retrieval_result
 WHERE exchange_id > :exchange_watermark;
 ~~~
 

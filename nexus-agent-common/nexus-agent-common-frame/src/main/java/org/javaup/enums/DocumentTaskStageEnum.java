@@ -1,12 +1,21 @@
 package org.javaup.enums;
 
+/**
+ * @program: 企业级别深度设计 AI Agent。添加 阿星不是程序员 微信，添加时备注 agent 来获取项目的完整资料
+ * @description: 枚举定义
+ * @author: 阿星不是程序员
+ **/
+
 public enum DocumentTaskStageEnum {
+    // PARSE_ROUTE 阶段
     FILE_UPLOAD(1, "文件上传"),
     CONTENT_PARSE(2, "内容解析"),
     
-    STRATEGY_ROUTE(3, "策略路由"),
+    STRATEGY_ROUTE(3, "策略路由"), 
+    // 人工策略确认
     STRATEGY_CONFIRM(4, "策略确认"),
 
+    // BUILD_INDEX
     CHUNK_EXECUTE(5, "切块执行"),
     CHUNK_POST_PROCESS(6, "切块后处理"),
     VECTORIZE(7, "向量化"),

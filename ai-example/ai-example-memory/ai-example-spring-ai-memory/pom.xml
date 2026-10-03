@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.javaup</groupId>
+        <groupId>org.aegiskb</groupId>
         <artifactId>ai-example-memory</artifactId>
         <version>${revision}</version>
     </parent>
@@ -51,7 +51,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
                 <configuration>
-                    <mainClass>org.javaup.ExampleSpringAiMemoryApplication</mainClass>
+                    <mainClass>org.aegiskb.ExampleSpringAiMemoryApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

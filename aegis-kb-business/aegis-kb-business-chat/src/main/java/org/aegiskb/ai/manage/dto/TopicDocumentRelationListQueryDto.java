@@ -1,0 +1,11 @@
+package org.aegiskb.ai.manage.dto;
+
+import lombok.Data;
+
+@Data
+public class TopicDocumentRelationListQueryDto {
+
+    private String knowledgeBaseId;
+
+    private String topicId;
+}

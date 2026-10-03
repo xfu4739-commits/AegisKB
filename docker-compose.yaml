@@ -1,0 +1,192 @@
+# AegisKB 本地中间件。账号和宿主机端口与
+# aegis-kb-business/aegis-kb-business-chat/src/main/resources/application.yaml 对齐。
+#
+# 启动：
+#   docker compose up -d
+# 查看：
+#   docker compose ps
+# 停止：
+#   docker compose down
+#
+# 这里只起中间件。Java（9083）、rag-tools（18080）、Vue（5174）仍在本机启动。
+# Docker Desktop 建议至少 8GB 内存。WSL2/Linux 上 Elasticsearch 需要 vm.max_map_count>=262144。
+
+name: aegis-kb
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: aegis-kb-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: aegis_kb
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --max-connections=400
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql/表结构/Mysql/create_table_mysql.sql:/docker-entrypoint-initdb.d/01-create_table.sql:ro
+      - ./sql/表数据/Mysql/init_system_config.sql:/docker-entrypoint-initdb.d/02-init_system_config.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 40s
+
+  redis:
+    image: redis:7-alpine
+    container_name: aegis-kb-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: aegis-kb-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: aegis_kb_pgvector
+      TZ: Asia/Shanghai
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/表结构/PostgresSql/create_table_postgres_sql.sql:/docker-entrypoint-initdb.d/01-create_table.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d aegis_kb_pgvector"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  elasticsearch:
+    build:
+      context: ./docker/elasticsearch
+      dockerfile: Dockerfile
+    image: aegis-kb-elasticsearch:8.5.2-ik
+    container_name: aegis-kb-elasticsearch
+    restart: unless-stopped
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "true"
+      xpack.security.http.ssl.enabled: "false"
+      xpack.security.enrollment.enabled: "false"
+      ELASTIC_PASSWORD: elastic
+      ES_JAVA_OPTS: -Xms1g -Xmx1g
+      TZ: Asia/Shanghai
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS -u elastic:elastic http://127.0.0.1:9200/_cluster/health >/dev/null"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 90s
+
+  neo4j:
+    image: neo4j:5.22-community
+    container_name: aegis-kb-neo4j
+    restart: unless-stopped
+    environment:
+      NEO4J_AUTH: neo4j/12345678
+      NEO4J_server_memory_heap_initial__size: 512m
+      NEO4J_server_memory_heap_max__size: 1G
+      NEO4J_server_memory_pagecache_size: 512M
+      TZ: Asia/Shanghai
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p 12345678 'RETURN 1'"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 50s
+
+  zookeeper:
+    image: zookeeper:3.9
+    container_name: aegis-kb-zookeeper
+    restart: unless-stopped
+    environment:
+      ZOO_MY_ID: 1
+      TZ: Asia/Shanghai
+    volumes:
+      - zookeeper_data:/data
+      - zookeeper_datalog:/datalog
+
+  kafka:
+    image: wurstmeister/kafka:2.13-2.8.1
+    container_name: aegis-kb-kafka
+    restart: unless-stopped
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      TZ: Asia/Shanghai
+    ports:
+      - "9092:9092"
+    volumes:
+      - kafka_data:/kafka
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-topics.sh --bootstrap-server 127.0.0.1:9092 --list >/dev/null"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 40s
+
+  minio:
+    image: minio/minio:latest
+    container_name: aegis-kb-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+      TZ: Asia/Shanghai
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+volumes:
+  mysql_data:
+  redis_data:
+  postgres_data:
+  elasticsearch_data:
+  neo4j_data:
+  kafka_data:
+  zookeeper_data:
+  zookeeper_datalog:
+  minio_data:

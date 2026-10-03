@@ -1,1 +1,1 @@
-CREATE DATABASE nexus_agent_pro DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE aegis_kb DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

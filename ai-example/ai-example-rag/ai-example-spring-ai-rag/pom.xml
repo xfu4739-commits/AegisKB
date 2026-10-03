@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.javaup</groupId>
+        <groupId>org.aegiskb</groupId>
         <artifactId>ai-example-rag</artifactId>
         <version>${revision}</version>
     </parent>
@@ -81,7 +81,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
                 <configuration>
-                    <mainClass>org.javaup.ExampleSpringAiRagNeo4jApplication</mainClass>
+                    <mainClass>org.aegiskb.ExampleSpringAiRagNeo4jApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

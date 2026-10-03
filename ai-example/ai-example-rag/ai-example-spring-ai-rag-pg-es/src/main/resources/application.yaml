@@ -79,4 +79,4 @@ management:
 logging:
   level:
     org.springframework.ai: DEBUG
-    org.javaup.ai: DEBUG
+    org.aegiskb.ai: DEBUG

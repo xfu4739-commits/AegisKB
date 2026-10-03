@@ -15,7 +15,7 @@
         <Property name="FILE_NAME">log</Property>
         <Property name="PATTERN">[ai-example-spring-ai-rag-neo4j] %d{yyyy-MM-dd HH:mm:ss} %5p %c{1}:%L - %m%n</Property>
         <Property name="ENCODING">UTF-8</Property>
-        <Property name="CUSTOM_MESSAGE_KEY">org.javaup</Property>
+        <Property name="CUSTOM_MESSAGE_KEY">org.aegiskb</Property>
     </Properties>
 
     <Appenders>

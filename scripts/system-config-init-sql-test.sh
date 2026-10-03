@@ -12,7 +12,7 @@ MYSQL_PORT="${SYSTEM_CONFIG_SQL_TEST_MYSQL_PORT:-3306}"
 MYSQL_USER="${SYSTEM_CONFIG_SQL_TEST_MYSQL_USER:-root}"
 export MYSQL_PWD="${SYSTEM_CONFIG_SQL_TEST_MYSQL_PASSWORD:-root}"
 
-DB_NAME="nexus_agent_system_config_fixture_${$}_${RANDOM}"
+DB_NAME="aegis_kb_system_config_fixture_${$}_${RANDOM}"
 TMP_ROOT="$(mktemp -d "${TMPDIR:-/tmp}/system-config-init-sql-test.XXXXXX")"
 FIXTURE_CREATE_TABLE_SQL="${TMP_ROOT}/create_table_mysql.sql"
 FIXTURE_INIT_SQL="${TMP_ROOT}/init_system_config.sql"
@@ -33,8 +33,8 @@ cleanup() {
 }
 trap cleanup EXIT
 
-sed "s/^USE nexus_agent_pro;$/USE \`${DB_NAME}\`;/" "${CREATE_TABLE_SQL}" > "${FIXTURE_CREATE_TABLE_SQL}"
-sed "s/^USE nexus_agent_pro;$/USE \`${DB_NAME}\`;/" "${INIT_SQL}" > "${FIXTURE_INIT_SQL}"
+sed "s/^USE aegis_kb;$/USE \`${DB_NAME}\`;/" "${CREATE_TABLE_SQL}" > "${FIXTURE_CREATE_TABLE_SQL}"
+sed "s/^USE aegis_kb;$/USE \`${DB_NAME}\`;/" "${INIT_SQL}" > "${FIXTURE_INIT_SQL}"
 if ! grep -Fqx "USE \`${DB_NAME}\`;" "${FIXTURE_CREATE_TABLE_SQL}" \
   || ! grep -Fqx "USE \`${DB_NAME}\`;" "${FIXTURE_INIT_SQL}"; then
   echo "failed to bind system config SQL to fixture database" >&2
@@ -64,16 +64,16 @@ run_init() {
 
 run_init
 
-assert_equals "seed row count" "1" "$(query_scalar "SELECT COUNT(*) FROM nexus_agent_system_config")"
-assert_equals "snapshot value count" "101" "$(query_scalar "SELECT JSON_LENGTH(config_json, '$.values') FROM nexus_agent_system_config WHERE id = 1")"
-assert_equals "config group count" "4" "$(query_scalar "SELECT COUNT(*) FROM nexus_agent_system_config_group WHERE status = 1")"
-assert_equals "config category count" "14" "$(query_scalar "SELECT COUNT(*) FROM nexus_agent_system_config_category WHERE status = 1")"
-assert_equals "config group order" "retrieval,conversation,documentBuild,graphRag" "$(query_scalar "SELECT GROUP_CONCAT(group_key ORDER BY sort_order, id) FROM nexus_agent_system_config_group WHERE status = 1")"
-assert_equals "retrieval category order" "retrievalWindow,execution,relevance,channels,fusion" "$(query_scalar "SELECT GROUP_CONCAT(category_key ORDER BY sort_order, id) FROM nexus_agent_system_config_category WHERE group_key = 'retrieval' AND status = 1")"
+assert_equals "seed row count" "1" "$(query_scalar "SELECT COUNT(*) FROM aegis_kb_system_config")"
+assert_equals "snapshot value count" "101" "$(query_scalar "SELECT JSON_LENGTH(config_json, '$.values') FROM aegis_kb_system_config WHERE id = 1")"
+assert_equals "config group count" "4" "$(query_scalar "SELECT COUNT(*) FROM aegis_kb_system_config_group WHERE status = 1")"
+assert_equals "config category count" "14" "$(query_scalar "SELECT COUNT(*) FROM aegis_kb_system_config_category WHERE status = 1")"
+assert_equals "config group order" "retrieval,conversation,documentBuild,graphRag" "$(query_scalar "SELECT GROUP_CONCAT(group_key ORDER BY sort_order, id) FROM aegis_kb_system_config_group WHERE status = 1")"
+assert_equals "retrieval category order" "retrievalWindow,execution,relevance,channels,fusion" "$(query_scalar "SELECT GROUP_CONCAT(category_key ORDER BY sort_order, id) FROM aegis_kb_system_config_category WHERE group_key = 'retrieval' AND status = 1")"
 
 VALID_DEFAULTS="$(query_scalar "
 SELECT COUNT(*)
-FROM nexus_agent_system_config
+FROM aegis_kb_system_config
 WHERE id = 1
   AND config_version = 0
   AND status = 1
@@ -126,30 +126,30 @@ WHERE id = 1
 assert_equals "complete default snapshot" "1" "${VALID_DEFAULTS}"
 
 query_scalar "
-UPDATE nexus_agent_system_config
+UPDATE aegis_kb_system_config
 SET config_version = 7,
     config_json = JSON_SET(config_json, '$.values.\"ragRuntime.vectorTopK\"', 19)
 WHERE id = 1
 " >/dev/null
 
 query_scalar "
-UPDATE nexus_agent_system_config_group
+UPDATE aegis_kb_system_config_group
 SET group_label = '自定义检索分类', sort_order = 15
 WHERE group_key = 'retrieval'
 " >/dev/null
 
 query_scalar "
-UPDATE nexus_agent_system_config_category
+UPDATE aegis_kb_system_config_category
 SET category_label = '自定义召回分类', sort_order = 15
 WHERE category_key = 'retrievalWindow'
 " >/dev/null
 
 run_init
 
-assert_equals "second run row count" "1" "$(query_scalar "SELECT COUNT(*) FROM nexus_agent_system_config")"
-assert_equals "existing version preserved" "7" "$(query_scalar "SELECT config_version FROM nexus_agent_system_config WHERE id = 1")"
-assert_equals "existing value preserved" "19" "$(query_scalar "SELECT JSON_EXTRACT(config_json, '$.values.\"ragRuntime.vectorTopK\"') FROM nexus_agent_system_config WHERE id = 1")"
-assert_equals "existing group metadata preserved" "自定义检索分类:15" "$(query_scalar "SELECT CONCAT(group_label, ':', sort_order) FROM nexus_agent_system_config_group WHERE group_key = 'retrieval'")"
-assert_equals "existing category metadata preserved" "自定义召回分类:15" "$(query_scalar "SELECT CONCAT(category_label, ':', sort_order) FROM nexus_agent_system_config_category WHERE category_key = 'retrievalWindow'")"
+assert_equals "second run row count" "1" "$(query_scalar "SELECT COUNT(*) FROM aegis_kb_system_config")"
+assert_equals "existing version preserved" "7" "$(query_scalar "SELECT config_version FROM aegis_kb_system_config WHERE id = 1")"
+assert_equals "existing value preserved" "19" "$(query_scalar "SELECT JSON_EXTRACT(config_json, '$.values.\"ragRuntime.vectorTopK\"') FROM aegis_kb_system_config WHERE id = 1")"
+assert_equals "existing group metadata preserved" "自定义检索分类:15" "$(query_scalar "SELECT CONCAT(group_label, ':', sort_order) FROM aegis_kb_system_config_group WHERE group_key = 'retrieval'")"
+assert_equals "existing category metadata preserved" "自定义召回分类:15" "$(query_scalar "SELECT CONCAT(category_label, ':', sort_order) FROM aegis_kb_system_config_category WHERE category_key = 'retrievalWindow'")"
 
 echo "system config initialization SQL: PASS"

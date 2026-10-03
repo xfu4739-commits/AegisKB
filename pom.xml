@@ -3,22 +3,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.javaup</groupId>
-    <artifactId>nexus-agent-pro</artifactId>
+    <groupId>org.aegiskb</groupId>
+    <artifactId>aegis-kb</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
     
-    <description>AegisKB — enterprise knowledge-base retrieval and Q&A</description>
+    <description>AegisKB - enterprise knowledge-base retrieval and QA (Beijing Jiaotong University)</description>
     
     <modules>
         <module>ai-example</module>
-        <module>nexus-agent-business</module>
-        <module>nexus-agent-common</module>
-        <module>nexus-agent-id-generator-framework</module>
-        <module>nexus-agent-redisson-framework</module>
-        <module>nexus-agent-redis-tool-framework</module>
+        <module>aegis-kb-business</module>
+        <module>aegis-kb-common</module>
+        <module>aegis-kb-id-generator-framework</module>
+        <module>aegis-kb-redisson-framework</module>
+        <module>aegis-kb-redis-tool-framework</module>
     </modules>
     
     <properties>
@@ -165,6 +165,8 @@
         <developer>
             <name>xfu-4739</name>
             <email>1011571942@qq.com</email>
+            <organization>北京交通大学</organization>
+            <organizationUrl>https://www.bjtu.edu.cn</organizationUrl>
         </developer>
     </developers>
 

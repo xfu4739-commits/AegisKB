@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.aegiskb</groupId>
+        <artifactId>aegis-kb-redisson-framework</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>aegis-kb-redisson-service-framework</artifactId>
+    <name>aegis-kb-redisson-service-framework</name>
+    <description>分布式服务工具</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>aegis-kb-redisson-common-framework</module>
+			<module>aegis-kb-service-lock-framework</module>
+        <module>aegis-kb-service-lease-framework</module>
+        <module>aegis-kb-repeat-execute-limit-framework</module>
+    </modules>
+
+</project>

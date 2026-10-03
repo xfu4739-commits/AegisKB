@@ -1,0 +1,2 @@
+org.aegiskb.config.SuperAgentCommonAutoConfig
+org.aegiskb.database.mybatisplus.MybatisPlusAutoConfiguration

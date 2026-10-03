@@ -17,9 +17,9 @@
 
 核心文件：
 
-- `nexus-agent-rag-tools/rag_tools/graph_extract.py`
-- `nexus-agent-rag-tools/rag_tools/schemas/graph_extract.py`
-- `nexus-agent-rag-tools/tests/test_graph_extract.py`
+- `aegis-kb-rag-tools/rag_tools/graph_extract.py`
+- `aegis-kb-rag-tools/rag_tools/schemas/graph_extract.py`
+- `aegis-kb-rag-tools/tests/test_graph_extract.py`
 
 约束：
 

@@ -17,10 +17,10 @@
      必须唯一匹配，脚本不会按“最新”记录猜测。
 
   本脚本会创建或更新：
-  - nexus_agent_knowledge_scope_node
-  - nexus_agent_knowledge_topic_node
-  - nexus_agent_topic_document_relation
-  - nexus_agent_document_profile
+  - aegis_kb_knowledge_scope_node
+  - aegis_kb_knowledge_topic_node
+  - aegis_kb_topic_document_relation
+  - aegis_kb_document_profile
 
   本脚本不会：
   - 创建知识库。
@@ -31,7 +31,7 @@
   重复执行可幂等重放；KB/文档匹配缺失或歧义、以及目标 ID 段归属冲突会在永久写入前停止。
 */
 
-USE nexus_agent_pro;
+USE aegis_kb;
 
 SET NAMES utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
@@ -126,7 +126,7 @@ SELECT
     COUNT(kb.id) AS match_count,
     IF(COUNT(kb.id) = 1, MAX(kb.id), NULL) AS knowledge_base_id
 FROM tmp_o2_o8_required_kb required
-LEFT JOIN nexus_agent_knowledge_base kb
+LEFT JOIN aegis_kb_knowledge_base kb
   ON kb.status = 1
  AND kb.base_name = required.kb_name
 GROUP BY required.kb_name, required.expected_doc_count;
@@ -174,7 +174,7 @@ SELECT
     IF(COUNT(d.id) = 1, MAX(d.id), NULL) AS document_id
 FROM tmp_o2_o8_expected_document expected
 JOIN tmp_o2_o8_kb kb ON kb.kb_name = expected.kb_name
-LEFT JOIN nexus_agent_document d
+LEFT JOIN aegis_kb_document d
   ON d.status = 1
  AND d.knowledge_base_id = kb.knowledge_base_id
  AND d.original_file_name = expected.original_file_name
@@ -226,7 +226,7 @@ SET @not_ready_docs = (
         ')'
     ) ORDER BY latest.kb_name, d.original_file_name SEPARATOR '; ')
     FROM tmp_o2_o8_latest_document latest
-    JOIN nexus_agent_document d ON d.id = latest.document_id
+    JOIN aegis_kb_document d ON d.id = latest.document_id
     WHERE IFNULL(d.parse_status, -1) <> 3
        OR IFNULL(d.strategy_status, -1) <> 3
        OR IFNULL(d.index_status, -1) <> 3
@@ -277,7 +277,7 @@ SELECT
     d.index_status,
     d.last_index_task_id
 FROM tmp_o2_o8_latest_document latest
-         JOIN nexus_agent_document d ON d.id = latest.document_id
+         JOIN aegis_kb_document d ON d.id = latest.document_id
 ORDER BY latest.kb_name, latest.original_file_name;
 
 /* =========================================================
@@ -388,7 +388,7 @@ CREATE TEMPORARY TABLE tmp_o2_o8_ownership_conflict (
 
 INSERT INTO tmp_o2_o8_ownership_conflict (conflict_key)
 SELECT CONCAT('SCOPE:', s.id)
-FROM nexus_agent_knowledge_scope_node s
+FROM aegis_kb_knowledge_scope_node s
 LEFT JOIN tmp_o2_o8_expected_ownership expected
   ON expected.entity_type = 'SCOPE' AND expected.entity_id = s.id
 WHERE s.id BETWEEN @base_id + 1 AND @base_id + 3
@@ -398,7 +398,7 @@ WHERE s.id BETWEEN @base_id + 1 AND @base_id + 3
 
 INSERT INTO tmp_o2_o8_ownership_conflict (conflict_key)
 SELECT CONCAT('SCOPE-NATURAL:', s.id)
-FROM nexus_agent_knowledge_scope_node s
+FROM aegis_kb_knowledge_scope_node s
 JOIN tmp_o2_o8_expected_ownership expected
   ON expected.entity_type = 'SCOPE'
  AND expected.knowledge_base_id = s.knowledge_base_id
@@ -407,7 +407,7 @@ JOIN tmp_o2_o8_expected_ownership expected
 
 INSERT INTO tmp_o2_o8_ownership_conflict (conflict_key)
 SELECT CONCAT('TOPIC:', topic.id)
-FROM nexus_agent_knowledge_topic_node topic
+FROM aegis_kb_knowledge_topic_node topic
 LEFT JOIN tmp_o2_o8_expected_ownership expected
   ON expected.entity_type = 'TOPIC' AND expected.entity_id = topic.id
 WHERE topic.id BETWEEN @base_id + 101 AND @base_id + 304
@@ -418,7 +418,7 @@ WHERE topic.id BETWEEN @base_id + 101 AND @base_id + 304
 
 INSERT INTO tmp_o2_o8_ownership_conflict (conflict_key)
 SELECT CONCAT('TOPIC-NATURAL:', topic.id)
-FROM nexus_agent_knowledge_topic_node topic
+FROM aegis_kb_knowledge_topic_node topic
 JOIN tmp_o2_o8_expected_ownership expected
   ON expected.entity_type = 'TOPIC'
  AND expected.knowledge_base_id = topic.knowledge_base_id
@@ -427,7 +427,7 @@ JOIN tmp_o2_o8_expected_ownership expected
 
 INSERT INTO tmp_o2_o8_ownership_conflict (conflict_key)
 SELECT CONCAT('PROFILE:', profile.id)
-FROM nexus_agent_document_profile profile
+FROM aegis_kb_document_profile profile
 LEFT JOIN tmp_o2_o8_expected_ownership expected
   ON expected.entity_type = 'PROFILE' AND expected.entity_id = profile.id
 WHERE profile.id BETWEEN @base_id + 401 AND @base_id + 415
@@ -436,7 +436,7 @@ WHERE profile.id BETWEEN @base_id + 401 AND @base_id + 415
 
 INSERT INTO tmp_o2_o8_ownership_conflict (conflict_key)
 SELECT CONCAT('RELATION:', relation_item.id)
-FROM nexus_agent_topic_document_relation relation_item
+FROM aegis_kb_topic_document_relation relation_item
 LEFT JOIN tmp_o2_o8_expected_ownership expected
   ON expected.entity_type = 'RELATION' AND expected.entity_id = relation_item.id
 WHERE relation_item.id BETWEEN @base_id + 501 AND @base_id + 526
@@ -464,7 +464,7 @@ WHERE @id_ownership_conflicts IS NOT NULL AND @id_ownership_conflicts <> '';
    3. 知识范围配置
    ========================================================= */
 
-INSERT INTO nexus_agent_knowledge_scope_node (
+INSERT INTO aegis_kb_knowledge_scope_node (
     id, knowledge_base_id, scope_name, parent_scope_id, description, aliases, examples, sort_order,
     create_time, edit_time, status
 )
@@ -517,7 +517,7 @@ VALUES
    4. 知识主题配置
    ========================================================= */
 
-INSERT INTO nexus_agent_knowledge_topic_node (
+INSERT INTO aegis_kb_knowledge_topic_node (
     id, knowledge_base_id, topic_name, scope_id, description, aliases, examples,
     answer_shape, execution_preference, sort_order,
     create_time, edit_time, status
@@ -556,7 +556,7 @@ VALUES
    5. 文档画像配置
    ========================================================= */
 
-INSERT INTO nexus_agent_document_profile (
+INSERT INTO aegis_kb_document_profile (
     id, document_id, profile_version, document_summary, document_type, core_topics, example_questions,
     graph_friendly, supports_graph_outline, supports_item_lookup, supports_graph_assist,
     profile_source, profile_status, error_msg,
@@ -598,7 +598,7 @@ VALUES
    6. 主题文档关联配置
    ========================================================= */
 
-UPDATE nexus_agent_topic_document_relation
+UPDATE aegis_kb_topic_document_relation
 SET status = 0, edit_time = NOW()
 WHERE knowledge_base_id IN (@kb_parse_id, @kb_operation_id, @kb_graph_id)
   AND topic_id IN (
@@ -618,7 +618,7 @@ WHERE knowledge_base_id IN (@kb_parse_id, @kb_operation_id, @kb_graph_id)
                    @topic_graph_boundary_id
     );
 
-INSERT INTO nexus_agent_topic_document_relation (
+INSERT INTO aegis_kb_topic_document_relation (
     id, knowledge_base_id, topic_id, document_id, relation_score, relation_source, reason,
     create_time, edit_time, status
 )
@@ -666,7 +666,7 @@ SELECT
     kb.kb_name,
     COUNT(d.id) AS doc_count
 FROM tmp_o2_o8_latest_document latest
-         JOIN nexus_agent_document d ON d.id = latest.document_id
+         JOIN aegis_kb_document d ON d.id = latest.document_id
          JOIN tmp_o2_o8_kb kb ON kb.knowledge_base_id = d.knowledge_base_id
 GROUP BY kb.kb_name
 ORDER BY kb.kb_name;
@@ -679,8 +679,8 @@ SELECT
     s.aliases,
     s.sort_order,
     s.status
-FROM nexus_agent_knowledge_scope_node s
-         JOIN nexus_agent_knowledge_base kb ON kb.id = s.knowledge_base_id
+FROM aegis_kb_knowledge_scope_node s
+         JOIN aegis_kb_knowledge_base kb ON kb.id = s.knowledge_base_id
 WHERE s.id IN (@scope_parse_id, @scope_operation_id, @scope_graph_id)
 ORDER BY kb.base_name, s.sort_order;
 
@@ -695,9 +695,9 @@ SELECT
     t.execution_preference,
     t.sort_order,
     t.status
-FROM nexus_agent_knowledge_topic_node t
-         JOIN nexus_agent_knowledge_base kb ON kb.id = t.knowledge_base_id
-         JOIN nexus_agent_knowledge_scope_node s ON s.id = t.scope_id
+FROM aegis_kb_knowledge_topic_node t
+         JOIN aegis_kb_knowledge_base kb ON kb.id = t.knowledge_base_id
+         JOIN aegis_kb_knowledge_scope_node s ON s.id = t.scope_id
 WHERE t.id IN (
                @topic_o2_docmind_id,
                @topic_o2_ocr_id,
@@ -727,8 +727,8 @@ SELECT
     p.supports_item_lookup,
     p.supports_graph_assist,
     p.status
-FROM nexus_agent_document_profile p
-         JOIN nexus_agent_document d ON d.id = p.document_id
+FROM aegis_kb_document_profile p
+         JOIN aegis_kb_document d ON d.id = p.document_id
 WHERE p.document_id IN (
                         @doc_o2_provider_pdf_id,
                         @doc_o2_ocr_pdf_id,
@@ -757,11 +757,11 @@ SELECT
     r.relation_source,
     r.reason,
     r.status
-FROM nexus_agent_topic_document_relation r
-         JOIN nexus_agent_knowledge_base kb ON kb.id = r.knowledge_base_id
-         JOIN nexus_agent_knowledge_topic_node t ON t.id = r.topic_id
-         JOIN nexus_agent_knowledge_scope_node s ON s.id = t.scope_id
-         JOIN nexus_agent_document d ON d.id = r.document_id
+FROM aegis_kb_topic_document_relation r
+         JOIN aegis_kb_knowledge_base kb ON kb.id = r.knowledge_base_id
+         JOIN aegis_kb_knowledge_topic_node t ON t.id = r.topic_id
+         JOIN aegis_kb_knowledge_scope_node s ON s.id = t.scope_id
+         JOIN aegis_kb_document d ON d.id = r.document_id
 WHERE r.knowledge_base_id IN (@kb_parse_id, @kb_operation_id, @kb_graph_id)
   AND r.topic_id IN (
                      @topic_o2_docmind_id,
@@ -788,9 +788,9 @@ SELECT
     t.knowledge_base_id AS topic_kb,
     d.knowledge_base_id AS doc_kb,
     d.original_file_name
-FROM nexus_agent_topic_document_relation r
-         JOIN nexus_agent_knowledge_topic_node t ON t.id = r.topic_id
-         JOIN nexus_agent_document d ON d.id = r.document_id
+FROM aegis_kb_topic_document_relation r
+         JOIN aegis_kb_knowledge_topic_node t ON t.id = r.topic_id
+         JOIN aegis_kb_document d ON d.id = r.document_id
 WHERE r.status = 1
   AND r.topic_id IN (
                      @topic_o2_docmind_id,
