@@ -5,6 +5,7 @@ import json
 import math
 import re
 import time
+from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from html.parser import HTMLParser
 from io import BytesIO
@@ -63,7 +64,24 @@ class DocMindParseResult:
     metadata: dict[str, Any] = field(default_factory=dict)
 
 
-class AliyunDocMindParser:
+class DocumentParser(ABC):
+    """文档解析产品。具体解析器只处理自己支持的文件，不决定按类型路由。"""
+
+    provider_name: str
+    provider_version: str
+    supported_file_types: set[str]
+    capabilities: list[str]
+
+    @abstractmethod
+    def status(self) -> dict[str, Any]:
+        """上报可用性与能力，供健康检查使用。"""
+
+    @abstractmethod
+    def parse(self, content: bytes, file_type: str, request: DocumentParseRequest) -> DocMindParseResult:
+        """把文件字节解析成统一的 block 结果。"""
+
+
+class AliyunDocMindParser(DocumentParser):
     provider_name = ALIYUN_DOCMIND_PARSER_NAME
     provider_version = PARSER_VERSION
     supported_file_types = ALIYUN_DOCMIND_FILE_TYPES
@@ -440,7 +458,7 @@ class AliyunDocMindParser:
         return (file_type or "").lower()
 
 
-class NativeTextParser:
+class NativeTextParser(DocumentParser):
     provider_name = NATIVE_TEXT_PARSER_NAME
     provider_version = PARSER_VERSION
     supported_file_types = NATIVE_TEXT_FILE_TYPES
@@ -474,6 +492,127 @@ class NativeTextParser:
         return DocMindParseResult(blocks=blocks)
 
 
+class DocumentParserFactory:
+    """按文件类型创建解析器。创建决定集中在这一个工厂里。"""
+
+    _CATALOG: tuple[tuple[type[DocumentParser], str], ...] = (
+        (
+            NativeTextParser,
+            "TXT、Markdown、HTML 使用本地确定性结构解析，不依赖 OCR 或云端 Document Mind。",
+        ),
+        (
+            AliyunDocMindParser,
+            "PDF、DOCX、XLSX、PNG、JPG/JPEG、BMP、GIF 使用阿里云 Document Mind 处理 OCR、layout、reading order、表格和图片结构。",
+        ),
+    )
+
+    @classmethod
+    def create(cls, file_type: str) -> DocumentParser | None:
+        for parser_type, _route_description in cls._CATALOG:
+            if file_type in parser_type.supported_file_types:
+                return parser_type()
+        return None
+
+    @classmethod
+    def create_all(cls) -> list[DocumentParser]:
+        return [parser_type() for parser_type, _route_description in cls._CATALOG]
+
+    @classmethod
+    def route_description(cls, parser: DocumentParser) -> str:
+        for parser_type, route_description in cls._CATALOG:
+            if type(parser) is parser_type:
+                return route_description
+        return ""
+
+
+class DocumentParseClient:
+    """使用工厂创建好的解析器，整理成统一的解析响应。"""
+
+    def __init__(self, parser: DocumentParser):
+        self._parser = parser
+
+    def parse(self, request: DocumentParseRequest, content: bytes, file_type: str, started: float) -> DocumentParseResponse:
+        parser = self._parser
+        parser_result = parser.parse(content, file_type, request)
+        markdown_syntax = parser_result.markdown_syntax
+        # 本地解析和 Document Mind 在这里汇合，后续都使用同一种 block/产物协议。
+        normalized_blocks = _normalize_blocks(parser_result.blocks)
+        _stamp_parser_metadata(normalized_blocks, parser)
+        _apply_table_context(normalized_blocks)
+        parsed_text = _render_parsed_text(normalized_blocks)
+        paragraph_list = _paragraphs(parsed_text)
+        heading_count = sum(1 for block in normalized_blocks if block.block_type == "TITLE")
+        trace_metadata = _parse_trace_metadata(
+            normalized_blocks,
+            parser_result.warnings,
+            base_metadata=parser_result.metadata,
+            parser_name=parser.provider_name,
+            parser_version=parser.provider_version,
+            elapsed_ms=int((time.perf_counter() - started) * 1000),
+        )
+        if markdown_syntax is not None:
+            trace_metadata.update({
+                "markdownSyntaxSchemaVersion": markdown_syntax.schema_version,
+                "markdownSyntaxNodeCount": len(markdown_syntax.nodes),
+                "markdownSourceOrigin": markdown_syntax.source_origin,
+                "markdownSourceSha256": markdown_syntax.source_sha256,
+            })
+        warning_list = list(parser_result.warnings or [])
+        # parsed text、blocks JSON、layout、原始供应商结果和图片都在这里汇总成 artifacts。
+        artifacts = _build_artifacts(
+            request.file_name,
+            parsed_text,
+            normalized_blocks,
+            parser,
+            content,
+            file_type,
+            parser_result.artifacts,
+            trace_metadata,
+            warning_list,
+        )
+        if warning_list != list(parser_result.warnings or []):
+            trace_metadata = _parse_trace_metadata(
+                normalized_blocks,
+                warning_list,
+                base_metadata=trace_metadata,
+                parser_name=parser.provider_name,
+                parser_version=parser.provider_version,
+                elapsed_ms=int((time.perf_counter() - started) * 1000),
+            )
+        capabilities = _response_capabilities(parser, artifacts, markdown_syntax)
+
+        return DocumentParseResponse(
+            parsedText=parsed_text,
+            charCount=len(parsed_text),
+            tokenCount=_estimate_token_count(parsed_text),
+            structureLevel=_structure_level(heading_count, len(paragraph_list)),
+            contentQualityLevel=_content_quality_level(parsed_text),
+            headingCount=heading_count,
+            paragraphCount=len(paragraph_list),
+            maxParagraphLength=max((len(item) for item in paragraph_list), default=0),
+            artifacts=artifacts,
+            blocks=normalized_blocks,
+            providerName=parser.provider_name,
+            providerVersion=parser.provider_version,
+            capabilities=capabilities,
+            elapsedMs=trace_metadata.get("elapsedMs", int((time.perf_counter() - started) * 1000)),
+            warnings=warning_list,
+            failedReason="",
+            traceMetadata=trace_metadata,
+            markdownSyntax=markdown_syntax,
+        )
+
+    def status(self) -> dict[str, Any]:
+        return self._parser.status()
+
+    def route(self) -> dict[str, Any]:
+        return {
+            "providerName": self._parser.provider_name,
+            "fileTypes": sorted(item.lower() for item in self._parser.supported_file_types),
+            "description": DocumentParserFactory.route_description(self._parser),
+        }
+
+
 def parse_document(request: DocumentParseRequest) -> DocumentParseResponse:
     started = time.perf_counter()
     # Java 在 JSON 中传 Base64；这里严格解码并统一成规范文件类型。
@@ -484,117 +623,19 @@ def parse_document(request: DocumentParseRequest) -> DocumentParseResponse:
         raise HTTPException(status_code=422, detail="XLS 解析未启用，请先转为 XLSX 后上传。")
     if file_type == "DOC":
         raise HTTPException(status_code=422, detail="DOC 解析未启用，请先转为 DOCX 后上传。")
-    parser = _parser_for_file_type(file_type)
+    parser = DocumentParserFactory.create(file_type)
     if parser is None:
         raise HTTPException(status_code=422, detail=f"不支持的文件类型: {file_type or 'UNKNOWN'}")
-
-    parser_result = parser.parse(content, file_type, request)
-    markdown_syntax = parser_result.markdown_syntax
-    # 本地解析和 Document Mind 在这里汇合，后续都使用同一种 block/产物协议。
-    normalized_blocks = _normalize_blocks(parser_result.blocks)
-    _stamp_parser_metadata(normalized_blocks, parser)
-    _apply_table_context(normalized_blocks)
-    parsed_text = _render_parsed_text(normalized_blocks)
-    paragraph_list = _paragraphs(parsed_text)
-    heading_count = sum(1 for block in normalized_blocks if block.block_type == "TITLE")
-    trace_metadata = _parse_trace_metadata(
-        normalized_blocks,
-        parser_result.warnings,
-        base_metadata=parser_result.metadata,
-        parser_name=parser.provider_name,
-        parser_version=parser.provider_version,
-        elapsed_ms=int((time.perf_counter() - started) * 1000),
-    )
-    if markdown_syntax is not None:
-        trace_metadata.update({
-            "markdownSyntaxSchemaVersion": markdown_syntax.schema_version,
-            "markdownSyntaxNodeCount": len(markdown_syntax.nodes),
-            "markdownSourceOrigin": markdown_syntax.source_origin,
-            "markdownSourceSha256": markdown_syntax.source_sha256,
-        })
-    warning_list = list(parser_result.warnings or [])
-    # parsed text、blocks JSON、layout、原始供应商结果和图片都在这里汇总成 artifacts。
-    artifacts = _build_artifacts(
-        request.file_name,
-        parsed_text,
-        normalized_blocks,
-        parser,
-        content,
-        file_type,
-        parser_result.artifacts,
-        trace_metadata,
-        warning_list,
-    )
-    if warning_list != list(parser_result.warnings or []):
-        trace_metadata = _parse_trace_metadata(
-            normalized_blocks,
-            warning_list,
-            base_metadata=trace_metadata,
-            parser_name=parser.provider_name,
-            parser_version=parser.provider_version,
-            elapsed_ms=int((time.perf_counter() - started) * 1000),
-        )
-    capabilities = _response_capabilities(parser, artifacts, markdown_syntax)
-
-    return DocumentParseResponse(
-        parsedText=parsed_text,
-        charCount=len(parsed_text),
-        tokenCount=_estimate_token_count(parsed_text),
-        structureLevel=_structure_level(heading_count, len(paragraph_list)),
-        contentQualityLevel=_content_quality_level(parsed_text),
-        headingCount=heading_count,
-        paragraphCount=len(paragraph_list),
-        maxParagraphLength=max((len(item) for item in paragraph_list), default=0),
-        artifacts=artifacts,
-        blocks=normalized_blocks,
-        providerName=parser.provider_name,
-        providerVersion=parser.provider_version,
-        capabilities=capabilities,
-        elapsedMs=trace_metadata.get("elapsedMs", int((time.perf_counter() - started) * 1000)),
-        warnings=warning_list,
-        failedReason="",
-        traceMetadata=trace_metadata,
-        markdownSyntax=markdown_syntax,
-    )
+    return DocumentParseClient(parser).parse(request, content, file_type, started)
 
 
 def document_parser_status() -> dict[str, Any]:
-    native_parser = _native_text_parser()
-    docmind_parser = _parser()
+    clients = [DocumentParseClient(parser) for parser in DocumentParserFactory.create_all()]
     return {
         "defaultProvider": "type_routed",
-        "routes": [
-            {
-                "providerName": native_parser.provider_name,
-                "fileTypes": sorted(item.lower() for item in native_parser.supported_file_types),
-                "description": "TXT、Markdown、HTML 使用本地确定性结构解析，不依赖 OCR 或云端 Document Mind。",
-            },
-            {
-                "providerName": docmind_parser.provider_name,
-                "fileTypes": sorted(item.lower() for item in docmind_parser.supported_file_types),
-                "description": "PDF、DOCX、XLSX、PNG、JPG/JPEG、BMP、GIF 使用阿里云 Document Mind 处理 OCR、layout、reading order、表格和图片结构。",
-            },
-        ],
-        "providers": [native_parser.status(), docmind_parser.status()],
+        "routes": [client.route() for client in clients],
+        "providers": [client.status() for client in clients],
     }
-
-
-def _parser() -> AliyunDocMindParser:
-    return AliyunDocMindParser()
-
-
-def _native_text_parser() -> NativeTextParser:
-    return NativeTextParser()
-
-
-def _parser_for_file_type(file_type: str):
-    # 纯文本类格式本地解析，避免无意义地依赖 OCR 或外部云服务。
-    if file_type in NATIVE_TEXT_FILE_TYPES: # （txt,md，html）这几种直接本地解析不需要使用OCR
-        return _native_text_parser()
-    # 需要版面、表格或图片识别的格式交给阿里云 Document Mind。
-    if file_type in ALIYUN_DOCMIND_FILE_TYPES: # （pdf,docx,xlsx,png,jpg,jpeg,bmp,gif）这几种需要使用OCR
-        return _parser()
-    return None
 
 
 def _decode_content(content_base64: str) -> bytes:
