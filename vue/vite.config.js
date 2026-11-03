@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     server: {
-      port: 5174,
+      port: 5173,
       strictPort: true,
       // 开发阶段直接代理到后端模块，前端代码只需要面向统一的 /api 路径。
       proxy: {

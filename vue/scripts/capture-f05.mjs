@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 
 const chromePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-const baseUrl = 'http://localhost:5174'
+const baseUrl = 'http://localhost:5173'
 const evidenceDir = resolve(process.cwd(), 'test-results/f05')
 const loginResponsePath = process.env.F05_LOGIN_RESPONSE
 const remotePort = 9335
