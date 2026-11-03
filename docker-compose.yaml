@@ -8,7 +8,7 @@
 # 停止：
 #   docker compose down
 #
-# 这里只起中间件。Java（9083）、rag-tools（18080）、Vue（5174）仍在本机启动。
+# 这里只起中间件。Java（9083）、rag-tools（18080）、Vue（5173）仍在本机启动。
 # Docker Desktop 建议至少 8GB 内存。WSL2/Linux 上 Elasticsearch 需要 vm.max_map_count>=262144。
 
 name: aegis-kb
@@ -160,9 +160,13 @@ services:
       start_period: 40s
 
   minio:
-    image: minio/minio:latest
+    # minio/minio 已于 2026-09 从 Docker Hub 删除，镜像站返回 denied。
+    # 使用 Chainguard 构建的同名服务端；账号、端口和 server 命令与 application.yaml 保持一致。
+    # 镜像默认用户是 65532，且没有 curl，所以这里用 root 写数据卷，并用 mc 做存活检查。
+    image: cgr.dev/chainguard/minio:latest
     container_name: aegis-kb-minio
     restart: unless-stopped
+    user: "0:0"
     command: server /data --console-address ":9001"
     environment:
       MINIO_ROOT_USER: minioadmin
@@ -174,7 +178,7 @@ services:
     volumes:
       - minio_data:/data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://127.0.0.1:9000/minio/health/live"]
+      test: ["CMD-SHELL", "mc alias set local http://127.0.0.1:9000 $$MINIO_ROOT_USER $$MINIO_ROOT_PASSWORD >/dev/null && mc ready local"]
       interval: 10s
       timeout: 5s
       retries: 10
