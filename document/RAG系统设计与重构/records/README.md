@@ -68,3 +68,27 @@
 ## 4. 课程发布整理说明
 
 本目录的新版本保留项目 HEAD、测试数量、watermark、document/task/exchange ID、失败、偏差、人工操作和重开证据。为课程发布只移除了与本项目执行无关的本机研究环境噪音，并把设计依据统一改写为本项目源码、数据、不变量和目标红灯；没有把失败过程美化成一次成功。
+
+## 5. 已删除的本机脚本
+
+`scripts/` 下的本机启动和 SQL 自测脚本已经删除，不再是当前启动、验收或新记录的入口：
+
+- `scripts/start-local.ps1`
+- `scripts/start-local.cmd`
+- `scripts/start-local.secrets.ps1.example`
+- `scripts/dev-java.cmd`
+- `scripts/dev-rag.cmd`
+- `scripts/dev-vue.cmd`
+- `scripts/rag-route-init-sql-test.sh`
+- `scripts/system-config-init-sql-test.sh`
+
+`scripts/start-local.secrets.ps1` 被 `.gitignore` 排除，只存在于删除前的本机，不能从 Git 恢复。
+
+新的 record、阶段交接和验证说明直接记录实际执行的命令，不再把上述脚本写成必跑步骤，也不为了让旧命令重新可执行而加回这些文件。已经写入 `records/Sxx.md` 的历史命令保持原样，作为当时证据。
+
+当前本机启动（详见根目录 `README.md`）：
+
+1. 中间件：在仓库根目录执行 `docker compose up -d`，再用 `docker compose ps` 确认。
+2. 密钥：复制 `.env.example` 为 `.env` 并填写 `ALI_BAI_LIAN_API_KEY` 等。
+3. 一键：`.\start.cmd`（或 `scripts\start-all.ps1`）打开 Java `9083`、rag-tools `18080`、Vue `5173` 三个窗口；也可分别执行 `scripts\start-java.ps1`、`start-rag.ps1`、`start-vue.ps1`。
+4. rag-tools 首次需在 `aegis-kb-rag-tools` 创建 `.venv` 并 `pip install -e .`；前端首次需在 `vue/` 执行 `npm install`。
