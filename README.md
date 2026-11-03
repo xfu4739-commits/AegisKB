@@ -51,6 +51,13 @@ curl -k -L -o docker/elasticsearch/plugins/elasticsearch-analysis-ik-8.5.2.zip \
 - `sql/表数据/Mysql/init_system_config.sql`
 - `sql/表结构/PostgresSql/create_table_postgres_sql.sql`
 
+若参数配置页总分类中文曾出现乱码（旧 volume 在修复前初始化），在仓库根目录执行一次：
+
+```powershell
+Get-Content -Encoding UTF8 sql/表数据/Mysql/repair_system_config_charset.sql |
+  docker exec -i aegis-kb-mysql mysql -uroot -proot --default-character-set=utf8mb4 aegis_kb
+```
+
 知识路由初始化脚本不要在空库自动执行，等文档解析完成后再手工跑。
 
 | 服务 | 宿主机地址 | 账号 |

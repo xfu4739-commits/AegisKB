@@ -30,6 +30,7 @@ services:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./docker/mysql/conf.d/charset.cnf:/etc/mysql/conf.d/charset.cnf:ro
       - ./sql/表结构/Mysql/create_table_mysql.sql:/docker-entrypoint-initdb.d/01-create_table.sql:ro
       - ./sql/表数据/Mysql/init_system_config.sql:/docker-entrypoint-initdb.d/02-init_system_config.sql:ro
     healthcheck:
