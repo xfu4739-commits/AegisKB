@@ -38,6 +38,7 @@ public class DocumentManageMinioConfiguration {
                 else {
                     log.info("文档管理模块 MinIO bucket 已存在，bucket={}", bucketName);
                 }
+                log.info("MinIO 初始化完成；若控制台暂时无新输出，请等待出现 Started AegisKbApplication 或访问 /actuator/health");
             }
             catch (Exception exception) {
                 throw new SuperAgentFrameException(DocumentManageCode.DOCUMENT_STORAGE_FAILED.getCode(),

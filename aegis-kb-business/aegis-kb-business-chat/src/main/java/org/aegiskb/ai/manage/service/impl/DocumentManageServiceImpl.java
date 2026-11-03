@@ -122,6 +122,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
@@ -219,16 +220,23 @@ public class DocumentManageServiceImpl implements DocumentManageService {
                 DocumentManageCode.UNSUPPORTED_FILE_TYPE.getMsg());
         }
 
-        // 步骤4：读取文件字节并预生成文档 ID。
-        byte[] fileBytes = getFileBytes(file);
+        // 步骤4：预生成文档 ID。原文件大小来自 multipart part，不把内容读入 byte[]。
+        long fileSize = file.getSize();
         Long documentId = uidGenerator.getUid();
         Long knowledgeBaseId = parseRequiredLong(dto.getKnowledgeBaseId(), "knowledgeBaseId");
         // 步骤5：按 ID 查库，确认目标知识库存在且未停用，供后续文档记录绑定 knowledgeBaseId / knowledgeBaseName。
         SuperAgentKnowledgeBase knowledgeBase = knowledgeBaseManageService.requireEnabled(knowledgeBaseId);
 
-        // 步骤6：将原文件写入 MinIO；对象存储不在 MySQL 事务内，写入后不会因数据库回滚而撤销。
-        StoredObjectInfo storedObjectInfo = storageService.uploadOriginalFile(
-                documentId, originalFileName, fileBytes, file.getContentType());
+        // 步骤6：将原文件流式写入 MinIO；对象存储不在 MySQL 事务内，写入后不会因数据库回滚而撤销。
+        StoredObjectInfo storedObjectInfo;
+        try (InputStream inputStream = file.getInputStream()) {
+            storedObjectInfo = storageService.uploadOriginalFile(
+                documentId, originalFileName, inputStream, fileSize, file.getContentType());
+        }
+        catch (IOException exception) {
+            throw new SuperAgentFrameException(DocumentManageCode.DOCUMENT_STORAGE_FAILED.getCode(),
+                "读取上传文件内容失败: " + exception.getMessage(), exception);
+        }
 
         // TODO(consistency): upload() 跨 MinIO / MySQL / Redis / Kafka，不是分布式原子事务；顺序只减轻部分竞态，不能消除裂口。
         //  当前顺序：MinIO(6) → MySQL 事务 document+task+log(9，含 Redis 写) → Kafka(10，commit 之后)。
@@ -253,7 +261,7 @@ public class DocumentManageServiceImpl implements DocumentManageService {
         document.setOriginalFileName(originalFileName);
         document.setFileType(fileType.getCode());
         document.setMimeType(file.getContentType());
-        document.setFileSize((long) fileBytes.length);
+        document.setFileSize(fileSize);
         document.setStorageType(DocumentStorageTypeEnum.MINIO.getCode());  // 原文件存在哪种对象存储中 (1:MinIO)
 
         document.setBucketName(storedObjectInfo.getBucketName());
@@ -278,7 +286,7 @@ public class DocumentManageServiceImpl implements DocumentManageService {
         SuperAgentDocumentTask task = new SuperAgentDocumentTask();
         task.setId(taskId);
         task.setDocumentId(documentId);
-        task.setTaskType(DocumentTaskTypeEnum.PARSE_ROUTE.getCode());
+        task.setTaskType(DocumentTaskTypeEnum.PARSE_ROUTE.getCode()); // 解析路由任务
         
         // 任务状态描述
         task.setTaskStatus(DocumentTaskStatusEnum.NEW.getCode());  // 新建状态
@@ -302,7 +310,7 @@ public class DocumentManageServiceImpl implements DocumentManageService {
                 resolveOperatorType(operatorId),
                 operatorId,
                 "文件上传完成，已进入解析与策略推荐队列。",
-                Map.of("originalFileName", originalFileName, "fileSize", fileBytes.length));
+                Map.of("originalFileName", originalFileName, "fileSize", fileSize));
 
             // 解析路由进度 Redis 快照（加速 queryParseRouteProgress 轮询；MySQL 仍是长期事实来源）。
             parseRouteProgressCacheService.update(document, task, uploadLog);
@@ -623,28 +631,39 @@ public class DocumentManageServiceImpl implements DocumentManageService {
 
         if (!Objects.equals(document.getCurrentPlanId(), dto.getPlanId())) {
             throw new SuperAgentFrameException(DocumentManageCode.STRATEGY_PLAN_NOT_FOUND.getCode(), "当前文档的生效方案与请求方案不一致。");
-        }
-
+        }        
+        //这段查询是在创建新的索引构建任务之前做防重
+        /**
+         * document_id        dto.getDocumentId()                        当前文档
+         * task_type          DocumentTaskTypeEnum.BUILD_INDEX           2（构建索引）
+         * task_status        NEW、RUNNING                               1（新建）、2（进行中）
+         * status             BusinessStatus.YES                         1（有效）
+         */
         long runningTaskCount = taskMapper.selectCount(new LambdaQueryWrapper<SuperAgentDocumentTask>()
             .eq(SuperAgentDocumentTask::getDocumentId, dto.getDocumentId())
             .eq(SuperAgentDocumentTask::getTaskType, DocumentTaskTypeEnum.BUILD_INDEX.getCode())
             .in(SuperAgentDocumentTask::getTaskStatus, DocumentTaskStatusEnum.NEW.getCode(), DocumentTaskStatusEnum.RUNNING.getCode())
             .eq(SuperAgentDocumentTask::getStatus, BusinessStatus.YES.getCode()));
-        if (runningTaskCount > 0) {
+        
+        // 如果存在正在运行的索引构建任务，则抛“索引任务正在运行”自定义异常
+            if (runningTaskCount > 0) {
             throw new SuperAgentFrameException(DocumentManageCode.INDEX_TASK_RUNNING.getCode(),
                 DocumentManageCode.INDEX_TASK_RUNNING.getMsg());
         }
 
         SuperAgentDocumentStrategyPlan plan = planMapper.selectById(dto.getPlanId());
+
         if (plan == null || !Objects.equals(plan.getStatus(), BusinessStatus.YES.getCode())) {
             throw new SuperAgentFrameException(DocumentManageCode.STRATEGY_PLAN_NOT_FOUND.getCode(),
                 DocumentManageCode.STRATEGY_PLAN_NOT_FOUND.getMsg());
         }
 
+        // 取出文档上记录的最近一次解析任务ID，后面用它确定这次索引构建要冻结哪一次解析结果。
         Long sourceParseTaskId = document.getLastParseTaskId();
         SuperAgentDocumentTask sourceParseTask = sourceParseTaskId == null
             ? null
             : taskMapper.selectById(sourceParseTaskId);
+
         if (sourceParseTask == null
             || !Objects.equals(sourceParseTask.getDocumentId(), document.getId())
             || !Objects.equals(sourceParseTask.getTaskType(), DocumentTaskTypeEnum.PARSE_ROUTE.getCode())
@@ -685,9 +704,14 @@ public class DocumentManageServiceImpl implements DocumentManageService {
                 "strategySnapshot", plan.getStrategySnapshot(),
                 "sourceParseTaskId", sourceParseTaskId
             ));
-
+        
+        // 在数据库事务提交成功之后，才把「开始构建索引」的消息发给 Kafka，并先刷新一份进度缓存。
+        // TODO(数据不一致问题): 提交后再发 Kafka 是为了让消费者读到已提交任务。裂口在提交成功与发送确认之间进程退出：
+        // 任务停在 NEW/BUILDING 且没有消息，也没有重投。发送抛错已由 markIndexBuildSubmitFailed 标失败。
+        // 待办是同一事务写入消息表，并由可恢复的投递循环发送
         sendIndexBuildAfterCommit(document, task, taskLog, dto.getPlanId(), operatorId);
-
+        
+        // 返回它，前端使用documentId 和 taskId去轮询索引进度
         return new DocumentIndexBuildVo(
             document.getId(),
             taskId,
@@ -747,20 +771,31 @@ public class DocumentManageServiceImpl implements DocumentManageService {
                                            Long planId,
                                            Long operatorId) {
         Runnable sender = () -> {
+            // 刷新进度缓存，再发 Kafka
             Long documentId = document == null ? null : document.getId();
             Long taskId = task == null ? null : task.getId();
             progressCacheService.update(document, task, taskLog);
             try {
+                // key是文档id，同一文档消息会进入同一个分区
                 kafkaProducer.sendIndexBuild(new DocumentIndexBuildMessage(documentId, taskId, planId));
             }
             catch (Exception exception) {
                 markIndexBuildSubmitFailed(documentId, taskId, operatorId, exception);
             }
         };
-        if (!TransactionSynchronizationManager.isSynchronizationActive()) {
+        // 下面代码决定，上面任务是现在执行还是数据库事务提交后再执行
+        /**
+         * TransactionSynchronizationManager：是 Spring 放在当前线程上的事务协调器
+         * isSynchronizationActive()：判断当前线程是否正处于一个Spring管理的事务中。
+         */
+        if (!TransactionSynchronizationManager.isSynchronizationActive()) {  // 没有活动事务
             sender.run();
             return;
         }
+        // TODO 没看懂 Spring的事务模块的内容，补充学习：
+        // 1.Spring 声明式事务
+        // 2.事务同步回调
+        // 3.「本地事务提交后再发消息」这种用法
         TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
 
             @Override
@@ -1046,10 +1081,14 @@ public class DocumentManageServiceImpl implements DocumentManageService {
         );
     }
 
+    // 按主键把文档读出来，有效就返回，否则抛“文档不存在”
     private SuperAgentDocument getDocumentOrThrow(Long documentId) {
 
-        SuperAgentDocument document = documentMapper.selectById(documentId);
+        SuperAgentDocument document = documentMapper.selectById(documentId); // 主键查询
+        // 有效性判断
+        // 判断查出来的那一行status是否是1
         if (document == null || !Objects.equals(document.getStatus(), BusinessStatus.YES.getCode())) {
+            // 抛“文档不存在”自定义异常
             throw new SuperAgentFrameException(DocumentManageCode.DOCUMENT_NOT_FOUND.getCode(),
                 DocumentManageCode.DOCUMENT_NOT_FOUND.getMsg());
         }
@@ -1680,18 +1719,6 @@ public class DocumentManageServiceImpl implements DocumentManageService {
             return value.getMsg();
         }
         return "";
-    }
-
-    private byte[] getFileBytes(MultipartFile file) {
-        try {
-
-            // 当前上传链路会把整份文件读入 JVM 内存，不是流式转存。
-            return file.getBytes();
-        }
-        catch (IOException exception) {
-            throw new SuperAgentFrameException(DocumentManageCode.DOCUMENT_STORAGE_FAILED.getCode(),
-                "读取上传文件内容失败: " + exception.getMessage(), exception);
-        }
     }
 
     private Map<String, Object> detail(Object... keyValues) {

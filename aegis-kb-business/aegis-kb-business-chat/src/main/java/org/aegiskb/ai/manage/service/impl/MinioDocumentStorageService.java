@@ -33,11 +33,11 @@ public class MinioDocumentStorageService implements DocumentStorageService {
     private final DocumentManageProperties properties;
 
     @Override
-    public StoredObjectInfo uploadOriginalFile(Long documentId, String originalFileName, byte[] bytes, String contentType) {
+    public StoredObjectInfo uploadOriginalFile(Long documentId, String originalFileName, InputStream inputStream, long objectSize, String contentType) {
 
         // 时间戳避免同名文件直接覆盖；当前原始文件名未做路径字符清洗。
         String objectName = properties.getMinio().getObjectPrefix() + "/" + documentId + "/" + System.currentTimeMillis() + "-" + originalFileName;
-        upload(objectName, bytes, contentType);
+        upload(objectName, inputStream, objectSize, contentType);
         return new StoredObjectInfo(properties.getMinio().getBucketName(), objectName, buildObjectUrl(objectName));
     }
 
@@ -140,15 +140,29 @@ public class MinioDocumentStorageService implements DocumentStorageService {
     }
 
     private void upload(String objectName, byte[] bytes, String contentType) {
+        byte[] payload = bytes == null ? new byte[0] : bytes;
+        upload(objectName, new ByteArrayInputStream(payload), payload.length, contentType);
+    }
+
+    private void upload(String objectName, InputStream inputStream, long objectSize, String contentType) {
+        if (inputStream == null) {
+            throw new SuperAgentFrameException(DocumentManageCode.DOCUMENT_STORAGE_FAILED.getCode(),
+                "上传 MinIO 文件失败: 文件流为空。");
+        }
+        if (objectSize < 0) {
+            throw new SuperAgentFrameException(DocumentManageCode.DOCUMENT_STORAGE_FAILED.getCode(),
+                "上传 MinIO 文件失败: 文件大小未知，无法按流写入。");
+        }
         try {
 
             ensureBucketExists();
+            // objectSize 已知时 partSize 传 -1，由 SDK 按分片读取流，不把整个对象再复制成 byte[]。
             minioClient.putObject(
                 PutObjectArgs.builder()
                     .bucket(properties.getMinio().getBucketName())
                     .object(objectName)
                     .contentType(StrUtil.isNotBlank(contentType) ? contentType : "application/octet-stream")
-                    .stream(new ByteArrayInputStream(bytes), bytes.length, -1)
+                    .stream(inputStream, objectSize, -1)
                     .build()
             );
         }

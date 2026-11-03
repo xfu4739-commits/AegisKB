@@ -13,6 +13,9 @@ import static org.aegiskb.constant.Constant.SPRING_INJECT_PREFIX_DISTINCTION_NAM
 @Slf4j
 @Component
 public class DocumentKafkaConsumer {
+    /**
+     * 从 Spring 4.3 起，类只有一个构造器时，容器会自动用它注入参数，不必autiwired 。
+     */
 
     private final DocumentAsyncProcessService asyncProcessService;
 
