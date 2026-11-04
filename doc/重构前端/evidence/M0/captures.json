@@ -1,0 +1,51 @@
+{
+  "capturedAt": "2026-11-03T11:14:50.933Z",
+  "page": "http://localhost:5173/chat",
+  "dataSource": "vue/e2e/fixtures/mockApp.js (isolated; no real API requests)",
+  "captures": [
+    {
+      "file": "desktop-history.png",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "history",
+      "clientWidth": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "file": "desktop-welcome.png",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "welcome",
+      "clientWidth": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "file": "mobile-history.png",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "state": "history",
+      "clientWidth": 390,
+      "scrollWidth": 390
+    },
+    {
+      "file": "mobile-welcome.png",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "state": "welcome",
+      "clientWidth": 390,
+      "scrollWidth": 390
+    }
+  ]
+}
