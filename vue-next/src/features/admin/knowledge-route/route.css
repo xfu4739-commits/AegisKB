@@ -1,0 +1,25 @@
+.admin-next-route {display:grid;gap:20px;min-width:0}
+.admin-next-route h1 {font-size:var(--admin-text-title)}
+.admin-next-route nav {display:flex;flex-wrap:wrap;gap:8px}
+.admin-next-route section {background:var(--surface);padding:24px;min-width:0}
+.admin-next-route ul {list-style:none;padding:0;margin:0}
+.admin-next-route li {padding:16px 0;border-bottom:1px solid var(--border);overflow-wrap:anywhere}
+.admin-next-route select,.admin-next-route-form select {max-width:100%;padding:8px;border:1px solid var(--border);background:var(--surface);color:var(--admin-ink)}
+.admin-next-route-form {display:grid;gap:12px}
+.admin-next-route-form label {display:grid;gap:6px}
+.admin-next-route pre {white-space:pre-wrap;overflow-wrap:anywhere}
+
+.admin-next-route-heading,.admin-next-route-toolbar,.admin-next-route-actions {display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.admin-next-route-heading {justify-content:space-between}
+.admin-next-route-toolbar > input {flex:1;min-width:180px}
+.admin-next-route li {display:flex;align-items:start;justify-content:space-between;gap:16px}
+.admin-next-route li>div {min-width:0}
+.admin-next-route-muted {color:var(--admin-muted)}
+.admin-next-route-panel {border:1px solid var(--border);border-radius:var(--radius-control)}
+.admin-next-route-detail {overflow-wrap:anywhere}
+.admin-next-route-detail dl {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.admin-next-route-detail dd {margin:4px 0 0}
+.admin-next-route-detail dt {color:var(--admin-muted)}
+.admin-next-route-detail section {margin-block:20px}
+@media(max-width:767px){.admin-next-route li{flex-direction:column}.admin-next-route section{padding:16px}.admin-next-route-detail dl{grid-template-columns:1fr}}
+

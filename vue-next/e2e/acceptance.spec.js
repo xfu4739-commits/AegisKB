@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright'
 import { resolve } from 'node:path'
 import { mockAcceptance } from './fixtures/acceptance.js'
 
-const output = resolve('../doc/重构前端/evidence/welcome-focus')
+const output = resolve(process.env.AEGIS_EVIDENCE_DIR || '../doc/重构前端/evidence/welcome-focus')
 async function shot(page, name, info) {
   await page.screenshot({ path: resolve(output, `${info.project.name}-${name}.png`), animations: 'disabled', fullPage: true })
 }

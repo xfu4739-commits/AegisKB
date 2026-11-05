@@ -38,7 +38,7 @@ test('IME and Shift+Enter do not submit; Enter streams, hydrates final sources a
   await expect(modal.getByText('仅来自后端的片段')).toBeVisible()
   await expect(modal.getByText(/检索说明暂时无法加载/)).toBeVisible()
   expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([])
-  await page.screenshot({ path: resolve('../doc/重构前端/evidence/welcome-focus', `${info.project.name}-citation.png`), animations: 'disabled' })
+  await page.screenshot({ path: resolve(process.env.AEGIS_EVIDENCE_DIR || '../doc/重构前端/evidence/welcome-focus', `${info.project.name}-citation.png`), animations: 'disabled' })
   await page.keyboard.press('Escape'); await expect(modal).toBeHidden(); await expect(citation).toBeFocused()
   await expect(page.getByText('后端归档回答', { exact: false })).toBeVisible()
 })

@@ -1,0 +1,989 @@
+{
+  "note": "Transport exercise proves endpoint wiring; named stage behavior suites prove interactions, not screenshots alone.",
+  "pages": [
+    {
+      "path": "/admin/login",
+      "source": "AdminLoginView.vue",
+      "owner": "A1",
+      "newRoute": [
+        "/admin",
+        "/admin/login"
+      ]
+    },
+    {
+      "path": "/admin",
+      "source": "admin/AdminLayoutView.vue",
+      "owner": "A1",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin"
+      ]
+    },
+    {
+      "path": "/admin/dashboard",
+      "source": "admin/AdminDashboardView.vue",
+      "owner": "A2",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/dashboard"
+      ]
+    },
+    {
+      "path": "/admin/quality-overview",
+      "source": "admin/AdminQualityOverviewView.vue",
+      "owner": "A2",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/quality-overview"
+      ]
+    },
+    {
+      "path": "/admin/knowledge-bases",
+      "source": "admin/AdminKnowledgeBaseView.vue",
+      "owner": "A3",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/knowledge-bases"
+      ]
+    },
+    {
+      "path": "/admin/documents",
+      "source": "admin/AdminDocumentListView.vue",
+      "owner": "A3",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/documents"
+      ]
+    },
+    {
+      "path": "/admin/documents/:documentId",
+      "source": "admin/AdminDocumentDetailView.vue",
+      "owner": "A4",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/documents/:documentId"
+      ]
+    },
+    {
+      "path": "/admin/knowledge-route",
+      "source": "admin/AdminKnowledgeRouteView.vue",
+      "owner": "A5",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/knowledge-route"
+      ]
+    },
+    {
+      "path": "/admin/knowledge-route/traces",
+      "source": "admin/AdminKnowledgeRouteTraceView.vue",
+      "owner": "A5",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/knowledge-route/traces"
+      ]
+    },
+    {
+      "path": "/admin/observability",
+      "source": "admin/AdminObservabilityListView.vue",
+      "owner": "A6",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/observability"
+      ]
+    },
+    {
+      "path": "/admin/observability/:conversationId",
+      "source": "admin/AdminObservabilitySessionView.vue",
+      "owner": "A6",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/observability/:conversationId"
+      ]
+    },
+    {
+      "path": "/admin/observability/:conversationId/exchanges/:exchangeId",
+      "source": "admin/AdminObservabilityDetailView.vue",
+      "owner": "A6",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/observability/:conversationId/exchanges/:exchangeId"
+      ]
+    },
+    {
+      "path": "/admin/settings/configuration",
+      "source": "admin/AdminSystemConfigView.vue",
+      "owner": "A7",
+      "newRoute": [
+        "/admin",
+        "/admin",
+        "/admin/settings/configuration"
+      ]
+    }
+  ],
+  "endpoints": [
+    {
+      "name": "login",
+      "path": "/admin/auth/login",
+      "effect": "auth",
+      "owner": "A1",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/shared/auth/adminAuth.js",
+      "tests": [
+        "e2e/admin-auth.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "logout",
+      "path": "/admin/auth/logout",
+      "effect": "auth",
+      "owner": "A1",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/shared/auth/adminAuth.js",
+      "tests": [
+        "e2e/admin-auth.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "currentUser",
+      "path": "/admin/auth/me",
+      "effect": "read",
+      "owner": "A1",
+      "method": "GET",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/shared/auth/adminAuth.js",
+      "tests": [
+        "e2e/admin-auth.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "uploadDocument",
+      "path": "/manage/document/upload",
+      "effect": "write",
+      "owner": "A3",
+      "method": "POST",
+      "request": "multipart:file+meta",
+      "response": "code/data",
+      "consumer": "src/features/admin/catalog/catalogApi.js",
+      "tests": [
+        "e2e/admin-catalog.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "saveKnowledgeBase",
+      "path": "/manage/knowledge/base/save",
+      "effect": "write",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/catalog/catalogApi.js",
+      "tests": [
+        "e2e/admin-catalog.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "deleteKnowledgeBase",
+      "path": "/manage/knowledge/base/delete",
+      "effect": "write",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/catalog/catalogApi.js",
+      "tests": [
+        "e2e/admin-catalog.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "listKnowledgeBases",
+      "path": "/manage/knowledge/base/list",
+      "effect": "read",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/catalog/catalogApi.js",
+      "tests": [
+        "e2e/admin-catalog.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryKnowledgeBaseDetail",
+      "path": "/manage/knowledge/base/detail",
+      "effect": "read",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/catalog/catalogApi.js",
+      "tests": [
+        "e2e/admin-catalog.spec.js"
+      ],
+      "disposition": "OLD_WRAPPER_WITHOUT_PAGE_CONSUMER"
+    },
+    {
+      "name": "updateKnowledgeBaseConfig",
+      "path": "/manage/knowledge/base/config/update",
+      "effect": "write",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/catalog/catalogApi.js",
+      "tests": [
+        "e2e/admin-catalog.spec.js"
+      ],
+      "disposition": "OLD_WRAPPER_WITHOUT_PAGE_CONSUMER"
+    },
+    {
+      "name": "queryDocumentPage",
+      "path": "/manage/document/page/query",
+      "effect": "read",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/catalog/catalogApi.js",
+      "tests": [
+        "e2e/admin-catalog.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentDetail",
+      "path": "/manage/document/detail/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "deleteDocument",
+      "path": "/manage/document/delete",
+      "effect": "write",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/catalog/catalogApi.js",
+      "tests": [
+        "e2e/admin-catalog.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryStrategyPlan",
+      "path": "/manage/document/strategy/plan/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "confirmStrategy",
+      "path": "/manage/document/strategy/confirm",
+      "effect": "write",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "buildIndex",
+      "path": "/manage/document/index/build",
+      "effect": "write",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryIndexBuildProgress",
+      "path": "/manage/document/index/build/progress/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryParseRouteProgress",
+      "path": "/manage/document/parse-route/progress/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryParseArtifacts",
+      "path": "/manage/document/parse-artifact/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryParseArtifactContent",
+      "path": "/manage/document/parse-artifact/content/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "downloadParseArtifact",
+      "path": "/manage/document/parse-artifact/download",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "blob",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentChunks",
+      "path": "/manage/document/chunk/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentChunkDetail",
+      "path": "/manage/document/chunk/detail/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentRagSnapshot",
+      "path": "/manage/document/rag/snapshot/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentRagParserDiagnostic",
+      "path": "/manage/document/rag/parser-diagnostic/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentRagPageOverlayIndex",
+      "path": "/manage/document/rag/page-overlay/index/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentRagPageOverlayDetail",
+      "path": "/manage/document/rag/page-overlay/detail/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentRagArtifactNodes",
+      "path": "/manage/document/rag/artifact/node/page/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentRagArtifactNodeDetail",
+      "path": "/manage/document/rag/artifact/node/detail/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentRagArtifactRelations",
+      "path": "/manage/document/rag/artifact/relation/page/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentRagArtifactGraphWindow",
+      "path": "/manage/document/rag/artifact/graph/window/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentRagArtifactTableWindow",
+      "path": "/manage/document/rag/artifact/table/window/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryTaskLogs",
+      "path": "/manage/document/task/log/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/document/documentApi.js",
+      "tests": [
+        "e2e/admin-document.spec.js",
+        "e2e/admin-document-navigation.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "saveKnowledgeScope",
+      "path": "/manage/knowledge/scope/save",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "deleteKnowledgeScope",
+      "path": "/manage/knowledge/scope/delete",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "listKnowledgeScopes",
+      "path": "/manage/knowledge/scope/list",
+      "effect": "read",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "saveKnowledgeTopic",
+      "path": "/manage/knowledge/topic/save",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "deleteKnowledgeTopic",
+      "path": "/manage/knowledge/topic/delete",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "listKnowledgeTopics",
+      "path": "/manage/knowledge/topic/list",
+      "effect": "read",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryDocumentProfile",
+      "path": "/manage/knowledge/document/profile/detail",
+      "effect": "read",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "regenerateDocumentProfile",
+      "path": "/manage/knowledge/document/profile/regenerate",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "batchRegenerateDocumentProfiles",
+      "path": "/manage/knowledge/document/profile/batch/regenerate",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "listTopicDocuments",
+      "path": "/manage/knowledge/topic/document/list",
+      "effect": "read",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "saveTopicDocumentRelation",
+      "path": "/manage/knowledge/topic/document/save",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "removeTopicDocumentRelation",
+      "path": "/manage/knowledge/topic/document/remove",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryKnowledgeRouteTracePage",
+      "path": "/manage/knowledge/route/trace/page/query",
+      "effect": "read",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/knowledge-route/routeApi.js",
+      "tests": [
+        "e2e/admin-route-workflow.spec.js",
+        "e2e/admin-route.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "queryQualityOverview",
+      "path": "/manage/observability/quality/overview/query",
+      "effect": "read",
+      "owner": "A2",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data",
+      "consumer": "src/features/admin/dashboard/overviewApi.js",
+      "tests": [
+        "e2e/admin-overview.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "querySystemConfigCurrent",
+      "path": "/manage/config/current/query",
+      "effect": "read",
+      "owner": "A7",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/configuration/configurationApi.js",
+      "tests": [
+        "e2e/admin-configuration.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "updateSystemConfigItem",
+      "path": "/manage/config/item/update",
+      "effect": "write",
+      "owner": "A7",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/configuration/configurationApi.js",
+      "tests": [
+        "e2e/admin-configuration.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "querySystemConfigHistory",
+      "path": "/manage/config/history/page/query",
+      "effect": "read",
+      "owner": "A7",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/configuration/configurationApi.js",
+      "tests": [
+        "e2e/admin-configuration.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "querySystemConfigHistoryDetail",
+      "path": "/manage/config/history/detail/query",
+      "effect": "read",
+      "owner": "A7",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/configuration/configurationApi.js",
+      "tests": [
+        "e2e/admin-configuration.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "restoreSystemConfigHistory",
+      "path": "/manage/config/history/restore",
+      "effect": "write",
+      "owner": "A7",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/configuration/configurationApi.js",
+      "tests": [
+        "e2e/admin-configuration.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "listSessionsPage",
+      "path": "/api/chat/session/list",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/observability/observabilityApi.js",
+      "tests": [
+        "e2e/admin-observation.spec.js",
+        "e2e/admin-observation-visual.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "getSession",
+      "path": "/api/chat/session/detail",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/observability/observabilityApi.js",
+      "tests": [
+        "e2e/admin-observation.spec.js",
+        "e2e/admin-observation-visual.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "getExchangeDetail",
+      "path": "/api/chat/exchange/detail",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/observability/observabilityApi.js",
+      "tests": [
+        "e2e/admin-observation.spec.js",
+        "e2e/admin-observation-visual.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "getRetrievalResults",
+      "path": "/api/chat/exchange/retrieval/results",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/observability/observabilityApi.js",
+      "tests": [
+        "e2e/admin-observation.spec.js",
+        "e2e/admin-observation-visual.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "getChannelExecutions",
+      "path": "/api/chat/exchange/channel/executions",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/observability/observabilityApi.js",
+      "tests": [
+        "e2e/admin-observation.spec.js",
+        "e2e/admin-observation-visual.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "getStageBenchmarks",
+      "path": "/api/chat/stage/benchmarks",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/observability/observabilityApi.js",
+      "tests": [
+        "e2e/admin-observation.spec.js",
+        "e2e/admin-observation-visual.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    },
+    {
+      "name": "rebuildConversationSummary",
+      "path": "/api/chat/session/summary/rebuild",
+      "effect": "write",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data",
+      "consumer": "src/features/admin/observability/observabilityApi.js",
+      "tests": [
+        "e2e/admin-observation.spec.js",
+        "e2e/admin-observation-visual.spec.js"
+      ],
+      "disposition": "IMPLEMENTED_TRANSPORT_AND_STAGE_BEHAVIOR_TESTS"
+    }
+  ]
+}

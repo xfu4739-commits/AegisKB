@@ -1,0 +1,1074 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\10115\\Front\\node.exe",
+      "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "admin-observation.spec.js",
+      "admin-observation-visual.spec.js",
+      "production.spec.js",
+      "--reporter=line,json"
+    ],
+    "configFile": "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js",
+    "rootDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/test-results/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome",
+        "name": "chrome",
+        "testDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/test-results/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome-reduce",
+        "name": "chrome-reduce",
+        "testDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:5174",
+      "reuseExistingServer": true,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "admin-observation-visual.spec.js",
+      "file": "admin-observation-visual.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "session list has structured columns and never expands assistant answers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1976,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:12.531Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a1f4f4ba7f4e4853e833-4db995017c84dab609d6",
+          "file": "admin-observation-visual.spec.js",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "session focuses on rounds, summary uses an explicit reader with original text available",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3412,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:14.717Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a1f4f4ba7f4e4853e833-47eb27a8e45e34c3afdf",
+          "file": "admin-observation-visual.spec.js",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "session list has structured columns and never expands assistant answers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2985,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:25.574Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a1f4f4ba7f4e4853e833-2e1e337569d11cd80679",
+          "file": "admin-observation-visual.spec.js",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "session focuses on rounds, summary uses an explicit reader with original text available",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4685,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:28.833Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a1f4f4ba7f4e4853e833-60fcc779a3537c9c4efe",
+          "file": "admin-observation-visual.spec.js",
+          "line": 12,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "admin-observation.spec.js",
+      "file": "admin-observation.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "session filters and pagination survive list -> session -> exchange -> return and reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3121,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:18.160Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-decb17bd887f09fbd5ee",
+          "file": "admin-observation.spec.js",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "late list and exchange responses cannot replace newer selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4359,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:21.300Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-7f7bf9730b6030842d9d",
+          "file": "admin-observation.spec.js",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "session polling stops at terminal and leaving the page stops future polls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10957,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:25.680Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-13b7fc01fb963bf6dd46",
+          "file": "admin-observation.spec.js",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "summary rebuild confirms exact session, cancel never writes, failure retains summary and retry writes once",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4217,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:36.661Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-1512d6ff8f590a01accd",
+          "file": "admin-observation.spec.js",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "partial failures keep answer, lazy reads are cached across tabs and Prompt copies exact text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2741,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:40.896Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-c730f61ba36758e682b7",
+          "file": "admin-observation.spec.js",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "citation authority, context-only exclusion, long IDs, table deep links and safe Markdown remain intact",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2646,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:43.655Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-4f604051fda7fdd4d138",
+          "file": "admin-observation.spec.js",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "legacy exchange deep link, missing stages and failed detail still preserve the archived answer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3011,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:46.320Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-08831c66f21281cfa528",
+          "file": "admin-observation.spec.js",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "observation layouts and accessible detail at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8736,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:49.354Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-50d5b1d836c8ec437a16",
+          "file": "admin-observation.spec.js",
+          "line": 37,
+          "column": 40
+        },
+        {
+          "title": "observation layouts and accessible detail at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8302,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:47:58.117Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-f6946d2dade3d5b82a6e",
+          "file": "admin-observation.spec.js",
+          "line": 37,
+          "column": 40
+        },
+        {
+          "title": "observation layouts and accessible detail at 1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8454,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:06.451Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-df6e961012e374031924",
+          "file": "admin-observation.spec.js",
+          "line": 37,
+          "column": 40
+        },
+        {
+          "title": "observation layouts and accessible detail at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8135,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:14.931Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-c8eb041c64eaabad5af6",
+          "file": "admin-observation.spec.js",
+          "line": 37,
+          "column": 40
+        },
+        {
+          "title": "session filters and pagination survive list -> session -> exchange -> return and reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4080,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:33.562Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-7f6b3fa0f6c93041a64c",
+          "file": "admin-observation.spec.js",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "late list and exchange responses cannot replace newer selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4244,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:37.661Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-ceda4cc9553253364120",
+          "file": "admin-observation.spec.js",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "session polling stops at terminal and leaving the page stops future polls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10828,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:41.928Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-1182a113da018611d496",
+          "file": "admin-observation.spec.js",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "summary rebuild confirms exact session, cancel never writes, failure retains summary and retry writes once",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3888,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:52.781Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-0177a8a12b84ee6a51a6",
+          "file": "admin-observation.spec.js",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "partial failures keep answer, lazy reads are cached across tabs and Prompt copies exact text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2749,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:56.689Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-4fc11f8f84fc729cb685",
+          "file": "admin-observation.spec.js",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "citation authority, context-only exclusion, long IDs, table deep links and safe Markdown remain intact",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3369,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:59.456Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-807027e55b57ea4464c4",
+          "file": "admin-observation.spec.js",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "legacy exchange deep link, missing stages and failed detail still preserve the archived answer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3274,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:49:02.843Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-3a14b04843ede5b16c81",
+          "file": "admin-observation.spec.js",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "observation layouts and accessible detail at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8385,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:49:06.136Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-ee9d1218e6d3c77102fa",
+          "file": "admin-observation.spec.js",
+          "line": 37,
+          "column": 40
+        },
+        {
+          "title": "observation layouts and accessible detail at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8227,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:49:14.539Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-0bc9a161ee17ce555693",
+          "file": "admin-observation.spec.js",
+          "line": 37,
+          "column": 40
+        },
+        {
+          "title": "observation layouts and accessible detail at 1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8731,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:49:22.787Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-6700bfcf237cc0432d1d",
+          "file": "admin-observation.spec.js",
+          "line": 37,
+          "column": 40
+        },
+        {
+          "title": "observation layouts and accessible detail at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9730,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:49:31.538Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af69e46b27856867d626-ff04798ce452aa0c07fd",
+          "file": "admin-observation.spec.js",
+          "line": 37,
+          "column": 40
+        }
+      ]
+    },
+    {
+      "title": "production.spec.js",
+      "file": "production.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "built app excludes development fixtures and keeps the default chat route",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1356,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:48:23.109Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e03a4b7a6378dd18a075-e653d6363da04fa8deb3",
+          "file": "production.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "built app excludes development fixtures and keeps the default chat route",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1316,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T17:49:41.311Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e03a4b7a6378dd18a075-5d490a33b680046f4d2d",
+          "file": "production.spec.js",
+          "line": 7,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T17:47:11.814Z",
+    "duration": 151449.979,
+    "expected": 28,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

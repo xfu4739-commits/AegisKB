@@ -33,4 +33,23 @@
   --radius-panel: 22px;
   --radius-round: 999px;
   --shadow-composer: 0 2px 8px rgb(31 35 41 / 0.055);
+  --admin-font: 'Microsoft YaHei UI', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+  --admin-text-body: 14px;
+  --admin-text-small: 12px;
+  --admin-text-label: 13px;
+  --admin-text-title: 24px;
+  --admin-text-brand: 21px;
+  --admin-ink: #202a3c;
+  --admin-muted: #606d82;
+  --admin-canvas: #f7f8fb;
+  --admin-sidebar: #eaf0fa;
+  --admin-sidebar-line: #ced8e9;
+  --admin-nav-text: #445572;
+  --admin-group-text: #354866;
+  --admin-border: #e4e8ef;
+  --admin-danger: #b42318;
+  --admin-positive: #22724f;
+  --admin-metric-size: 32px;
+  --admin-radius: 6px;
+  --admin-radius-panel: 9px;
 }

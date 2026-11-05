@@ -1,0 +1,596 @@
+{
+  "head": "86e5eb5e8e5a1ca4b2e61682be963580d01866ff",
+  "date": "2026-11-04",
+  "scope": "A0 source inventory; not production implementation",
+  "pages": [
+    {
+      "path": "/admin/login",
+      "source": "AdminLoginView.vue",
+      "owner": "A1"
+    },
+    {
+      "path": "/admin",
+      "source": "admin/AdminLayoutView.vue",
+      "owner": "A1"
+    },
+    {
+      "path": "/admin/dashboard",
+      "source": "admin/AdminDashboardView.vue",
+      "owner": "A2"
+    },
+    {
+      "path": "/admin/quality-overview",
+      "source": "admin/AdminQualityOverviewView.vue",
+      "owner": "A2"
+    },
+    {
+      "path": "/admin/knowledge-bases",
+      "source": "admin/AdminKnowledgeBaseView.vue",
+      "owner": "A3"
+    },
+    {
+      "path": "/admin/documents",
+      "source": "admin/AdminDocumentListView.vue",
+      "owner": "A3"
+    },
+    {
+      "path": "/admin/documents/:documentId",
+      "source": "admin/AdminDocumentDetailView.vue",
+      "owner": "A4"
+    },
+    {
+      "path": "/admin/knowledge-route",
+      "source": "admin/AdminKnowledgeRouteView.vue",
+      "owner": "A5"
+    },
+    {
+      "path": "/admin/knowledge-route/traces",
+      "source": "admin/AdminKnowledgeRouteTraceView.vue",
+      "owner": "A5"
+    },
+    {
+      "path": "/admin/observability",
+      "source": "admin/AdminObservabilityListView.vue",
+      "owner": "A6"
+    },
+    {
+      "path": "/admin/observability/:conversationId",
+      "source": "admin/AdminObservabilitySessionView.vue",
+      "owner": "A6"
+    },
+    {
+      "path": "/admin/observability/:conversationId/exchanges/:exchangeId",
+      "source": "admin/AdminObservabilityDetailView.vue",
+      "owner": "A6"
+    },
+    {
+      "path": "/admin/settings/configuration",
+      "source": "admin/AdminSystemConfigView.vue",
+      "owner": "A7"
+    }
+  ],
+  "endpoints": [
+    {
+      "name": "login",
+      "path": "/admin/auth/login",
+      "effect": "auth",
+      "owner": "A1",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "logout",
+      "path": "/admin/auth/logout",
+      "effect": "auth",
+      "owner": "A1",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "currentUser",
+      "path": "/admin/auth/me",
+      "effect": "read",
+      "owner": "A1",
+      "method": "GET",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "uploadDocument",
+      "path": "/manage/document/upload",
+      "effect": "write",
+      "owner": "A3",
+      "method": "POST",
+      "request": "multipart:file+meta",
+      "response": "code/data"
+    },
+    {
+      "name": "saveKnowledgeBase",
+      "path": "/manage/knowledge/base/save",
+      "effect": "write",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "deleteKnowledgeBase",
+      "path": "/manage/knowledge/base/delete",
+      "effect": "write",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "listKnowledgeBases",
+      "path": "/manage/knowledge/base/list",
+      "effect": "read",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryKnowledgeBaseDetail",
+      "path": "/manage/knowledge/base/detail",
+      "effect": "read",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "updateKnowledgeBaseConfig",
+      "path": "/manage/knowledge/base/config/update",
+      "effect": "write",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentPage",
+      "path": "/manage/document/page/query",
+      "effect": "read",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentDetail",
+      "path": "/manage/document/detail/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "deleteDocument",
+      "path": "/manage/document/delete",
+      "effect": "write",
+      "owner": "A3",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryStrategyPlan",
+      "path": "/manage/document/strategy/plan/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "confirmStrategy",
+      "path": "/manage/document/strategy/confirm",
+      "effect": "write",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "buildIndex",
+      "path": "/manage/document/index/build",
+      "effect": "write",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryIndexBuildProgress",
+      "path": "/manage/document/index/build/progress/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryParseRouteProgress",
+      "path": "/manage/document/parse-route/progress/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryParseArtifacts",
+      "path": "/manage/document/parse-artifact/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryParseArtifactContent",
+      "path": "/manage/document/parse-artifact/content/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "downloadParseArtifact",
+      "path": "/manage/document/parse-artifact/download",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "blob"
+    },
+    {
+      "name": "queryDocumentChunks",
+      "path": "/manage/document/chunk/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentChunkDetail",
+      "path": "/manage/document/chunk/detail/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentRagSnapshot",
+      "path": "/manage/document/rag/snapshot/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentRagParserDiagnostic",
+      "path": "/manage/document/rag/parser-diagnostic/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentRagPageOverlayIndex",
+      "path": "/manage/document/rag/page-overlay/index/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentRagPageOverlayDetail",
+      "path": "/manage/document/rag/page-overlay/detail/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentRagArtifactNodes",
+      "path": "/manage/document/rag/artifact/node/page/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentRagArtifactNodeDetail",
+      "path": "/manage/document/rag/artifact/node/detail/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentRagArtifactRelations",
+      "path": "/manage/document/rag/artifact/relation/page/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentRagArtifactGraphWindow",
+      "path": "/manage/document/rag/artifact/graph/window/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentRagArtifactTableWindow",
+      "path": "/manage/document/rag/artifact/table/window/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryTaskLogs",
+      "path": "/manage/document/task/log/query",
+      "effect": "read",
+      "owner": "A4",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "saveKnowledgeScope",
+      "path": "/manage/knowledge/scope/save",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "deleteKnowledgeScope",
+      "path": "/manage/knowledge/scope/delete",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "listKnowledgeScopes",
+      "path": "/manage/knowledge/scope/list",
+      "effect": "read",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "saveKnowledgeTopic",
+      "path": "/manage/knowledge/topic/save",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "deleteKnowledgeTopic",
+      "path": "/manage/knowledge/topic/delete",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "listKnowledgeTopics",
+      "path": "/manage/knowledge/topic/list",
+      "effect": "read",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryDocumentProfile",
+      "path": "/manage/knowledge/document/profile/detail",
+      "effect": "read",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "regenerateDocumentProfile",
+      "path": "/manage/knowledge/document/profile/regenerate",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "batchRegenerateDocumentProfiles",
+      "path": "/manage/knowledge/document/profile/batch/regenerate",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "listTopicDocuments",
+      "path": "/manage/knowledge/topic/document/list",
+      "effect": "read",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "saveTopicDocumentRelation",
+      "path": "/manage/knowledge/topic/document/save",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "removeTopicDocumentRelation",
+      "path": "/manage/knowledge/topic/document/remove",
+      "effect": "write",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryKnowledgeRouteTracePage",
+      "path": "/manage/knowledge/route/trace/page/query",
+      "effect": "read",
+      "owner": "A5",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "queryQualityOverview",
+      "path": "/manage/observability/quality/overview/query",
+      "effect": "read",
+      "owner": "A2",
+      "method": "POST",
+      "request": "manage-recursive-numeric-strings",
+      "response": "code/data"
+    },
+    {
+      "name": "querySystemConfigCurrent",
+      "path": "/manage/config/current/query",
+      "effect": "read",
+      "owner": "A7",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "updateSystemConfigItem",
+      "path": "/manage/config/item/update",
+      "effect": "write",
+      "owner": "A7",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "querySystemConfigHistory",
+      "path": "/manage/config/history/page/query",
+      "effect": "read",
+      "owner": "A7",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "querySystemConfigHistoryDetail",
+      "path": "/manage/config/history/detail/query",
+      "effect": "read",
+      "owner": "A7",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "restoreSystemConfigHistory",
+      "path": "/manage/config/history/restore",
+      "effect": "write",
+      "owner": "A7",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "listSessionsPage",
+      "path": "/api/chat/session/list",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "getSession",
+      "path": "/api/chat/session/detail",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "getExchangeDetail",
+      "path": "/api/chat/exchange/detail",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "getRetrievalResults",
+      "path": "/api/chat/exchange/retrieval/results",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "getChannelExecutions",
+      "path": "/api/chat/exchange/channel/executions",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "getStageBenchmarks",
+      "path": "/api/chat/stage/benchmarks",
+      "effect": "read",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    },
+    {
+      "name": "rebuildConversationSummary",
+      "path": "/api/chat/session/summary/rebuild",
+      "effect": "write",
+      "owner": "A6",
+      "method": "POST",
+      "request": "json-original-types",
+      "response": "code/data"
+    }
+  ]
+}

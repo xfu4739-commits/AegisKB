@@ -1,0 +1,5 @@
+import {it,expect} from 'vitest'
+import {observationDuration,observationSummarySections,observationTime} from './observationPresentation.js'
+it('keeps explicit summary headings, content and order without inventing categories',()=>{expect(observationSummarySections('【会话目标】\n目标原文\n\n【自定义段落】行内内容')).toEqual([{key:'0',title:'会话目标',body:'目标原文'},{key:'1',title:'自定义段落',body:'行内内容'}]);expect(observationSummarySections('普通摘要')[0].body).toBe('普通摘要');expect(observationSummarySections('')).toEqual([])})
+it('does not split heading-like content inside a code fence',()=>{expect(observationSummarySections('# 原标题\n```text\n【保留原文】\n```')).toEqual([{key:'0',title:'原标题',body:'```text\n【保留原文】\n```'}])})
+it('formats real zero and missing metrics distinctly',()=>{expect(observationDuration(0)).toBe('0 ms');expect(observationDuration(null)).toBe('—');expect(observationDuration('1250')).toBe('1.3 s');expect(observationTime('bad date')).toBe('bad date');expect(observationTime(null)).toBe('—');expect(observationTime('2026-11-03T14:45:54Z')).toMatch(/^2026-11-03/)})

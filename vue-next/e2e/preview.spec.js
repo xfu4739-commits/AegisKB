@@ -113,7 +113,7 @@ for (const viewport of [{ width: 390, height: 844 }, { width: 768, height: 1024 
     await page.getByRole('button', { name: '复制代码 1' }).scrollIntoViewIfNeeded()
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()
     expect(results.violations).toEqual([])
-    await page.screenshot({ path: resolve('../doc/重构前端/evidence/welcome-focus', `${info.project.name}-messages-${viewport.width}.png`), fullPage: true, animations: 'disabled' })
+    await page.screenshot({ path: resolve(process.env.AEGIS_EVIDENCE_DIR || '../doc/重构前端/evidence/welcome-focus', `${info.project.name}-messages-${viewport.width}.png`), fullPage: true, animations: 'disabled' })
   })
 }
 

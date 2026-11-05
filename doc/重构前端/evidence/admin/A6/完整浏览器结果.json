@@ -1,0 +1,2726 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\10115\\Front\\node.exe",
+      "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--reporter=line,json"
+    ],
+    "configFile": "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js",
+    "rootDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/test-results/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome",
+        "name": "chrome",
+        "testDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/test-results/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome-reduce",
+        "name": "chrome-reduce",
+        "testDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:5174",
+      "reuseExistingServer": true,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "acceptance.spec.js",
+      "file": "acceptance.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "same snapshot comparison welcome at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2722,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:19:09.372Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-bcccd1c43034a2c4a144",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "same snapshot comparison history at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3318,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:19:12.338Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-fcd1d928ca8bcdbc1cae",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "same snapshot comparison error at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4269,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:19:15.675Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-2c5a369e23e94e98eefc",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "same snapshot comparison welcome at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4550,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:19:19.966Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-1c661cc26079f47e52bf",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "same snapshot comparison history at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5441,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:19:24.549Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-52615d16642a46fb1741",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "same snapshot comparison error at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4944,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:19:30.039Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-696611942b5add9a12f5",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "answer failure state remains accessible",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3815,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:19:35.025Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-7e0e546ae910d57bf9be",
+          "file": "acceptance.spec.js",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "source modal and scope settings are accessible at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9789,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:19:38.861Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-60e4fe1edc5c3238d1e4",
+          "file": "acceptance.spec.js",
+          "line": 51,
+          "column": 3
+        },
+        {
+          "title": "source modal and scope settings are accessible at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11156,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:19:48.712Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-ea7e0ef75fd5180a4ee4",
+          "file": "acceptance.spec.js",
+          "line": 51,
+          "column": 3
+        },
+        {
+          "title": "source modal and scope settings are accessible at 1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5491,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:19:59.911Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-1105d0446efe5c02594f",
+          "file": "acceptance.spec.js",
+          "line": 51,
+          "column": 3
+        },
+        {
+          "title": "source modal and scope settings are accessible at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6868,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:05.440Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-7ee326a90cb7f640366f",
+          "file": "acceptance.spec.js",
+          "line": 51,
+          "column": 3
+        },
+        {
+          "title": "old app remains unchanged after visiting new app",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6637,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:12.336Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-10b6cd252247eec43e28",
+          "file": "acceptance.spec.js",
+          "line": 77,
+          "column": 1
+        },
+        {
+          "title": "admin link and auth guard remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4386,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:18.999Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-dd87c221db015e3c41c5",
+          "file": "acceptance.spec.js",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "same snapshot comparison welcome at 390",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js",
+                    "stack": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.671Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-e14e138787e8d728fcbb",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "same snapshot comparison history at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-12744ac3d908d1b1450f",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "same snapshot comparison error at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-709638cc37f1c16ea909",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "same snapshot comparison welcome at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-a6878d380265e3a7e86b",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "same snapshot comparison history at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-957dfccbf19b860484a4",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "same snapshot comparison error at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-ed41328808b2fce9e163",
+          "file": "acceptance.spec.js",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "answer failure state remains accessible",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-9aa2ee47533a324d1291",
+          "file": "acceptance.spec.js",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "source modal and scope settings are accessible at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-e4abfa71f7a4241c673b",
+          "file": "acceptance.spec.js",
+          "line": 51,
+          "column": 3
+        },
+        {
+          "title": "source modal and scope settings are accessible at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-8b7b2937117780a4ca93",
+          "file": "acceptance.spec.js",
+          "line": 51,
+          "column": 3
+        },
+        {
+          "title": "source modal and scope settings are accessible at 1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-60e76a26616e00972def",
+          "file": "acceptance.spec.js",
+          "line": 51,
+          "column": 3
+        },
+        {
+          "title": "source modal and scope settings are accessible at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-c71ab41e0f2a5a48af75",
+          "file": "acceptance.spec.js",
+          "line": 51,
+          "column": 3
+        },
+        {
+          "title": "old app remains unchanged after visiting new app",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-05f47ce52ab52acb2700",
+          "file": "acceptance.spec.js",
+          "line": 77,
+          "column": 1
+        },
+        {
+          "title": "admin link and auth guard remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.672Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "25b1ef59a3a31104e3a0-13a97276ad03a12d71e8",
+          "file": "acceptance.spec.js",
+          "line": 94,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "layout.spec.js",
+      "file": "layout.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "AegisKB keeps navigation quiet and the scope inside the composer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2154,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:23.476Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cd5d3c9e268db0af7513-97667ef2e3b606893678",
+          "file": "layout.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "preview scenarios live in a popover and stay isolated",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2456,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:25.657Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cd5d3c9e268db0af7513-d95fc9ea232e8f955a03",
+          "file": "layout.spec.js",
+          "line": 22,
+          "column": 1
+        },
+        {
+          "title": "AegisKB keeps navigation quiet and the scope inside the composer",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js",
+                    "stack": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:40.235Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "cd5d3c9e268db0af7513-fd0d4b8dfb0d7f5607a7",
+          "file": "layout.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "preview scenarios live in a popover and stay isolated",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:40.236Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "cd5d3c9e268db0af7513-d1121daa82f264f94893",
+          "file": "layout.spec.js",
+          "line": 22,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "live.spec.js",
+      "file": "live.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real protocol hydrates history and scope; deleting only happens after confirmation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3439,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:28.203Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed0cb703495a228a0509-5d53783f1c524650dc8c",
+          "file": "live.spec.js",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "real protocol hydrates history and scope; deleting only happens after confirmation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js",
+                    "stack": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:40.893Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed0cb703495a228a0509-742503aa2c4f756160df",
+          "file": "live.spec.js",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "preview.spec.js",
+      "file": "preview.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "new conversation has one focused greeting and an empty composer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1752,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:31.697Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-e49676ec28d2adf1c631",
+          "file": "preview.spec.js",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "demo messages, copy, recommendations, local send and session switching stay isolated",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2239,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:33.479Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-a624befded5710ceebfe",
+          "file": "preview.spec.js",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "scope controls require a selected document and clear stale scope",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3760,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:35.746Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-f3d996f91c876a8f809b",
+          "file": "preview.spec.js",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "deleting demo sessions requires confirmation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3779,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:39.543Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-ff98c4fa661f59542ebc",
+          "file": "preview.spec.js",
+          "line": 75,
+          "column": 1
+        },
+        {
+          "title": "loading, failure and retry are explicit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2766,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:43.359Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-c24a290ae00623c3f719",
+          "file": "preview.spec.js",
+          "line": 91,
+          "column": 1
+        },
+        {
+          "title": "long demo messages and accessibility at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2086,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:46.160Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-0a1e1984d74ccd3f7ab7",
+          "file": "preview.spec.js",
+          "line": 108,
+          "column": 3
+        },
+        {
+          "title": "long demo messages and accessibility at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7547,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:48.281Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-4d753ad7081c96ace371",
+          "file": "preview.spec.js",
+          "line": 108,
+          "column": 3
+        },
+        {
+          "title": "long demo messages and accessibility at 1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3556,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:55.846Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-2286e8a0e68bba872ed4",
+          "file": "preview.spec.js",
+          "line": 108,
+          "column": 3
+        },
+        {
+          "title": "long demo messages and accessibility at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2388,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:20:59.425Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-3fe76e3d7c95e8d17bba",
+          "file": "preview.spec.js",
+          "line": 108,
+          "column": 3
+        },
+        {
+          "title": "new conversation has one focused greeting and an empty composer",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js",
+                    "stack": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:41.455Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-662f679402136cb6b2e6",
+          "file": "preview.spec.js",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "demo messages, copy, recommendations, local send and session switching stay isolated",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:41.456Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-b287c32220183b48412e",
+          "file": "preview.spec.js",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "scope controls require a selected document and clear stale scope",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:41.456Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-cee50259478025449924",
+          "file": "preview.spec.js",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "deleting demo sessions requires confirmation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:41.456Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-b632d344e4fb2e355982",
+          "file": "preview.spec.js",
+          "line": 75,
+          "column": 1
+        },
+        {
+          "title": "loading, failure and retry are explicit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:41.456Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-5f6f0fbc9190e3c89648",
+          "file": "preview.spec.js",
+          "line": 91,
+          "column": 1
+        },
+        {
+          "title": "long demo messages and accessibility at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:41.457Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-210e97fcae8082a3fd10",
+          "file": "preview.spec.js",
+          "line": 108,
+          "column": 3
+        },
+        {
+          "title": "long demo messages and accessibility at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:41.457Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-e42e9ba68a4ac39e9867",
+          "file": "preview.spec.js",
+          "line": 108,
+          "column": 3
+        },
+        {
+          "title": "long demo messages and accessibility at 1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:41.457Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-6c16bf0cb367f75afc05",
+          "file": "preview.spec.js",
+          "line": 108,
+          "column": 3
+        },
+        {
+          "title": "long demo messages and accessibility at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:41.457Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b361bf72d54a6167bc5a-0dbbcc833a5d1b20ec58",
+          "file": "preview.spec.js",
+          "line": 108,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "previewServer.spec.js",
+      "file": "previewServer.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "development server serves isolated fixtures and explicit errors",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 92,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:01.850Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e1f419362b574bf0920-096652488cb23a0b4e5f",
+          "file": "previewServer.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "development server serves isolated fixtures and explicit errors",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js",
+                    "stack": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:42.031Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5e1f419362b574bf0920-2598a32b1e74c4983c15",
+          "file": "previewServer.spec.js",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "production.spec.js",
+      "file": "production.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "built app excludes development fixtures and keeps the default chat route",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2676,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:01.987Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e03a4b7a6378dd18a075-e653d6363da04fa8deb3",
+          "file": "production.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "built app excludes development fixtures and keeps the default chat route",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js",
+                    "stack": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:43.093Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e03a4b7a6378dd18a075-5d490a33b680046f4d2d",
+          "file": "production.spec.js",
+          "line": 7,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "shell.spec.js",
+      "file": "shell.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "root redirect, local draft and old application links work without business requests",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1398,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:04.842Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "880f46c66cf474b1ab90-db5b071cff065ce41915",
+          "file": "shell.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "shell, keyboard and accessibility at 390",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17146,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '打开会话导航' })\nExpected: focused\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '打开会话导航' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '打开会话导航' })\nExpected: focused\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '打开会话导航' })\u001b[22m\n\n    at C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\e2e\\shell.spec.js:49:29",
+                    "location": {
+                      "file": "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\e2e\\shell.spec.js",
+                      "column": 29,
+                      "line": 49
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\e2e\\shell.spec.js",
+                        "column": 29,
+                        "line": 49
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '打开会话导航' })\nExpected: focused\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '打开会话导航' })\u001b[22m\n\n    at C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\e2e\\shell.spec.js:49:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:06.295Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\test-results\\browser\\shell-shell-keyboard-and-accessibility-at-390-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\test-results\\browser\\shell-shell-keyboard-and-accessibility-at-390-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\test-results\\browser\\shell-shell-keyboard-and-accessibility-at-390-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\e2e\\shell.spec.js",
+                    "column": 29,
+                    "line": 49
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "880f46c66cf474b1ab90-6d1144e1c84afe06eb94",
+          "file": "shell.spec.js",
+          "line": 27,
+          "column": 3
+        },
+        {
+          "title": "shell, keyboard and accessibility at 768",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js",
+                    "stack": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:38.646Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "880f46c66cf474b1ab90-8f2292fe2e5a47e44b3b",
+          "file": "shell.spec.js",
+          "line": 27,
+          "column": 3
+        },
+        {
+          "title": "shell, keyboard and accessibility at 1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:38.647Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "880f46c66cf474b1ab90-28186106df9149bade3c",
+          "file": "shell.spec.js",
+          "line": 27,
+          "column": 3
+        },
+        {
+          "title": "shell, keyboard and accessibility at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:38.647Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "880f46c66cf474b1ab90-50d0e58a7a210a7e319d",
+          "file": "shell.spec.js",
+          "line": 27,
+          "column": 3
+        },
+        {
+          "title": "root redirect, local draft and old application links work without business requests",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js",
+                    "stack": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:43.591Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "880f46c66cf474b1ab90-8f59a84a9740a1d968ba",
+          "file": "shell.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "shell, keyboard and accessibility at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:43.591Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "880f46c66cf474b1ab90-0da806315a4e11516cb1",
+          "file": "shell.spec.js",
+          "line": 27,
+          "column": 3
+        },
+        {
+          "title": "shell, keyboard and accessibility at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:43.591Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "880f46c66cf474b1ab90-5ff5efcfe59a3ec9a136",
+          "file": "shell.spec.js",
+          "line": 27,
+          "column": 3
+        },
+        {
+          "title": "shell, keyboard and accessibility at 1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:43.591Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "880f46c66cf474b1ab90-27dbae7d3147e10e300b",
+          "file": "shell.spec.js",
+          "line": 27,
+          "column": 3
+        },
+        {
+          "title": "shell, keyboard and accessibility at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:43.592Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "880f46c66cf474b1ab90-3f1980030f93a83edb1d",
+          "file": "shell.spec.js",
+          "line": 27,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "stream.spec.js",
+      "file": "stream.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "IME and Shift+Enter do not submit; Enter streams, hydrates final sources and preserves modal focus",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js",
+                    "stack": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.089Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "40536cdd4ae09e5b376d-babbf68b0d13f4a4f601",
+          "file": "stream.spec.js",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "pending generation locks conflicts and stop calls the server; late reply cannot replace stopped content",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.089Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "40536cdd4ae09e5b376d-b028f8b3c30331ce6286",
+          "file": "stream.spec.js",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "partial answers remain visible on errors and retry requires a deliberate click",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.089Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "40536cdd4ae09e5b376d-7a2396f34f6f1c30f1e9",
+          "file": "stream.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "scrolling up pauses output following and the latest button resumes it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:39.089Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "40536cdd4ae09e5b376d-5a62324f81572fc44801",
+          "file": "stream.spec.js",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "IME and Shift+Enter do not submit; Enter streams, hydrates final sources and preserves modal focus",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js",
+                    "stack": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Cannot find module 'C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js'\nRequire stack:\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\common\\index.js\n- C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:44.066Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "40536cdd4ae09e5b376d-bfec882e4e15079d146d",
+          "file": "stream.spec.js",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "pending generation locks conflicts and stop calls the server; late reply cannot replace stopped content",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:44.066Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "40536cdd4ae09e5b376d-7127f84a45bd30e6886f",
+          "file": "stream.spec.js",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "partial answers remain visible on errors and retry requires a deliberate click",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:44.066Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "40536cdd4ae09e5b376d-3f9a430de9a1f4e025ed",
+          "file": "stream.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "scrolling up pauses output following and the latest button resumes it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T14:21:44.066Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "40536cdd4ae09e5b376d-3b6c737785c9c1ded5d0",
+          "file": "stream.spec.js",
+          "line": 74,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T14:19:08.382Z",
+    "duration": 155704.964,
+    "expected": 28,
+    "skipped": 33,
+    "unexpected": 11,
+    "flaky": 0
+  }
+}

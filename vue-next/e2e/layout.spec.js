@@ -9,7 +9,7 @@ test('AegisKB keeps navigation quiet and the scope inside the composer', async (
   await expect(page.locator('.brand')).toHaveText('AegisKB')
   await expect(page.locator('.brand img')).toBeVisible()
   await expect.poll(() => page.locator('.brand img').evaluate((img) => img.naturalWidth)).toBeGreaterThan(0)
-  await page.locator('.brand-identity').screenshot({ path: resolve('../doc/重构前端/evidence/welcome-focus', `${info.project.name}-brand.png`) })
+  await page.locator('.brand-identity').screenshot({ path: resolve(process.env.AEGIS_EVIDENCE_DIR || '../doc/重构前端/evidence/welcome-focus', `${info.project.name}-brand.png`) })
   await expect(page.locator('.workspace-header')).not.toContainText('如何把一个想法')
   await expect(page.locator('.composer-caption, .preview-toolbar')).toHaveCount(0)
   await expect(page.locator('.composer-sender').getByRole('button', { name: '设置回答范围' })).toBeVisible()
@@ -30,7 +30,7 @@ test('preview scenarios live in a popover and stay isolated', async ({ page, con
   await page.getByRole('button', { name: '预览设置', exact: true }).click()
   await expect(page.getByLabel('选择演示场景', { exact: true })).toBeHidden()
   await page.setViewportSize({ width: 1440, height: 1000 })
-  await page.screenshot({ path: resolve('../doc/重构前端/evidence/welcome-focus', `${info.project.name}-preview-1440.png`), animations: 'disabled' })
+  await page.screenshot({ path: resolve(process.env.AEGIS_EVIDENCE_DIR || '../doc/重构前端/evidence/welcome-focus', `${info.project.name}-preview-1440.png`), animations: 'disabled' })
 })
 
 

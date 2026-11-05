@@ -1,0 +1,37 @@
+{
+  "reason": "A6 targeted regression used A5 hardcoded screenshot paths before isolation fix",
+  "count": 6,
+  "originalManifest": "doc/重构前端/evidence/admin/A5/截图索引.json",
+  "affected": [
+    {
+      "path": "doc/重构前端/evidence/admin/A5/chrome-config-1024.png",
+      "originalSha256": "81ad7a959c37d8142588c25f60a6ad815e80f516ce66a35b911e00fada6ac0f4",
+      "currentSha256": "dab3a8116bc62d39368916e3251947332b22c13239d05e10d665637f63a5bacb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A5/chrome-config-1440.png",
+      "originalSha256": "479cbf168be3c43b734f7235a6ded767aec9dfa710b2fbe722063924ab72d4cb",
+      "currentSha256": "088dbc8e407fd6cd8a0b26fd1957d4a367bbf98b804f886beb15258fcb2fdf19"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A5/chrome-trace-detail-1024.png",
+      "originalSha256": "c8bdf7744d90029dfbc62c557db6a9e00cd39a8159f38f31740481404c1d971a",
+      "currentSha256": "2f60a0f2e3ccd7c57acca561aca2fa683e89f732a4ebdd782eddaf34e61a071d"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A5/chrome-trace-detail-1440.png",
+      "originalSha256": "c95fa75c07ddc783569e6735d8abc22766b6881be21220d4fa16fa0af206014b",
+      "currentSha256": "5a5735ad7e332bc76685da373c206e4a1c326932e94a5ddc5b8b40b8424d2bf4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A5/chrome-trace-detail-390.png",
+      "originalSha256": "b55db02a23944e6e4f83fef9161a255c1e856fd8d1209f30370744599b5b58e4",
+      "currentSha256": "965d82cff75715fe99f10f576e3b68b6be389cffec6b44014d6c6b1a3523182f"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A5/chrome-trace-detail-768.png",
+      "originalSha256": "fbc25f0df463f6e1bd2ca2a48dc27f79d165995b19c859ac027321c7d3e7f3f1",
+      "currentSha256": "5bcd587640f4761dc84e49abec8bb17dc4a1e0febb261327d87630deb7342083"
+    }
+  ]
+}

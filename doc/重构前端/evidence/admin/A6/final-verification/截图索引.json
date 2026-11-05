@@ -1,0 +1,103 @@
+{
+  "createdAt": "2026-11-04T15:09:00.4064315Z",
+  "count": 24,
+  "data": "isolated mock fixtures",
+  "images": [
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-exchange-1024.png",
+      "sha256": "2ce4194ee82859c8555ef68c9e739d4d788582c2896cf09766394d340de04a96"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-exchange-1440.png",
+      "sha256": "982492cf2df9fd64f1b399d14508241e7b79f7a8ef23bd5409d38e411a8e72bb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-exchange-390.png",
+      "sha256": "ec8c82af352d1476e2f5cb2dd75b13615a8b0e46c9299b0fc2f4538d28a0760c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-exchange-768.png",
+      "sha256": "27d0f4b62712c806b5740d7086f901938f80dc276646cb2337abd40ff7711c84"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-list-1024.png",
+      "sha256": "fb0b87005dee6207145406d16c47d49fb50fd241c159961b1192203ece12ccad"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-list-1440.png",
+      "sha256": "0760e02102c8497fd5c883d776d5fdf50b939a0b8fb0a9feddec4690cc57908c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-list-390.png",
+      "sha256": "1046ec6d19d1ede6031b66e7a681fe08d82e3fac3dd8a6f04c2f5c5eaf621f6a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-list-768.png",
+      "sha256": "81d7d0a954f02fa5dc963df55b3178fa0f6453eaf8c39da664e69df5e56acd10"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-exchange-1024.png",
+      "sha256": "2ce4194ee82859c8555ef68c9e739d4d788582c2896cf09766394d340de04a96"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-exchange-1440.png",
+      "sha256": "982492cf2df9fd64f1b399d14508241e7b79f7a8ef23bd5409d38e411a8e72bb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-exchange-390.png",
+      "sha256": "ec8c82af352d1476e2f5cb2dd75b13615a8b0e46c9299b0fc2f4538d28a0760c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-exchange-768.png",
+      "sha256": "27d0f4b62712c806b5740d7086f901938f80dc276646cb2337abd40ff7711c84"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-list-1024.png",
+      "sha256": "fb0b87005dee6207145406d16c47d49fb50fd241c159961b1192203ece12ccad"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-list-1440.png",
+      "sha256": "0760e02102c8497fd5c883d776d5fdf50b939a0b8fb0a9feddec4690cc57908c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-list-390.png",
+      "sha256": "1046ec6d19d1ede6031b66e7a681fe08d82e3fac3dd8a6f04c2f5c5eaf621f6a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-list-768.png",
+      "sha256": "81d7d0a954f02fa5dc963df55b3178fa0f6453eaf8c39da664e69df5e56acd10"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-session-1024.png",
+      "sha256": "161242b72b9668a3fa32d9adc3d0bdc3b92f0cf90ec773370cf81aa42abebbf2"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-session-1440.png",
+      "sha256": "e3ec9c8ef0e5a2ddd8b604218f918b6da64c17bbde80bf2374a8a700531e4269"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-session-390.png",
+      "sha256": "4e0f683c9cd27b5809ecbd8bc3dc91146f2f49153e3be465a9742fbb02016f3d"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-reduce-session-768.png",
+      "sha256": "ce20ecc7ad94bfd28af2b8047d5dc0fe76b7ac55221445aa5ef0ab3a9e8bf527"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-session-1024.png",
+      "sha256": "161242b72b9668a3fa32d9adc3d0bdc3b92f0cf90ec773370cf81aa42abebbf2"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-session-1440.png",
+      "sha256": "e3ec9c8ef0e5a2ddd8b604218f918b6da64c17bbde80bf2374a8a700531e4269"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-session-390.png",
+      "sha256": "4e0f683c9cd27b5809ecbd8bc3dc91146f2f49153e3be465a9742fbb02016f3d"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/final-verification/chrome-session-768.png",
+      "sha256": "ce20ecc7ad94bfd28af2b8047d5dc0fe76b7ac55221445aa5ef0ab3a9e8bf527"
+    }
+  ]
+}

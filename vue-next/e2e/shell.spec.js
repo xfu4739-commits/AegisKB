@@ -51,7 +51,7 @@ for (const viewport of [{ width: 390, height: 844 }, { width: 768, height: 1024 
     const accessibility = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()
     expect(accessibility.violations).toEqual([])
     await page.mouse.click(viewport.width - 5, 100)
-    await page.screenshot({ path: resolve('../doc/重构前端/evidence/welcome-focus', `${testInfo.project.name}-welcome-${viewport.width}.png`), fullPage: true, animations: 'disabled' })
+    await page.screenshot({ path: resolve(process.env.AEGIS_EVIDENCE_DIR || '../doc/重构前端/evidence/welcome-focus', `${testInfo.project.name}-welcome-${viewport.width}.png`), fullPage: true, animations: 'disabled' })
   })
 }
 

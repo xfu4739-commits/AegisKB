@@ -9,6 +9,7 @@
     "preview": "vite preview --host localhost --port 4174 --strictPort",
     "test:unit": "vitest run",
     "check:design": "node --test tests/design.test.js",
+    "test:admin-contract": "node --test tests/admin-inventory.test.js",
     "test:e2e": "playwright test"
   },
   "dependencies": {

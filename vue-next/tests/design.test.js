@@ -48,7 +48,7 @@ test('reading and primary action colors meet 4.5:1 contrast', () => {
     const linear = rgb.map((v) => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)
     return linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722
   }
-  for (const [fg, bg] of [['text', 'surface'], ['muted', 'surface'], ['muted', 'sidebar'], ['primary-text', 'primary'], ['primary', 'accent'], ['code-string', 'code-bg'], ['primary', 'sidebar'], ['muted', 'accent'], ['primary-text', 'primary-hover']]) {
+  for (const [fg, bg] of [['text', 'surface'], ['muted', 'surface'], ['muted', 'sidebar'], ['primary-text', 'primary'], ['primary', 'accent'], ['code-string', 'code-bg'], ['primary', 'sidebar'], ['muted', 'accent'], ['primary-text', 'primary-hover'], ['admin-ink', 'surface'], ['admin-muted', 'surface'], ['admin-nav-text', 'admin-sidebar'], ['admin-group-text', 'admin-sidebar'], ['admin-muted', 'admin-canvas'], ['admin-danger', 'surface'], ['admin-positive', 'surface']]) {
     const a = luminance(tokens.get(fg))
     const b = luminance(tokens.get(bg))
     assert.ok((Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05) >= 4.5, `${fg} on ${bg}`)
