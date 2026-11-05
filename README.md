@@ -27,11 +27,11 @@
 
 真实环境启动、Python 工具安装和验收步骤见 `document/RAG系统验收与运行/`。
 
-本地密钥请用环境变量注入，不要写入仓库，例如 `ALI_BAI_LIAN_API_KEY`、`TAVILY_API_KEY`。
+### 前置：中间件与密钥
 
-### 1. 用 Docker 启动中间件
+**1. Docker 中间件**
 
-`docker-compose.yaml` 会按 `application.yaml` 的本机端口拉起 MySQL、Redis、PostgreSQL/pgvector、Elasticsearch（含 IK）、Neo4j、Kafka、MinIO。Java、rag-tools、前端仍在本机启动。
+`docker-compose.yaml` 会按 `application.yaml` 的本机端口拉起 MySQL、Redis、PostgreSQL/pgvector、Elasticsearch（含 IK）、Neo4j、Kafka、MinIO。Java、rag-tools、前端仍在本机进程启动。
 
 ```bash
 docker compose up -d
@@ -51,6 +51,13 @@ curl -k -L -o docker/elasticsearch/plugins/elasticsearch-analysis-ik-8.5.2.zip \
 - `sql/表数据/Mysql/init_system_config.sql`
 - `sql/表结构/PostgresSql/create_table_postgres_sql.sql`
 
+若参数配置页总分类中文曾出现乱码（旧 volume 在修复前初始化），在仓库根目录执行一次：
+
+```powershell
+Get-Content -Encoding UTF8 sql/表数据/Mysql/repair_system_config_charset.sql |
+  docker exec -i aegis-kb-mysql mysql -uroot -proot --default-character-set=utf8mb4 aegis_kb
+```
+
 知识路由初始化脚本不要在空库自动执行，等文档解析完成后再手工跑。
 
 | 服务 | 宿主机地址 | 账号 |
@@ -65,20 +72,63 @@ curl -k -L -o docker/elasticsearch/plugins/elasticsearch-analysis-ik-8.5.2.zip \
 
 Docker Desktop 建议至少 8GB 内存。Linux/WSL2 需要 `vm.max_map_count >= 262144`。
 
-### 2. 本机启动应用
+**2. 本机密钥（勿提交 Git）**
 
-中间件需先自行 `docker compose up -d`（见上文）。配置好 `start-local.secrets.ps1` 后，在同一终端用 `concurrently` 拉起 Java `9083`、rag-tools `18080`、Vue `5174`（`Ctrl+C` 一次停全部）：
+在仓库根目录复制 `.env.example` 为 `.env`，至少填写 `ALI_BAI_LIAN_API_KEY`（DashScope / 百炼）。可选：`TAVILY_API_KEY`、阿里云 Document Mind 密钥等。启动脚本通过 `scripts/_load-local-config.ps1` 加载该文件。
 
-```bat
-scripts\start-local.cmd
-```
-
-或在仓库根目录：
+**3. Python rag-tools 虚拟环境（首次一次）**
 
 ```powershell
-.\scripts\start-local.ps1
+cd aegis-kb-rag-tools
+python -m venv .venv
+.\.venv\Scripts\pip install -e .
 ```
 
-脚本只启动 Java、rag-tools、Vue，不再执行 `docker compose`。
+**4. 前端依赖（首次一次）**
 
-浏览器打开 `http://localhost:5174/`。管理端默认账号见 `application.yaml` 的 `app.admin-auth`。
+```powershell
+cd vue
+npm install
+```
+
+### 本机两种启动方式
+
+以下两种方式都**不会**再执行 `docker compose`，需先完成上文中间件与 `.env` 配置。
+
+| 端口 | 服务 |
+| :--- | :--- |
+| `9083` | Java 后端（Spring Boot） |
+| `18080` | Python rag-tools |
+| `5173` | Vue 开发服务器（Vite 默认端口） |
+
+#### 方式 A：一键拉起（推荐）
+
+在仓库根目录双击或执行 `start.cmd`。会依次打开 **三个独立 PowerShell 窗口**（标题栏可区分：Java / rag-tools / Vue）。当前 Cursor 或终端窗口只负责编排，按 Enter 可关闭编排窗口，**不会**停止那三个服务窗口。
+
+```bat
+.\start.cmd
+```
+
+等价于 `powershell -File scripts\start-all.ps1`。Vue 窗口内会等待 `http://127.0.0.1:9083/actuator/health` 为 `UP` 后再启动 Vite，避免代理 `/api` 时出现 `ECONNREFUSED`。
+
+浏览器打开：**http://localhost:5173/**。管理端默认账号见 `application.yaml` 的 `app.admin-auth`。
+
+#### 方式 B：按服务单独启动
+
+适合只调试某一端：在仓库根目录分别执行（每个命令占一个终端窗口）。
+
+```powershell
+.\scripts\start-java.ps1
+.\scripts\start-rag.ps1
+.\scripts\start-vue.ps1
+```
+
+- `start-java.ps1`：若无现成 jar 会先 `mvn package`（首次较慢）；9083 已被占用且 health 已为 UP 时会提示无需重复启动。
+- `start-rag.ps1`：**不会**自动创建 `.venv`，需先完成上文 rag-tools 一次性安装。
+- `start-vue.ps1`：会轮询 Java 9083 就绪后再 `npm run dev`。
+
+Java 启动后日志可能停在 MinIO / Kafka 附近而不再滚动，属正常现象；可用浏览器访问 `http://127.0.0.1:9083/actuator/health` 确认 `"status":"UP"`。请勿在 Java 控制台窗口内拖选文字（Windows QuickEdit 会暂停进程）。
+
+### 与旧脚本的关系
+
+已移除 `scripts/start-local.ps1`、`start-local.cmd` 及 `start-local.secrets.ps1.example`，密钥统一改为根目录 `.env`（见 `.env.example`）。

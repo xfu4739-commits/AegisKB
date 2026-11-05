@@ -1,0 +1,311 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\10115\\Front\\node.exe",
+      "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "admin-document.spec.js",
+      "--grep",
+      "artifact preview is safe",
+      "--repeat-each=3",
+      "--reporter=line,json"
+    ],
+    "configFile": "C:\\Users\\10115\\IdeaProjects\\nexus-aget-pro\\vue-next\\playwright.config.js",
+    "rootDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/test-results/browser",
+        "repeatEach": 3,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome",
+        "name": "chrome",
+        "testDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/test-results/browser",
+        "repeatEach": 3,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome-reduce",
+        "name": "chrome-reduce",
+        "testDir": "C:/Users/10115/IdeaProjects/nexus-aget-pro/vue-next/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:5174",
+      "reuseExistingServer": true,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "admin-document.spec.js",
+      "file": "admin-document.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "artifact preview is safe, releases image URLs and authenticated JSON downloads remain files",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6046,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T18:28:34.821Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b64595f965cdd97762-ce14b08b19e500d482c3",
+          "file": "admin-document.spec.js",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "artifact preview is safe, releases image URLs and authenticated JSON downloads remain files",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6241,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T18:28:41.819Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b64595f965cdd97762-6eee4bf526f374e117ce",
+          "file": "admin-document.spec.js",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "artifact preview is safe, releases image URLs and authenticated JSON downloads remain files",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome",
+              "projectName": "chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6410,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T18:28:49.282Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b64595f965cdd97762-42ac43168f77cdd2faa4",
+          "file": "admin-document.spec.js",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "artifact preview is safe, releases image URLs and authenticated JSON downloads remain files",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6680,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T18:28:56.916Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b64595f965cdd97762-efb6b8f0f216c0b79107",
+          "file": "admin-document.spec.js",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "artifact preview is safe, releases image URLs and authenticated JSON downloads remain files",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6402,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T18:29:05.090Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b64595f965cdd97762-060127ce1d0ed6a9465b",
+          "file": "admin-document.spec.js",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "artifact preview is safe, releases image URLs and authenticated JSON downloads remain files",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-reduce",
+              "projectName": "chrome-reduce",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6309,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-04T18:29:12.740Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b64595f965cdd97762-333e44edc975aa666d8c",
+          "file": "admin-document.spec.js",
+          "line": 42,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T18:28:34.069Z",
+    "duration": 45540.761999999995,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -88,7 +88,7 @@ describe('F09 dependency and toolchain contracts', () => {
     expect(packageJson.dependencies).not.toHaveProperty('@tailwindcss/postcss')
     expect(viteConfig).toContain("from '@tailwindcss/vite'")
     expect(viteConfig).toMatch(/plugins:\s*\[tailwindcss\(\), vue\(\)\]/)
-    expect(viteConfig).toMatch(/port:\s*5174/)
+    expect(viteConfig).toMatch(/port:\s*5173/)
     expect(viteConfig).toMatch(/strictPort:\s*true/)
     expect(postcssConfig).toMatch(/plugins:\s*{\s*}/)
   })

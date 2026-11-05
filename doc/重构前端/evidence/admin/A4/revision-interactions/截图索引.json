@@ -1,0 +1,135 @@
+{
+  "createdAt": "2026-11-04T11:58:17.1063238Z",
+  "count": 32,
+  "data": "isolated mock fixtures",
+  "images": [
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/chrome-artifact-return.png",
+      "sha256": "a126da69d3110f64d003c3832a6e67b3b7bf72349a7edd8a5fe6f643917071f4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/chrome-chunk-return-mobile.png",
+      "sha256": "927ad18018719ea5d45aa80a0a700e3edc0b898119ee529882291ce51222ce09"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/chrome-reduce-artifact-return.png",
+      "sha256": "a126da69d3110f64d003c3832a6e67b3b7bf72349a7edd8a5fe6f643917071f4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/chrome-reduce-chunk-return-mobile.png",
+      "sha256": "927ad18018719ea5d45aa80a0a700e3edc0b898119ee529882291ce51222ce09"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/chrome-reduce-restored-table.png",
+      "sha256": "f87b84985d36381e6df16aae4e7b9348e1830e9964f06b02c876f316fcb18e76"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/chrome-restored-table.png",
+      "sha256": "f87b84985d36381e6df16aae4e7b9348e1830e9964f06b02c876f316fcb18e76"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-artifact-preview.png",
+      "sha256": "8fec3cfd27c41789422eb31470d965afb4a7c52abbceadfb477ad75229b37285"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-chunk-detail.png",
+      "sha256": "0ea6992b1d880649ebb212278367abbd25500a0be0d50443b2617e5838f82b67"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-graph-window.png",
+      "sha256": "0b08afe31b8ba9c539733a84e107beb7a158a25e57f01d268d005d3aecf419b9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-overview-1024.png",
+      "sha256": "9cfa2ac0ff8c9be44e39a6474e62cbad4b46cbf18a6daeec8ef032a624b9c6ea"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-overview-1440.png",
+      "sha256": "f83485737d5a6124f0fd0cd30bb5a01c5a4b6b49b8d8c135eedb34a805e0ffd0"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-overview-390.png",
+      "sha256": "e6bb0fbbb8d7a49db49940b42740736c8ea4622dab0e2076d2d1b76b6f82cf0e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-overview-768.png",
+      "sha256": "9375249ac337e91470b637a1a9296649984474d05ab91bf222542f99868d90bb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-page-overlay.png",
+      "sha256": "5c5445a1ac3dfe05f8e4f7c0280117b3d67e48c8c45cd9e9f967cba7a0b5e6e2"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-artifact-preview.png",
+      "sha256": "8fec3cfd27c41789422eb31470d965afb4a7c52abbceadfb477ad75229b37285"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-chunk-detail.png",
+      "sha256": "0ea6992b1d880649ebb212278367abbd25500a0be0d50443b2617e5838f82b67"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-graph-window.png",
+      "sha256": "0b08afe31b8ba9c539733a84e107beb7a158a25e57f01d268d005d3aecf419b9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-overview-1024.png",
+      "sha256": "9cfa2ac0ff8c9be44e39a6474e62cbad4b46cbf18a6daeec8ef032a624b9c6ea"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-overview-1440.png",
+      "sha256": "f83485737d5a6124f0fd0cd30bb5a01c5a4b6b49b8d8c135eedb34a805e0ffd0"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-overview-390.png",
+      "sha256": "e6bb0fbbb8d7a49db49940b42740736c8ea4622dab0e2076d2d1b76b6f82cf0e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-overview-768.png",
+      "sha256": "9375249ac337e91470b637a1a9296649984474d05ab91bf222542f99868d90bb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-page-overlay.png",
+      "sha256": "5c5445a1ac3dfe05f8e4f7c0280117b3d67e48c8c45cd9e9f967cba7a0b5e6e2"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-strategy-1024.png",
+      "sha256": "5e3b558da09087135b58cd320f339bae64f57839d2076f820952ce0411abe364"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-strategy-1440.png",
+      "sha256": "c4223cfae78035268a04b4a88bd125ca6325976fb4f1c7878666046d45430319"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-strategy-390.png",
+      "sha256": "3780bdd438b1a394574159ac361e4090ce1798e49ace6cc3ac222ee339939c1a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-strategy-768.png",
+      "sha256": "e5d19beb7befe91f5b7fcec666608ab16c5acdf6e2efbbd69ad9b1d5e7d94464"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-reduce-tasks.png",
+      "sha256": "04fb14f957a7614804d7cee173c59cfd261021d217dc1aa1f864b27fa985e2a9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-strategy-1024.png",
+      "sha256": "5e3b558da09087135b58cd320f339bae64f57839d2076f820952ce0411abe364"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-strategy-1440.png",
+      "sha256": "c4223cfae78035268a04b4a88bd125ca6325976fb4f1c7878666046d45430319"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-strategy-390.png",
+      "sha256": "3780bdd438b1a394574159ac361e4090ce1798e49ace6cc3ac222ee339939c1a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-strategy-768.png",
+      "sha256": "e5d19beb7befe91f5b7fcec666608ab16c5acdf6e2efbbd69ad9b1d5e7d94464"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A4/revision-interactions/regression/chrome-tasks.png",
+      "sha256": "04fb14f957a7614804d7cee173c59cfd261021d217dc1aa1f864b27fa985e2a9"
+    }
+  ]
+}

@@ -1,0 +1,651 @@
+{
+  "createdAt": "2026-11-04T11:21:51.877Z",
+  "head": "86e5eb5e8e5a1ca4b2e61682be963580d01866ff",
+  "realProductWrites": 0,
+  "source": [
+    {
+      "path": "vue-next/src/App.vue",
+      "sha256": "8bde21c6038becabce0ef2fcc6455e0614d63e1159ba9ac99275e31537d9b6a4"
+    },
+    {
+      "path": "vue-next/src/config/environment.js",
+      "sha256": "83262bee8c519b43967d500618351fe6483521189e6f0a89c5ab1fbbf6405808"
+    },
+    {
+      "path": "vue-next/src/features/admin/catalog/AdminDocumentsView.vue",
+      "sha256": "a206e60b4338fcbb1ded0c329957a19b1832f440022bac8612e98a65f694f914"
+    },
+    {
+      "path": "vue-next/src/features/admin/catalog/AdminKnowledgeBasesView.vue",
+      "sha256": "5a0f79c99e349b4908291bc664a5db8f64cb101d881d80cc74daf1668fa2a9c2"
+    },
+    {
+      "path": "vue-next/src/features/admin/catalog/BaseEditor.vue",
+      "sha256": "1d1934124d7a52cdfad08abaff7c5fa9bad10408af6c38c3775d9459a9eae438"
+    },
+    {
+      "path": "vue-next/src/features/admin/catalog/catalog.css",
+      "sha256": "65f44b7bbb496eaf0751ff2c888ddd08d8cade9fe868ab4730cab9a2bc4f8d44"
+    },
+    {
+      "path": "vue-next/src/features/admin/catalog/catalogApi.js",
+      "sha256": "32198eb3b2d29fe2ace21ed9c271cef66fc6b55ff082de99ee434fb829c0653c"
+    },
+    {
+      "path": "vue-next/src/features/admin/catalog/catalogModel.js",
+      "sha256": "09970f4cb77997ecbf874da6146cf29c4d52f5677a494937ae3386a014aca70f"
+    },
+    {
+      "path": "vue-next/src/features/admin/catalog/catalogSchema.js",
+      "sha256": "880f0cf769e888b7d27c081237590aedec8d57b013ebca4f74a23d7853ae1c51"
+    },
+    {
+      "path": "vue-next/src/features/admin/catalog/catalogState.js",
+      "sha256": "925d05135559006f11604ef2208a85baeee6a96f1dd68690021f2527615c63a2"
+    },
+    {
+      "path": "vue-next/src/features/admin/catalog/DocumentUpload.vue",
+      "sha256": "bb2c49f1787ceb2febdfdcce95dfa8e4e84126d5dc7247ae9a43a27bb969571a"
+    },
+    {
+      "path": "vue-next/src/features/admin/dashboard/AdminDashboardView.vue",
+      "sha256": "9856d47613f4b54e06bc8e963f63565941be9353e22e018ef79d806f1799ec50"
+    },
+    {
+      "path": "vue-next/src/features/admin/dashboard/AdminQualityOverviewView.vue",
+      "sha256": "1aead47255e869a95d880f36f21e231aeb39ff70cf5d87dc4c23b0e33433fe3d"
+    },
+    {
+      "path": "vue-next/src/features/admin/dashboard/MetricStrip.vue",
+      "sha256": "809aefa7abd3cc274a143bc243528192fbad4762ea9229fd2e601cf06e2b7373"
+    },
+    {
+      "path": "vue-next/src/features/admin/dashboard/overview.css",
+      "sha256": "c6a14d43bb39295e057aa41ce85be7cfc787583aa04a70066ae5ce69cebb2d28"
+    },
+    {
+      "path": "vue-next/src/features/admin/dashboard/overviewApi.js",
+      "sha256": "1b39afa1e94b29a29b09ad87a80693b3cc3c94bf244de5a7f3014185d8fd8ef3"
+    },
+    {
+      "path": "vue-next/src/features/admin/dashboard/OverviewChart.vue",
+      "sha256": "87869d70cb94f2426ad60a23a7cb7e206f0f8c479cfbbd81e266eccdd7cedca6"
+    },
+    {
+      "path": "vue-next/src/features/admin/dashboard/overviewLinks.js",
+      "sha256": "d6d85879d0a71796b72e04b9c2aadbab4ec273a2268d32500e4d9520a59e7e09"
+    },
+    {
+      "path": "vue-next/src/features/admin/dashboard/overviewModel.js",
+      "sha256": "60189b29d1af94ad7b8af8a46c40504c03eba18de442df9cef0020c56fd33e4b"
+    },
+    {
+      "path": "vue-next/src/features/admin/dashboard/overviewState.js",
+      "sha256": "1b98484e0a898b1ad2ff9ac273803c73db13a3150b106370ca4ee553327ab50f"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/AdminDocumentView.vue",
+      "sha256": "0d77f82f87a266d03ba762fcfe428e4e8ef43df3e57c86b32e8e1d63d016ca18"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/ArtifactPanel.vue",
+      "sha256": "d2b71f9e8784133554c2a0ff1320fc5a6dc3c105b1b2e765687b27966f591bae"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/ChunksPanel.vue",
+      "sha256": "d724f416d13ef19282c5c4c468ee27892882a67d205fcaa7a802e8d100b3bb95"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/document.css",
+      "sha256": "75341bb2145f8c4563493b5c8e12a2bc9bcc79580f000b3704b6c6dec0ffd326"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/documentApi.js",
+      "sha256": "0f61faca5a3a90d5373a3f5c3b9477391665119a950e4763df471bde4e2defcf"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/documentModel.js",
+      "sha256": "d12786c4d065d5f2bdf70e8b5d59a3fc1a31fa1149530912c02974e9c4d8d79d"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/documentState.js",
+      "sha256": "e91807846fd7e13473dcad1089a3e4263144677f66676dd14916a01e2aef1315"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/DocumentWorkspace.vue",
+      "sha256": "6fa7a394ed45fc7d26fc5eb59006fea69b57b43cbcce68226d6ce7c9232925c4"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/ExplorerPanel.vue",
+      "sha256": "db5b39315a6792afacd3be45d134dae76b875a11c21a879abc313867cd3b788a"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/Facts.vue",
+      "sha256": "f7ddac64cffa13ab30a6f9f572549f8dd142f6c6fc396f3261941bf75e623371"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/ParsePanel.vue",
+      "sha256": "703cdaeaa34b2d7175f08a702c8007f29db21eb58347ef99f195e9e506ca1233"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/ReadState.vue",
+      "sha256": "f9dbe93c22732111c56ec005a1cdcbdd7c91336f8e1db8df4d9077df95f5440b"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/StrategyPanel.vue",
+      "sha256": "51e571cc759b1aead815dad98a94985028c72911eabad5231ac26f7bdac83541"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/TaskPanel.vue",
+      "sha256": "10d0e4c6a3ed01d37de0ce91b7cdcbba554e7b8ce4f3f315e5b8c0c687b96020"
+    },
+    {
+      "path": "vue-next/src/features/admin/shell/admin.css",
+      "sha256": "2f28e4307370b41122d2092d3138f10b36580f4d11d13ddd89bf7a48eb336362"
+    },
+    {
+      "path": "vue-next/src/features/admin/shell/AdminAccessView.vue",
+      "sha256": "5c150d64cd357f17ce920715ba68140f5005536f35dedfd37e526062487e1319"
+    },
+    {
+      "path": "vue-next/src/features/admin/shell/AdminAccountView.vue",
+      "sha256": "a4ac715321b2c7541e6b97647f67de2a3ea9d967952133b04bca241b1cbc1db7"
+    },
+    {
+      "path": "vue-next/src/features/admin/shell/AdminFrame.vue",
+      "sha256": "b0620045432c9feb5b29e5d98ce94d858ca7a8581637b1100eefc0d75c08b36f"
+    },
+    {
+      "path": "vue-next/src/features/admin/shell/AdminLoginView.vue",
+      "sha256": "29bd6e1be34b2a3a5f99a10694f4f668eb33b6459db2725afcb36f42a63912cc"
+    },
+    {
+      "path": "vue-next/src/features/admin/shell/AdminNav.vue",
+      "sha256": "ccd6af3e99c235b941dc4ba5f00cd6ec3f340d4ba1d3e79d6391b4dd5f0b6af4"
+    },
+    {
+      "path": "vue-next/src/features/admin/shell/AdminNotFoundView.vue",
+      "sha256": "6f2286b5eb000f92b291ba2dcf84088770568ef7ade4ae1da8e9edb1a6297f5d"
+    },
+    {
+      "path": "vue-next/src/features/admin/shell/AdminShell.vue",
+      "sha256": "d5e3e09249ac8c6554452ee32cea42808b8b618a5c0534e2e89b520714b2e237"
+    },
+    {
+      "path": "vue-next/src/features/chat/chatApi.js",
+      "sha256": "e37e1e6ebcbb46db4dee23ea9d107968df0d2a931cf954583d1431e5270de0e0"
+    },
+    {
+      "path": "vue-next/src/features/chat/ChatComposer.vue",
+      "sha256": "85cf54564ed18e412eb7be03a19fb033b98d15973a41db9124d5116688caf677"
+    },
+    {
+      "path": "vue-next/src/features/chat/ChatInput.vue",
+      "sha256": "1848c0f3c267f7048fa763eeaa19ca68a7f3ec2f7e91e4edb394deda919e51e8"
+    },
+    {
+      "path": "vue-next/src/features/chat/ChatMarkdown.vue",
+      "sha256": "115fc6e4afc3b2537eb313c687b25339dc6a2633f52085d4d107ebedc512e74d"
+    },
+    {
+      "path": "vue-next/src/features/chat/ChatMessages.vue",
+      "sha256": "e810bf4fda1ca34d1fcac5aea268a5e22b999d0ae8cd2c9eaf067df8826e04dd"
+    },
+    {
+      "path": "vue-next/src/features/chat/ChatSelect.vue",
+      "sha256": "8d5160325ea4964a47f80b761839434d61ae058f8010633b924527b8c1c11f03"
+    },
+    {
+      "path": "vue-next/src/features/chat/ChatSidebar.vue",
+      "sha256": "663db42adcc0c7a85572a38cddc75d87fd088ffb0912f16873b6a342c46e39f6"
+    },
+    {
+      "path": "vue-next/src/features/chat/ChatWelcome.vue",
+      "sha256": "fca79c40916d1ec5bb4e279254773ba1944b94e3acca2033f6efcfce46d7d668"
+    },
+    {
+      "path": "vue-next/src/features/chat/ChatWorkspace.vue",
+      "sha256": "88c7164e3da85f9dcb64420377ce9ba34e340ff73563fd045ea46497043a58ac"
+    },
+    {
+      "path": "vue-next/src/features/chat/liveState.js",
+      "sha256": "412559d942cf59edd2add503c7674c6c1a7a9c77a9f397b2b4bda04e7f0050ab"
+    },
+    {
+      "path": "vue-next/src/features/chat/markdown.js",
+      "sha256": "34051936be186fad2c5c4f721d3bd58385a37d1f13dd3266a7d97a2335253a18"
+    },
+    {
+      "path": "vue-next/src/features/chat/previewState.js",
+      "sha256": "96285101e2467e08f947cd0d7688bfdcd7f531c800f49e74df9ebbf514bbf654"
+    },
+    {
+      "path": "vue-next/src/features/chat/references.js",
+      "sha256": "d938dd16974a7ce1e81cc3826f2521d1a0956bea56086727b948eb2415e80c7d"
+    },
+    {
+      "path": "vue-next/src/features/chat/stream.js",
+      "sha256": "4b4b0e7472463b3ff53933a3a8034f8e67669619e2fe26d4549998181e749ecf"
+    },
+    {
+      "path": "vue-next/src/main.js",
+      "sha256": "9926fbcc8ee2a63e6947c8ec2f4ea2a07feb2dc11f097cbcb80273bda9e97548"
+    },
+    {
+      "path": "vue-next/src/router/adminGuard.js",
+      "sha256": "406652f871e73e0b1b5389109282b56ef070cccd1b90f6acb806b6f27e9b8766"
+    },
+    {
+      "path": "vue-next/src/router/index.js",
+      "sha256": "c2a7438d806a9fd68c0519606a80bcac07e1f31482d7bd8db337eaf8ac85902e"
+    },
+    {
+      "path": "vue-next/src/shared/api/http.js",
+      "sha256": "2f101f3ce6f1093ed7f9f396ad3f4cc08a5f1a2859cad222cd4e4a9caaba3f32"
+    },
+    {
+      "path": "vue-next/src/shared/auth/adminAuth.js",
+      "sha256": "d5550f152ecc6153d9729020a5571fdf1adb80d5fc225bdfc91b3943b094e22b"
+    },
+    {
+      "path": "vue-next/src/shared/auth/session.js",
+      "sha256": "4f093365a4aed15b5d95cc0a1f985f646012be7b7f00554ab52eb93d69b94897"
+    },
+    {
+      "path": "vue-next/src/styles/base.css",
+      "sha256": "e2b58fa96ac5265bc9bdf2e8cca4f90bec17b9f5cb49e5dcc8c77f8e15829239"
+    },
+    {
+      "path": "vue-next/src/styles/tokens.css",
+      "sha256": "071f131b3a6570bba9e5a77ae8dc83bd1730959d7d325c451f4ba891ee6dc824"
+    },
+    {
+      "path": "vue-next/src/theme.js",
+      "sha256": "84e9a30c2849b5252717af5830438961f0a09d64935f672831c7e60f2ec55f81"
+    },
+    {
+      "path": "vue-next/package.json",
+      "sha256": "6db7cfed5022710ba091a87a83f1b21104144dd5fb28439bea66441b4e5f0d13"
+    },
+    {
+      "path": "vue-next/package-lock.json",
+      "sha256": "71d7155f8152e4e84eefbff5c70f2900f816231a21effd42aaad2b86357e124c"
+    },
+    {
+      "path": "vue-next/index.html",
+      "sha256": "6c4e38518e4638ee0f8cec9e973b6a23834533ed095cc55a0f54194d477004d8"
+    },
+    {
+      "path": "vue-next/vite.config.js",
+      "sha256": "063d4f31fcef042867cd58173ceae6255300432175a1971f16be5307e3500279"
+    }
+  ],
+  "verification": [
+    {
+      "path": "vue-next/src/config/environment.spec.js",
+      "sha256": "f91f24c1a799191ad2e82718f0fa04cdc92d31a02e4eb7f188d7d3d771cc28f2"
+    },
+    {
+      "path": "vue-next/src/features/admin/catalog/catalog.spec.js",
+      "sha256": "5afb0a987c97e05c84e34cb21e39f5d90da41351c67a88c28cac876c4f64fba1"
+    },
+    {
+      "path": "vue-next/src/features/admin/dashboard/overview.spec.js",
+      "sha256": "ca8de4e93d469cb99faacda68c6feb073127f4f9bdf74371fa3f6efaec0d868e"
+    },
+    {
+      "path": "vue-next/src/features/admin/document/document.spec.js",
+      "sha256": "d1f11dbe3193c76a2e5ad262df13dc4cb86ac521d54fbba289103a72278bf919"
+    },
+    {
+      "path": "vue-next/src/features/chat/chatApi.spec.js",
+      "sha256": "2b44d41ff5ac4ae3ed64a1142f53387c60a105b5020fb920b46a60351f4c633b"
+    },
+    {
+      "path": "vue-next/src/features/chat/liveState.spec.js",
+      "sha256": "2b2afa479ef26fecb6e359465a3bffde64dbc13ad096c6d7b965c5c5b4bcb541"
+    },
+    {
+      "path": "vue-next/src/features/chat/markdown.spec.js",
+      "sha256": "0131b058cb1ab9017606e7740187de482087ab075fded4d10b957b3426cc2f4a"
+    },
+    {
+      "path": "vue-next/src/features/chat/previewState.spec.js",
+      "sha256": "e4f4c895d10f1988ba226c927f39aaa423e1836faada450e5535fc4b1721f223"
+    },
+    {
+      "path": "vue-next/src/features/chat/stream.spec.js",
+      "sha256": "d692b81bafd6e8af0cc704c1d321a266de561d038a36180fabd978b957f78046"
+    },
+    {
+      "path": "vue-next/src/features/chat/streamState.spec.js",
+      "sha256": "6f69b936cb9656f03e3e00ec2b1c9377e8d0ab1e30ed088b0e49dfa9ccaaae41"
+    },
+    {
+      "path": "vue-next/src/router/adminGuard.spec.js",
+      "sha256": "a7b74be4f57c4a72187f1e00e7c1ac1bcb89c6c47dd39ef870f9151819d09bf9"
+    },
+    {
+      "path": "vue-next/src/shared/auth/adminAuth.spec.js",
+      "sha256": "f06278a7e6bd660fb2411d01c60da222e7fd1c969436d7fbff7757a450b4e95e"
+    },
+    {
+      "path": "vue-next/e2e/acceptance.spec.js",
+      "sha256": "21d55f8169017857b6b14cf63dd8443f80a697c11e40d0706f811166dade76d5"
+    },
+    {
+      "path": "vue-next/e2e/admin-auth.spec.js",
+      "sha256": "b4c62a8eadf995814b86be88d54d8cce27802b96fd77fa056337b7aeaa32e1da"
+    },
+    {
+      "path": "vue-next/e2e/admin-baseline.spec.js",
+      "sha256": "d7ec2873ec7a1fb57bca1486cdddcbb7826159f39356b65481da3745d2d0e24e"
+    },
+    {
+      "path": "vue-next/e2e/admin-catalog.spec.js",
+      "sha256": "941bb95e1f82ec94ab85c818e8852f70754da068692f7b7aef5e5f1ec77942cf"
+    },
+    {
+      "path": "vue-next/e2e/admin-document.spec.js",
+      "sha256": "0d5141f99b652a7a66c6273d0710069b4c79dd53d9f2dde0e63b28551a448469"
+    },
+    {
+      "path": "vue-next/e2e/admin-overview.spec.js",
+      "sha256": "6d463862a91156bccc6e7d26a04eff4a69a8794cbd4421f4523b343f380a66e2"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/acceptance.js",
+      "sha256": "ad857ac0b9e8ba6b9745e6430f3d50706b497a931a26afa88b9db1605256f196"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/admin-auth.js",
+      "sha256": "b65d6f20d1cec30eecbf57c03dc706dcde8d00aac3e9d697edb66493cda45a3c"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/admin-baseline.js",
+      "sha256": "3a9e9f22ccacf9801b7347ea74d59e067557152f3e3d15c4225da722670186e3"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/admin-catalog.js",
+      "sha256": "df89b8ac4a4ede67000afc9612fbf9376f20cb12795cc1e6f6e3b865ddadf52b"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/admin-document.js",
+      "sha256": "2bfca77291cf6828c60473d36ed07f88091f71daff47066c4e5b29fa2ec28e11"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/admin-inventory.js",
+      "sha256": "93e6a6ec9e6bcf2b0050924724e14cdf24910a106a1b6259768ed7c88aee3bfd"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/admin-overview.js",
+      "sha256": "49dd332697531cabd3df5d230d78e01163bcf3f8b41ee11af98972e6506cbe21"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/catalog-data.js",
+      "sha256": "908abd96593566572c30d5885433ee7eb0c6b9646ecc556d7a3ce912179a170b"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/document-data.js",
+      "sha256": "152da98d0cbfcd4f3ceacffb30b3a0734d449c3308e9bd8a4392ed1c76884e99"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/live.js",
+      "sha256": "f804c5beaac246cee37f8d06ec58fd2aae1f9a61617d237c55ba67c5d3621d74"
+    },
+    {
+      "path": "vue-next/e2e/fixtures/overview-data.js",
+      "sha256": "5cd7b8f3cf6a6f15f9c904243be6a98830adfa324d1a1863ab3046d7bda6c463"
+    },
+    {
+      "path": "vue-next/e2e/layout.spec.js",
+      "sha256": "b02cebf3e2fe44cb5584a4a3c500ac3c0855de487ecf81ffeb701a05680c2767"
+    },
+    {
+      "path": "vue-next/e2e/live.spec.js",
+      "sha256": "1993b2a7215b8ff94b276eda01c6cb59140714a0aeadfe0cc08c607a3d33544b"
+    },
+    {
+      "path": "vue-next/e2e/preview.spec.js",
+      "sha256": "4295992892d4d65c25f34e74e69d81dd3f0b54cb34eb6560b432e40391759da1"
+    },
+    {
+      "path": "vue-next/e2e/previewServer.spec.js",
+      "sha256": "e961eb5d4ec111b2d3d4f99ae6da1370cc8104e3d7763b58bd0ca3f8549f3194"
+    },
+    {
+      "path": "vue-next/e2e/production.spec.js",
+      "sha256": "069bad39049d8203a6669d9caafe56195baf1f266593a7a2a5d7529e8f40f87c"
+    },
+    {
+      "path": "vue-next/e2e/shell.spec.js",
+      "sha256": "41573130923c74e3fa64563a6d5a496d10ebc4a695088faab4491a21e3a33455"
+    },
+    {
+      "path": "vue-next/e2e/stream.spec.js",
+      "sha256": "9121b659d323950def5cbdf9aed861cba5eb8dfa75b50c73a0daa17283d12aec"
+    },
+    {
+      "path": "vue-next/tests/admin-inventory.test.js",
+      "sha256": "89e66aac2f4e4f332519d89e1ec86e36e8eb0abf6ccb7979b9ab604e759c3bd6"
+    },
+    {
+      "path": "vue-next/tests/design.test.js",
+      "sha256": "27666dd2a2380067fd58cf45347d0ab6ae519472c148f847a3f05599c4bf8d18"
+    },
+    {
+      "path": "vue-next/playwright.config.js",
+      "sha256": "e1605c66ea5a0fcda5fcfe4db00fe1b8790d54a6873c6a1bf8911d99459f08cf"
+    }
+  ],
+  "build": [
+    {
+      "path": "vue-next/dist/aegis-mark.svg",
+      "sha256": "c5e9efa644033ad03234adb1236f11996732b364981595a32d242ab37fe12054"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminAccessView-CN237R4L.js",
+      "sha256": "05108a38fd13a4ec8cd4b49f858a4a40f90fd34df1ab0c36413262a92c15455c"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminAccountView-D6Zh5G_f.js",
+      "sha256": "aedbb34e2705e4a0e6d1e5dd258a8065c6ffae251469e6e4ce8b1125c928a0d6"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminDashboardView-DN25MFw6.js",
+      "sha256": "70cad1019977fdd8b701959f433e755f702b0c7d21248a4774cd1a9be4f0115c"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminDocumentsView-BOlBuI9-.js",
+      "sha256": "3ac3c93c4300e8678476f42fd0f9eba39311bcbda5c971c7ff049e20f0dfd7e6"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminDocumentView-BaphZKhx.js",
+      "sha256": "5aeb8c51474886f1c283de2e29cf3c5486b112d0eed0f6f40dfe3a5fcbd16def"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminDocumentView-D1udGypf.css",
+      "sha256": "955bbeb70b45a30daa948b6dd0d9fdb52d3e8b3fae8165bb2c7be89df7a6983a"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminFrame-DsLb4dGV.css",
+      "sha256": "14b4a30070e2aec540337871ecc34c47e55cf016f34e021309d4bbc61262a446"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminFrame-zZLyaNgt.js",
+      "sha256": "c6611ceaa9d331b1d14951a7c5b72b8d74f04043feb21b476d5235cdb855c3e7"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminKnowledgeBasesView-DO-tGDNI.js",
+      "sha256": "501fdd1f2e9535c743620553ea77193c049d2d219dbbf425b888fba4ff85278f"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminLoginView-CKX6KwPt.js",
+      "sha256": "2e79944a1751636b11cc9d2b02221a63a53462c6482245ff37e4117adcc71649"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminNotFoundView-C0fZ-hj-.js",
+      "sha256": "0269a3b68da1b232863c6ad23b3eac99409c811c8b44a8f934d1d8fd25cae80f"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminQualityOverviewView-BfVoNI42.js",
+      "sha256": "e698179245ba8a4895ea8242895d2058649ae47ee41a4875e9f1b87d27f864ad"
+    },
+    {
+      "path": "vue-next/dist/assets/AdminShell-BZnwJYfL.js",
+      "sha256": "71c46a9347d5963024da04591534c17615f12e8f2b940fe53b99bb606a381a3d"
+    },
+    {
+      "path": "vue-next/dist/assets/aegis-mark-CBCGGTsF.js",
+      "sha256": "093f40307b3e03e98315bd044f38c9dbd1421c49e0aa37ca8d4d19fd5eaa6d7b"
+    },
+    {
+      "path": "vue-next/dist/assets/ArrowPathIcon-B5MxORtg.js",
+      "sha256": "683341b4dfe8eb384a0d083ce4fb23743011c0bd4f9357c507289438f883f445"
+    },
+    {
+      "path": "vue-next/dist/assets/ArtifactPanel-BMbykOGq.js",
+      "sha256": "1851bddcbd22b13104f88540e87fb41eb26ed8fa513b21c8e98dff84b7a20c86"
+    },
+    {
+      "path": "vue-next/dist/assets/catalog-R5c_srsg.js",
+      "sha256": "c974cd46128fc6985eabe4c0751a910312885eea44f040561ceff9c815522124"
+    },
+    {
+      "path": "vue-next/dist/assets/catalog-V_KAMaYX.css",
+      "sha256": "aae516c1e104e4b678fdd3c1caf3496079ea975ef65e657bd643b6dfc3944516"
+    },
+    {
+      "path": "vue-next/dist/assets/catalogState-B5-kpXyL.js",
+      "sha256": "c207e644f780f979407d38cd9803f02885eae183206268c6b5dc8fb149626119"
+    },
+    {
+      "path": "vue-next/dist/assets/ChatMessages-C8vajVtU.js",
+      "sha256": "83f8247bf33acd5dace1dcf49409d406385afd441b816974e2e6128c3bdb8849"
+    },
+    {
+      "path": "vue-next/dist/assets/ChatMessages-Cao_AKd7.css",
+      "sha256": "9d026b2aedeb55ced554d5832f7cf4d7c61a6d09c4bceaf645f90641256ece93"
+    },
+    {
+      "path": "vue-next/dist/assets/ChatWorkspace-Co6A89Dd.css",
+      "sha256": "14cfd1939d2e2a92ed2b4875a1f0eedc8059ea97666ba37f79be591c400407c5"
+    },
+    {
+      "path": "vue-next/dist/assets/ChatWorkspace-svQAXv3C.js",
+      "sha256": "0ec1b36b5fa4c439e8e49fb76ce884af9bff75627c4446ead0c30bca234a28bb"
+    },
+    {
+      "path": "vue-next/dist/assets/Checkbox-DoPXIT47.js",
+      "sha256": "befe4e2ab5dbdf897c2cc2e4e200f08f9ad7de30e665a85e213df0479745cdc1"
+    },
+    {
+      "path": "vue-next/dist/assets/ChunksPanel-qx_qMawa.js",
+      "sha256": "e432b5163cdd3bb762db11030589b5a3285a487086908d61979a9546f3a360e8"
+    },
+    {
+      "path": "vue-next/dist/assets/collapseMotion-yMd4xN7k.js",
+      "sha256": "9036aff275a5f66ff9746848029accb90d1a1df5e8b811e7461569f7bfb3ddc2"
+    },
+    {
+      "path": "vue-next/dist/assets/environment-ghbIcedp.js",
+      "sha256": "849863adea553a16c2df837dd8b46364e71c0e284d82129551cd55d46a6e796f"
+    },
+    {
+      "path": "vue-next/dist/assets/ExplorerPanel-CXCEGImg.js",
+      "sha256": "89ad13b1ab142c73b0502d83e173366084053a24ce4b74e4f6d3e16716711e3f"
+    },
+    {
+      "path": "vue-next/dist/assets/FormItemContext-C1MiGzSA.js",
+      "sha256": "a9aaf14173d2427b6684a410d952c9552b231bc9ca64ccf44384573be736b093"
+    },
+    {
+      "path": "vue-next/dist/assets/index-55uLOsMs.js",
+      "sha256": "599ec9d44b6574538e5509a49f9f1eb1c6c491554b46b22c03c40544a522fff9"
+    },
+    {
+      "path": "vue-next/dist/assets/index-B2HopHWr.js",
+      "sha256": "eee51971b0c91327bcca6d9aa25d5d2138babaffaddf7c5356c23f91029ef113"
+    },
+    {
+      "path": "vue-next/dist/assets/index-BPP7YWr6.css",
+      "sha256": "4aafc76517dc8cafee7773f2c76107c30fe34a57909f4d5cfb4885b9ab52eaf7"
+    },
+    {
+      "path": "vue-next/dist/assets/index-BqYILyGH.js",
+      "sha256": "1c6848633ea3a6ed8a395f68278206aaf03a1df20a746c8cb14abb8f1d44d9e4"
+    },
+    {
+      "path": "vue-next/dist/assets/index-BZEmgcAx.js",
+      "sha256": "e0f1386a3dafa60724b9c301349d6bd606a3afc2f773454c635f2b264c1d0aac"
+    },
+    {
+      "path": "vue-next/dist/assets/index-CaoIX4H5.js",
+      "sha256": "82a5d5e9956ef2f651b17620974e88f1c9766a5624572faa2639f457c2939de5"
+    },
+    {
+      "path": "vue-next/dist/assets/index-CikM-QCh.js",
+      "sha256": "a238e96f4bc1142244405c24c8b430647f2dfcc59226b8c7712b33503334621a"
+    },
+    {
+      "path": "vue-next/dist/assets/index-EpW5SKQt.js",
+      "sha256": "0ecf447dd72c05d022852e8779b68f0bf98c4028427798d1e298557c9a5460c7"
+    },
+    {
+      "path": "vue-next/dist/assets/omit-Dd10SPuV.js",
+      "sha256": "49f3368e2d93b77b18149d6eb755c9010820545670fac2820bbf95b3cbf99232"
+    },
+    {
+      "path": "vue-next/dist/assets/overview-DiunIKMd.css",
+      "sha256": "85668e3650ce5d6da7ef000d141a46caf14448761147f90d37ff65106152473b"
+    },
+    {
+      "path": "vue-next/dist/assets/overview-DyKteah1.js",
+      "sha256": "72ff21cb3edcc2ee04b280a1921b38f75d9f5af6d3235d497bdc9b576b96ee79"
+    },
+    {
+      "path": "vue-next/dist/assets/overviewState-CqL_AsZX.js",
+      "sha256": "db9059bc6750a2bf9360ef79a6b293ced2744f0cc248b74f7b611fbd3bd71ce1"
+    },
+    {
+      "path": "vue-next/dist/assets/ParsePanel-eQbuWghr.js",
+      "sha256": "914bdccc7577d91e8a316866d70c37b3ce6806fb28d38c6eefd9025460cf2ad5"
+    },
+    {
+      "path": "vue-next/dist/assets/purify.es-CS_32Z9F.js",
+      "sha256": "0c8c9306c8361e775ae71c914d12913f8ca88a2baad92659de3869052a56187e"
+    },
+    {
+      "path": "vue-next/dist/assets/responsiveObserve-BpQ67KPO.js",
+      "sha256": "73acbdbed15f9b9bdb1c6642e5332f53cf618a5898bf80c0e398a9eaff191fe3"
+    },
+    {
+      "path": "vue-next/dist/assets/StrategyPanel-C_25NmVM.js",
+      "sha256": "bf8a9cbdc7e76c41ddf21bea1b218d93ef8c71d86e0c5dda5a26ccf109f9bfa5"
+    },
+    {
+      "path": "vue-next/dist/assets/styleChecker-DkjQKpjD.js",
+      "sha256": "997af0f6dd2fcdbe3bf5d4b7690a0f2075f146a2f1aed6e80a98b33e24f1af7d"
+    },
+    {
+      "path": "vue-next/dist/assets/TaskPanel-nvvBTJGL.js",
+      "sha256": "5d8edb09a25ccd50b47ac652a6fc2994deba05361dfdb1b7dcb8b4127d33cd20"
+    },
+    {
+      "path": "vue-next/dist/assets/vnode-sixTDPyV.js",
+      "sha256": "1e311f4b7b2bbba3ab5130d6798a3c16667ee0262cf1bc6e064994fa2633408e"
+    },
+    {
+      "path": "vue-next/dist/assets/XMarkIcon-CW8kJ_Ls.js",
+      "sha256": "ed544d152e7627e9be846ad3d5c0c043e7c49e946b19ddd30ac2d2841b1f9d8f"
+    },
+    {
+      "path": "vue-next/dist/favicon.svg",
+      "sha256": "c5e9efa644033ad03234adb1236f11996732b364981595a32d242ab37fe12054"
+    },
+    {
+      "path": "vue-next/dist/index.html",
+      "sha256": "2fa49d0e12996ecd6591e2705b6a1402f33dfbf65c109baacc267ecc41ef9a63"
+    }
+  ]
+}

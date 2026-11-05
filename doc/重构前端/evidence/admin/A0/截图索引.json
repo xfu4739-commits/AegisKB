@@ -1,0 +1,709 @@
+{
+  "head": "86e5eb5e8e5a1ca4b2e61682be963580d01866ff",
+  "date": "2026-11-04",
+  "data": "isolated fictional fixtures; no real backend writes",
+  "adminImages": 36,
+  "chatImages": 64,
+  "images": [
+    {
+      "file": "chat-regression/chrome-brand.png",
+      "width": 112,
+      "height": 32,
+      "bytes": 2169,
+      "sha256": "e76d92f2886dac5639bb0b2f4ddaaab1706203016da058934b2968ce50b482ee"
+    },
+    {
+      "file": "chat-regression/chrome-citation.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 39788,
+      "sha256": "1c7f759dd20bb84682a4a52afc2acec7aef9ab00a859305e916a88766d90bb6a"
+    },
+    {
+      "file": "chat-regression/chrome-legacy-admin-guard.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 22662,
+      "sha256": "f89dbe605b004531a82cf95dcf6849c9a4435516836382d329586fcd31d136b3"
+    },
+    {
+      "file": "chat-regression/chrome-legacy-error-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 82197,
+      "sha256": "4893055351d74ef171c60b801a18f1c52a958308e44a88eb5d8b17ea3a254152"
+    },
+    {
+      "file": "chat-regression/chrome-legacy-error-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 47024,
+      "sha256": "d5919f2964508e0fa2e03c37b7186e8f6d5554bc5984807f01e56afbe2a6f66b"
+    },
+    {
+      "file": "chat-regression/chrome-legacy-history-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 88149,
+      "sha256": "e52b9607fa8c46057df87a06480dba8b157eec562e65d9bd93771f9c16a26dff"
+    },
+    {
+      "file": "chat-regression/chrome-legacy-history-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 45359,
+      "sha256": "0d54bc6f819ada466e261fb1386e8e2fd996d140d23cd3c09c8ee01f3fe29197"
+    },
+    {
+      "file": "chat-regression/chrome-legacy-welcome-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 40307,
+      "sha256": "b8f7e873100faa50adcd233a5730764ed7359f5d432657c017d930f18657fa4f"
+    },
+    {
+      "file": "chat-regression/chrome-legacy-welcome-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 25782,
+      "sha256": "46ba35d3a5deb9a4f42f8db60ce931a69e969fd5bb3232c64803936b1059d6b9"
+    },
+    {
+      "file": "chat-regression/chrome-messages-1024.png",
+      "width": 1024,
+      "height": 768,
+      "bytes": 58235,
+      "sha256": "46ac1cb13acdbe6155a07d3084c9c0c7ccf484a9a4cf6e92025b5e92ed017a8e"
+    },
+    {
+      "file": "chat-regression/chrome-messages-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 75162,
+      "sha256": "d906ba95e9064704aaee09966396a5528574fb420494bb5999c19254fc43ca59"
+    },
+    {
+      "file": "chat-regression/chrome-messages-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37650,
+      "sha256": "4156aa0a1c4beb171dae86454bc9f398873e13807c5753d68c4bb17f45cb6cc5"
+    },
+    {
+      "file": "chat-regression/chrome-messages-768.png",
+      "width": 768,
+      "height": 1024,
+      "bytes": 58257,
+      "sha256": "e3d1b77f3ceb8e39a9b4200a3e134ef94b72fd0517df1a00ea24a49919e12cc1"
+    },
+    {
+      "file": "chat-regression/chrome-next-error-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 74098,
+      "sha256": "0be43abc467f051581a813bc557adf2ebbebd629c6c07e62828a58aa6bce8d27"
+    },
+    {
+      "file": "chat-regression/chrome-next-error-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37767,
+      "sha256": "a8d6a1084eaa5f995247f029bc848a216bebd82e40dbc6bad38b0238a7b03070"
+    },
+    {
+      "file": "chat-regression/chrome-next-history-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 74098,
+      "sha256": "0be43abc467f051581a813bc557adf2ebbebd629c6c07e62828a58aa6bce8d27"
+    },
+    {
+      "file": "chat-regression/chrome-next-history-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37767,
+      "sha256": "a8d6a1084eaa5f995247f029bc848a216bebd82e40dbc6bad38b0238a7b03070"
+    },
+    {
+      "file": "chat-regression/chrome-next-welcome-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 34890,
+      "sha256": "14afd49ef9e238dadd971bcd1cd177b4cc6700faaa274218e45c3613d48a77cc"
+    },
+    {
+      "file": "chat-regression/chrome-next-welcome-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 18445,
+      "sha256": "96bdd62772fd6abfe47489ca9bc9d064aaf9af4f3d8540b783f93e3a3039dcdf"
+    },
+    {
+      "file": "chat-regression/chrome-preview-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 75199,
+      "sha256": "e55cb00a72593793f387b54059292c3fcc038f7686a5ca27a664a819c04150ca"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-brand.png",
+      "width": 112,
+      "height": 32,
+      "bytes": 2169,
+      "sha256": "e76d92f2886dac5639bb0b2f4ddaaab1706203016da058934b2968ce50b482ee"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-citation.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 39788,
+      "sha256": "1c7f759dd20bb84682a4a52afc2acec7aef9ab00a859305e916a88766d90bb6a"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-legacy-admin-guard.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 22662,
+      "sha256": "f89dbe605b004531a82cf95dcf6849c9a4435516836382d329586fcd31d136b3"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-legacy-error-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 82197,
+      "sha256": "4893055351d74ef171c60b801a18f1c52a958308e44a88eb5d8b17ea3a254152"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-legacy-error-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 47024,
+      "sha256": "d5919f2964508e0fa2e03c37b7186e8f6d5554bc5984807f01e56afbe2a6f66b"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-legacy-history-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 88149,
+      "sha256": "e52b9607fa8c46057df87a06480dba8b157eec562e65d9bd93771f9c16a26dff"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-legacy-history-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 45359,
+      "sha256": "0d54bc6f819ada466e261fb1386e8e2fd996d140d23cd3c09c8ee01f3fe29197"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-legacy-welcome-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 40307,
+      "sha256": "b8f7e873100faa50adcd233a5730764ed7359f5d432657c017d930f18657fa4f"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-legacy-welcome-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 25782,
+      "sha256": "46ba35d3a5deb9a4f42f8db60ce931a69e969fd5bb3232c64803936b1059d6b9"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-messages-1024.png",
+      "width": 1024,
+      "height": 768,
+      "bytes": 58235,
+      "sha256": "46ac1cb13acdbe6155a07d3084c9c0c7ccf484a9a4cf6e92025b5e92ed017a8e"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-messages-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 75162,
+      "sha256": "d906ba95e9064704aaee09966396a5528574fb420494bb5999c19254fc43ca59"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-messages-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37650,
+      "sha256": "4156aa0a1c4beb171dae86454bc9f398873e13807c5753d68c4bb17f45cb6cc5"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-messages-768.png",
+      "width": 768,
+      "height": 1024,
+      "bytes": 58257,
+      "sha256": "e3d1b77f3ceb8e39a9b4200a3e134ef94b72fd0517df1a00ea24a49919e12cc1"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-next-error-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 74098,
+      "sha256": "0be43abc467f051581a813bc557adf2ebbebd629c6c07e62828a58aa6bce8d27"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-next-error-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37767,
+      "sha256": "a8d6a1084eaa5f995247f029bc848a216bebd82e40dbc6bad38b0238a7b03070"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-next-history-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 74098,
+      "sha256": "0be43abc467f051581a813bc557adf2ebbebd629c6c07e62828a58aa6bce8d27"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-next-history-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37767,
+      "sha256": "a8d6a1084eaa5f995247f029bc848a216bebd82e40dbc6bad38b0238a7b03070"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-next-welcome-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 34890,
+      "sha256": "14afd49ef9e238dadd971bcd1cd177b4cc6700faaa274218e45c3613d48a77cc"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-next-welcome-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 18445,
+      "sha256": "96bdd62772fd6abfe47489ca9bc9d064aaf9af4f3d8540b783f93e3a3039dcdf"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-preview-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 75199,
+      "sha256": "e55cb00a72593793f387b54059292c3fcc038f7686a5ca27a664a819c04150ca"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-scope-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "bytes": 85763,
+      "sha256": "5313789d7c10f0b238d27526a51c8fb5853f3787f614784b68e9bedf19eb9e32"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-scope-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 89027,
+      "sha256": "f9fb16dd81d5a63d86b4cfad3dbb7cb1abd317e71d98b034ebf399a9d2255911"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-scope-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 46225,
+      "sha256": "1e7e9931d3c24da02a7d1c9e5852f01d1fd3208d37c2eda2302546a084a087ce"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-scope-768.png",
+      "width": 768,
+      "height": 844,
+      "bytes": 61182,
+      "sha256": "61f788dcd0cd20016887cd8f6a3a25d75896410d878187f9ccfda823f01d1451"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-source-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "bytes": 119454,
+      "sha256": "2b04699aa0a6d61aa7a92fe1c62767f629dd3edf48bfe832eca03099dfacadc0"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-source-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 125143,
+      "sha256": "2347e498ec77181eb6e9b01bde1f6e1fb6b856521bcec545e9a413d7afc8a784"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-source-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37343,
+      "sha256": "3c4668c5f1378f1d65fac21cd9096603d6b93d1a8c390cd5d059f7c661cb3751"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-source-768.png",
+      "width": 768,
+      "height": 844,
+      "bytes": 111992,
+      "sha256": "062ee57619ea38c87f3f09c6556f21ae9d6c3c27a9aba1931d686361ce6fd5c1"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-welcome-1024.png",
+      "width": 1024,
+      "height": 768,
+      "bytes": 30193,
+      "sha256": "0ef865cb1531f5437b76e93940091cc2caf8e746d8877a16a803ad4ac53eec28"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-welcome-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 34854,
+      "sha256": "71b754c44858910330a9ff834ec30f4c8f5f6bec24c0762eb1e9ec375bbfe328"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-welcome-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 18445,
+      "sha256": "96bdd62772fd6abfe47489ca9bc9d064aaf9af4f3d8540b783f93e3a3039dcdf"
+    },
+    {
+      "file": "chat-regression/chrome-reduce-welcome-768.png",
+      "width": 768,
+      "height": 1024,
+      "bytes": 21737,
+      "sha256": "aabf7c8c8a0f7f3aa0ced21111d3e4b11e635bc6c3529b027d21f0720657e94a"
+    },
+    {
+      "file": "chat-regression/chrome-scope-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "bytes": 85763,
+      "sha256": "5313789d7c10f0b238d27526a51c8fb5853f3787f614784b68e9bedf19eb9e32"
+    },
+    {
+      "file": "chat-regression/chrome-scope-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 89011,
+      "sha256": "b9df7f169eca1badfbbdcfd7685324ead6fd64da4d1938883c36c74fb69f0a87"
+    },
+    {
+      "file": "chat-regression/chrome-scope-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 46225,
+      "sha256": "1e7e9931d3c24da02a7d1c9e5852f01d1fd3208d37c2eda2302546a084a087ce"
+    },
+    {
+      "file": "chat-regression/chrome-scope-768.png",
+      "width": 768,
+      "height": 844,
+      "bytes": 61182,
+      "sha256": "61f788dcd0cd20016887cd8f6a3a25d75896410d878187f9ccfda823f01d1451"
+    },
+    {
+      "file": "chat-regression/chrome-source-1024.png",
+      "width": 1024,
+      "height": 1000,
+      "bytes": 119454,
+      "sha256": "2b04699aa0a6d61aa7a92fe1c62767f629dd3edf48bfe832eca03099dfacadc0"
+    },
+    {
+      "file": "chat-regression/chrome-source-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 125166,
+      "sha256": "93543315590641afd500a75ef9492636fbfe672e132ceb51a2dcebb7ff2d25c4"
+    },
+    {
+      "file": "chat-regression/chrome-source-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37343,
+      "sha256": "3c4668c5f1378f1d65fac21cd9096603d6b93d1a8c390cd5d059f7c661cb3751"
+    },
+    {
+      "file": "chat-regression/chrome-source-768.png",
+      "width": 768,
+      "height": 844,
+      "bytes": 111992,
+      "sha256": "062ee57619ea38c87f3f09c6556f21ae9d6c3c27a9aba1931d686361ce6fd5c1"
+    },
+    {
+      "file": "chat-regression/chrome-welcome-1024.png",
+      "width": 1024,
+      "height": 768,
+      "bytes": 30193,
+      "sha256": "0ef865cb1531f5437b76e93940091cc2caf8e746d8877a16a803ad4ac53eec28"
+    },
+    {
+      "file": "chat-regression/chrome-welcome-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 34854,
+      "sha256": "71b754c44858910330a9ff834ec30f4c8f5f6bec24c0762eb1e9ec375bbfe328"
+    },
+    {
+      "file": "chat-regression/chrome-welcome-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 18445,
+      "sha256": "96bdd62772fd6abfe47489ca9bc9d064aaf9af4f3d8540b783f93e3a3039dcdf"
+    },
+    {
+      "file": "chat-regression/chrome-welcome-768.png",
+      "width": 768,
+      "height": 1024,
+      "bytes": 21737,
+      "sha256": "aabf7c8c8a0f7f3aa0ced21111d3e4b11e635bc6c3529b027d21f0720657e94a"
+    },
+    {
+      "file": "chrome-direction-detail-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 71959,
+      "sha256": "44650a5069080bb8783cd2165264d236e36027ff62f41cda72a9d75b2911b67a"
+    },
+    {
+      "file": "chrome-direction-detail-390.png",
+      "width": 390,
+      "height": 1102,
+      "bytes": 49220,
+      "sha256": "17321bbb4f708e38c786bbd0fc236ebf031e4f8055c85572a7bc85c9c217afba"
+    },
+    {
+      "file": "chrome-direction-list-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 69424,
+      "sha256": "ea90650f221f0d93148e3b24415df816d0163276d2eea5db30afbaec5b2e5d8b"
+    },
+    {
+      "file": "chrome-direction-list-390.png",
+      "width": 390,
+      "height": 876,
+      "bytes": 37115,
+      "sha256": "d81be97e9317c3f73dcb05670166a5821d42f11977b4b4164f12725987b28172"
+    },
+    {
+      "file": "chrome-direction-overview-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 81242,
+      "sha256": "885f26ac8d3d860b622711f623e046eea49130f0849c029e60e49925ef7ab932"
+    },
+    {
+      "file": "chrome-direction-overview-390.png",
+      "width": 390,
+      "height": 1438,
+      "bytes": 59745,
+      "sha256": "9431de7abcae9abc55d41cc85b5065681afc445eb844052df359227a412cb897"
+    },
+    {
+      "file": "chrome-legacy-configuration-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 177888,
+      "sha256": "e81220bc84f241a99ac059c1fa6f53c68385d0a35a979630eb81339e649846a3"
+    },
+    {
+      "file": "chrome-legacy-configuration-390.png",
+      "width": 390,
+      "height": 896,
+      "bytes": 64934,
+      "sha256": "c2aa8f49dd5de1d7f3ac4efdd685487c8ed1007d3a4d6420c0c4cc822f537b20"
+    },
+    {
+      "file": "chrome-legacy-dashboard-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 204994,
+      "sha256": "2dad9e9fbe7b15e74f9e55d11714705579d0234fb9c980eeb5d488468aacdbba"
+    },
+    {
+      "file": "chrome-legacy-dashboard-390.png",
+      "width": 390,
+      "height": 1141,
+      "bytes": 81023,
+      "sha256": "cd34fb2ea72951f2249a1932b6eefa7096d5aae2bb58839094702120fba39916"
+    },
+    {
+      "file": "chrome-legacy-document-detail-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 194396,
+      "sha256": "cb3595e58cf0b6954448815f4dd4c1dfcadf458c507803dc569c0132fa5960ee"
+    },
+    {
+      "file": "chrome-legacy-document-detail-390.png",
+      "width": 390,
+      "height": 909,
+      "bytes": 73999,
+      "sha256": "6f1002c101a9e0661183be4cba91bd6e9cb2a47d182e050dd5b0e7b61f6d6f06"
+    },
+    {
+      "file": "chrome-legacy-documents-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 166760,
+      "sha256": "b0112dc88d519add6a83de9e2d21347d97eba0dbc3c429aee999c91816178424"
+    },
+    {
+      "file": "chrome-legacy-documents-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 55308,
+      "sha256": "69ef295577218c1ad2009544cb407862662191d919b13a7510159d081d6581eb"
+    },
+    {
+      "file": "chrome-legacy-knowledge-bases-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 164986,
+      "sha256": "641c624f2de280faec9f14f4e26e95c6bb74ea7aef430139da82aef762b8ba84"
+    },
+    {
+      "file": "chrome-legacy-knowledge-bases-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 53541,
+      "sha256": "aa48ffc794ca147d9565c3c90505a64999162faca0327d799dd6953e96c97845"
+    },
+    {
+      "file": "chrome-legacy-observability-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 192549,
+      "sha256": "c3ad77d3589a0efa915184bca2ebb98c11be7bc9775ec2ba64c6860476654f3a"
+    },
+    {
+      "file": "chrome-legacy-observability-390.png",
+      "width": 390,
+      "height": 1054,
+      "bytes": 73918,
+      "sha256": "df24647d243adb6a94d67e264874aea76b6dceafe7422280550c35159fc3aae6"
+    },
+    {
+      "file": "chrome-reduce-direction-detail-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 71959,
+      "sha256": "44650a5069080bb8783cd2165264d236e36027ff62f41cda72a9d75b2911b67a"
+    },
+    {
+      "file": "chrome-reduce-direction-detail-390.png",
+      "width": 390,
+      "height": 1102,
+      "bytes": 49220,
+      "sha256": "17321bbb4f708e38c786bbd0fc236ebf031e4f8055c85572a7bc85c9c217afba"
+    },
+    {
+      "file": "chrome-reduce-direction-list-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 69424,
+      "sha256": "ea90650f221f0d93148e3b24415df816d0163276d2eea5db30afbaec5b2e5d8b"
+    },
+    {
+      "file": "chrome-reduce-direction-list-390.png",
+      "width": 390,
+      "height": 876,
+      "bytes": 37115,
+      "sha256": "d81be97e9317c3f73dcb05670166a5821d42f11977b4b4164f12725987b28172"
+    },
+    {
+      "file": "chrome-reduce-direction-overview-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 81242,
+      "sha256": "885f26ac8d3d860b622711f623e046eea49130f0849c029e60e49925ef7ab932"
+    },
+    {
+      "file": "chrome-reduce-direction-overview-390.png",
+      "width": 390,
+      "height": 1438,
+      "bytes": 59745,
+      "sha256": "9431de7abcae9abc55d41cc85b5065681afc445eb844052df359227a412cb897"
+    },
+    {
+      "file": "chrome-reduce-legacy-configuration-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 177888,
+      "sha256": "e81220bc84f241a99ac059c1fa6f53c68385d0a35a979630eb81339e649846a3"
+    },
+    {
+      "file": "chrome-reduce-legacy-configuration-390.png",
+      "width": 390,
+      "height": 896,
+      "bytes": 64934,
+      "sha256": "c2aa8f49dd5de1d7f3ac4efdd685487c8ed1007d3a4d6420c0c4cc822f537b20"
+    },
+    {
+      "file": "chrome-reduce-legacy-dashboard-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 204994,
+      "sha256": "2dad9e9fbe7b15e74f9e55d11714705579d0234fb9c980eeb5d488468aacdbba"
+    },
+    {
+      "file": "chrome-reduce-legacy-dashboard-390.png",
+      "width": 390,
+      "height": 1141,
+      "bytes": 81023,
+      "sha256": "cd34fb2ea72951f2249a1932b6eefa7096d5aae2bb58839094702120fba39916"
+    },
+    {
+      "file": "chrome-reduce-legacy-document-detail-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 194396,
+      "sha256": "cb3595e58cf0b6954448815f4dd4c1dfcadf458c507803dc569c0132fa5960ee"
+    },
+    {
+      "file": "chrome-reduce-legacy-document-detail-390.png",
+      "width": 390,
+      "height": 909,
+      "bytes": 74024,
+      "sha256": "e43d03231845c144660aa0d1b42ea0b03053cb21dd4f04f1096c636003d11951"
+    },
+    {
+      "file": "chrome-reduce-legacy-documents-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 166760,
+      "sha256": "b0112dc88d519add6a83de9e2d21347d97eba0dbc3c429aee999c91816178424"
+    },
+    {
+      "file": "chrome-reduce-legacy-documents-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 55308,
+      "sha256": "69ef295577218c1ad2009544cb407862662191d919b13a7510159d081d6581eb"
+    },
+    {
+      "file": "chrome-reduce-legacy-knowledge-bases-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 164986,
+      "sha256": "641c624f2de280faec9f14f4e26e95c6bb74ea7aef430139da82aef762b8ba84"
+    },
+    {
+      "file": "chrome-reduce-legacy-knowledge-bases-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 53541,
+      "sha256": "aa48ffc794ca147d9565c3c90505a64999162faca0327d799dd6953e96c97845"
+    },
+    {
+      "file": "chrome-reduce-legacy-observability-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 192549,
+      "sha256": "c3ad77d3589a0efa915184bca2ebb98c11be7bc9775ec2ba64c6860476654f3a"
+    },
+    {
+      "file": "chrome-reduce-legacy-observability-390.png",
+      "width": 390,
+      "height": 1054,
+      "bytes": 73918,
+      "sha256": "df24647d243adb6a94d67e264874aea76b6dceafe7422280550c35159fc3aae6"
+    }
+  ]
+}

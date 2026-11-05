@@ -27,10 +27,21 @@ public class GraphRagBuildProperties {
 
     private long retryBackoffMillis = 500L;
 
-    public boolean isLeaseEnabled() { return managed().leaseEnabled; }
-    public int getLeaseTtlSeconds() { return managed().leaseTtlSeconds; }
-    public int getMaxAttempts() { return managed().maxAttempts; }
-    public long getRetryBackoffMillis() { return managed().retryBackoffMillis; }
+    public boolean isLeaseEnabled() {
+        return managed().leaseEnabled;
+    }
+
+    public int getLeaseTtlSeconds() {
+        return managed().leaseTtlSeconds;
+    }
+
+    public int getMaxAttempts() {
+        return managed().maxAttempts;
+    }
+
+    public long getRetryBackoffMillis() {
+        return managed().retryBackoffMillis;
+    }
 
     private GraphRagBuildProperties managed() {
         if (systemConfigProvider == null) {

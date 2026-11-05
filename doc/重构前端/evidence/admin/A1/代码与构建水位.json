@@ -1,0 +1,425 @@
+{
+  "head": "86e5eb5e8e5a1ca4b2e61682be963580d01866ff",
+  "stage": "A1",
+  "date": "2026-11-04",
+  "workingTree": "uncommitted implementation; source frozen for final browser run",
+  "manualAcceptance": "pending user real login and feedback",
+  "source": [
+    {
+      "file": "src/App.vue",
+      "bytes": 1178,
+      "sha256": "8bde21c6038becabce0ef2fcc6455e0614d63e1159ba9ac99275e31537d9b6a4"
+    },
+    {
+      "file": "src/config/environment.js",
+      "bytes": 525,
+      "sha256": "83262bee8c519b43967d500618351fe6483521189e6f0a89c5ab1fbbf6405808"
+    },
+    {
+      "file": "src/config/environment.spec.js",
+      "bytes": 646,
+      "sha256": "f91f24c1a799191ad2e82718f0fa04cdc92d31a02e4eb7f188d7d3d771cc28f2"
+    },
+    {
+      "file": "src/features/admin/shell/admin.css",
+      "bytes": 5923,
+      "sha256": "5aace373263a539f6b1be6d1fea2771306c8a54c37f81667e9305420912fc36e"
+    },
+    {
+      "file": "src/features/admin/shell/AdminAccessView.vue",
+      "bytes": 1758,
+      "sha256": "5c150d64cd357f17ce920715ba68140f5005536f35dedfd37e526062487e1319"
+    },
+    {
+      "file": "src/features/admin/shell/AdminAccountView.vue",
+      "bytes": 470,
+      "sha256": "a4ac715321b2c7541e6b97647f67de2a3ea9d967952133b04bca241b1cbc1db7"
+    },
+    {
+      "file": "src/features/admin/shell/AdminFrame.vue",
+      "bytes": 1119,
+      "sha256": "b0620045432c9feb5b29e5d98ce94d858ca7a8581637b1100eefc0d75c08b36f"
+    },
+    {
+      "file": "src/features/admin/shell/AdminLoginView.vue",
+      "bytes": 3372,
+      "sha256": "29bd6e1be34b2a3a5f99a10694f4f668eb33b6459db2725afcb36f42a63912cc"
+    },
+    {
+      "file": "src/features/admin/shell/AdminNav.vue",
+      "bytes": 1721,
+      "sha256": "5d1c8ab5be5939a91584e8571023a6313293b51156208128e83ffc49753273f5"
+    },
+    {
+      "file": "src/features/admin/shell/AdminNotFoundView.vue",
+      "bytes": 143,
+      "sha256": "6f2286b5eb000f92b291ba2dcf84088770568ef7ade4ae1da8e9edb1a6297f5d"
+    },
+    {
+      "file": "src/features/admin/shell/AdminShell.vue",
+      "bytes": 4407,
+      "sha256": "4a3446c84197356a0e1d60820caea79688e80b2e071e39528d02cc91d88205b2"
+    },
+    {
+      "file": "src/features/chat/chatApi.js",
+      "bytes": 1287,
+      "sha256": "e37e1e6ebcbb46db4dee23ea9d107968df0d2a931cf954583d1431e5270de0e0"
+    },
+    {
+      "file": "src/features/chat/chatApi.spec.js",
+      "bytes": 3965,
+      "sha256": "2b44d41ff5ac4ae3ed64a1142f53387c60a105b5020fb920b46a60351f4c633b"
+    },
+    {
+      "file": "src/features/chat/ChatComposer.vue",
+      "bytes": 8004,
+      "sha256": "85cf54564ed18e412eb7be03a19fb033b98d15973a41db9124d5116688caf677"
+    },
+    {
+      "file": "src/features/chat/ChatInput.vue",
+      "bytes": 828,
+      "sha256": "1848c0f3c267f7048fa763eeaa19ca68a7f3ec2f7e91e4edb394deda919e51e8"
+    },
+    {
+      "file": "src/features/chat/ChatMarkdown.vue",
+      "bytes": 4115,
+      "sha256": "115fc6e4afc3b2537eb313c687b25339dc6a2633f52085d4d107ebedc512e74d"
+    },
+    {
+      "file": "src/features/chat/ChatMessages.vue",
+      "bytes": 7821,
+      "sha256": "e810bf4fda1ca34d1fcac5aea268a5e22b999d0ae8cd2c9eaf067df8826e04dd"
+    },
+    {
+      "file": "src/features/chat/ChatSelect.vue",
+      "bytes": 907,
+      "sha256": "8d5160325ea4964a47f80b761839434d61ae058f8010633b924527b8c1c11f03"
+    },
+    {
+      "file": "src/features/chat/ChatSidebar.vue",
+      "bytes": 5307,
+      "sha256": "663db42adcc0c7a85572a38cddc75d87fd088ffb0912f16873b6a342c46e39f6"
+    },
+    {
+      "file": "src/features/chat/ChatWelcome.vue",
+      "bytes": 979,
+      "sha256": "fca79c40916d1ec5bb4e279254773ba1944b94e3acca2033f6efcfce46d7d668"
+    },
+    {
+      "file": "src/features/chat/ChatWorkspace.vue",
+      "bytes": 14869,
+      "sha256": "88c7164e3da85f9dcb64420377ce9ba34e340ff73563fd045ea46497043a58ac"
+    },
+    {
+      "file": "src/features/chat/liveState.js",
+      "bytes": 11862,
+      "sha256": "412559d942cf59edd2add503c7674c6c1a7a9c77a9f397b2b4bda04e7f0050ab"
+    },
+    {
+      "file": "src/features/chat/liveState.spec.js",
+      "bytes": 2914,
+      "sha256": "2b2afa479ef26fecb6e359465a3bffde64dbc13ad096c6d7b965c5c5b4bcb541"
+    },
+    {
+      "file": "src/features/chat/markdown.js",
+      "bytes": 3258,
+      "sha256": "34051936be186fad2c5c4f721d3bd58385a37d1f13dd3266a7d97a2335253a18"
+    },
+    {
+      "file": "src/features/chat/markdown.spec.js",
+      "bytes": 2633,
+      "sha256": "0131b058cb1ab9017606e7740187de482087ab075fded4d10b957b3426cc2f4a"
+    },
+    {
+      "file": "src/features/chat/previewState.js",
+      "bytes": 3957,
+      "sha256": "96285101e2467e08f947cd0d7688bfdcd7f531c800f49e74df9ebbf514bbf654"
+    },
+    {
+      "file": "src/features/chat/previewState.spec.js",
+      "bytes": 2633,
+      "sha256": "e4f4c895d10f1988ba226c927f39aaa423e1836faada450e5535fc4b1721f223"
+    },
+    {
+      "file": "src/features/chat/references.js",
+      "bytes": 840,
+      "sha256": "d938dd16974a7ce1e81cc3826f2521d1a0956bea56086727b948eb2415e80c7d"
+    },
+    {
+      "file": "src/features/chat/stream.js",
+      "bytes": 1096,
+      "sha256": "4b4b0e7472463b3ff53933a3a8034f8e67669619e2fe26d4549998181e749ecf"
+    },
+    {
+      "file": "src/features/chat/stream.spec.js",
+      "bytes": 1027,
+      "sha256": "d692b81bafd6e8af0cc704c1d321a266de561d038a36180fabd978b957f78046"
+    },
+    {
+      "file": "src/features/chat/streamState.spec.js",
+      "bytes": 4480,
+      "sha256": "6f69b936cb9656f03e3e00ec2b1c9377e8d0ab1e30ed088b0e49dfa9ccaaae41"
+    },
+    {
+      "file": "src/main.js",
+      "bytes": 197,
+      "sha256": "9926fbcc8ee2a63e6947c8ec2f4ea2a07feb2dc11f097cbcb80273bda9e97548"
+    },
+    {
+      "file": "src/router/adminGuard.js",
+      "bytes": 2852,
+      "sha256": "406652f871e73e0b1b5389109282b56ef070cccd1b90f6acb806b6f27e9b8766"
+    },
+    {
+      "file": "src/router/adminGuard.spec.js",
+      "bytes": 4800,
+      "sha256": "a7b74be4f57c4a72187f1e00e7c1ac1bcb89c6c47dd39ef870f9151819d09bf9"
+    },
+    {
+      "file": "src/router/index.js",
+      "bytes": 1558,
+      "sha256": "7e8450bd1709a75190846c72596603a5e44fc2df11b2d9d1aa5caeeb38efe25a"
+    },
+    {
+      "file": "src/shared/api/http.js",
+      "bytes": 4558,
+      "sha256": "2f101f3ce6f1093ed7f9f396ad3f4cc08a5f1a2859cad222cd4e4a9caaba3f32"
+    },
+    {
+      "file": "src/shared/auth/adminAuth.js",
+      "bytes": 3575,
+      "sha256": "d5550f152ecc6153d9729020a5571fdf1adb80d5fc225bdfc91b3943b094e22b"
+    },
+    {
+      "file": "src/shared/auth/adminAuth.spec.js",
+      "bytes": 9701,
+      "sha256": "f06278a7e6bd660fb2411d01c60da222e7fd1c969436d7fbff7757a450b4e95e"
+    },
+    {
+      "file": "src/shared/auth/session.js",
+      "bytes": 2100,
+      "sha256": "4f093365a4aed15b5d95cc0a1f985f646012be7b7f00554ab52eb93d69b94897"
+    },
+    {
+      "file": "src/styles/base.css",
+      "bytes": 984,
+      "sha256": "e2b58fa96ac5265bc9bdf2e8cca4f90bec17b9f5cb49e5dcc8c77f8e15829239"
+    },
+    {
+      "file": "src/styles/tokens.css",
+      "bytes": 1506,
+      "sha256": "9ecc6e1fede2ccfcfb24cd1854ac79db9d6295db91081e60bc5d3fe5c2c1a721"
+    },
+    {
+      "file": "src/theme.js",
+      "bytes": 883,
+      "sha256": "84e9a30c2849b5252717af5830438961f0a09d64935f672831c7e60f2ec55f81"
+    },
+    {
+      "file": "package.json",
+      "bytes": 925,
+      "sha256": "6db7cfed5022710ba091a87a83f1b21104144dd5fb28439bea66441b4e5f0d13"
+    },
+    {
+      "file": "package-lock.json",
+      "bytes": 129665,
+      "sha256": "71d7155f8152e4e84eefbff5c70f2900f816231a21effd42aaad2b86357e124c"
+    },
+    {
+      "file": "vite.config.js",
+      "bytes": 1624,
+      "sha256": "063d4f31fcef042867cd58173ceae6255300432175a1971f16be5307e3500279"
+    },
+    {
+      "file": "index.html",
+      "bytes": 503,
+      "sha256": "6c4e38518e4638ee0f8cec9e973b6a23834533ed095cc55a0f54194d477004d8"
+    }
+  ],
+  "build": [
+    {
+      "file": "dist/aegis-mark.svg",
+      "bytes": 453,
+      "sha256": "c5e9efa644033ad03234adb1236f11996732b364981595a32d242ab37fe12054"
+    },
+    {
+      "file": "dist/assets/AdminAccessView-CnvQ2HMN.js",
+      "bytes": 1488,
+      "sha256": "039ab9203d21d0a5df1d43a5c9f01dd1d6863b56eeb603e2acd43b7100b1e24a"
+    },
+    {
+      "file": "dist/assets/AdminAccountView-DHvi33xP.js",
+      "bytes": 8197,
+      "sha256": "81d9f988e67295ce78386707f520242b19e45ccdf56db901a5795fc312378d50"
+    },
+    {
+      "file": "dist/assets/AdminFrame-CUmx6387.js",
+      "bytes": 969,
+      "sha256": "74c6f0014910bf70ea47ce36797999af1dd038a99d3d266226ce67709c4f14d2"
+    },
+    {
+      "file": "dist/assets/AdminFrame-DXHPorkE.css",
+      "bytes": 5251,
+      "sha256": "a0b27bc83c722d0007f9182af9bf7b40b80dc1af9fde76fe8ec86aa481a535d4"
+    },
+    {
+      "file": "dist/assets/AdminLoginView-B4IWVfTO.js",
+      "bytes": 72979,
+      "sha256": "a621d8eb624eb1f5198e63c948fc7ff33e7b705cd9215481f5ce2b885b250b07"
+    },
+    {
+      "file": "dist/assets/AdminNotFoundView-D69KIME1.js",
+      "bytes": 378,
+      "sha256": "c8b7ba33e5c3220ba061952088a70733c4fd72cdd1949aa0fc95516bcf58bb38"
+    },
+    {
+      "file": "dist/assets/AdminShell-l0JNHeGF.js",
+      "bytes": 13833,
+      "sha256": "d4ffbee65d97a8af1a1b339d29f001f0026622000322d5cfc2d7b93db7f14fe8"
+    },
+    {
+      "file": "dist/assets/aegis-mark-CMp0Gi__.js",
+      "bytes": 25341,
+      "sha256": "a3e49743bf681450c2b4b349d125d49b58ab5f11690e2f67cbc45b2186692a06"
+    },
+    {
+      "file": "dist/assets/ChatMessages-BJGTkdTR.js",
+      "bytes": 141302,
+      "sha256": "13a4d7e4a94adfc1db8a648ef99e247f88276d71e9be595f95ca2e406ffb66e9"
+    },
+    {
+      "file": "dist/assets/ChatMessages-Cao_AKd7.css",
+      "bytes": 4955,
+      "sha256": "9d026b2aedeb55ced554d5832f7cf4d7c61a6d09c4bceaf645f90641256ece93"
+    },
+    {
+      "file": "dist/assets/ChatWorkspace-Co6A89Dd.css",
+      "bytes": 8597,
+      "sha256": "14cfd1939d2e2a92ed2b4875a1f0eedc8059ea97666ba37f79be591c400407c5"
+    },
+    {
+      "file": "dist/assets/ChatWorkspace-r3QDOigX.js",
+      "bytes": 170665,
+      "sha256": "7f8642f1f605c409afd37c412f2a240ac2485eb579f8adfd8f5bb48e6b2facd4"
+    },
+    {
+      "file": "dist/assets/environment-X0dME-P4.js",
+      "bytes": 75969,
+      "sha256": "d96cce8f9481773a963c26c0bf19da707a8c4f7ae22da5bf9baffedaa7b35534"
+    },
+    {
+      "file": "dist/assets/index--IcbwE1S.css",
+      "bytes": 2421,
+      "sha256": "001d62a46080c4167420325868b463bc1b59c89f55f12dc0e4000322b0ba7eaa"
+    },
+    {
+      "file": "dist/assets/index-BPgC3U3i.js",
+      "bytes": 254354,
+      "sha256": "291d6925452c923cdfc1451ea9a77ba3d05e1eb7dbbca2ba3a2b6db17d420ce2"
+    },
+    {
+      "file": "dist/assets/index-CJ2ybhNU.js",
+      "bytes": 52383,
+      "sha256": "8aefd060b6f230e19bf76ccac3fd23ab0b53385d7aca57289db002e95a351373"
+    },
+    {
+      "file": "dist/assets/responsiveObserve-Bapwy0KK.js",
+      "bytes": 1029,
+      "sha256": "f7d10a92dccf279535773e8ad13404a6ff1129828ae5f993949838a23413caa7"
+    },
+    {
+      "file": "dist/assets/vnode-rw1vj4l-.js",
+      "bytes": 476,
+      "sha256": "0d11f9c449304885f80ebd5256e9910e82853aa82d6514e83da992f4f56e6fc0"
+    },
+    {
+      "file": "dist/assets/XMarkIcon-Cl-TnP0S.js",
+      "bytes": 106276,
+      "sha256": "b2b7f720e3ce138dfe46da557eb6d5beb701665908c9dd3feac7dc7da54f8dc9"
+    },
+    {
+      "file": "dist/favicon.svg",
+      "bytes": 453,
+      "sha256": "c5e9efa644033ad03234adb1236f11996732b364981595a32d242ab37fe12054"
+    },
+    {
+      "file": "dist/index.html",
+      "bytes": 602,
+      "sha256": "ee8f22e6191c415ac8d769cdecec4d6cc4653a5728882842ef6a35e9b42de1ed"
+    }
+  ],
+  "verification": [
+    {
+      "file": "e2e/acceptance.spec.js",
+      "sha256": "21d55f8169017857b6b14cf63dd8443f80a697c11e40d0706f811166dade76d5"
+    },
+    {
+      "file": "e2e/admin-auth.spec.js",
+      "sha256": "fee398e4b677fa34eaec49b8de79d2c7b5694d06b72546a47289cf63fca3420b"
+    },
+    {
+      "file": "e2e/admin-baseline.spec.js",
+      "sha256": "df6718f39b3668b87c5c1824ebc83c3d0c290fcabd2700847d5f91258cca54e7"
+    },
+    {
+      "file": "e2e/fixtures/acceptance.js",
+      "sha256": "ad857ac0b9e8ba6b9745e6430f3d50706b497a931a26afa88b9db1605256f196"
+    },
+    {
+      "file": "e2e/fixtures/admin-auth.js",
+      "sha256": "c1ef0aac61ad47850c34fffd5996284de8a7a8e3d0ea4d94bc8ab7ddbea4072b"
+    },
+    {
+      "file": "e2e/fixtures/admin-baseline.js",
+      "sha256": "3a9e9f22ccacf9801b7347ea74d59e067557152f3e3d15c4225da722670186e3"
+    },
+    {
+      "file": "e2e/fixtures/admin-inventory.js",
+      "sha256": "93e6a6ec9e6bcf2b0050924724e14cdf24910a106a1b6259768ed7c88aee3bfd"
+    },
+    {
+      "file": "e2e/fixtures/live.js",
+      "sha256": "f804c5beaac246cee37f8d06ec58fd2aae1f9a61617d237c55ba67c5d3621d74"
+    },
+    {
+      "file": "e2e/layout.spec.js",
+      "sha256": "b02cebf3e2fe44cb5584a4a3c500ac3c0855de487ecf81ffeb701a05680c2767"
+    },
+    {
+      "file": "e2e/live.spec.js",
+      "sha256": "1993b2a7215b8ff94b276eda01c6cb59140714a0aeadfe0cc08c607a3d33544b"
+    },
+    {
+      "file": "e2e/preview.spec.js",
+      "sha256": "4295992892d4d65c25f34e74e69d81dd3f0b54cb34eb6560b432e40391759da1"
+    },
+    {
+      "file": "e2e/previewServer.spec.js",
+      "sha256": "e961eb5d4ec111b2d3d4f99ae6da1370cc8104e3d7763b58bd0ca3f8549f3194"
+    },
+    {
+      "file": "e2e/production.spec.js",
+      "sha256": "069bad39049d8203a6669d9caafe56195baf1f266593a7a2a5d7529e8f40f87c"
+    },
+    {
+      "file": "e2e/shell.spec.js",
+      "sha256": "41573130923c74e3fa64563a6d5a496d10ebc4a695088faab4491a21e3a33455"
+    },
+    {
+      "file": "e2e/stream.spec.js",
+      "sha256": "9121b659d323950def5cbdf9aed861cba5eb8dfa75b50c73a0daa17283d12aec"
+    },
+    {
+      "file": "tests/admin-inventory.test.js",
+      "sha256": "89e66aac2f4e4f332519d89e1ec86e36e8eb0abf6ccb7979b9ab604e759c3bd6"
+    },
+    {
+      "file": "tests/design.test.js",
+      "sha256": "94140f925705a6113ebc18a24765ca6f1e83f33f5ba9a413c7ce2da7db2075d6"
+    },
+    {
+      "file": "playwright.config.js",
+      "sha256": "e1605c66ea5a0fcda5fcfe4db00fe1b8790d54a6873c6a1bf8911d99459f08cf"
+    }
+  ]
+}

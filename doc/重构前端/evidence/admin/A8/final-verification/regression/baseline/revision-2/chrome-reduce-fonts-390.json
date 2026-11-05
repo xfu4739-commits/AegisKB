@@ -1,0 +1,18 @@
+{
+  "[data-page=\"detail\"] h1": [
+    {
+      "familyName": "Microsoft YaHei UI",
+      "postScriptName": "MicrosoftYaHeiUI-Bold",
+      "isCustomFont": false,
+      "glyphCount": 8
+    }
+  ],
+  "[data-page=\"detail\"] dd": [
+    {
+      "familyName": "Microsoft YaHei UI",
+      "postScriptName": "MicrosoftYaHeiUI",
+      "isCustomFont": false,
+      "glyphCount": 14
+    }
+  ]
+}

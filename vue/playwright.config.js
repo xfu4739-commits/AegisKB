@@ -16,7 +16,7 @@ export default defineConfig({
     ['json', { outputFile: resolve(evidenceRoot, 'playwright-report.json') }]
   ],
   use: {
-    baseURL: 'http://localhost:5174',
+    baseURL: 'http://localhost:5173',
     browserName: 'chromium',
     channel: 'chrome',
     locale: 'zh-CN',
@@ -27,7 +27,7 @@ export default defineConfig({
   },
   webServer: {
     command: 'npm run dev -- --host localhost',
-    url: 'http://localhost:5174',
+    url: 'http://localhost:5173',
     reuseExistingServer: true,
     timeout: 30_000
   },

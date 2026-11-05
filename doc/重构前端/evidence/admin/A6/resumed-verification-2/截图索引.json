@@ -1,0 +1,1007 @@
+{
+  "createdAt": "2026-11-04T15:05:37.7358397Z",
+  "count": 250,
+  "data": "isolated mock fixtures",
+  "images": [
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-exchange-1024.png",
+      "sha256": "2ce4194ee82859c8555ef68c9e739d4d788582c2896cf09766394d340de04a96"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-exchange-1440.png",
+      "sha256": "982492cf2df9fd64f1b399d14508241e7b79f7a8ef23bd5409d38e411a8e72bb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-exchange-390.png",
+      "sha256": "ec8c82af352d1476e2f5cb2dd75b13615a8b0e46c9299b0fc2f4538d28a0760c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-exchange-768.png",
+      "sha256": "27d0f4b62712c806b5740d7086f901938f80dc276646cb2337abd40ff7711c84"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-list-1024.png",
+      "sha256": "fb0b87005dee6207145406d16c47d49fb50fd241c159961b1192203ece12ccad"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-list-1440.png",
+      "sha256": "0760e02102c8497fd5c883d776d5fdf50b939a0b8fb0a9feddec4690cc57908c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-list-390.png",
+      "sha256": "1046ec6d19d1ede6031b66e7a681fe08d82e3fac3dd8a6f04c2f5c5eaf621f6a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-list-768.png",
+      "sha256": "81d7d0a954f02fa5dc963df55b3178fa0f6453eaf8c39da664e69df5e56acd10"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-exchange-1024.png",
+      "sha256": "2ce4194ee82859c8555ef68c9e739d4d788582c2896cf09766394d340de04a96"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-exchange-1440.png",
+      "sha256": "982492cf2df9fd64f1b399d14508241e7b79f7a8ef23bd5409d38e411a8e72bb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-exchange-390.png",
+      "sha256": "ec8c82af352d1476e2f5cb2dd75b13615a8b0e46c9299b0fc2f4538d28a0760c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-exchange-768.png",
+      "sha256": "27d0f4b62712c806b5740d7086f901938f80dc276646cb2337abd40ff7711c84"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-list-1024.png",
+      "sha256": "fb0b87005dee6207145406d16c47d49fb50fd241c159961b1192203ece12ccad"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-list-1440.png",
+      "sha256": "0760e02102c8497fd5c883d776d5fdf50b939a0b8fb0a9feddec4690cc57908c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-list-390.png",
+      "sha256": "1046ec6d19d1ede6031b66e7a681fe08d82e3fac3dd8a6f04c2f5c5eaf621f6a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-list-768.png",
+      "sha256": "81d7d0a954f02fa5dc963df55b3178fa0f6453eaf8c39da664e69df5e56acd10"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-session-1024.png",
+      "sha256": "8ecd4d85a10a162a45b833fa893fe9ec8f3accf3def57f9c578c5318c81fdb32"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-session-1440.png",
+      "sha256": "c7c9c9b69b074b8163f13fac723382d16c86ac09c52ee55108d78116945ca6f0"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-session-390.png",
+      "sha256": "f3108e4a53905c014fbd197c58c836d45035f9e0d01650b7ddfa8442c4519542"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-reduce-session-768.png",
+      "sha256": "398a3150563d0b18269386ef93cd80263070ecf81f9ebec576a621ce5b09d4da"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-session-1024.png",
+      "sha256": "8ecd4d85a10a162a45b833fa893fe9ec8f3accf3def57f9c578c5318c81fdb32"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-session-1440.png",
+      "sha256": "c7c9c9b69b074b8163f13fac723382d16c86ac09c52ee55108d78116945ca6f0"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-session-390.png",
+      "sha256": "f3108e4a53905c014fbd197c58c836d45035f9e0d01650b7ddfa8442c4519542"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/chrome-session-768.png",
+      "sha256": "398a3150563d0b18269386ef93cd80263070ecf81f9ebec576a621ce5b09d4da"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-access-error.png",
+      "sha256": "f6fe5ff8425f13a9237ddede2d33f51eb9587b71cef93742a57ceae7a2a2460e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-login-1024.png",
+      "sha256": "db1ccfe3fc24131e519702441d6bfb73eb28b4aac32319ce384efdd1e22ba0fe"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-login-1440.png",
+      "sha256": "b6879a55cee3511b0f108fd4ee30e1788bc322db4391dd2d1e527941aac7cdbe"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-login-390.png",
+      "sha256": "7d0ac9dd47ba65e26009b73a65784d8a2ce66910e26f542268ce190aab37d99d"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-login-768.png",
+      "sha256": "8e6f2e51e054b1b9186bbb5fd078f39fd212785cbba2b53c218510bfae5368b4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-login.png",
+      "sha256": "71917878b4d1361a64fee23608b330f618ff9d6fd8f69491d8b46222b28606af"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-navigation-390.png",
+      "sha256": "9431a994952a49512a25a792cf3db2c1f29e38ef24c6e11df5d9e2ef0986ee46"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-navigation-768.png",
+      "sha256": "3770573d1699b856a34373c266ddefb8b8be4b3972fd9a11507cd88da94448f1"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-access-error.png",
+      "sha256": "f6fe5ff8425f13a9237ddede2d33f51eb9587b71cef93742a57ceae7a2a2460e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-login-1024.png",
+      "sha256": "db1ccfe3fc24131e519702441d6bfb73eb28b4aac32319ce384efdd1e22ba0fe"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-login-1440.png",
+      "sha256": "b6879a55cee3511b0f108fd4ee30e1788bc322db4391dd2d1e527941aac7cdbe"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-login-390.png",
+      "sha256": "7d0ac9dd47ba65e26009b73a65784d8a2ce66910e26f542268ce190aab37d99d"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-login-768.png",
+      "sha256": "8e6f2e51e054b1b9186bbb5fd078f39fd212785cbba2b53c218510bfae5368b4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-login.png",
+      "sha256": "71917878b4d1361a64fee23608b330f618ff9d6fd8f69491d8b46222b28606af"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-navigation-390.png",
+      "sha256": "9431a994952a49512a25a792cf3db2c1f29e38ef24c6e11df5d9e2ef0986ee46"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-navigation-768.png",
+      "sha256": "3770573d1699b856a34373c266ddefb8b8be4b3972fd9a11507cd88da94448f1"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-shell-1024.png",
+      "sha256": "fc937e6edbc8ed893645250730a7213dfb5fda01798edba340c09eb926b6b09c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-shell-1440.png",
+      "sha256": "dd979ad9f544cbfd5d8aef819202226f38e190d53d05a23ec361d6be8c935273"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-shell-390.png",
+      "sha256": "9e6351b480a0ec7ce45eb5324788fbbd5fb1828d6adf8fa26f8055fec307a8f4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-reduce-shell-768.png",
+      "sha256": "5b02e19d8ce96e2b1f9f40bf3f4129983ee8948c57d174d8c62cf098da745efd"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-shell-1024.png",
+      "sha256": "fc937e6edbc8ed893645250730a7213dfb5fda01798edba340c09eb926b6b09c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-shell-1440.png",
+      "sha256": "dd979ad9f544cbfd5d8aef819202226f38e190d53d05a23ec361d6be8c935273"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-shell-390.png",
+      "sha256": "9e6351b480a0ec7ce45eb5324788fbbd5fb1828d6adf8fa26f8055fec307a8f4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/auth/chrome-shell-768.png",
+      "sha256": "5b02e19d8ce96e2b1f9f40bf3f4129983ee8948c57d174d8c62cf098da745efd"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-configuration-1440.png",
+      "sha256": "e81220bc84f241a99ac059c1fa6f53c68385d0a35a979630eb81339e649846a3"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-configuration-390.png",
+      "sha256": "c2aa8f49dd5de1d7f3ac4efdd685487c8ed1007d3a4d6420c0c4cc822f537b20"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-dashboard-1440.png",
+      "sha256": "2dad9e9fbe7b15e74f9e55d11714705579d0234fb9c980eeb5d488468aacdbba"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-dashboard-390.png",
+      "sha256": "cd34fb2ea72951f2249a1932b6eefa7096d5aae2bb58839094702120fba39916"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-document-detail-1440.png",
+      "sha256": "cb3595e58cf0b6954448815f4dd4c1dfcadf458c507803dc569c0132fa5960ee"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-document-detail-390.png",
+      "sha256": "e43d03231845c144660aa0d1b42ea0b03053cb21dd4f04f1096c636003d11951"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-documents-1440.png",
+      "sha256": "b0112dc88d519add6a83de9e2d21347d97eba0dbc3c429aee999c91816178424"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-documents-390.png",
+      "sha256": "69ef295577218c1ad2009544cb407862662191d919b13a7510159d081d6581eb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-knowledge-bases-1440.png",
+      "sha256": "641c624f2de280faec9f14f4e26e95c6bb74ea7aef430139da82aef762b8ba84"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-knowledge-bases-390.png",
+      "sha256": "aa48ffc794ca147d9565c3c90505a64999162faca0327d799dd6953e96c97845"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-observability-1440.png",
+      "sha256": "c3ad77d3589a0efa915184bca2ebb98c11be7bc9775ec2ba64c6860476654f3a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-legacy-observability-390.png",
+      "sha256": "df24647d243adb6a94d67e264874aea76b6dceafe7422280550c35159fc3aae6"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-configuration-1440.png",
+      "sha256": "e81220bc84f241a99ac059c1fa6f53c68385d0a35a979630eb81339e649846a3"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-configuration-390.png",
+      "sha256": "c2aa8f49dd5de1d7f3ac4efdd685487c8ed1007d3a4d6420c0c4cc822f537b20"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-dashboard-1440.png",
+      "sha256": "2dad9e9fbe7b15e74f9e55d11714705579d0234fb9c980eeb5d488468aacdbba"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-dashboard-390.png",
+      "sha256": "cd34fb2ea72951f2249a1932b6eefa7096d5aae2bb58839094702120fba39916"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-document-detail-1440.png",
+      "sha256": "cb3595e58cf0b6954448815f4dd4c1dfcadf458c507803dc569c0132fa5960ee"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-document-detail-390.png",
+      "sha256": "e43d03231845c144660aa0d1b42ea0b03053cb21dd4f04f1096c636003d11951"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-documents-1440.png",
+      "sha256": "b0112dc88d519add6a83de9e2d21347d97eba0dbc3c429aee999c91816178424"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-documents-390.png",
+      "sha256": "69ef295577218c1ad2009544cb407862662191d919b13a7510159d081d6581eb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-knowledge-bases-1440.png",
+      "sha256": "641c624f2de280faec9f14f4e26e95c6bb74ea7aef430139da82aef762b8ba84"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-knowledge-bases-390.png",
+      "sha256": "aa48ffc794ca147d9565c3c90505a64999162faca0327d799dd6953e96c97845"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-observability-1440.png",
+      "sha256": "c3ad77d3589a0efa915184bca2ebb98c11be7bc9775ec2ba64c6860476654f3a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/chrome-reduce-legacy-observability-390.png",
+      "sha256": "df24647d243adb6a94d67e264874aea76b6dceafe7422280550c35159fc3aae6"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-direction-detail-1440.png",
+      "sha256": "fe9aa7926121f43633faffb7ce51c8fcfb31eaa1b729a6f2e1683f2228e8e4b1"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-direction-detail-390.png",
+      "sha256": "e83dc2a697d4945c6918f6b3a0bab759c35aacb149400162cf7598fcdf863a21"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-direction-list-1440.png",
+      "sha256": "96348d2e5d100a7068ef9e85b9ccc57f0962118e3b86d9a77b62b5d73448f4e9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-direction-list-390.png",
+      "sha256": "a1db6c772b61cb199ee7ad4d73f7774df41914feb4685c0d0e8a40f557e36d6b"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-direction-navigation-390.png",
+      "sha256": "3f4ce00588a3cf352bf0bca9970dc507bfaa5070fe811fcf3b5cc1c64c726262"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-direction-overview-1440.png",
+      "sha256": "b77c12e5d8dec08068118f2583cec6ce1bc014ba9e785f2c959bc65f7143e08c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-direction-overview-390.png",
+      "sha256": "25c034dd8c87cd26b8675c7fda65950de3d5c70c2a0838e38a95dee2ad08a8bb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-reduce-direction-detail-1440.png",
+      "sha256": "fe9aa7926121f43633faffb7ce51c8fcfb31eaa1b729a6f2e1683f2228e8e4b1"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-reduce-direction-detail-390.png",
+      "sha256": "e83dc2a697d4945c6918f6b3a0bab759c35aacb149400162cf7598fcdf863a21"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-reduce-direction-list-1440.png",
+      "sha256": "96348d2e5d100a7068ef9e85b9ccc57f0962118e3b86d9a77b62b5d73448f4e9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-reduce-direction-list-390.png",
+      "sha256": "a1db6c772b61cb199ee7ad4d73f7774df41914feb4685c0d0e8a40f557e36d6b"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-reduce-direction-navigation-390.png",
+      "sha256": "3f4ce00588a3cf352bf0bca9970dc507bfaa5070fe811fcf3b5cc1c64c726262"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-reduce-direction-overview-1440.png",
+      "sha256": "b77c12e5d8dec08068118f2583cec6ce1bc014ba9e785f2c959bc65f7143e08c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/baseline/revision-2/chrome-reduce-direction-overview-390.png",
+      "sha256": "25c034dd8c87cd26b8675c7fda65950de3d5c70c2a0838e38a95dee2ad08a8bb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-bases-1024.png",
+      "sha256": "8f8a13a08822662ee55a080711462e1b4a2437e200094233f3b1f61d4f58de53"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-bases-1440.png",
+      "sha256": "edd3197bfb34dee11608e36e16eb1df04e16f8646fe7815982c6cf4abc7882a5"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-bases-390.png",
+      "sha256": "8b48b690e36a001a0c953165baec9428668c9907fb78875a247f44b23ed27f94"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-bases-768.png",
+      "sha256": "4401c523c74d54bdf6edef16d2eee8db970d8e54e265f71bd4c448a73b0de89b"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-bases-dialog-1024.png",
+      "sha256": "a9d286a4def1dec6493f707af83ecf41c95581f8b30900e570bccc9f19160aec"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-bases-dialog-1440.png",
+      "sha256": "6d12ed276099a93e4fa0501db9b8536ba0f02d80a374c6e90ea20030c669a4e5"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-bases-dialog-390.png",
+      "sha256": "20ee2593983996a4b9b0226689ca82f1faea3555e559063aa1645275cb3c611a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-bases-dialog-768.png",
+      "sha256": "1c3a1f1adfe09d7e067821c72d3bd60ffb73c52ec258aebeffd291fb25b1a43c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-documents-1024.png",
+      "sha256": "613ae388e6da91a62200e0b6fbc0afb8d1718d9da8b8e0fe9fb159b6e06a163e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-documents-1440.png",
+      "sha256": "47924ca5313298da36f22bed9e0d8e5dd3cfabda1f28fd9c7344fc9800b9e738"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-documents-390.png",
+      "sha256": "1f5da1b734aca0641b84a3b2d99486e3b4269fcd61cb1c021d940f50d8c6aa7a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-documents-768.png",
+      "sha256": "c66428dadc385c9882a4e572f7526301fc5d3aee13d59a6836cf2d43aeb806b2"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-documents-dialog-1024.png",
+      "sha256": "083e1ba7ab09e40f13354e45db2cabb6be10fa34826c283582d56abb61c4db9e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-documents-dialog-1440.png",
+      "sha256": "df82dd2dd3bb71ec9e1dd5f89253052231729666fc8332cd4fc04cb7ea2760b8"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-documents-dialog-390.png",
+      "sha256": "420e927c72af1e8214ba633c9705da6eff3ea250a1d91d8166c981d04e31b429"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-documents-dialog-768.png",
+      "sha256": "5d2a6bb7b279e5af2c81068b668dc1f0396abf1c09d77d722aac8247a9433c56"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-bases-1024.png",
+      "sha256": "8f8a13a08822662ee55a080711462e1b4a2437e200094233f3b1f61d4f58de53"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-bases-1440.png",
+      "sha256": "edd3197bfb34dee11608e36e16eb1df04e16f8646fe7815982c6cf4abc7882a5"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-bases-390.png",
+      "sha256": "8b48b690e36a001a0c953165baec9428668c9907fb78875a247f44b23ed27f94"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-bases-768.png",
+      "sha256": "4401c523c74d54bdf6edef16d2eee8db970d8e54e265f71bd4c448a73b0de89b"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-bases-dialog-1024.png",
+      "sha256": "a9d286a4def1dec6493f707af83ecf41c95581f8b30900e570bccc9f19160aec"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-bases-dialog-1440.png",
+      "sha256": "6d12ed276099a93e4fa0501db9b8536ba0f02d80a374c6e90ea20030c669a4e5"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-bases-dialog-390.png",
+      "sha256": "20ee2593983996a4b9b0226689ca82f1faea3555e559063aa1645275cb3c611a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-bases-dialog-768.png",
+      "sha256": "1c3a1f1adfe09d7e067821c72d3bd60ffb73c52ec258aebeffd291fb25b1a43c"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-documents-1024.png",
+      "sha256": "613ae388e6da91a62200e0b6fbc0afb8d1718d9da8b8e0fe9fb159b6e06a163e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-documents-1440.png",
+      "sha256": "47924ca5313298da36f22bed9e0d8e5dd3cfabda1f28fd9c7344fc9800b9e738"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-documents-390.png",
+      "sha256": "1f5da1b734aca0641b84a3b2d99486e3b4269fcd61cb1c021d940f50d8c6aa7a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-documents-768.png",
+      "sha256": "c66428dadc385c9882a4e572f7526301fc5d3aee13d59a6836cf2d43aeb806b2"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-documents-dialog-1024.png",
+      "sha256": "083e1ba7ab09e40f13354e45db2cabb6be10fa34826c283582d56abb61c4db9e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-documents-dialog-1440.png",
+      "sha256": "df82dd2dd3bb71ec9e1dd5f89253052231729666fc8332cd4fc04cb7ea2760b8"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-documents-dialog-390.png",
+      "sha256": "420e927c72af1e8214ba633c9705da6eff3ea250a1d91d8166c981d04e31b429"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/catalog/chrome-reduce-documents-dialog-768.png",
+      "sha256": "5d2a6bb7b279e5af2c81068b668dc1f0396abf1c09d77d722aac8247a9433c56"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-brand.png",
+      "sha256": "e76d92f2886dac5639bb0b2f4ddaaab1706203016da058934b2968ce50b482ee"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-citation.png",
+      "sha256": "1c7f759dd20bb84682a4a52afc2acec7aef9ab00a859305e916a88766d90bb6a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-legacy-admin-guard.png",
+      "sha256": "f89dbe605b004531a82cf95dcf6849c9a4435516836382d329586fcd31d136b3"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-legacy-error-1440.png",
+      "sha256": "4893055351d74ef171c60b801a18f1c52a958308e44a88eb5d8b17ea3a254152"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-legacy-error-390.png",
+      "sha256": "d5919f2964508e0fa2e03c37b7186e8f6d5554bc5984807f01e56afbe2a6f66b"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-legacy-history-1440.png",
+      "sha256": "e52b9607fa8c46057df87a06480dba8b157eec562e65d9bd93771f9c16a26dff"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-legacy-history-390.png",
+      "sha256": "0d54bc6f819ada466e261fb1386e8e2fd996d140d23cd3c09c8ee01f3fe29197"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-legacy-welcome-1440.png",
+      "sha256": "b8f7e873100faa50adcd233a5730764ed7359f5d432657c017d930f18657fa4f"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-legacy-welcome-390.png",
+      "sha256": "46ba35d3a5deb9a4f42f8db60ce931a69e969fd5bb3232c64803936b1059d6b9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-messages-1024.png",
+      "sha256": "46ac1cb13acdbe6155a07d3084c9c0c7ccf484a9a4cf6e92025b5e92ed017a8e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-messages-1440.png",
+      "sha256": "d906ba95e9064704aaee09966396a5528574fb420494bb5999c19254fc43ca59"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-messages-390.png",
+      "sha256": "4156aa0a1c4beb171dae86454bc9f398873e13807c5753d68c4bb17f45cb6cc5"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-messages-768.png",
+      "sha256": "e3d1b77f3ceb8e39a9b4200a3e134ef94b72fd0517df1a00ea24a49919e12cc1"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-next-error-1440.png",
+      "sha256": "0be43abc467f051581a813bc557adf2ebbebd629c6c07e62828a58aa6bce8d27"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-next-error-390.png",
+      "sha256": "a8d6a1084eaa5f995247f029bc848a216bebd82e40dbc6bad38b0238a7b03070"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-next-history-1440.png",
+      "sha256": "0be43abc467f051581a813bc557adf2ebbebd629c6c07e62828a58aa6bce8d27"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-next-history-390.png",
+      "sha256": "a8d6a1084eaa5f995247f029bc848a216bebd82e40dbc6bad38b0238a7b03070"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-next-welcome-1440.png",
+      "sha256": "14afd49ef9e238dadd971bcd1cd177b4cc6700faaa274218e45c3613d48a77cc"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-next-welcome-390.png",
+      "sha256": "96bdd62772fd6abfe47489ca9bc9d064aaf9af4f3d8540b783f93e3a3039dcdf"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-preview-1440.png",
+      "sha256": "e55cb00a72593793f387b54059292c3fcc038f7686a5ca27a664a819c04150ca"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-brand.png",
+      "sha256": "e76d92f2886dac5639bb0b2f4ddaaab1706203016da058934b2968ce50b482ee"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-citation.png",
+      "sha256": "1c7f759dd20bb84682a4a52afc2acec7aef9ab00a859305e916a88766d90bb6a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-legacy-admin-guard.png",
+      "sha256": "f89dbe605b004531a82cf95dcf6849c9a4435516836382d329586fcd31d136b3"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-legacy-error-1440.png",
+      "sha256": "4893055351d74ef171c60b801a18f1c52a958308e44a88eb5d8b17ea3a254152"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-legacy-error-390.png",
+      "sha256": "d5919f2964508e0fa2e03c37b7186e8f6d5554bc5984807f01e56afbe2a6f66b"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-legacy-history-1440.png",
+      "sha256": "e52b9607fa8c46057df87a06480dba8b157eec562e65d9bd93771f9c16a26dff"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-legacy-history-390.png",
+      "sha256": "0d54bc6f819ada466e261fb1386e8e2fd996d140d23cd3c09c8ee01f3fe29197"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-legacy-welcome-1440.png",
+      "sha256": "b8f7e873100faa50adcd233a5730764ed7359f5d432657c017d930f18657fa4f"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-legacy-welcome-390.png",
+      "sha256": "46ba35d3a5deb9a4f42f8db60ce931a69e969fd5bb3232c64803936b1059d6b9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-messages-1024.png",
+      "sha256": "46ac1cb13acdbe6155a07d3084c9c0c7ccf484a9a4cf6e92025b5e92ed017a8e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-messages-1440.png",
+      "sha256": "e55cb00a72593793f387b54059292c3fcc038f7686a5ca27a664a819c04150ca"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-messages-390.png",
+      "sha256": "4156aa0a1c4beb171dae86454bc9f398873e13807c5753d68c4bb17f45cb6cc5"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-messages-768.png",
+      "sha256": "e3d1b77f3ceb8e39a9b4200a3e134ef94b72fd0517df1a00ea24a49919e12cc1"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-next-error-1440.png",
+      "sha256": "0be43abc467f051581a813bc557adf2ebbebd629c6c07e62828a58aa6bce8d27"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-next-error-390.png",
+      "sha256": "a8d6a1084eaa5f995247f029bc848a216bebd82e40dbc6bad38b0238a7b03070"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-next-history-1440.png",
+      "sha256": "0be43abc467f051581a813bc557adf2ebbebd629c6c07e62828a58aa6bce8d27"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-next-history-390.png",
+      "sha256": "a8d6a1084eaa5f995247f029bc848a216bebd82e40dbc6bad38b0238a7b03070"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-next-welcome-1440.png",
+      "sha256": "14afd49ef9e238dadd971bcd1cd177b4cc6700faaa274218e45c3613d48a77cc"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-next-welcome-390.png",
+      "sha256": "96bdd62772fd6abfe47489ca9bc9d064aaf9af4f3d8540b783f93e3a3039dcdf"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-preview-1440.png",
+      "sha256": "e55cb00a72593793f387b54059292c3fcc038f7686a5ca27a664a819c04150ca"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-scope-1024.png",
+      "sha256": "5313789d7c10f0b238d27526a51c8fb5853f3787f614784b68e9bedf19eb9e32"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-scope-1440.png",
+      "sha256": "b9df7f169eca1badfbbdcfd7685324ead6fd64da4d1938883c36c74fb69f0a87"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-scope-390.png",
+      "sha256": "1e7e9931d3c24da02a7d1c9e5852f01d1fd3208d37c2eda2302546a084a087ce"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-scope-768.png",
+      "sha256": "61f788dcd0cd20016887cd8f6a3a25d75896410d878187f9ccfda823f01d1451"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-source-1024.png",
+      "sha256": "2b04699aa0a6d61aa7a92fe1c62767f629dd3edf48bfe832eca03099dfacadc0"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-source-1440.png",
+      "sha256": "2347e498ec77181eb6e9b01bde1f6e1fb6b856521bcec545e9a413d7afc8a784"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-source-390.png",
+      "sha256": "3c4668c5f1378f1d65fac21cd9096603d6b93d1a8c390cd5d059f7c661cb3751"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-source-768.png",
+      "sha256": "062ee57619ea38c87f3f09c6556f21ae9d6c3c27a9aba1931d686361ce6fd5c1"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-welcome-1024.png",
+      "sha256": "0ef865cb1531f5437b76e93940091cc2caf8e746d8877a16a803ad4ac53eec28"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-welcome-1440.png",
+      "sha256": "71b754c44858910330a9ff834ec30f4c8f5f6bec24c0762eb1e9ec375bbfe328"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-welcome-390.png",
+      "sha256": "96bdd62772fd6abfe47489ca9bc9d064aaf9af4f3d8540b783f93e3a3039dcdf"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-reduce-welcome-768.png",
+      "sha256": "aabf7c8c8a0f7f3aa0ced21111d3e4b11e635bc6c3529b027d21f0720657e94a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-scope-1024.png",
+      "sha256": "5313789d7c10f0b238d27526a51c8fb5853f3787f614784b68e9bedf19eb9e32"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-scope-1440.png",
+      "sha256": "b9df7f169eca1badfbbdcfd7685324ead6fd64da4d1938883c36c74fb69f0a87"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-scope-390.png",
+      "sha256": "1e7e9931d3c24da02a7d1c9e5852f01d1fd3208d37c2eda2302546a084a087ce"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-scope-768.png",
+      "sha256": "61f788dcd0cd20016887cd8f6a3a25d75896410d878187f9ccfda823f01d1451"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-source-1024.png",
+      "sha256": "2b04699aa0a6d61aa7a92fe1c62767f629dd3edf48bfe832eca03099dfacadc0"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-source-1440.png",
+      "sha256": "2347e498ec77181eb6e9b01bde1f6e1fb6b856521bcec545e9a413d7afc8a784"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-source-390.png",
+      "sha256": "3c4668c5f1378f1d65fac21cd9096603d6b93d1a8c390cd5d059f7c661cb3751"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-source-768.png",
+      "sha256": "062ee57619ea38c87f3f09c6556f21ae9d6c3c27a9aba1931d686361ce6fd5c1"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-welcome-1024.png",
+      "sha256": "0ef865cb1531f5437b76e93940091cc2caf8e746d8877a16a803ad4ac53eec28"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-welcome-1440.png",
+      "sha256": "71b754c44858910330a9ff834ec30f4c8f5f6bec24c0762eb1e9ec375bbfe328"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-welcome-390.png",
+      "sha256": "96bdd62772fd6abfe47489ca9bc9d064aaf9af4f3d8540b783f93e3a3039dcdf"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/chat/chrome-welcome-768.png",
+      "sha256": "aabf7c8c8a0f7f3aa0ced21111d3e4b11e635bc6c3529b027d21f0720657e94a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document-navigation/chrome-artifact-return.png",
+      "sha256": "684baf3a8fc4dff23585d0fdfba60948733910525fa2f128fbefb6dcd25088ce"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document-navigation/chrome-chunk-return-mobile.png",
+      "sha256": "927ad18018719ea5d45aa80a0a700e3edc0b898119ee529882291ce51222ce09"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document-navigation/chrome-reduce-artifact-return.png",
+      "sha256": "684baf3a8fc4dff23585d0fdfba60948733910525fa2f128fbefb6dcd25088ce"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document-navigation/chrome-reduce-chunk-return-mobile.png",
+      "sha256": "927ad18018719ea5d45aa80a0a700e3edc0b898119ee529882291ce51222ce09"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document-navigation/chrome-reduce-restored-table.png",
+      "sha256": "27d87ab8fc0a97c80c4cd4fd90d816217ef6da6fab33aff100380fceb52c3809"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document-navigation/chrome-restored-table.png",
+      "sha256": "27d87ab8fc0a97c80c4cd4fd90d816217ef6da6fab33aff100380fceb52c3809"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-artifact-preview.png",
+      "sha256": "b02f2d2a1b921186599ae243f69073b37cc40be4296eba991eec1939d0982878"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-chunk-detail.png",
+      "sha256": "95389070760b8075526187de8e15b1a1d8ca03fc2cbb1acf25d197f915559f95"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-graph-window.png",
+      "sha256": "223a90aa7892c8ed56c518f592edcabfe0a7551686f254779689b6a832d6ce02"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-overview-1024.png",
+      "sha256": "e37b1078fc9afb1b3ca0c682034fda0107dbde45b17647f4b2d30741305c2f85"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-overview-1440.png",
+      "sha256": "9220c615542148af5a51499b947222e8e76307b35e0941da312c3f0296ebced9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-overview-390.png",
+      "sha256": "e6bb0fbbb8d7a49db49940b42740736c8ea4622dab0e2076d2d1b76b6f82cf0e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-overview-768.png",
+      "sha256": "9375249ac337e91470b637a1a9296649984474d05ab91bf222542f99868d90bb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-page-overlay.png",
+      "sha256": "993bb3862896b1b918e3270a8beac35ef2086527b0c161827d175a3a18af94a4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-artifact-preview.png",
+      "sha256": "b02f2d2a1b921186599ae243f69073b37cc40be4296eba991eec1939d0982878"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-chunk-detail.png",
+      "sha256": "95389070760b8075526187de8e15b1a1d8ca03fc2cbb1acf25d197f915559f95"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-graph-window.png",
+      "sha256": "223a90aa7892c8ed56c518f592edcabfe0a7551686f254779689b6a832d6ce02"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-overview-1024.png",
+      "sha256": "e37b1078fc9afb1b3ca0c682034fda0107dbde45b17647f4b2d30741305c2f85"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-overview-1440.png",
+      "sha256": "9220c615542148af5a51499b947222e8e76307b35e0941da312c3f0296ebced9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-overview-390.png",
+      "sha256": "e6bb0fbbb8d7a49db49940b42740736c8ea4622dab0e2076d2d1b76b6f82cf0e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-overview-768.png",
+      "sha256": "9375249ac337e91470b637a1a9296649984474d05ab91bf222542f99868d90bb"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-page-overlay.png",
+      "sha256": "993bb3862896b1b918e3270a8beac35ef2086527b0c161827d175a3a18af94a4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-strategy-1024.png",
+      "sha256": "0d1af128441cf6898a7df6be43a84d9d21de34806ef8c767717c54fb0f4123c4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-strategy-1440.png",
+      "sha256": "6bd90bcc5fc2931aabe3e7c88c9d6f5277b856840a45e0616ebc9ab040176fd9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-strategy-390.png",
+      "sha256": "3780bdd438b1a394574159ac361e4090ce1798e49ace6cc3ac222ee339939c1a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-strategy-768.png",
+      "sha256": "e5d19beb7befe91f5b7fcec666608ab16c5acdf6e2efbbd69ad9b1d5e7d94464"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-reduce-tasks.png",
+      "sha256": "6f60c93a92855b7ddf49c39c0234633f709bb451e7d6adec9972f41cc6dd5d88"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-strategy-1024.png",
+      "sha256": "0d1af128441cf6898a7df6be43a84d9d21de34806ef8c767717c54fb0f4123c4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-strategy-1440.png",
+      "sha256": "6bd90bcc5fc2931aabe3e7c88c9d6f5277b856840a45e0616ebc9ab040176fd9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-strategy-390.png",
+      "sha256": "3780bdd438b1a394574159ac361e4090ce1798e49ace6cc3ac222ee339939c1a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-strategy-768.png",
+      "sha256": "e5d19beb7befe91f5b7fcec666608ab16c5acdf6e2efbbd69ad9b1d5e7d94464"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/document/chrome-tasks.png",
+      "sha256": "6f60c93a92855b7ddf49c39c0234633f709bb451e7d6adec9972f41cc6dd5d88"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-dashboard-1024.png",
+      "sha256": "86089680f9cd24cdd85413dad91e2fae9ee30c5b5d2610bad6b79fd362bcb5b2"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-dashboard-1440.png",
+      "sha256": "d0d43265ddcc20826a96c583b0f0c57dcdf1836548eff284d6846b09a74e1dea"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-dashboard-390.png",
+      "sha256": "98ccf1f77256527289785eb3f17aeadbb2f789a56efac2f96ee6898f9ec74641"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-dashboard-768.png",
+      "sha256": "345467501ac7bc233b4fa2d7a6baaf38b7dd578ed9ed65ab9fd6f6ffc2ec495e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-quality-1024.png",
+      "sha256": "09fc1c2114a88326a452f06c7fa14d017a6bba3dd0204500084531b0d03e5772"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-quality-1440.png",
+      "sha256": "e3e8267d3c79a664097ac487064e2a6720fee5863e2fa4a269968b01ded5f2a8"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-quality-390.png",
+      "sha256": "0206bab07ed9afb0625bf9eb485c4a1a7fe39e57ee9461649938247a11a8ebea"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-quality-768.png",
+      "sha256": "ff456172d3e4ada221ead09321d6410bee1e9dc0f748a8d86d89db04c7daa152"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-reduce-dashboard-1024.png",
+      "sha256": "86089680f9cd24cdd85413dad91e2fae9ee30c5b5d2610bad6b79fd362bcb5b2"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-reduce-dashboard-1440.png",
+      "sha256": "d0d43265ddcc20826a96c583b0f0c57dcdf1836548eff284d6846b09a74e1dea"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-reduce-dashboard-390.png",
+      "sha256": "98ccf1f77256527289785eb3f17aeadbb2f789a56efac2f96ee6898f9ec74641"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-reduce-dashboard-768.png",
+      "sha256": "345467501ac7bc233b4fa2d7a6baaf38b7dd578ed9ed65ab9fd6f6ffc2ec495e"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-reduce-quality-1024.png",
+      "sha256": "09fc1c2114a88326a452f06c7fa14d017a6bba3dd0204500084531b0d03e5772"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-reduce-quality-1440.png",
+      "sha256": "e3e8267d3c79a664097ac487064e2a6720fee5863e2fa4a269968b01ded5f2a8"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-reduce-quality-390.png",
+      "sha256": "0206bab07ed9afb0625bf9eb485c4a1a7fe39e57ee9461649938247a11a8ebea"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/overview/chrome-reduce-quality-768.png",
+      "sha256": "ff456172d3e4ada221ead09321d6410bee1e9dc0f748a8d86d89db04c7daa152"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-config-1024.png",
+      "sha256": "055b193358f1bc2495685ffe7f3c6eeac91c9633d03d79ce491f4c376023074a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-config-1440.png",
+      "sha256": "088dbc8e407fd6cd8a0b26fd1957d4a367bbf98b804f886beb15258fcb2fdf19"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-config-390.png",
+      "sha256": "f7144e46f75434c74025583b4154e13669a74ad2ad83f201292d1112ed6a8ec0"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-config-768.png",
+      "sha256": "8a27b84eb53324e3363f095639871b058d2b2905ea7bf392fcb7a57356b35b72"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-reduce-config-1024.png",
+      "sha256": "055b193358f1bc2495685ffe7f3c6eeac91c9633d03d79ce491f4c376023074a"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-reduce-config-1440.png",
+      "sha256": "088dbc8e407fd6cd8a0b26fd1957d4a367bbf98b804f886beb15258fcb2fdf19"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-reduce-config-390.png",
+      "sha256": "f7144e46f75434c74025583b4154e13669a74ad2ad83f201292d1112ed6a8ec0"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-reduce-config-768.png",
+      "sha256": "8a27b84eb53324e3363f095639871b058d2b2905ea7bf392fcb7a57356b35b72"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-reduce-trace-detail-1024.png",
+      "sha256": "2f60a0f2e3ccd7c57acca561aca2fa683e89f732a4ebdd782eddaf34e61a071d"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-reduce-trace-detail-1440.png",
+      "sha256": "5a5735ad7e332bc76685da373c206e4a1c326932e94a5ddc5b8b40b8424d2bf4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-reduce-trace-detail-390.png",
+      "sha256": "965d82cff75715fe99f10f576e3b68b6be389cffec6b44014d6c6b1a3523182f"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-reduce-trace-detail-768.png",
+      "sha256": "5bcd587640f4761dc84e49abec8bb17dc4a1e0febb261327d87630deb7342083"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-reduce-traces-mobile.png",
+      "sha256": "7f22f14d05f95412117d9db01206c4182e9893378e32e4e1aafa23cff5c893c4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-trace-detail-1024.png",
+      "sha256": "2f60a0f2e3ccd7c57acca561aca2fa683e89f732a4ebdd782eddaf34e61a071d"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-trace-detail-1440.png",
+      "sha256": "5a5735ad7e332bc76685da373c206e4a1c326932e94a5ddc5b8b40b8424d2bf4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-trace-detail-390.png",
+      "sha256": "965d82cff75715fe99f10f576e3b68b6be389cffec6b44014d6c6b1a3523182f"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-trace-detail-768.png",
+      "sha256": "5bcd587640f4761dc84e49abec8bb17dc4a1e0febb261327d87630deb7342083"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/regression/route/chrome-traces-mobile.png",
+      "sha256": "7f22f14d05f95412117d9db01206c4182e9893378e32e4e1aafa23cff5c893c4"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/smoke/chrome-legacy-welcome-390.png",
+      "sha256": "46ba35d3a5deb9a4f42f8db60ce931a69e969fd5bb3232c64803936b1059d6b9"
+    },
+    {
+      "path": "doc/重构前端/evidence/admin/A6/resumed-verification-2/smoke/chrome-next-welcome-390.png",
+      "sha256": "96bdd62772fd6abfe47489ca9bc9d064aaf9af4f3d8540b783f93e3a3039dcdf"
+    }
+  ]
+}

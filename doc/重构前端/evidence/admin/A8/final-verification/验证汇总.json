@@ -1,0 +1,41 @@
+{
+  "comparisonScreenshots": 112,
+  "realProductWrites": 0,
+  "screenshots": 396,
+  "unit": {
+    "exitCode": 0,
+    "files": 18,
+    "passed": 110
+  },
+  "hashChanges": 0,
+  "finalHumanConfirmation": "CONFIRMED",
+  "head": "86e5eb5e8e5a1ca4b2e61682be963580d01866ff",
+  "date": "2026-11-05",
+  "build": {
+    "exitCode": 0,
+    "modules": 3747
+  },
+  "staged": 1361,
+  "design": {
+    "exitCode": 0,
+    "contrastPairs": 16,
+    "passed": 3
+  },
+  "adminContract": {
+    "exitCode": 0,
+    "passed": 5
+  },
+  "browser": {
+    "exitCode": 0,
+    "stats": {
+      "startTime": "2026-11-04T22:55:02.2Z",
+      "duration": 1012864.545,
+      "expected": 262,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "confirmationDate": "2026-11-05",
+  "confirmationText": "已验收，确认 A8 和第二阶段完成"
+}

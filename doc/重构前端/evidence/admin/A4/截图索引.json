@@ -1,0 +1,807 @@
+{
+  "createdAt": "2026-11-04T11:23:31.425Z",
+  "data": "isolated fixtures only",
+  "count": 200,
+  "images": [
+    {
+      "path": "auth-regression/chrome-access-error.png",
+      "bytes": 16087
+    },
+    {
+      "path": "auth-regression/chrome-login-1024.png",
+      "bytes": 17019
+    },
+    {
+      "path": "auth-regression/chrome-login-1440.png",
+      "bytes": 18426
+    },
+    {
+      "path": "auth-regression/chrome-login-390.png",
+      "bytes": 13953
+    },
+    {
+      "path": "auth-regression/chrome-login-768.png",
+      "bytes": 15371
+    },
+    {
+      "path": "auth-regression/chrome-login.png",
+      "bytes": 15981
+    },
+    {
+      "path": "auth-regression/chrome-navigation-390.png",
+      "bytes": 18699
+    },
+    {
+      "path": "auth-regression/chrome-navigation-768.png",
+      "bytes": 20936
+    },
+    {
+      "path": "auth-regression/chrome-reduce-access-error.png",
+      "bytes": 16087
+    },
+    {
+      "path": "auth-regression/chrome-reduce-login-1024.png",
+      "bytes": 17019
+    },
+    {
+      "path": "auth-regression/chrome-reduce-login-1440.png",
+      "bytes": 18426
+    },
+    {
+      "path": "auth-regression/chrome-reduce-login-390.png",
+      "bytes": 13953
+    },
+    {
+      "path": "auth-regression/chrome-reduce-login-768.png",
+      "bytes": 15371
+    },
+    {
+      "path": "auth-regression/chrome-reduce-login.png",
+      "bytes": 15981
+    },
+    {
+      "path": "auth-regression/chrome-reduce-navigation-390.png",
+      "bytes": 18699
+    },
+    {
+      "path": "auth-regression/chrome-reduce-navigation-768.png",
+      "bytes": 20936
+    },
+    {
+      "path": "auth-regression/chrome-reduce-shell-1024.png",
+      "bytes": 25460
+    },
+    {
+      "path": "auth-regression/chrome-reduce-shell-1440.png",
+      "bytes": 26961
+    },
+    {
+      "path": "auth-regression/chrome-reduce-shell-390.png",
+      "bytes": 8358
+    },
+    {
+      "path": "auth-regression/chrome-reduce-shell-768.png",
+      "bytes": 9843
+    },
+    {
+      "path": "auth-regression/chrome-shell-1024.png",
+      "bytes": 25460
+    },
+    {
+      "path": "auth-regression/chrome-shell-1440.png",
+      "bytes": 26961
+    },
+    {
+      "path": "auth-regression/chrome-shell-390.png",
+      "bytes": 8358
+    },
+    {
+      "path": "auth-regression/chrome-shell-768.png",
+      "bytes": 9843
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-configuration-1440.png",
+      "bytes": 177888
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-configuration-390.png",
+      "bytes": 64934
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-dashboard-1440.png",
+      "bytes": 204994
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-dashboard-390.png",
+      "bytes": 81023
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-document-detail-1440.png",
+      "bytes": 194396
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-document-detail-390.png",
+      "bytes": 73999
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-documents-1440.png",
+      "bytes": 166760
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-documents-390.png",
+      "bytes": 55308
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-knowledge-bases-1440.png",
+      "bytes": 164986
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-knowledge-bases-390.png",
+      "bytes": 53541
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-observability-1440.png",
+      "bytes": 192549
+    },
+    {
+      "path": "baseline-regression/chrome-legacy-observability-390.png",
+      "bytes": 73927
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-configuration-1440.png",
+      "bytes": 177888
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-configuration-390.png",
+      "bytes": 64934
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-dashboard-1440.png",
+      "bytes": 204994
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-dashboard-390.png",
+      "bytes": 81023
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-document-detail-1440.png",
+      "bytes": 194396
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-document-detail-390.png",
+      "bytes": 74024
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-documents-1440.png",
+      "bytes": 166760
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-documents-390.png",
+      "bytes": 55308
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-knowledge-bases-1440.png",
+      "bytes": 164986
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-knowledge-bases-390.png",
+      "bytes": 53541
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-observability-1440.png",
+      "bytes": 192549
+    },
+    {
+      "path": "baseline-regression/chrome-reduce-legacy-observability-390.png",
+      "bytes": 73918
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-direction-detail-1440.png",
+      "bytes": 51678
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-direction-detail-390.png",
+      "bytes": 30459
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-direction-list-1440.png",
+      "bytes": 56075
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-direction-list-390.png",
+      "bytes": 27150
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-direction-navigation-390.png",
+      "bytes": 42664
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-direction-overview-1440.png",
+      "bytes": 58899
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-direction-overview-390.png",
+      "bytes": 38312
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-reduce-direction-detail-1440.png",
+      "bytes": 51678
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-reduce-direction-detail-390.png",
+      "bytes": 30459
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-reduce-direction-list-1440.png",
+      "bytes": 56075
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-reduce-direction-list-390.png",
+      "bytes": 27150
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-reduce-direction-navigation-390.png",
+      "bytes": 42664
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-reduce-direction-overview-1440.png",
+      "bytes": 58899
+    },
+    {
+      "path": "baseline-regression/revision-2/chrome-reduce-direction-overview-390.png",
+      "bytes": 38312
+    },
+    {
+      "path": "catalog-regression/chrome-bases-1024.png",
+      "bytes": 46357
+    },
+    {
+      "path": "catalog-regression/chrome-bases-1440.png",
+      "bytes": 48293
+    },
+    {
+      "path": "catalog-regression/chrome-bases-390.png",
+      "bytes": 28147
+    },
+    {
+      "path": "catalog-regression/chrome-bases-768.png",
+      "bytes": 30824
+    },
+    {
+      "path": "catalog-regression/chrome-bases-dialog-1024.png",
+      "bytes": 48284
+    },
+    {
+      "path": "catalog-regression/chrome-bases-dialog-1440.png",
+      "bytes": 63306
+    },
+    {
+      "path": "catalog-regression/chrome-bases-dialog-390.png",
+      "bytes": 24199
+    },
+    {
+      "path": "catalog-regression/chrome-bases-dialog-768.png",
+      "bytes": 28265
+    },
+    {
+      "path": "catalog-regression/chrome-documents-1024.png",
+      "bytes": 132769
+    },
+    {
+      "path": "catalog-regression/chrome-documents-1440.png",
+      "bytes": 160842
+    },
+    {
+      "path": "catalog-regression/chrome-documents-390.png",
+      "bytes": 134769
+    },
+    {
+      "path": "catalog-regression/chrome-documents-768.png",
+      "bytes": 114447
+    },
+    {
+      "path": "catalog-regression/chrome-documents-dialog-1024.png",
+      "bytes": 133883
+    },
+    {
+      "path": "catalog-regression/chrome-documents-dialog-1440.png",
+      "bytes": 172842
+    },
+    {
+      "path": "catalog-regression/chrome-documents-dialog-390.png",
+      "bytes": 140242
+    },
+    {
+      "path": "catalog-regression/chrome-documents-dialog-768.png",
+      "bytes": 126086
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-bases-1024.png",
+      "bytes": 46357
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-bases-1440.png",
+      "bytes": 48293
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-bases-390.png",
+      "bytes": 28147
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-bases-768.png",
+      "bytes": 30824
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-bases-dialog-1024.png",
+      "bytes": 48284
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-bases-dialog-1440.png",
+      "bytes": 63306
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-bases-dialog-390.png",
+      "bytes": 24199
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-bases-dialog-768.png",
+      "bytes": 28265
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-documents-1024.png",
+      "bytes": 132769
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-documents-1440.png",
+      "bytes": 160842
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-documents-390.png",
+      "bytes": 134769
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-documents-768.png",
+      "bytes": 114447
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-documents-dialog-1024.png",
+      "bytes": 133883
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-documents-dialog-1440.png",
+      "bytes": 172842
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-documents-dialog-390.png",
+      "bytes": 140242
+    },
+    {
+      "path": "catalog-regression/chrome-reduce-documents-dialog-768.png",
+      "bytes": 126086
+    },
+    {
+      "path": "chat-regression/chrome-brand.png",
+      "bytes": 2169
+    },
+    {
+      "path": "chat-regression/chrome-citation.png",
+      "bytes": 39788
+    },
+    {
+      "path": "chat-regression/chrome-legacy-admin-guard.png",
+      "bytes": 22662
+    },
+    {
+      "path": "chat-regression/chrome-legacy-error-1440.png",
+      "bytes": 82197
+    },
+    {
+      "path": "chat-regression/chrome-legacy-error-390.png",
+      "bytes": 47024
+    },
+    {
+      "path": "chat-regression/chrome-legacy-history-1440.png",
+      "bytes": 88149
+    },
+    {
+      "path": "chat-regression/chrome-legacy-history-390.png",
+      "bytes": 45359
+    },
+    {
+      "path": "chat-regression/chrome-legacy-welcome-1440.png",
+      "bytes": 40307
+    },
+    {
+      "path": "chat-regression/chrome-legacy-welcome-390.png",
+      "bytes": 25782
+    },
+    {
+      "path": "chat-regression/chrome-messages-1024.png",
+      "bytes": 58235
+    },
+    {
+      "path": "chat-regression/chrome-messages-1440.png",
+      "bytes": 75162
+    },
+    {
+      "path": "chat-regression/chrome-messages-390.png",
+      "bytes": 37650
+    },
+    {
+      "path": "chat-regression/chrome-messages-768.png",
+      "bytes": 58257
+    },
+    {
+      "path": "chat-regression/chrome-next-error-1440.png",
+      "bytes": 74098
+    },
+    {
+      "path": "chat-regression/chrome-next-error-390.png",
+      "bytes": 37767
+    },
+    {
+      "path": "chat-regression/chrome-next-history-1440.png",
+      "bytes": 74098
+    },
+    {
+      "path": "chat-regression/chrome-next-history-390.png",
+      "bytes": 37767
+    },
+    {
+      "path": "chat-regression/chrome-next-welcome-1440.png",
+      "bytes": 34890
+    },
+    {
+      "path": "chat-regression/chrome-next-welcome-390.png",
+      "bytes": 18445
+    },
+    {
+      "path": "chat-regression/chrome-preview-1440.png",
+      "bytes": 75199
+    },
+    {
+      "path": "chat-regression/chrome-reduce-brand.png",
+      "bytes": 2169
+    },
+    {
+      "path": "chat-regression/chrome-reduce-citation.png",
+      "bytes": 39788
+    },
+    {
+      "path": "chat-regression/chrome-reduce-legacy-admin-guard.png",
+      "bytes": 22662
+    },
+    {
+      "path": "chat-regression/chrome-reduce-legacy-error-1440.png",
+      "bytes": 82197
+    },
+    {
+      "path": "chat-regression/chrome-reduce-legacy-error-390.png",
+      "bytes": 47024
+    },
+    {
+      "path": "chat-regression/chrome-reduce-legacy-history-1440.png",
+      "bytes": 88149
+    },
+    {
+      "path": "chat-regression/chrome-reduce-legacy-history-390.png",
+      "bytes": 45359
+    },
+    {
+      "path": "chat-regression/chrome-reduce-legacy-welcome-1440.png",
+      "bytes": 40307
+    },
+    {
+      "path": "chat-regression/chrome-reduce-legacy-welcome-390.png",
+      "bytes": 25782
+    },
+    {
+      "path": "chat-regression/chrome-reduce-messages-1024.png",
+      "bytes": 58235
+    },
+    {
+      "path": "chat-regression/chrome-reduce-messages-1440.png",
+      "bytes": 75162
+    },
+    {
+      "path": "chat-regression/chrome-reduce-messages-390.png",
+      "bytes": 37650
+    },
+    {
+      "path": "chat-regression/chrome-reduce-messages-768.png",
+      "bytes": 58257
+    },
+    {
+      "path": "chat-regression/chrome-reduce-next-error-1440.png",
+      "bytes": 74098
+    },
+    {
+      "path": "chat-regression/chrome-reduce-next-error-390.png",
+      "bytes": 37767
+    },
+    {
+      "path": "chat-regression/chrome-reduce-next-history-1440.png",
+      "bytes": 74098
+    },
+    {
+      "path": "chat-regression/chrome-reduce-next-history-390.png",
+      "bytes": 37767
+    },
+    {
+      "path": "chat-regression/chrome-reduce-next-welcome-1440.png",
+      "bytes": 34890
+    },
+    {
+      "path": "chat-regression/chrome-reduce-next-welcome-390.png",
+      "bytes": 18445
+    },
+    {
+      "path": "chat-regression/chrome-reduce-preview-1440.png",
+      "bytes": 75199
+    },
+    {
+      "path": "chat-regression/chrome-reduce-scope-1024.png",
+      "bytes": 85763
+    },
+    {
+      "path": "chat-regression/chrome-reduce-scope-1440.png",
+      "bytes": 89011
+    },
+    {
+      "path": "chat-regression/chrome-reduce-scope-390.png",
+      "bytes": 46225
+    },
+    {
+      "path": "chat-regression/chrome-reduce-scope-768.png",
+      "bytes": 61182
+    },
+    {
+      "path": "chat-regression/chrome-reduce-source-1024.png",
+      "bytes": 119454
+    },
+    {
+      "path": "chat-regression/chrome-reduce-source-1440.png",
+      "bytes": 125143
+    },
+    {
+      "path": "chat-regression/chrome-reduce-source-390.png",
+      "bytes": 37343
+    },
+    {
+      "path": "chat-regression/chrome-reduce-source-768.png",
+      "bytes": 111992
+    },
+    {
+      "path": "chat-regression/chrome-reduce-welcome-1024.png",
+      "bytes": 30193
+    },
+    {
+      "path": "chat-regression/chrome-reduce-welcome-1440.png",
+      "bytes": 34854
+    },
+    {
+      "path": "chat-regression/chrome-reduce-welcome-390.png",
+      "bytes": 18445
+    },
+    {
+      "path": "chat-regression/chrome-reduce-welcome-768.png",
+      "bytes": 21737
+    },
+    {
+      "path": "chat-regression/chrome-scope-1024.png",
+      "bytes": 85763
+    },
+    {
+      "path": "chat-regression/chrome-scope-1440.png",
+      "bytes": 89011
+    },
+    {
+      "path": "chat-regression/chrome-scope-390.png",
+      "bytes": 46225
+    },
+    {
+      "path": "chat-regression/chrome-scope-768.png",
+      "bytes": 61182
+    },
+    {
+      "path": "chat-regression/chrome-source-1024.png",
+      "bytes": 119454
+    },
+    {
+      "path": "chat-regression/chrome-source-1440.png",
+      "bytes": 125143
+    },
+    {
+      "path": "chat-regression/chrome-source-390.png",
+      "bytes": 37343
+    },
+    {
+      "path": "chat-regression/chrome-source-768.png",
+      "bytes": 111992
+    },
+    {
+      "path": "chat-regression/chrome-welcome-1024.png",
+      "bytes": 30193
+    },
+    {
+      "path": "chat-regression/chrome-welcome-1440.png",
+      "bytes": 34854
+    },
+    {
+      "path": "chat-regression/chrome-welcome-390.png",
+      "bytes": 18445
+    },
+    {
+      "path": "chat-regression/chrome-welcome-768.png",
+      "bytes": 21737
+    },
+    {
+      "path": "chrome-artifact-preview.png",
+      "bytes": 49341
+    },
+    {
+      "path": "chrome-chunk-detail.png",
+      "bytes": 51757
+    },
+    {
+      "path": "chrome-graph-window.png",
+      "bytes": 103080
+    },
+    {
+      "path": "chrome-overview-1024.png",
+      "bytes": 50503
+    },
+    {
+      "path": "chrome-overview-1440.png",
+      "bytes": 52737
+    },
+    {
+      "path": "chrome-overview-390.png",
+      "bytes": 34881
+    },
+    {
+      "path": "chrome-overview-768.png",
+      "bytes": 35323
+    },
+    {
+      "path": "chrome-page-overlay.png",
+      "bytes": 63566
+    },
+    {
+      "path": "chrome-reduce-artifact-preview.png",
+      "bytes": 49341
+    },
+    {
+      "path": "chrome-reduce-chunk-detail.png",
+      "bytes": 51757
+    },
+    {
+      "path": "chrome-reduce-graph-window.png",
+      "bytes": 103080
+    },
+    {
+      "path": "chrome-reduce-overview-1024.png",
+      "bytes": 50503
+    },
+    {
+      "path": "chrome-reduce-overview-1440.png",
+      "bytes": 52737
+    },
+    {
+      "path": "chrome-reduce-overview-390.png",
+      "bytes": 34881
+    },
+    {
+      "path": "chrome-reduce-overview-768.png",
+      "bytes": 35323
+    },
+    {
+      "path": "chrome-reduce-page-overlay.png",
+      "bytes": 63566
+    },
+    {
+      "path": "chrome-reduce-strategy-1024.png",
+      "bytes": 71492
+    },
+    {
+      "path": "chrome-reduce-strategy-1440.png",
+      "bytes": 66798
+    },
+    {
+      "path": "chrome-reduce-strategy-390.png",
+      "bytes": 52951
+    },
+    {
+      "path": "chrome-reduce-strategy-768.png",
+      "bytes": 55228
+    },
+    {
+      "path": "chrome-reduce-tasks.png",
+      "bytes": 62975
+    },
+    {
+      "path": "chrome-strategy-1024.png",
+      "bytes": 71492
+    },
+    {
+      "path": "chrome-strategy-1440.png",
+      "bytes": 66798
+    },
+    {
+      "path": "chrome-strategy-390.png",
+      "bytes": 52951
+    },
+    {
+      "path": "chrome-strategy-768.png",
+      "bytes": 55228
+    },
+    {
+      "path": "chrome-tasks.png",
+      "bytes": 62975
+    },
+    {
+      "path": "overview-regression/chrome-dashboard-1024.png",
+      "bytes": 67241
+    },
+    {
+      "path": "overview-regression/chrome-dashboard-1440.png",
+      "bytes": 68054
+    },
+    {
+      "path": "overview-regression/chrome-dashboard-390.png",
+      "bytes": 47406
+    },
+    {
+      "path": "overview-regression/chrome-dashboard-768.png",
+      "bytes": 51436
+    },
+    {
+      "path": "overview-regression/chrome-quality-1024.png",
+      "bytes": 94445
+    },
+    {
+      "path": "overview-regression/chrome-quality-1440.png",
+      "bytes": 98476
+    },
+    {
+      "path": "overview-regression/chrome-quality-390.png",
+      "bytes": 70043
+    },
+    {
+      "path": "overview-regression/chrome-quality-768.png",
+      "bytes": 78018
+    },
+    {
+      "path": "overview-regression/chrome-reduce-dashboard-1024.png",
+      "bytes": 67241
+    },
+    {
+      "path": "overview-regression/chrome-reduce-dashboard-1440.png",
+      "bytes": 68054
+    },
+    {
+      "path": "overview-regression/chrome-reduce-dashboard-390.png",
+      "bytes": 47406
+    },
+    {
+      "path": "overview-regression/chrome-reduce-dashboard-768.png",
+      "bytes": 51436
+    },
+    {
+      "path": "overview-regression/chrome-reduce-quality-1024.png",
+      "bytes": 94445
+    },
+    {
+      "path": "overview-regression/chrome-reduce-quality-1440.png",
+      "bytes": 98456
+    },
+    {
+      "path": "overview-regression/chrome-reduce-quality-390.png",
+      "bytes": 70043
+    },
+    {
+      "path": "overview-regression/chrome-reduce-quality-768.png",
+      "bytes": 78018
+    }
+  ]
+}

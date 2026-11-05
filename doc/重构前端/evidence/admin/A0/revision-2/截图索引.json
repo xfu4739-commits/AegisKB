@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-04",
+  "revision": 2,
+  "data": "static fictional examples",
+  "images": [
+    {
+      "file": "chrome-direction-detail-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 51678,
+      "sha256": "fe9aa7926121f43633faffb7ce51c8fcfb31eaa1b729a6f2e1683f2228e8e4b1"
+    },
+    {
+      "file": "chrome-direction-detail-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 30459,
+      "sha256": "e83dc2a697d4945c6918f6b3a0bab759c35aacb149400162cf7598fcdf863a21"
+    },
+    {
+      "file": "chrome-direction-list-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 56075,
+      "sha256": "96348d2e5d100a7068ef9e85b9ccc57f0962118e3b86d9a77b62b5d73448f4e9"
+    },
+    {
+      "file": "chrome-direction-list-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 27150,
+      "sha256": "a1db6c772b61cb199ee7ad4d73f7774df41914feb4685c0d0e8a40f557e36d6b"
+    },
+    {
+      "file": "chrome-direction-navigation-390.png",
+      "width": 390,
+      "height": 1292,
+      "bytes": 42664,
+      "sha256": "3f4ce00588a3cf352bf0bca9970dc507bfaa5070fe811fcf3b5cc1c64c726262"
+    },
+    {
+      "file": "chrome-direction-overview-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 58899,
+      "sha256": "b77c12e5d8dec08068118f2583cec6ce1bc014ba9e785f2c959bc65f7143e08c"
+    },
+    {
+      "file": "chrome-direction-overview-390.png",
+      "width": 390,
+      "height": 1020,
+      "bytes": 38312,
+      "sha256": "25c034dd8c87cd26b8675c7fda65950de3d5c70c2a0838e38a95dee2ad08a8bb"
+    },
+    {
+      "file": "chrome-reduce-direction-detail-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 51678,
+      "sha256": "fe9aa7926121f43633faffb7ce51c8fcfb31eaa1b729a6f2e1683f2228e8e4b1"
+    },
+    {
+      "file": "chrome-reduce-direction-detail-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 30459,
+      "sha256": "e83dc2a697d4945c6918f6b3a0bab759c35aacb149400162cf7598fcdf863a21"
+    },
+    {
+      "file": "chrome-reduce-direction-list-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 56075,
+      "sha256": "96348d2e5d100a7068ef9e85b9ccc57f0962118e3b86d9a77b62b5d73448f4e9"
+    },
+    {
+      "file": "chrome-reduce-direction-list-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 27150,
+      "sha256": "a1db6c772b61cb199ee7ad4d73f7774df41914feb4685c0d0e8a40f557e36d6b"
+    },
+    {
+      "file": "chrome-reduce-direction-navigation-390.png",
+      "width": 390,
+      "height": 1292,
+      "bytes": 42664,
+      "sha256": "3f4ce00588a3cf352bf0bca9970dc507bfaa5070fe811fcf3b5cc1c64c726262"
+    },
+    {
+      "file": "chrome-reduce-direction-overview-1440.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 58899,
+      "sha256": "b77c12e5d8dec08068118f2583cec6ce1bc014ba9e785f2c959bc65f7143e08c"
+    },
+    {
+      "file": "chrome-reduce-direction-overview-390.png",
+      "width": 390,
+      "height": 1020,
+      "bytes": 38312,
+      "sha256": "25c034dd8c87cd26b8675c7fda65950de3d5c70c2a0838e38a95dee2ad08a8bb"
+    }
+  ]
+}

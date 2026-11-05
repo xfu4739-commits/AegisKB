@@ -1,0 +1,8 @@
+export function validIdentity(value){return typeof value==='string'&&value.trim()?value:typeof value==='number'&&Number.isSafeInteger(value)?String(value):''}
+export const statusLabel=value=>({RUNNING:'进行中',COMPLETED:'已完成',FAILED:'失败',STOPPED:'已停止',SKIPPED:'跳过',WARNING:'警告'}[value]||value||'未记录')
+export const modeLabel=value=>({OPEN_CHAT:'开放式提问',AUTO_DOCUMENT:'自动知识问答',DOCUMENT:'当前文档问答'}[value]||value||'未记录')
+export const listQuery=query=>Object.fromEntries(['listKeyword','listMode','listStatus','listPage','listPageSize'].filter(k=>typeof query[k]==='string'&&query[k]!=='').map(k=>[k,query[k]]))
+export const finalSources=references=>(Array.isArray(references)?references:[]).filter(r=>typeof r?.citationIdentity==='string'&&r.citationIdentity.trim()&&!r.contextOnly&&r.citationEvidenceType!=='CONTEXT_ONLY'&&/^[1-9][0-9]*$/.test(String(r.referenceId||'')))
+export function tableTarget(reference){const documentId=validIdentity(reference.documentId);if(!documentId)return null;const join=x=>Array.isArray(x)?x.join(','):undefined;return {name:'AdminDocumentDetail',params:{documentId},query:{section:'rag',parseTaskId:reference.chunkType==='TABLE_QUERY'?validIdentity(reference.taskId)||undefined:undefined,highlightTableId:validIdentity(reference.tableId)||undefined,highlightTableNo:reference.tableNo==null?undefined:String(reference.tableNo),highlightRows:join(reference.tableEvidenceRowNos),highlightColumns:join(reference.tableEvidenceColumnNames),highlightCells:join(reference.tableEvidenceCellCoordinates)}}}
+export const pageNumber=value=>Number.isSafeInteger(Number(value))&&Number(value)>0?Number(value):1
+export const stagesFor=(rows,code)=>(Array.isArray(rows)?rows:[]).filter(x=>x.stageCode===code)
