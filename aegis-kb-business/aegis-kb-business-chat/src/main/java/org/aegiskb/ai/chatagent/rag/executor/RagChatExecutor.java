@@ -8,10 +8,10 @@ import org.aegiskb.ai.chatagent.rag.model.ExecutionMode;
 import org.aegiskb.ai.chatagent.rag.model.ObservationPersistence;
 import org.aegiskb.ai.chatagent.rag.model.RagPromptAssemblyResult;
 import org.aegiskb.ai.chatagent.rag.model.RagRetrievalContext;
-import org.aegiskb.ai.chatagent.rag.model.RetrievalExecutionRequest;
 import org.aegiskb.ai.chatagent.rag.model.SubQuestionEvidence;
 import org.aegiskb.ai.chatagent.rag.service.RagPromptAssemblyService;
 import org.aegiskb.ai.chatagent.rag.service.RagRetrievalEngine;
+import org.aegiskb.ai.chatagent.rag.support.EvidenceBudgetTraceSnapshot;
 import org.aegiskb.ai.chatagent.rag.support.EvidenceCandidateNormalizer;
 import org.aegiskb.ai.chatagent.rag.support.EvidenceIdentityResolver;
 import org.aegiskb.ai.chatagent.rag.support.EvidenceQualityFeatures;
@@ -294,7 +294,7 @@ public class RagChatExecutor implements ConversationExecutor {
                 taskInfo.traceRecorder().completeStage(
                     budgetStage,
                     "无 Source 证据，已完成空证据预算账本。",
-                    evidenceBudgetSnapshot(context, null)
+                    EvidenceBudgetTraceSnapshot.build(context, null)
                 );
             }
 
@@ -314,7 +314,7 @@ public class RagChatExecutor implements ConversationExecutor {
             taskInfo.traceRecorder().completeStage(
                 budgetStage,
                 "证据预算与 Prompt 组装完成。",
-                evidenceBudgetSnapshot(context, promptAssemblyResult)
+                EvidenceBudgetTraceSnapshot.build(context, promptAssemblyResult)
             );
         }
 
@@ -337,77 +337,10 @@ public class RagChatExecutor implements ConversationExecutor {
             });
     }
 
-    private Map<String, Object> evidenceBudgetSnapshot(RagRetrievalContext context,
-                                                       RagPromptAssemblyResult promptAssemblyResult) {
-        List<SubQuestionEvidence> evidence = context == null || context.getSubQuestionEvidenceList() == null
-            ? List.of()
-            : context.getSubQuestionEvidenceList().stream()
-                .filter(item -> item != null)
-                .sorted(java.util.Comparator.comparingInt(SubQuestionEvidence::getSubQuestionIndex))
-                .toList();
-        validateEvidenceBudgetScope(context, evidence);
-
-        Map<String, Object> snapshot = new LinkedHashMap<>();
-        snapshot.put("schemaVersion", "S09");
-        snapshot.put("subQuestionCount", evidence.size());
-        snapshot.put("subQuestions", evidence.stream().map(this::evidenceBudgetSubQuestion).toList());
-        snapshot.put("totalBudget", promptAssemblyResult == null ? 0 : promptAssemblyResult.getTotalBudget());
-        snapshot.put("perSubQuestionBudget", promptAssemblyResult == null ? 0 : promptAssemblyResult.getPerSubQuestionBudget());
-        snapshot.put("inputReferenceCount", promptAssemblyResult == null ? 0 : promptAssemblyResult.getInputReferenceCount());
-        snapshot.put("referenceManifest", promptAssemblyResult == null ? List.of() : promptAssemblyResult.getReferenceManifest());
-        snapshot.put("renderedSourceIdentities", promptAssemblyResult == null ? List.of() : promptAssemblyResult.getRenderedSourceIdentities());
-        snapshot.put("renderedContextIdentities", promptAssemblyResult == null ? List.of() : promptAssemblyResult.getRenderedContextIdentities());
-        snapshot.put("explicitCitationEligibleIdentities", promptAssemblyResult == null ? List.of() : promptAssemblyResult.getRenderedSourceIdentities());
-        snapshot.put("answerShapeRequirements", promptAssemblyResult == null
-            ? List.of()
-            : promptAssemblyResult.getAnswerShapeRequirements().stream().map(Enum::name).toList());
-        snapshot.put("PROMPT_RENDERED_CONTEXT", promptAssemblyResult == null ? List.of() : promptAssemblyResult.getRenderedContextIdentities());
-        snapshot.put("systemPrompt", promptAssemblyResult == null ? "" : StrUtil.blankToDefault(promptAssemblyResult.getSystemPrompt(), ""));
-        snapshot.put("userPrompt", promptAssemblyResult == null ? "" : StrUtil.blankToDefault(promptAssemblyResult.getUserPrompt(), ""));
-        return snapshot;
-    }
-
-    private Map<String, Object> evidenceBudgetSubQuestion(SubQuestionEvidence evidence) {
-        if (evidence.getEvidenceSelectionLedger() == null) {
-            throw new IllegalStateException("Every sub-question requires a complete evidence selection ledger");
-        }
-        var ledger = evidence.getEvidenceSelectionLedger();
-        Map<String, Object> block = new LinkedHashMap<>();
-        block.put("subQuestionIndex", evidence.getSubQuestionIndex());
-        block.put("executionQuery", StrUtil.blankToDefault(evidence.getSubQuestion(), ""));
-        block.put("observationPersistence", requireObservationPersistence(evidence));
-        block.put("evidenceLineage", ledger.evidenceLineage());
-        block.put("rerankExecution", ledger.rerankExecution());
-        block.put("sourceRankingWindowDecisions", ledger.sourceRankingWindowDecisions());
-        block.put("sourceRankingWindowCandidates", ledger.sourceRankingWindowCandidates());
-        block.put("rerankRequestCandidates", ledger.rerankRequestCandidates());
-        block.put("rerankResultCandidates", ledger.rerankResultCandidates());
-        block.put("identityTransitions", ledger.identityTransitions());
-        block.put("finalEvidenceDecisions", ledger.finalEvidenceDecisions());
-        return block;
-    }
-
     private ObservationPersistence requireObservationPersistence(SubQuestionEvidence evidence) {
         if (evidence.getObservationPersistence() == null) {
             throw new IllegalStateException("Every sub-question requires an observation persistence outcome");
         }
         return evidence.getObservationPersistence();
-    }
-
-    private void validateEvidenceBudgetScope(RagRetrievalContext context, List<SubQuestionEvidence> evidence) {
-        List<Integer> evidenceIndexes = evidence.stream().map(SubQuestionEvidence::getSubQuestionIndex).toList();
-        if (evidenceIndexes.stream().anyMatch(index -> index == null || index <= 0)
-            || evidenceIndexes.stream().distinct().count() != evidenceIndexes.size()) {
-            throw new IllegalStateException("EVIDENCE_BUDGET subQuestionIndex values must be positive and unique");
-        }
-        List<Integer> requestIndexes = context == null || context.getExecutionRequests() == null
-            ? List.of()
-            : context.getExecutionRequests().stream()
-                .map(RetrievalExecutionRequest::subQuestionIndex)
-                .sorted()
-                .toList();
-        if (!requestIndexes.equals(evidenceIndexes)) {
-            throw new IllegalStateException("EVIDENCE_BUDGET blocks must match execution request indexes");
-        }
     }
 }

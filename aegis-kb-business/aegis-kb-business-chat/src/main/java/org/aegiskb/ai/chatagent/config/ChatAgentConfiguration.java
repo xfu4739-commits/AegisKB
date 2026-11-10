@@ -11,6 +11,8 @@ import com.alibaba.cloud.ai.graph.checkpoint.savers.mysql.CreateOption;
 import com.alibaba.cloud.ai.graph.checkpoint.savers.mysql.MysqlSaver;
 import org.aegiskb.ai.chatagent.support.DashScopeCompatibilityInterceptor;
 import org.aegiskb.ai.chatagent.support.TavilyToolInputFallbackInterceptor;
+import org.aegiskb.ai.chatagent.tool.KbRetrievalRequest;
+import org.aegiskb.ai.chatagent.tool.KbRetrievalTool;
 import org.aegiskb.ai.chatagent.tool.TavilySearchRequest;
 import org.aegiskb.ai.chatagent.tool.TavilySearchTool;
 import org.aegiskb.ai.prompt.PromptTemplateNames;
@@ -18,6 +20,7 @@ import org.aegiskb.ai.prompt.PromptTemplateService;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.tool.ToolCallback;
 import org.springframework.ai.tool.function.FunctionToolCallback;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,9 +51,19 @@ public class ChatAgentConfiguration {
     }
 
     @Bean
+    public ToolCallback kbSearchToolCallback(KbRetrievalTool kbRetrievalTool) {
+
+        return FunctionToolCallback
+            .builder("kb_search", kbRetrievalTool::search)
+            .description("检索当前选定的内部知识库，返回与查询相关的证据候选列表。调用时必须传 JSON 参数，且至少包含非空 query。检索范围、通道与预算由系统冻结计划统一控制，你只需要提供想检索的查询文本；可多次调用，每次使用不同的查询文本。")
+            .inputType(KbRetrievalRequest.class)
+            .build();
+    }
+
+    @Bean
     public ReactAgent businessChatReactAgent(ChatModel chatModel,
                                              MysqlSaver mysqlCheckpointSaver,
-                                             ToolCallback tavilySearchToolCallback,
+                                             @Qualifier("tavilySearchToolCallback") ToolCallback tavilySearchToolCallback,
                                              ChatAgentProperties chatAgentProperties,
                                              PromptTemplateService promptTemplateService,
                                              DashScopeCompatibilityInterceptor dashScopeCompatibilityInterceptor,
@@ -84,6 +97,71 @@ public class ChatAgentConfiguration {
             .interceptors(
                 dashScopeCompatibilityInterceptor,
                 tavilyToolInputFallbackInterceptor,
+                ToolRetryInterceptor.builder()
+                    .toolName("tavily_search")
+                    .maxRetries(2)
+                    .initialDelay(200L)
+                    .maxDelay(1200L)
+                    .jitter(true)
+                    .onFailure(ToolRetryInterceptor.OnFailureBehavior.RETURN_MESSAGE)
+                    .build(),
+                ToolErrorInterceptor.builder().build()
+            )
+            .build();
+    }
+
+    @Bean
+    public ReactAgent sagChatReactAgent(ChatModel chatModel,
+                                        MysqlSaver mysqlCheckpointSaver,
+                                        @Qualifier("kbSearchToolCallback") ToolCallback kbSearchToolCallback,
+                                        @Qualifier("tavilySearchToolCallback") ToolCallback tavilySearchToolCallback,
+                                        ChatAgentProperties chatAgentProperties,
+                                        PromptTemplateService promptTemplateService,
+                                        DashScopeCompatibilityInterceptor dashScopeCompatibilityInterceptor,
+                                        TavilyToolInputFallbackInterceptor tavilyToolInputFallbackInterceptor) {
+        return ReactAgent.builder()
+
+            .name("sag_chat_agent")
+            .model(chatModel)
+            .instruction(promptTemplateService.render(PromptTemplateNames.SAG_AGENT_SYSTEM, Map.of()))
+
+            .tools(kbSearchToolCallback, tavilySearchToolCallback)
+            .saver(mysqlCheckpointSaver)
+
+            // SAG 循环内 kb_search 必须串行执行，保证会话内调用顺序与合并窗口保序去重确定性。
+            .parallelToolExecution(false)
+
+            .hooks(
+                ModelCallLimitHook.builder()
+                    .runLimit(chatAgentProperties.getSagMaxModelCallsPerRun())
+                    .threadLimit(chatAgentProperties.getSagMaxModelCallsPerThread())
+                    .exitBehavior(ModelCallLimitHook.ExitBehavior.END)
+                    .build(),
+                ToolCallLimitHook.builder()
+                    .toolName("kb_search")
+                    .runLimit(chatAgentProperties.getSagMaxKbSearchCallsPerRun())
+                    .threadLimit(chatAgentProperties.getSagMaxKbSearchCallsPerThread())
+                    .exitBehavior(ToolCallLimitHook.ExitBehavior.END)
+                    .build(),
+                ToolCallLimitHook.builder()
+                    .toolName("tavily_search")
+                    .runLimit(chatAgentProperties.getSagMaxWebSearchCallsPerRun())
+                    .threadLimit(chatAgentProperties.getSagMaxWebSearchCallsPerThread())
+                    .exitBehavior(ToolCallLimitHook.ExitBehavior.END)
+                    .build()
+            )
+
+            .interceptors(
+                dashScopeCompatibilityInterceptor,
+                tavilyToolInputFallbackInterceptor,
+                ToolRetryInterceptor.builder()
+                    .toolName("kb_search")
+                    .maxRetries(1)
+                    .initialDelay(200L)
+                    .maxDelay(800L)
+                    .jitter(true)
+                    .onFailure(ToolRetryInterceptor.OnFailureBehavior.RETURN_MESSAGE)
+                    .build(),
                 ToolRetryInterceptor.builder()
                     .toolName("tavily_search")
                     .maxRetries(2)

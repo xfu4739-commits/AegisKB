@@ -28,7 +28,7 @@ public class ReactAgentExecutor implements ConversationExecutor {
     private final ReactAgent reactAgent;
     private final StreamEventWriter streamEventWriter;
 
-    public ReactAgentExecutor(ReactAgent businessChatReactAgent,
+    public ReactAgentExecutor(@org.springframework.beans.factory.annotation.Qualifier("businessChatReactAgent") ReactAgent businessChatReactAgent,
                               StreamEventWriter streamEventWriter) {
         this.reactAgent = businessChatReactAgent;
         this.streamEventWriter = streamEventWriter;

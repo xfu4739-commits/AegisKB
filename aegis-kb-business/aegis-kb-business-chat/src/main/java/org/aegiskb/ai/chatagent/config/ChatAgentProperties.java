@@ -17,6 +17,12 @@ public class ChatAgentProperties {
     private int maxToolCallsPerThread = 30;
     private int historyPreviewTurns = 4;
     private long recommendationTimeoutMs = 3000L;
+    private int sagMaxModelCallsPerRun = 10;
+    private int sagMaxModelCallsPerThread = 60;
+    private int sagMaxKbSearchCallsPerRun = 6;
+    private int sagMaxKbSearchCallsPerThread = 30;
+    private int sagMaxWebSearchCallsPerRun = 4;
+    private int sagMaxWebSearchCallsPerThread = 20;
 
     public boolean isRecommendationEnabled() {
         return managed().recommendationEnabled;
@@ -72,6 +78,54 @@ public class ChatAgentProperties {
 
     public void setRecommendationTimeoutMs(long recommendationTimeoutMs) {
         this.recommendationTimeoutMs = recommendationTimeoutMs;
+    }
+
+    public int getSagMaxModelCallsPerRun() {
+        return managed().sagMaxModelCallsPerRun;
+    }
+
+    public void setSagMaxModelCallsPerRun(int sagMaxModelCallsPerRun) {
+        this.sagMaxModelCallsPerRun = sagMaxModelCallsPerRun;
+    }
+
+    public int getSagMaxModelCallsPerThread() {
+        return managed().sagMaxModelCallsPerThread;
+    }
+
+    public void setSagMaxModelCallsPerThread(int sagMaxModelCallsPerThread) {
+        this.sagMaxModelCallsPerThread = sagMaxModelCallsPerThread;
+    }
+
+    public int getSagMaxKbSearchCallsPerRun() {
+        return managed().sagMaxKbSearchCallsPerRun;
+    }
+
+    public void setSagMaxKbSearchCallsPerRun(int sagMaxKbSearchCallsPerRun) {
+        this.sagMaxKbSearchCallsPerRun = sagMaxKbSearchCallsPerRun;
+    }
+
+    public int getSagMaxKbSearchCallsPerThread() {
+        return managed().sagMaxKbSearchCallsPerThread;
+    }
+
+    public void setSagMaxKbSearchCallsPerThread(int sagMaxKbSearchCallsPerThread) {
+        this.sagMaxKbSearchCallsPerThread = sagMaxKbSearchCallsPerThread;
+    }
+
+    public int getSagMaxWebSearchCallsPerRun() {
+        return managed().sagMaxWebSearchCallsPerRun;
+    }
+
+    public void setSagMaxWebSearchCallsPerRun(int sagMaxWebSearchCallsPerRun) {
+        this.sagMaxWebSearchCallsPerRun = sagMaxWebSearchCallsPerRun;
+    }
+
+    public int getSagMaxWebSearchCallsPerThread() {
+        return managed().sagMaxWebSearchCallsPerThread;
+    }
+
+    public void setSagMaxWebSearchCallsPerThread(int sagMaxWebSearchCallsPerThread) {
+        this.sagMaxWebSearchCallsPerThread = sagMaxWebSearchCallsPerThread;
     }
 
     private ChatAgentProperties managed() {

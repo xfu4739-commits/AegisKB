@@ -487,6 +487,208 @@ public class RagRetrievalEngine {
         );
     }
 
+    /**
+     * SAG 阶段2唯一入口：把各次 kb_search 调用的 rerank 窗口按调用顺序合并（按稳定 lineage identity 去重保序），
+     * 对合并窗口一次性执行 {@link FinalEvidenceSelectionPolicy}，产出唯一 SubQuestionEvidence 与完整账本的检索上下文。
+     *
+     * <p>per-call 阶段结果不得携带 final policy 决策；本方法是 SAG 分支中 final selection 的唯一发生点。</p>
+     *
+     * @param frozenPlan 冻结检索计划
+     * @param stageResults 各次 kb_search 调用按调用顺序累积的阶段结果
+     * @param usedChannels 会话累积的 usedChannels
+     * @param notes 会话累积的 notes
+     * @param traceRecorder traceRecorder 参数
+     * @return RagRetrievalContext 合并后的检索上下文
+     */
+    public RagRetrievalContext finalizeSagContext(RetrievalPlan frozenPlan,
+                                                  List<RetrievalStageResult> stageResults,
+                                                  List<String> usedChannels,
+                                                  List<String> notes,
+                                                  ConversationTraceRecorder traceRecorder) {
+        Objects.requireNonNull(frozenPlan, "SAG 合并窗口需要冻结 RetrievalPlan");
+        frozenPlan.validateForExecution();
+        List<RetrievalStageResult> stages = stageResults == null ? List.of() : List.copyOf(stageResults);
+        RetrievalExecutionRequest seedRequest = RetrievalExecutionRequest.compile(frozenPlan).get(0);
+        String retrievalQuestion = frozenPlan.getQuestionPlan().getNormalizedQuery();
+        List<String> mergedNotes = notes == null ? new ArrayList<>() : new ArrayList<>(notes);
+
+        RagRetrievalContext context = new RagRetrievalContext();
+        context.setRetrievalQuestion(retrievalQuestion);
+        context.setUsedChannels(new ArrayList<>(usedChannels == null ? List.of() : usedChannels));
+        context.setRetrievalNotes(mergedNotes);
+        context.setExecutionRequests(List.of(seedRequest));
+        context.setRequestReconciliations(List.of());
+
+        SubQuestionEvidence evidence = completeSagMergedEvidence(
+            frozenPlan,
+            stages,
+            seedRequest.subQuestionIndex(),
+            retrievalQuestion,
+            mergedNotes,
+            traceRecorder
+        );
+        List<SubQuestionEvidence> evidenceList = new ArrayList<>();
+        evidenceList.add(evidence);
+        assignReferenceIds(evidenceList, frozenPlan);
+        context.setSubQuestionEvidenceList(evidenceList);
+        return context;
+    }
+
+    private SubQuestionEvidence completeSagMergedEvidence(RetrievalPlan plan,
+                                                          List<RetrievalStageResult> stages,
+                                                          int mergedIndex,
+                                                          String retrievalQuestion,
+                                                          List<String> notes,
+                                                          ConversationTraceRecorder traceRecorder) {
+        List<RetrievalChannelResult> rawChannelResults = concatStageValues(stages, RetrievalStageResult::rawChannelResults);
+        List<RetrievalChannelResult> channelResults = concatStageValues(stages, RetrievalStageResult::channelResults);
+        List<SubQuestionChannelTrace> channelTraces = concatStageValues(stages, RetrievalStageResult::channelTraces);
+        List<IdentityTransition> identityTransitions = concatStageValues(stages, RetrievalStageResult::identityTransitions);
+        List<EvidenceSelectionLedger.SourceRankingWindowDecision> windowDecisions =
+            concatStageValues(stages, stage -> stage.rankingWindow().decisions());
+        List<EvidenceSelectionLedger.SourceRankingWindowCandidate> windowCandidates =
+            concatStageValues(stages, stage -> stage.rankingWindow().candidates());
+        List<RerankRequestCandidate> rerankRequestCandidates =
+            concatStageValues(stages, stage -> stage.rerankResult().requestCandidates());
+        List<RerankResultCandidate> rerankResultCandidates =
+            concatStageValues(stages, stage -> stage.rerankResult().resultCandidates());
+
+        List<Document> mergedCandidates = dedupeByLineageIdentity(
+            concatStageValues(stages, RetrievalStageResult::mergedCandidates));
+        List<Document> parentCandidates = dedupeByLineageIdentity(
+            concatStageValues(stages, RetrievalStageResult::parentCandidates));
+        List<Document> mergedSourcePool = dedupeByLineageIdentity(
+            concatStageValues(stages, stage -> stage.candidatePools().sourceDocuments()));
+        List<Document> mergedContextDocuments = dedupeByLineageIdentity(
+            concatStageValues(stages, stage -> stage.candidatePools().contextDocuments()));
+        List<Document> mergedSourceWindow = dedupeByLineageIdentity(
+            concatStageValues(stages, stage -> stage.rerankResult().candidates()));
+
+        FinalEvidenceSelectionPolicy.SelectionResult selectionResult = mergedSourceWindow.isEmpty()
+            ? new FinalEvidenceSelectionPolicy.SelectionResult(List.of(), List.of())
+            : finalEvidenceSelectionPolicy.select(mergedSourceWindow, plan);
+        projectPolicyDecisions(mergedSourceWindow, selectionResult.decisions());
+        List<Document> finalSourceDocuments = selectionResult.selectedDocuments();
+
+        if (!selectionResult.decisions().isEmpty() && selectionResult.decisions().stream()
+            .allMatch(decision -> decision.reason() == FinalEvidenceDecision.Reason.FILTERED_NOT_APPLICABLE)) {
+            notes.add("SAG 合并窗口最终证据未明确支持当前目标对象，仅保留为相似但不适用证据。");
+        }
+
+        EvidenceSelectionLedger ledger = new EvidenceSelectionLedger(
+            new EvidenceLineage(
+                candidateIds(flattenChannelDocuments(rawChannelResults)),
+                candidateIds(flattenChannelDocuments(channelResults)),
+                lineageIdentities(mergedCandidates),
+                windowCandidates.stream()
+                    .map(EvidenceSelectionLedger.SourceRankingWindowCandidate::lineageIdentity)
+                    .toList(),
+                candidateIds(mergedContextDocuments),
+                candidateIds(mergedSourcePool),
+                candidateIds(mergedSourceWindow),
+                finalSourceDocuments.stream()
+                    .map(EvidenceIdentityResolver::citationIdentityValue)
+                    .filter(identity -> !identity.isBlank())
+                    .toList()
+            ),
+            mergedRerankExecution(stages, plan),
+            windowDecisions,
+            windowCandidates,
+            rerankRequestCandidates,
+            rerankResultCandidates,
+            identityTransitions,
+            selectionResult.decisions()
+        );
+
+        appendGraphRagCanonicalNotes(mergedIndex, retrievalQuestion, finalSourceDocuments, notes);
+        notes.add("SAG 合并窗口检索完成：kb_search 调用 " + stages.size() + " 次，"
+            + summarizeChannelResults(channelResults)
+            + "，source=" + finalSourceDocuments.size()
+            + "，context=" + mergedContextDocuments.size());
+
+        ObservationPersistence observationPersistence = ObservationPersistence.notAttempted(
+            rawCandidateCount(rawChannelResults),
+            ErrorType.NO_RECORDER
+        );
+        if (traceRecorder != null) {
+            try {
+                recordChannelObservations(traceRecorder, mergedIndex, retrievalQuestion,
+                    rawChannelResults, channelResults, channelTraces, finalSourceDocuments);
+            } catch (RuntimeException exception) {
+                log.warn("记录 SAG 检索通道观测数据失败, mergedIndex={}", mergedIndex, exception);
+            }
+            observationPersistence = recordRetrievalResultObservations(
+                traceRecorder,
+                mergedIndex,
+                retrievalQuestion,
+                rawChannelResults,
+                channelResults,
+                mergedCandidates,
+                mergedSourceWindow,
+                finalSourceDocuments
+            );
+        }
+
+        return new SubQuestionEvidence(
+            mergedIndex,
+            retrievalQuestion,
+            finalSourceDocuments,
+            mergedContextDocuments,
+            new ArrayList<>(),
+            channelTraces,
+            mergedCandidates.size(),
+            parentCandidates.size(),
+            mergedSourceWindow.size(),
+            ledger,
+            observationPersistence
+        );
+    }
+
+    private <T> List<T> concatStageValues(List<RetrievalStageResult> stages,
+                                          java.util.function.Function<RetrievalStageResult, List<T>> extractor) {
+        return stages.stream()
+            .filter(Objects::nonNull)
+            .flatMap(stage -> {
+                List<T> values = extractor.apply(stage);
+                return values == null ? java.util.stream.Stream.<T>empty() : values.stream();
+            })
+            .toList();
+    }
+
+    private List<Document> dedupeByLineageIdentity(List<Document> candidates) {
+        EvidenceCandidateIdentity.ensureAll(candidates);
+        Set<String> seenIdentities = new LinkedHashSet<>();
+        List<Document> merged = new ArrayList<>();
+        for (Document candidate : candidates) {
+            if (candidate == null) {
+                continue;
+            }
+            if (seenIdentities.add(EvidenceCandidateIdentity.lineageIdentity(candidate))) {
+                merged.add(candidate);
+            }
+        }
+        return merged;
+    }
+
+    private RerankExecution mergedRerankExecution(List<RetrievalStageResult> stages, RetrievalPlan plan) {
+        List<RerankExecution> executions = concatStageValues(stages, stage -> List.of(stage.rerankResult().execution()));
+        if (executions.isEmpty()) {
+            return EvidenceSelectionLedger.empty(plan.isRerankRequested()).rerankExecution();
+        }
+        for (RerankExecutionStatus status : List.of(
+            RerankExecutionStatus.SUCCESS,
+            RerankExecutionStatus.FAILED_AFTER_REQUEST,
+            RerankExecutionStatus.FAILED_BEFORE_REQUEST,
+            RerankExecutionStatus.SKIPPED_EMPTY_SOURCE_WINDOW)) {
+            for (RerankExecution execution : executions) {
+                if (execution.status() == status) {
+                    return execution;
+                }
+            }
+        }
+        return executions.get(0);
+    }
+
     private ObservationPersistence emptyObservationPersistence(ConversationTraceRecorder traceRecorder) {
         if (traceRecorder == null) {
             return ObservationPersistence.notAttempted(0, ErrorType.NO_RECORDER);
