@@ -208,8 +208,48 @@ public class RagRetrievalEngine {
                                                                                    List<String> usedChannels,
                                                                                    List<String> notes,
                                                                                    ConversationTraceRecorder traceRecorder) {
+        if (enabledChannelImplementations(request).isEmpty()) {
+            notes.add("子问题" + request.subQuestionIndex() + "没有可用的检索通道。");
+            return CompletableFuture.completedFuture(
+                new SubQuestionEvidence(
+                    request.subQuestionIndex(),
+                    request.executionQuery(),
+                    List.of(),
+                    List.of(),
+                    new ArrayList<>(),
+                    List.of(),
+                    0,
+                    0,
+                    0,
+                    EvidenceSelectionLedger.empty(plan.isRerankRequested()),
+                    emptyObservationPersistence(traceRecorder)
+                )
+            );
+        }
+        return executeRetrievalStagesAsync(request, plan, usedChannels, notes)
+            .thenApplyAsync(stage -> completeSubQuestionEvidence(stage, plan, notes, traceRecorder), executorService);
+    }
+
+    /**
+     * per-call 检索阶段入口：channel→fusion→parent elevation→context expansion→ranking window→rerank，
+     * 不做 final evidence selection；RETRIEVAL 路径由 completeSubQuestionEvidence 续接，SAG kb_search 直接复用本入口。
+     *
+     * @param request 执行请求
+     * @param plan 冻结计划
+     * @param usedChannels usedChannels 参数
+     * @param notes notes 参数
+     * @return CompletableFuture<RetrievalStageResult> 结果
+     */
+    public CompletableFuture<RetrievalStageResult> executeRetrievalStagesAsync(RetrievalExecutionRequest request,
+                                                                               RetrievalPlan plan,
+                                                                               List<String> usedChannels,
+                                                                               List<String> notes) {
         int subQuestionIndex = request.subQuestionIndex();
         String subQuestion = request.executionQuery();
+        if (enabledChannelImplementations(request).isEmpty()) {
+            notes.add("子问题" + subQuestionIndex + "没有可用的检索通道。");
+            return CompletableFuture.completedFuture(noChannelStageResult(subQuestionIndex, subQuestion, plan));
+        }
 
         List<CompletableFuture<RetrievalChannelResult>> futures = enabledChannelImplementations(request).stream()
             .map(channel -> CompletableFuture.supplyAsync(() -> channel.retrieve(request), executorService)
@@ -233,178 +273,218 @@ public class RagRetrievalEngine {
                     );
                 }))
             .toList();
-        if (futures.isEmpty()) {
-            notes.add("子问题" + subQuestionIndex + "没有可用的检索通道。");
-            return CompletableFuture.completedFuture(
-                new SubQuestionEvidence(
-                    subQuestionIndex,
-                    subQuestion,
-                    List.of(),
-                    List.of(),
-                    new ArrayList<>(),
-                    List.of(),
-                    0,
-                    0,
-                    0,
-                    EvidenceSelectionLedger.empty(plan.isRerankRequested()),
-                    emptyObservationPersistence(traceRecorder)
-                )
+
+        return CompletableFuture.allOf(futures.toArray(new CompletableFuture<?>[0]))
+            .thenApplyAsync(ignored -> buildRetrievalStageResult(request, plan, futures, usedChannels, notes), executorService);
+    }
+
+    private RetrievalStageResult buildRetrievalStageResult(RetrievalExecutionRequest request,
+                                                           RetrievalPlan plan,
+                                                           List<CompletableFuture<RetrievalChannelResult>> futures,
+                                                           List<String> usedChannels,
+                                                           List<String> notes) {
+        int subQuestionIndex = request.subQuestionIndex();
+        String subQuestion = request.executionQuery();
+        List<RetrievalChannelResult> rawChannelResults = futures.stream()
+            .map(CompletableFuture::join)
+            .filter(result -> result.getDocuments() != null)
+            .toList();
+        rawChannelResults.forEach(result -> EvidenceCandidateIdentity.ensureAll(result.getDocuments()));
+        List<RetrievalChannelResult> channelResults = rawChannelResults;
+        List<SubQuestionChannelTrace> channelTraces = buildChannelTraces(rawChannelResults, channelResults, plan);
+
+        channelResults.stream()
+            .filter(result -> !result.getDocuments().isEmpty())
+            .forEach(result -> markUsedChannel(usedChannels, result.getChannelName()));
+
+        List<Document> fusionInputs = flattenChannelDocuments(channelResults);
+        List<Document> mergedCandidates = hybridFusionService.fuse(channelResults, plan);
+        IdentityTransition fusionTransition = IdentityTransitionRecorder.capture(
+            "fusion-" + subQuestionIndex,
+            IdentityTransitionType.FUSION_DEDUPLICATION,
+            IdentityTransitionStage.FUSION,
+            fusionInputs,
+            mergedCandidates
+        );
+        List<Document> elevatedParentCandidates = documentKnowledgeService.elevateToParentBlocks(
+            mergedCandidates,
+            properties.getParentEvidenceMaxChars()
+        );
+        List<Document> parentCandidates = contextExpansionPlanner.mergeElevatedParentCandidates(
+            mergedCandidates,
+            elevatedParentCandidates
+        );
+        EvidenceCandidateIdentity.ensureAll(parentCandidates);
+        IdentityTransition parentTransition = IdentityTransitionRecorder.capture(
+            "parent-elevation-" + subQuestionIndex,
+            IdentityTransitionType.PARENT_ELEVATION,
+            IdentityTransitionStage.PARENT_ELEVATION,
+            mergedCandidates,
+            parentCandidates
+        );
+        List<Document> structureAnchorCandidates = contextExpansionPlanner.expandStructureAnchoredEvidence(parentCandidates, plan, notes, subQuestionIndex);
+        List<Document> structureNavigationCandidates = contextExpansionPlanner.buildStructureNavigationContextCandidates(plan, notes, subQuestionIndex);
+        List<Document> expandedCandidates = contextExpansionPlanner.mergeStructureAnchorCandidates(parentCandidates, structureAnchorCandidates);
+        EvidenceCandidateIdentity.ensureAll(expandedCandidates);
+        EvidenceCandidatePools candidatePools = contextExpansionPlanner.partitionCandidates(expandedCandidates, structureNavigationCandidates);
+        List<Document> finalCandidates = new ArrayList<>(candidatePools.sourceDocuments());
+        finalCandidates.addAll(candidatePools.contextDocuments());
+        IdentityTransition contextTransition = IdentityTransitionRecorder.capture(
+            "context-expansion-" + subQuestionIndex,
+            IdentityTransitionType.CONTEXT_EXPANSION,
+            IdentityTransitionStage.CONTEXT_EXPANSION,
+            parentCandidates,
+            finalCandidates
+        );
+
+        SourceRankingWindow.Result rankingWindow = sourceRankingWindow.build(
+            candidatePools.sourceDocuments(),
+            plan.getRerankWindow()
+        );
+        RerankPipelineResult rerankResult = executeRerank(
+            subQuestionIndex,
+            subQuestion,
+            rankingWindow,
+            plan,
+            usedChannels,
+            notes
+        );
+        List<IdentityTransition> identityTransitions = java.util.stream.Stream.of(
+                fusionTransition,
+                parentTransition,
+                contextTransition
+            )
+            .filter(Objects::nonNull)
+            .toList();
+        return new RetrievalStageResult(
+            subQuestionIndex,
+            subQuestion,
+            false,
+            rawChannelResults,
+            channelResults,
+            channelTraces,
+            mergedCandidates,
+            parentCandidates,
+            candidatePools,
+            identityTransitions,
+            rankingWindow,
+            rerankResult
+        );
+    }
+
+    private SubQuestionEvidence completeSubQuestionEvidence(RetrievalStageResult stage,
+                                                            RetrievalPlan plan,
+                                                            List<String> notes,
+                                                            ConversationTraceRecorder traceRecorder) {
+        int subQuestionIndex = stage.subQuestionIndex();
+        String subQuestion = stage.subQuestion();
+        List<RetrievalChannelResult> rawChannelResults = stage.rawChannelResults();
+        List<RetrievalChannelResult> channelResults = stage.channelResults();
+        EvidenceCandidatePools candidatePools = stage.candidatePools();
+        SourceRankingWindow.Result rankingWindow = stage.rankingWindow();
+        RerankPipelineResult rerankResult = stage.rerankResult();
+
+        FinalEvidenceSelectionPolicy.SelectionResult selectionResult = rankingWindow.buildFailed()
+            ? new FinalEvidenceSelectionPolicy.SelectionResult(List.of(), List.of())
+            : finalEvidenceSelectionPolicy.select(rerankResult.candidates(), plan);
+        projectPolicyDecisions(rerankResult.candidates(), selectionResult.decisions());
+        List<Document> finalSourceDocuments = selectionResult.selectedDocuments();
+
+        if (!selectionResult.decisions().isEmpty() && selectionResult.decisions().stream()
+            .allMatch(decision -> decision.reason() == FinalEvidenceDecision.Reason.FILTERED_NOT_APPLICABLE)) {
+            notes.add("子问题" + subQuestionIndex + "最终证据未明确支持当前目标对象，仅保留为相似但不适用证据。");
+        }
+
+        EvidenceSelectionLedger ledger = new EvidenceSelectionLedger(
+            new EvidenceLineage(
+                candidateIds(flattenChannelDocuments(rawChannelResults)),
+                candidateIds(flattenChannelDocuments(channelResults)),
+                lineageIdentities(stage.mergedCandidates()),
+                rankingWindow.candidates().stream()
+                    .map(EvidenceSelectionLedger.SourceRankingWindowCandidate::lineageIdentity)
+                    .toList(),
+                candidateIds(candidatePools.contextDocuments()),
+                candidateIds(candidatePools.sourceDocuments()),
+                candidateIds(rerankResult.candidates()),
+                finalSourceDocuments.stream()
+                    .map(EvidenceIdentityResolver::citationIdentityValue)
+                    .filter(identity -> !identity.isBlank())
+                    .toList()
+            ),
+            rerankResult.execution(),
+            rankingWindow.decisions(),
+            rankingWindow.candidates(),
+            rerankResult.requestCandidates(),
+            rerankResult.resultCandidates(),
+            stage.identityTransitions(),
+            selectionResult.decisions()
+        );
+
+        appendGraphRagCanonicalNotes(subQuestionIndex, subQuestion, finalSourceDocuments, notes);
+
+        notes.add("子问题" + subQuestionIndex + "检索完成："
+            + summarizeChannelResults(channelResults)
+            + "，source=" + finalSourceDocuments.size()
+            + "，context=" + candidatePools.contextDocuments().size());
+
+        ObservationPersistence observationPersistence = ObservationPersistence.notAttempted(
+            rawCandidateCount(rawChannelResults),
+            ErrorType.NO_RECORDER
+        );
+        if (traceRecorder != null) {
+            try {
+                recordChannelObservations(traceRecorder, subQuestionIndex, subQuestion,
+                    rawChannelResults, channelResults, stage.channelTraces(), finalSourceDocuments);
+            } catch (RuntimeException exception) {
+                log.warn("记录检索通道观测数据失败, subQuestionIndex={}", subQuestionIndex, exception);
+            }
+            observationPersistence = recordRetrievalResultObservations(
+                traceRecorder,
+                subQuestionIndex,
+                subQuestion,
+                rawChannelResults,
+                channelResults,
+                stage.mergedCandidates(),
+                rerankResult.candidates(),
+                finalSourceDocuments
             );
         }
 
-        return CompletableFuture.allOf(futures.toArray(new CompletableFuture<?>[0]))
-            .thenApplyAsync(ignored -> {
-                List<RetrievalChannelResult> rawChannelResults = futures.stream()
-                    .map(CompletableFuture::join)
-                    .filter(result -> result.getDocuments() != null)
-                    .toList();
-                rawChannelResults.forEach(result -> EvidenceCandidateIdentity.ensureAll(result.getDocuments()));
-                List<RetrievalChannelResult> channelResults = rawChannelResults;
-                List<SubQuestionChannelTrace> channelTraces = buildChannelTraces(rawChannelResults, channelResults, plan);
+        return new SubQuestionEvidence(
+            subQuestionIndex,
+            subQuestion,
+            finalSourceDocuments,
+            candidatePools.contextDocuments(),
+            new ArrayList<>(),
+            stage.channelTraces(),
+            stage.mergedCandidates().size(),
+            stage.parentCandidates().size(),
+            rerankResult.candidates().size(),
+            ledger,
+            observationPersistence
+        );
+    }
 
-                channelResults.stream()
-                    .filter(result -> !result.getDocuments().isEmpty())
-                    .forEach(result -> markUsedChannel(usedChannels, result.getChannelName()));
-
-                List<Document> fusionInputs = flattenChannelDocuments(channelResults);
-                List<Document> mergedCandidates = hybridFusionService.fuse(channelResults, plan);
-                IdentityTransition fusionTransition = IdentityTransitionRecorder.capture(
-                    "fusion-" + subQuestionIndex,
-                    IdentityTransitionType.FUSION_DEDUPLICATION,
-                    IdentityTransitionStage.FUSION,
-                    fusionInputs,
-                    mergedCandidates
-                );
-                List<Document> elevatedParentCandidates = documentKnowledgeService.elevateToParentBlocks(
-                    mergedCandidates,
-                    properties.getParentEvidenceMaxChars()
-                );
-                List<Document> parentCandidates = contextExpansionPlanner.mergeElevatedParentCandidates(
-                    mergedCandidates,
-                    elevatedParentCandidates
-                );
-                EvidenceCandidateIdentity.ensureAll(parentCandidates);
-                IdentityTransition parentTransition = IdentityTransitionRecorder.capture(
-                    "parent-elevation-" + subQuestionIndex,
-                    IdentityTransitionType.PARENT_ELEVATION,
-                    IdentityTransitionStage.PARENT_ELEVATION,
-                    mergedCandidates,
-                    parentCandidates
-                );
-                List<Document> structureAnchorCandidates = contextExpansionPlanner.expandStructureAnchoredEvidence(parentCandidates, plan, notes, subQuestionIndex);
-                List<Document> structureNavigationCandidates = contextExpansionPlanner.buildStructureNavigationContextCandidates(plan, notes, subQuestionIndex);
-                List<Document> expandedCandidates = contextExpansionPlanner.mergeStructureAnchorCandidates(parentCandidates, structureAnchorCandidates);
-                EvidenceCandidateIdentity.ensureAll(expandedCandidates);
-                EvidenceCandidatePools candidatePools = contextExpansionPlanner.partitionCandidates(expandedCandidates, structureNavigationCandidates);
-                List<Document> finalCandidates = new ArrayList<>(candidatePools.sourceDocuments());
-                finalCandidates.addAll(candidatePools.contextDocuments());
-                IdentityTransition contextTransition = IdentityTransitionRecorder.capture(
-                    "context-expansion-" + subQuestionIndex,
-                    IdentityTransitionType.CONTEXT_EXPANSION,
-                    IdentityTransitionStage.CONTEXT_EXPANSION,
-                    parentCandidates,
-                    finalCandidates
-                );
-
-                SourceRankingWindow.Result rankingWindow = sourceRankingWindow.build(
-                    candidatePools.sourceDocuments(),
-                    plan.getRerankWindow()
-                );
-                RerankPipelineResult rerankResult = executeRerank(
-                    subQuestionIndex,
-                    subQuestion,
-                    rankingWindow,
-                    plan,
-                    usedChannels,
-                    notes
-                );
-                FinalEvidenceSelectionPolicy.SelectionResult selectionResult = rankingWindow.buildFailed()
-                    ? new FinalEvidenceSelectionPolicy.SelectionResult(List.of(), List.of())
-                    : finalEvidenceSelectionPolicy.select(rerankResult.candidates(), plan);
-                projectPolicyDecisions(rerankResult.candidates(), selectionResult.decisions());
-                List<Document> finalSourceDocuments = selectionResult.selectedDocuments();
-
-                if (!selectionResult.decisions().isEmpty() && selectionResult.decisions().stream()
-                    .allMatch(decision -> decision.reason() == FinalEvidenceDecision.Reason.FILTERED_NOT_APPLICABLE)) {
-                    notes.add("子问题" + subQuestionIndex + "最终证据未明确支持当前目标对象，仅保留为相似但不适用证据。");
-                }
-
-                List<IdentityTransition> identityTransitions = java.util.stream.Stream.of(
-                        fusionTransition,
-                        parentTransition,
-                        contextTransition
-                    )
-                    .filter(Objects::nonNull)
-                    .toList();
-                EvidenceSelectionLedger ledger = new EvidenceSelectionLedger(
-                    new EvidenceLineage(
-                        candidateIds(flattenChannelDocuments(rawChannelResults)),
-                        candidateIds(flattenChannelDocuments(channelResults)),
-                        lineageIdentities(mergedCandidates),
-                        rankingWindow.candidates().stream()
-                            .map(EvidenceSelectionLedger.SourceRankingWindowCandidate::lineageIdentity)
-                            .toList(),
-                        candidateIds(candidatePools.contextDocuments()),
-                        candidateIds(candidatePools.sourceDocuments()),
-                        candidateIds(rerankResult.candidates()),
-                        finalSourceDocuments.stream()
-                            .map(EvidenceIdentityResolver::citationIdentityValue)
-                            .filter(identity -> !identity.isBlank())
-                            .toList()
-                    ),
-                    rerankResult.execution(),
-                    rankingWindow.decisions(),
-                    rankingWindow.candidates(),
-                    rerankResult.requestCandidates(),
-                    rerankResult.resultCandidates(),
-                    identityTransitions,
-                    selectionResult.decisions()
-                );
-
-                appendGraphRagCanonicalNotes(subQuestionIndex, subQuestion, finalSourceDocuments, notes);
-
-                notes.add("子问题" + subQuestionIndex + "检索完成："
-                    + summarizeChannelResults(channelResults)
-                    + "，source=" + finalSourceDocuments.size()
-                    + "，context=" + candidatePools.contextDocuments().size());
-
-                ObservationPersistence observationPersistence = ObservationPersistence.notAttempted(
-                    rawCandidateCount(rawChannelResults),
-                    ErrorType.NO_RECORDER
-                );
-                if (traceRecorder != null) {
-                    try {
-                        recordChannelObservations(traceRecorder, subQuestionIndex, subQuestion,
-                            rawChannelResults, channelResults, channelTraces, finalSourceDocuments);
-                    } catch (RuntimeException exception) {
-                        log.warn("记录检索通道观测数据失败, subQuestionIndex={}", subQuestionIndex, exception);
-                    }
-                    observationPersistence = recordRetrievalResultObservations(
-                        traceRecorder,
-                        subQuestionIndex,
-                        subQuestion,
-                        rawChannelResults,
-                        channelResults,
-                        mergedCandidates,
-                        rerankResult.candidates(),
-                        finalSourceDocuments
-                    );
-                }
-
-                return new SubQuestionEvidence(
-                    subQuestionIndex,
-                    subQuestion,
-                    finalSourceDocuments,
-                    candidatePools.contextDocuments(),
-                    new ArrayList<>(),
-                    channelTraces,
-                    mergedCandidates.size(),
-                    parentCandidates.size(),
-                    rerankResult.candidates().size(),
-                    ledger,
-                    observationPersistence
-                );
-            }, executorService);
+    private RetrievalStageResult noChannelStageResult(int subQuestionIndex, String subQuestion, RetrievalPlan plan) {
+        return new RetrievalStageResult(
+            subQuestionIndex,
+            subQuestion,
+            true,
+            List.of(),
+            List.of(),
+            List.of(),
+            List.of(),
+            List.of(),
+            new EvidenceCandidatePools(List.of(), List.of()),
+            List.of(),
+            new SourceRankingWindow.Result(List.of(), List.of(), List.of(), false, ""),
+            new RerankPipelineResult(
+                List.of(),
+                EvidenceSelectionLedger.empty(plan.isRerankRequested()).rerankExecution(),
+                List.of(),
+                List.of()
+            )
+        );
     }
 
     private ObservationPersistence emptyObservationPersistence(ConversationTraceRecorder traceRecorder) {
@@ -1453,18 +1533,49 @@ public class RagRetrievalEngine {
         return scoreObj instanceof Number number ? number.doubleValue() : null;
     }
 
-    private record RerankPipelineResult(
+    public record RerankPipelineResult(
         List<Document> candidates,
         RerankExecution execution,
         List<RerankRequestCandidate> requestCandidates,
         List<RerankResultCandidate> resultCandidates
     ) {
 
-        private RerankPipelineResult {
+        public RerankPipelineResult {
             candidates = candidates == null ? List.of() : List.copyOf(candidates);
             requestCandidates = requestCandidates == null ? List.of() : List.copyOf(requestCandidates);
             resultCandidates = resultCandidates == null ? List.of() : List.copyOf(resultCandidates);
             Objects.requireNonNull(execution, "execution");
+        }
+    }
+
+    /**
+     * per-call 检索阶段结果：候选生成阶段（channel→fusion→ranking window→rerank）的完整产出，不含 final selection。
+     */
+    public record RetrievalStageResult(
+        int subQuestionIndex,
+        String subQuestion,
+        boolean noChannels,
+        List<RetrievalChannelResult> rawChannelResults,
+        List<RetrievalChannelResult> channelResults,
+        List<SubQuestionChannelTrace> channelTraces,
+        List<Document> mergedCandidates,
+        List<Document> parentCandidates,
+        EvidenceCandidatePools candidatePools,
+        List<IdentityTransition> identityTransitions,
+        SourceRankingWindow.Result rankingWindow,
+        RerankPipelineResult rerankResult
+    ) {
+
+        public RetrievalStageResult {
+            rawChannelResults = rawChannelResults == null ? List.of() : List.copyOf(rawChannelResults);
+            channelResults = channelResults == null ? List.of() : List.copyOf(channelResults);
+            channelTraces = channelTraces == null ? List.of() : List.copyOf(channelTraces);
+            mergedCandidates = mergedCandidates == null ? List.of() : List.copyOf(mergedCandidates);
+            parentCandidates = parentCandidates == null ? List.of() : List.copyOf(parentCandidates);
+            identityTransitions = identityTransitions == null ? List.of() : List.copyOf(identityTransitions);
+            Objects.requireNonNull(candidatePools, "candidatePools");
+            Objects.requireNonNull(rankingWindow, "rankingWindow");
+            Objects.requireNonNull(rerankResult, "rerankResult");
         }
     }
 
