@@ -18,7 +18,7 @@ import java.util.Set;
  * S04 makes the contract complete and serializable; S05 migrates every channel to consume it directly.
  */
 @Data
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class RetrievalPlan {

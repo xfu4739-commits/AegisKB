@@ -16,6 +16,7 @@ public final class ChatContextKeys {
     public static final String SELECTED_DOCUMENT_ID = "chat.selected.document.id";
     public static final String SELECTED_DOCUMENT_NAME = "chat.selected.document.name";
     public static final String SELECTED_TASK_ID = "chat.selected.task.id";
+    public static final String KB_RETRIEVAL_SESSION = "chat.kb.retrieval.session";
 
     private ChatContextKeys() {
     }
