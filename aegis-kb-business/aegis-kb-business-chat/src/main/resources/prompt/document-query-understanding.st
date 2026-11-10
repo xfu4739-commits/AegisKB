@@ -24,6 +24,7 @@ queryType 只能取以下值：
 - TABLE_QUERY：明确询问表格中的聚合、筛选、统计、分组、排序。
 - GRAPH_RELATION：询问实体之间关系、职责链路、上下游关系。
 - GLOBAL_SUMMARY：询问全文、全局、跨章节、整体总结。
+- MULTI_HOP_RESEARCH：需要迭代多跳检索才能回答的问题——需要分多次检索、逐步改写查询、跨多个主题聚合，或需要把内部文档证据与外部时效性事实对照。仅在确实需要多轮自主搜索时输出；普通单轮文档问答保持 DOCUMENT_QA。
 - OPEN_CHAT：非文档问题或开放聊天。
 - CAPABILITY_QUERY：询问系统能力、怎么使用、能做什么。
 
@@ -60,7 +61,8 @@ answerShape 只能从以下值中选择；可以多选，普通直接问答留�
 10. answerShape 只表达答案组织要求，不重新解释知识范围、检索通道、证据窗口、排序或引用资格；只输出上面的枚举。
 11. 只有问题确实要求多个相关互斥分类时才加入 CATEGORY_TABLE_ROW_COVERAGE；单一分类问题、无关表格行或普通列表不得触发整表枚举。
 12. targetEntities/excludedEntities 是 advisory suggestion。Java RetrievalPlan 会按当前原问题 grounding、NEGATIVE_BOUNDARY 和置信度独立授权；你不能把它们视为 hard filter、最终 route 或证据排除决定。
-13. 只返回 JSON，不要 Markdown，不要解释文本。
+13. MULTI_HOP_RESEARCH 只在问题确实需要多轮迭代检索或内外证据对照时输出，并且 confidence 必须 >= 0.72；不确定时保持 DOCUMENT_QA，不得因出现“对比、最新、综合”等单个词语就升级为多跳研究。
+14. 只返回 JSON，不要 Markdown，不要解释文本。
 
 原始问题：
 <originalQuestion>

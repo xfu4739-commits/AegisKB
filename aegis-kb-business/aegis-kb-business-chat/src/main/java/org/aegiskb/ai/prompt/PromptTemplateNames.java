@@ -25,7 +25,6 @@ public final class PromptTemplateNames {
     public static final String RAG_ANSWER_SUB_QUESTION_EVIDENCE = "rag-answer-sub-question-evidence";
     public static final String RAG_ANSWER_SYSTEM = "rag-answer-system";
     public static final String RAG_ANSWER_USER = "rag-answer-user";
-    public static final String RAG_ANSWER_WEB_REFERENCE = "rag-answer-web-reference";
     public static final String RECOMMENDATION_USER = "recommendation-user";
     public static final String SAG_AGENT_SYSTEM = "sag-agent-system";
 

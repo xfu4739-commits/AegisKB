@@ -1,5 +1,6 @@
 package org.aegiskb.ai.chatagent.tool;
 
+import org.aegiskb.ai.chatagent.model.SearchReference;
 import org.aegiskb.ai.chatagent.rag.model.RetrievalPlan;
 import org.aegiskb.ai.chatagent.rag.service.RagRetrievalEngine;
 
@@ -15,6 +16,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>由 SAG 执行器在循环开始前用冻结 {@link RetrievalPlan} 构造并写入 ToolContext；kb_search 每次调用只新增
  * 查询文本，scope/channel/预算/排序特征一律沿用冻结 Plan，逐次调用结果按调用顺序累积，供阶段2合并窗口使用。</p>
  *
+ * <p>tavily_search 的 web 结果按调用顺序累积为 Context Only 证据：它们只在阶段2渲染为背景上下文，
+ * 绝不进入 Source Evidence 池、final policy、显式 {@code [n]} 引用或 archive source snapshot。</p>
+ *
  * <p>构造即校验冻结 Plan 可执行性：越界或缺失 scope 的 Plan 在会话建立时就 fail closed，不会进入检索循环。</p>
  */
 public class KbRetrievalSession {
@@ -25,6 +29,7 @@ public class KbRetrievalSession {
         Collections.synchronizedList(new ArrayList<>());
     private final List<String> usedChannels = Collections.synchronizedList(new ArrayList<>());
     private final List<String> notes = Collections.synchronizedList(new ArrayList<>());
+    private final List<SearchReference> webContextReferences = Collections.synchronizedList(new ArrayList<>());
 
     public KbRetrievalSession(RetrievalPlan frozenPlan) {
         this.frozenPlan = Objects.requireNonNull(frozenPlan, "kb_search 会话需要冻结 RetrievalPlan");
@@ -54,5 +59,19 @@ public class KbRetrievalSession {
 
     public List<String> getNotes() {
         return notes;
+    }
+
+    /**
+     * 累积一条 tavily_search web 结果作为 Context Only 证据；null 结果忽略。
+     */
+    public void recordWebContext(SearchReference webReference) {
+        if (webReference == null) {
+            return;
+        }
+        webContextReferences.add(webReference);
+    }
+
+    public List<SearchReference> getWebContextReferences() {
+        return webContextReferences;
     }
 }

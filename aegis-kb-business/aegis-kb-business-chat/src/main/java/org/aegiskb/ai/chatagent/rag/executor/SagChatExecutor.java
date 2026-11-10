@@ -3,12 +3,14 @@ package org.aegiskb.ai.chatagent.rag.executor;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.cloud.ai.graph.agent.ReactAgent;
 import com.alibaba.cloud.ai.graph.exception.GraphRunnerException;
+import org.aegiskb.ai.chatagent.model.SearchReference;
 import org.aegiskb.ai.chatagent.model.trace.ConversationTraceStageCode;
 import org.aegiskb.ai.chatagent.rag.model.ConversationExecutionPlan;
 import org.aegiskb.ai.chatagent.rag.model.ExecutionMode;
 import org.aegiskb.ai.chatagent.rag.model.RagPromptAssemblyResult;
 import org.aegiskb.ai.chatagent.rag.model.RagRetrievalContext;
 import org.aegiskb.ai.chatagent.rag.model.RetrievalPlan;
+import org.aegiskb.ai.chatagent.rag.model.SubQuestionEvidence;
 import org.aegiskb.ai.chatagent.rag.service.RagPromptAssemblyService;
 import org.aegiskb.ai.chatagent.rag.service.RagRetrievalEngine;
 import org.aegiskb.ai.chatagent.rag.support.EvidenceBudgetTraceSnapshot;
@@ -19,6 +21,8 @@ import org.aegiskb.ai.chatagent.service.TaskInfo;
 import org.aegiskb.ai.chatagent.support.ChatContextKeys;
 import org.aegiskb.ai.chatagent.support.StreamEventWriter;
 import org.aegiskb.ai.chatagent.tool.KbRetrievalSession;
+import org.aegiskb.ai.manage.support.DocumentKnowledgeMetadataKeys;
+import org.springframework.ai.document.Document;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
@@ -27,8 +31,10 @@ import reactor.core.scheduler.Schedulers;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -169,25 +175,80 @@ public class SagChatExecutor implements ConversationExecutor {
                     session.getNotes(),
                     taskInfo.traceRecorder()
                 );
+                int webContextCount = attachWebContextOnly(context, session);
                 taskInfo.traceRecorder().completeStage(
                     finalizeStage,
                     "SAG 证据合并与最终选择完成。",
                     Map.of(
                         "kbSearchCalls", session.getStageResults().size(),
                         "referenceCount", context.flattenReferences().size(),
+                        "webContextCount", webContextCount,
                         "retrievalNotes", context.getRetrievalNotes() == null ? List.of() : context.getRetrievalNotes()
                     )
                 );
                 return context;
             }
-            return ragRetrievalEngine.finalizeSagContext(
+            RagRetrievalContext context = ragRetrievalEngine.finalizeSagContext(
                 session.getFrozenPlan(),
                 List.copyOf(session.getStageResults()),
                 session.getUsedChannels(),
                 session.getNotes(),
                 null
             );
+            attachWebContextOnly(context, session);
+            return context;
         }).subscribeOn(Schedulers.boundedElastic());
+    }
+
+    /**
+     * 把 SAG 循环内 tavily_search 收集的 web 结果转换为 Context Only 证据，按 url 去重后追加到合并证据的
+     * contextDocuments。web 证据只作为背景上下文渲染，绝不进入 Source Evidence 池、final policy 或显式 {@code [n]} 引用。
+     *
+     * @return 实际追加的 web Context Only 证据条数
+     */
+    private int attachWebContextOnly(RagRetrievalContext context, KbRetrievalSession session) {
+        List<SearchReference> webReferences = session.getWebContextReferences();
+        if (context == null || webReferences == null || webReferences.isEmpty()) {
+            return 0;
+        }
+        List<SubQuestionEvidence> evidenceList = context.getSubQuestionEvidenceList();
+        if (evidenceList == null || evidenceList.isEmpty()) {
+            return 0;
+        }
+        SubQuestionEvidence evidence = evidenceList.get(0);
+        List<Document> contextDocuments = evidence.getContextDocuments();
+        if (contextDocuments == null) {
+            contextDocuments = new ArrayList<>();
+            evidence.setContextDocuments(contextDocuments);
+        }
+        Set<String> seenUrls = new LinkedHashSet<>();
+        int attached = 0;
+        for (SearchReference reference : webReferences) {
+            if (reference == null) {
+                continue;
+            }
+            String url = StrUtil.blankToDefault(reference.getUrl(), "").trim();
+            if (url.isBlank() || !seenUrls.add(url)) {
+                continue;
+            }
+            contextDocuments.add(webContextDocument(url, reference));
+            attached++;
+        }
+        return attached;
+    }
+
+    private Document webContextDocument(String url, SearchReference reference) {
+        Map<String, Object> metadata = new LinkedHashMap<>();
+        metadata.put(DocumentKnowledgeMetadataKeys.SOURCE_TYPE, "WEB");
+        metadata.put(DocumentKnowledgeMetadataKeys.URL, url);
+        metadata.put(DocumentKnowledgeMetadataKeys.TITLE, StrUtil.blankToDefault(reference.getTitle(), "网页来源"));
+        metadata.put(DocumentKnowledgeMetadataKeys.TOOL_NAME, "tavily_search");
+        metadata.put(DocumentKnowledgeMetadataKeys.CONTEXT_ONLY, true);
+        return Document.builder()
+            .id("web-context-" + url)
+            .text(StrUtil.blankToDefault(reference.getSnippet(), ""))
+            .metadata(metadata)
+            .build();
     }
 
     private Flux<String> streamFromFinalizedContext(TaskInfo taskInfo,

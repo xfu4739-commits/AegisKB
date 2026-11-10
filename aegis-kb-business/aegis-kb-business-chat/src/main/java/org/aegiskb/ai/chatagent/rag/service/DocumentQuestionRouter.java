@@ -36,8 +36,11 @@ import java.util.regex.Pattern;
  *   <li>用<b>精确锚点</b>（章节号 / 引号标题精确 / 导航索引命中）定位结构节点，供确定性结构查询和软提示使用。</li>
  * </ol>
  *
- * <p>所有文档问答（当前文档 / 自动知识）统一输出 {@link ExecutionMode#RETRIEVAL}，进入统一多通道混合检索；
- * 结构导航结果只作为检索上下文和观测信号，不得绕过混合检索。</p>
+ * <p>普通文档问答（当前文档 / 自动知识）输出 {@link ExecutionMode#RETRIEVAL}，进入统一多通道混合检索；
+ * 结构导航结果只作为检索上下文和观测信号，不得绕过混合检索。当受控 LLM advisor 以高置信度判定问题为
+ * {@link QueryType#MULTI_HOP_RESEARCH}（需要迭代多跳检索或内外证据对照）时，翻译为 {@link ExecutionMode#SAG}，
+ * 进入 SAG 搜索循环；该判定只消费 advisor 的 queryType 与置信度，不读取任何业务词、文档名或 contains 规则，
+ * 未达置信度时 fail closed 回 {@link ExecutionMode#RETRIEVAL}。SAG 只在已选定知识库的文档问答路径产生。</p>
  */
 
 @Slf4j
@@ -54,6 +57,9 @@ public class DocumentQuestionRouter {
     private static final Pattern ORDINAL_REFERENCE_PATTERN = Pattern.compile("第\\s*([0-9一二三四五六七八九十百]+)\\s*(条|点|项|个)");
     // 匹配用户用引号包住的标题短语，例如“上线观察”，用于结构节点精确定位。
     private static final Pattern QUOTED_TEXT_PATTERN = Pattern.compile("[“\"']([^”\"']{2,40})[”\"']");
+
+    // SAG 多跳研究判定的置信度门槛，与受控 advisor 的高置信阈值一致；未达阈值 fail closed 回混合检索。
+    private static final double SAG_CONFIDENCE_THRESHOLD = 0.72D;
 
     private final DocumentStructureGraphService graphService;
     private final ObjectProvider<DocumentNavigationIndexService> navigationIndexServiceProvider;
@@ -92,7 +98,23 @@ public class DocumentQuestionRouter {
                 null,
                 queryUnderstanding,
                 RetrievalIntent.STRUCTURE,
+                ExecutionMode.RETRIEVAL,
                 "高置信结构导航走结构树确定性查询，结构结果作为检索上下文和观测信号。"
+            );
+        }
+
+        // 高置信多跳研究：翻译为 SAG 搜索循环，由模型自主决定 kb_search / tavily_search 的查询文本与调用时机。
+        // 该判定只消费受控 LLM advisor 的 queryType 与置信度，不读取任何业务词、文档名或 contains 规则；
+        // 未达置信度时 fail closed 回普通混合检索。SAG 只在已选定知识库的文档问答路径产生（本方法仅在 KB scope 内被调用）。
+        if (isMultiHopResearch(queryUnderstanding)) {
+            return buildDecision(
+                DocumentNavigationAction.FRESH_TOPIC,
+                null,
+                null,
+                queryUnderstanding,
+                retrievalIntent,
+                ExecutionMode.SAG,
+                "高置信多跳研究走 SAG 搜索循环，由模型自主迭代检索内部知识库与联网证据。"
             );
         }
 
@@ -110,10 +132,17 @@ public class DocumentQuestionRouter {
             itemIndex,
             queryUnderstanding,
             retrievalIntent,
+            ExecutionMode.RETRIEVAL,
             assistedSection == null
                 ? "普通文档问题走混合检索"
                 : "结构锚点仅作为软提示辅助混合检索"
         );
+    }
+
+    private boolean isMultiHopResearch(QueryUnderstandingResult queryUnderstanding) {
+        return queryUnderstanding != null
+            && queryUnderstanding.getQueryType() == QueryType.MULTI_HOP_RESEARCH
+            && normalizeConfidence(queryUnderstanding.getConfidence()) >= SAG_CONFIDENCE_THRESHOLD;
     }
 
     private DocumentNavigationDecision buildDecision(DocumentNavigationAction action,
@@ -121,7 +150,9 @@ public class DocumentQuestionRouter {
                                                      Integer itemIndex,
                                                      QueryUnderstandingResult queryUnderstanding,
                                                      RetrievalIntent retrievalIntent,
+                                                     ExecutionMode executionMode,
                                                      String reason) {
+        ExecutionMode effectiveMode = executionMode == null ? ExecutionMode.RETRIEVAL : executionMode;
         ConversationStructureAnchor structureAnchor = section == null
             ? ConversationStructureAnchor.builder().scopeMode("NONE").build()
             : ConversationStructureAnchor.builder()
@@ -136,21 +167,22 @@ public class DocumentQuestionRouter {
             ? null
             : ConversationItemAnchor.builder().itemIndex(itemIndex).build();
         RetrievalIntent effectiveIntent = retrievalIntent == null ? RetrievalIntent.GENERAL : retrievalIntent;
-        String summaryText = "mode=" + ExecutionMode.RETRIEVAL.name()
+        String summaryText = "mode=" + effectiveMode.name()
             + "; retrievalIntent=" + effectiveIntent.name()
             + "; queryType=" + (queryUnderstanding == null || queryUnderstanding.getQueryType() == null ? "" : queryUnderstanding.getQueryType().name())
             + "; queryUnderstandingSource=" + (queryUnderstanding == null ? "" : StrUtil.blankToDefault(queryUnderstanding.getSource(), ""))
             + "; reason=" + reason
             + "; section=" + (section == null ? "" : section.displayTitle())
             + "; itemIndex=" + (itemIndex == null ? "" : itemIndex);
-        log.info("文档问答路由完成: mode=RETRIEVAL, action={}, section='{}', itemIndex={}, reason='{}'",
+        log.info("文档问答路由完成: mode={}, action={}, section='{}', itemIndex={}, reason='{}'",
+            effectiveMode.name(),
             action,
             section == null ? "" : section.displayTitle(),
             itemIndex,
             reason);
         return DocumentNavigationDecision.builder()
             .navigationAction(action)
-            .executionMode(ExecutionMode.RETRIEVAL)
+            .executionMode(effectiveMode)
             .structureAnchor(structureAnchor)
             .itemAnchor(itemAnchor)
             .queryUnderstanding(queryUnderstanding)

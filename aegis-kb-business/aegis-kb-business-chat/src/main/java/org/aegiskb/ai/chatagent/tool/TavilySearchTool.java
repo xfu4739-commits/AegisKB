@@ -111,6 +111,7 @@ public class TavilySearchTool {
             }
 
             appendReferences(toolContext, references);
+            recordWebContext(toolContext, references);
             publishThinking(toolContext, "📚 搜索完成，找到 " + references.size() + " 条候选来源");
             completeToolTrace(toolTrace, response, references.size(), startTime);
 
@@ -191,6 +192,21 @@ public class TavilySearchTool {
         Object container = config.context().get(ChatContextKeys.REFERENCES);
         if (container instanceof List<?> list) {
             ((List<SearchReference>) list).addAll(references);
+        }
+    }
+
+    /**
+     * SAG 循环内把 web 结果累积到冻结会话，供阶段2作为 Context Only 背景证据渲染。
+     * 非 SAG 路径（如开放式 REACT_AGENT）没有 {@link KbRetrievalSession}，此处直接跳过，行为零变化。
+     */
+    private void recordWebContext(ToolContext toolContext, List<SearchReference> references) {
+        if (references == null || references.isEmpty()) {
+            return;
+        }
+        RunnableConfig config = ToolContextHelper.getConfig(toolContext).orElse(null);
+        Object candidate = config == null ? null : config.context().get(ChatContextKeys.KB_RETRIEVAL_SESSION);
+        if (candidate instanceof KbRetrievalSession session) {
+            references.forEach(session::recordWebContext);
         }
     }
 

@@ -286,9 +286,7 @@ public class RagPromptAssemblyService {
                 continue;
             }
 
-            String block = isWebReference(reference)
-                ? buildWebReferenceBlock(reference)
-                : buildDocumentReferenceBlock(reference);
+            String block = buildDocumentReferenceBlock(reference);
             if (assemblyState.promptBudget.tryConsume(block.length())) {
                 builder.append(block);
                 String renderedReferenceId = StrUtil.blankToDefault(reference.getReferenceId(), "");
@@ -359,9 +357,6 @@ public class RagPromptAssemblyService {
             EvidenceIdentity identity = EvidenceIdentityResolver.contextIdentity(reference);
             return identity == null || !identity.present() ? "" : identity.value();
         }
-        if (isWebReference(reference)) {
-            return StrUtil.isBlank(reference.getUrl()) ? "" : "WEB:" + reference.getUrl().trim();
-        }
         EvidenceIdentity identity = EvidenceIdentityResolver.citationIdentity(reference);
         return identity == null || !identity.present() ? "" : identity.value();
     }
@@ -379,11 +374,12 @@ public class RagPromptAssemblyService {
     /**
      * 是否为只能作为背景的 context-only 证据：依据结构化 identity 判定
      * （citation 身份缺失 / CONTEXT_ONLY / RAPTOR summary-only / GraphRAG 社区 summary-only），
-     * 不做运行时关键词或文本推断。Web 证据可引用，永远算 source evidence。
+     * 不做运行时关键词或文本推断。Web（tavily_search）证据永远算 Context Only：S19 起 web 结果只渲染为
+     * {@code PROMPT_RENDERED_CONTEXT} 背景，不进 Source Evidence 池、不进 final policy、无显式 {@code [n]} 引用资格。
      */
     private boolean isContextOnlyReference(SearchReference reference) {
         if (isWebReference(reference)) {
-            return false;
+            return true;
         }
         return reference.isContextOnly()
             || "CONTEXT_ONLY".equalsIgnoreCase(StrUtil.blankToDefault(reference.getCitationEvidenceType(), ""))
@@ -394,9 +390,6 @@ public class RagPromptAssemblyService {
     private boolean isGenerationVisibleSource(SearchReference reference) {
         if (reference == null || StrUtil.isBlank(reference.getSnippet())) {
             return false;
-        }
-        if (isWebReference(reference)) {
-            return StrUtil.isNotBlank(reference.getUrl());
         }
         return reference.isSourceEvidenceResolved();
     }
@@ -415,15 +408,6 @@ public class RagPromptAssemblyService {
                 .filter(reference -> reference != null)
                 .forEach(reference -> reference.setGenerationVisible(false));
         }
-    }
-
-    private String buildWebReferenceBlock(SearchReference reference) {
-        return promptTemplateService.render(PromptTemplateNames.RAG_ANSWER_WEB_REFERENCE, Map.of(
-            "referenceId", StrUtil.blankToDefault(reference.getReferenceId(), ""),
-            "title", StrUtil.blankToDefault(reference.getTitle(), "网页来源"),
-            "url", StrUtil.blankToDefault(reference.getUrl(), "未知"),
-            "snippet", trimSnippet(reference.getSnippet(), 900)
-        )) + "\n\n";
     }
 
     private String buildDocumentReferenceBlock(SearchReference reference) {
