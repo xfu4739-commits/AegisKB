@@ -51,16 +51,6 @@ public class ChatAgentConfiguration {
     }
 
     @Bean
-    public ToolCallback kbSearchToolCallback(KbRetrievalTool kbRetrievalTool) {
-
-        return FunctionToolCallback
-            .builder("kb_search", kbRetrievalTool::search)
-            .description("检索当前选定的内部知识库，返回与查询相关的证据候选列表。调用时必须传 JSON 参数，且至少包含非空 query。检索范围、通道与预算由系统冻结计划统一控制，你只需要提供想检索的查询文本；可多次调用，每次使用不同的查询文本。")
-            .inputType(KbRetrievalRequest.class)
-            .build();
-    }
-
-    @Bean
     public ReactAgent businessChatReactAgent(ChatModel chatModel,
                                              MysqlSaver mysqlCheckpointSaver,
                                              @Qualifier("tavilySearchToolCallback") ToolCallback tavilySearchToolCallback,
@@ -113,12 +103,19 @@ public class ChatAgentConfiguration {
     @Bean
     public ReactAgent sagChatReactAgent(ChatModel chatModel,
                                         MysqlSaver mysqlCheckpointSaver,
-                                        @Qualifier("kbSearchToolCallback") ToolCallback kbSearchToolCallback,
+                                        KbRetrievalTool kbRetrievalTool,
                                         @Qualifier("tavilySearchToolCallback") ToolCallback tavilySearchToolCallback,
                                         ChatAgentProperties chatAgentProperties,
                                         PromptTemplateService promptTemplateService,
                                         DashScopeCompatibilityInterceptor dashScopeCompatibilityInterceptor,
                                         TavilyToolInputFallbackInterceptor tavilyToolInputFallbackInterceptor) {
+        // kb_search 只属于 SAG agent：内联构造，不注册为全局 ToolCallback bean，否则会被 Spring AI
+        // toolCallbackResolver 收集，经 KbRetrievalTool→RagRetrievalEngine→ObservedChatModelService 回到 ChatModel 形成循环依赖。
+        ToolCallback kbSearchToolCallback = FunctionToolCallback
+            .builder("kb_search", kbRetrievalTool::search)
+            .description("检索当前选定的内部知识库，返回与查询相关的证据候选列表。调用时必须传 JSON 参数，且至少包含非空 query。检索范围、通道与预算由系统冻结计划统一控制，你只需要提供想检索的查询文本；可多次调用，每次使用不同的查询文本。")
+            .inputType(KbRetrievalRequest.class)
+            .build();
         return ReactAgent.builder()
 
             .name("sag_chat_agent")
