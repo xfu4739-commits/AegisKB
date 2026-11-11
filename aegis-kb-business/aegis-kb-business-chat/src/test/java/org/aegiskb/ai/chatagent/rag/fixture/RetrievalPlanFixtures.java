@@ -65,6 +65,17 @@ public final class RetrievalPlanFixtures {
 
     public static RetrievalPlan plan(List<RetrievalExecutionQuery> executionQueries,
                                      List<RetrievalChannelPlan> channels) {
+        return buildPlan(executionQueries, channels, false);
+    }
+
+    public static RetrievalPlan rerankPlan(List<RetrievalExecutionQuery> executionQueries,
+                                           List<RetrievalChannelPlan> channels) {
+        return buildPlan(executionQueries, channels, true);
+    }
+
+    private static RetrievalPlan buildPlan(List<RetrievalExecutionQuery> executionQueries,
+                                           List<RetrievalChannelPlan> channels,
+                                           boolean rerankRequested) {
         return RetrievalPlan.builder()
             .questionPlan(RetrievalQuestionPlan.builder()
                 .currentQuestion("fixture question")
@@ -102,7 +113,7 @@ public final class RetrievalPlanFixtures {
                 .build())
             .candidateWindow(40)
             .rerankWindow(24)
-            .rerankRequested(false)
+            .rerankRequested(rerankRequested)
             .finalEvidenceBudget(6)
             .subQuestionTimeoutMs(5000L)
             .source("FIXTURE")
@@ -111,6 +122,10 @@ public final class RetrievalPlanFixtures {
 
     public static RetrievalPlan singleQueryPlan(String channelName) {
         return plan(List.of(executionQuery(1, "fixture execution query")), List.of(channelPlan(channelName)));
+    }
+
+    public static RetrievalPlan singleQueryRerankPlan(String channelName) {
+        return rerankPlan(List.of(executionQuery(1, "fixture execution query")), List.of(channelPlan(channelName)));
     }
 
     public static Document sourceDocument(String id, long chunkId, double score) {
