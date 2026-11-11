@@ -27,3 +27,15 @@ ragTools:
   raptor:
     # Bounded per-level LLM summary concurrency for RAPTOR build. Environment variable RAG_TOOLS_RAPTOR_LLM_CONCURRENCY takes precedence.
     llmConcurrency: 3
+  rerank:
+    # Switchable scoring backend is chosen by env RAG_TOOLS_RERANK_BACKEND only:
+    #   cross-encoder (default, local bge-reranker-base, zero egress) | jev (opt-in).
+    # jev sends query + chunk text to the external TypeSafe System One API: this is NEW
+    # data egress and requires explicit user authorization + an API key. No key => no
+    # egress, fail-closed to the existing weighted-hybrid fallback. Never commit a literal key.
+    jev:
+      baseUrl: "https://api.typesafe.ai"
+      apiKey: "${RAG_TOOLS_JEV_API_KEY:}"
+      model: "jev-latest"
+      timeoutSeconds: 30
+      maxPassageChars: 4000
