@@ -6,6 +6,7 @@ from threading import Lock
 
 DEFAULT_RERANK_MODEL = "BAAI/bge-reranker-base"
 DEFAULT_EMBEDDING_MODEL = "BAAI/bge-small-zh-v1.5"
+DEFAULT_RERANK_BACKEND = "cross-encoder"
 
 
 class SemanticModelUnavailable(RuntimeError):
@@ -19,6 +20,7 @@ _models: dict[str, object] = {}
 def semantic_model_status() -> dict[str, object]:
     return {
         "sentenceTransformersAvailable": importlib.util.find_spec("sentence_transformers") is not None,
+        "rerankBackend": _rerank_backend(),
         "rerankModel": _rerank_model_name(),
         "embeddingModel": _embedding_model_name(),
         "loadedModels": sorted(_models.keys()),
@@ -26,6 +28,13 @@ def semantic_model_status() -> dict[str, object]:
 
 
 def score_rerank_pairs(query: str, texts: list[str]) -> list[float]:
+    backend = _rerank_backend()
+    if backend == "jev":
+        from rag_tools.rerank_jev import score_rerank_pairs_jev
+
+        return score_rerank_pairs_jev(query or "", texts)
+    if backend not in ("", DEFAULT_RERANK_BACKEND):
+        raise SemanticModelUnavailable(f"未知的重排打分后端: {backend}（支持 cross-encoder | jev）。")
     return _score_pairs(_rerank_model_name(), [(query or "", text or "") for text in texts])
 
 
@@ -109,6 +118,10 @@ def _normalize_score(score: float) -> float:
 
 def _rerank_model_name() -> str:
     return os.getenv("RAG_TOOLS_RERANK_MODEL", DEFAULT_RERANK_MODEL).strip()
+
+
+def _rerank_backend() -> str:
+    return os.getenv("RAG_TOOLS_RERANK_BACKEND", DEFAULT_RERANK_BACKEND).strip().lower()
 
 
 def _embedding_model_name() -> str:
