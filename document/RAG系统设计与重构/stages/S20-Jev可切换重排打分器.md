@@ -128,3 +128,30 @@ S00-S19 已把固定 RAG 主链路收敛完成：RetrievalPlan 一次解释、�
 - A/B 证据（中性 fixture + 真实 exchange）写入 `records/S20.md`，明确 Jev 价值结论与 keep-as-opt-in / drop 决策；若 drop 则删除 Jev 后端恢复 cross-encoder-only，无残留 facade。
 - `records/S20.md` 完整记录命令、退出码、测试数量、实际修改、证据 ID、数据出境边界与授权、偏差、风险与未完成项。
 - 是否把 Jev 转为默认后端是后续独立决策，不在本阶段擅自变更默认。
+
+## 退出标准修订（2026-11-11，用户决策：搁置为休眠 opt-in）
+
+> 本节经用户本会话明确决策追加，**修订上方"退出条件"中真实验收相关条款**。原条款文本保留以存历史，不静默删除。修订只延后"真实 Jev 质量验证"，不降低任何已完成的工程/不变量要求，不伪造验收。
+
+### 触发事实（外部厂商访问门控，非本项目缺陷）
+
+- `CONFIRMED`（较可信二手来源 Flavio Copes，2026-10-09 更新）：TypeSafe 于 2026-09-22 因需求过大**暂停 Jev 直连新账号注册**，暂停前账号仍可用，官网只剩 Sign in / Contact sales，**无公开重开时间表**。故用户无法从 `console.typesafe.ai` 获取直连 API key。
+- 替代入口核实：OpenRouter `typesafe/jev-1.13` 页面实测 **404**（内容农场"无 waitlist 上架"说法不可证实，排除）；Vercel AI Gateway 用**相同原生 `POST /v1/systemone` 契约**（model `typesafe-ai/jev`、仅需 Vercel key、自助注册），适配器只改配置即可对接，**但私有 KB 文本经 Vercel 转 TypeSafe，出境面更大**——用户权衡后**不选**该路。
+- 本项目侧：S20 代码默认 `backend=cross-encoder`、yaml/env 无字面 key（`apiKey="${RAG_TOOLS_JEV_API_KEY:}"` 默认空），**本就处于休眠**；无 key 时即使误设 jev 也 fail-closed 降级 weighted-hybrid。**搁置无需任何代码改动。**
+
+### 修订后的退出条件（据此收尾）
+
+- ✅ 保留并满足：可切换 Jev 后端落地为 opt-in、默认 cross-encoder 行为零变化、全部不变量测试绿灯、受影响回归与构建/静态门禁通过（P1-P4：Python 73 / Java chat 52 / clean package 33 模块 / `git diff --check`）。
+- ✅ 保留并满足：keep/drop 决策已定 = **keep-as-dormant-opt-in（搁置为休眠 opt-in）**；records 完整记录命令/退出码/测试数/修改/出境边界/偏差/风险。
+- ⏸ **延后（非通过）**：原"至少一轮真实 `backend=jev` exchange 验收"与"真实 exchange A/B 质量/延迟/成本结论"——因厂商直连访问门控 + 用户不选更大出境面的 Gateway，**本阶段不执行、不宣称通过**。Jev 提升本 KB 重排质量的价值**仍为 `HYPOTHESIS`、未证**。
+- ✅ 保留：默认后端不擅自变更（仍 cross-encoder）；是否转默认是后续独立决策。
+
+### 休眠 opt-in 的含义与可逆性
+
+- 代码保留：`rerank_jev.py` + `semantic_model.py` dispatch 分支 + 契约/降级/A/B 测试 + yaml 配置段全部留着，默认关闭、零出境、零真实权重加载。
+- 随时可 drop：删 `rerank_jev.py` + 去掉 dispatch 的 `if backend=="jev"` 分支即恢复 cross-encoder-only，无 facade/并行链残留（不变量 #6 保证）。
+- 未来若 TypeSafe 重开直连（或用户改选 Gateway 并授权出境），真实质量验证是**后续独立决策**（视情况另立阶段），**不构成对 S20 工程交付的重开**；S20 的可切换接缝/降级/契约工程价值已落袋，与 Jev 本身采纳与否无关。
+
+### 状态结论
+
+S20 工程目标与 keep/drop 决策已完成，真实 Jev 质量验证经用户决策**显式延后**，据修订后退出条件置 `DONE`。`activeReopen`/`suspendedReopen` 仍为 null；S00-S19 不变；全程零真实出境、零 Java 权威改动、默认行为零变化。
