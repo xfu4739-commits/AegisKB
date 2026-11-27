@@ -50,39 +50,138 @@
 
 ## 架构一览
 
+### 分层总览
+
 ```mermaid
-flowchart LR
-  subgraph Client
-    UI[vue / vue-next]
+%%{init: {'theme': 'base', 'themeVariables': {
+  'primaryColor': '#3f5ee8',
+  'primaryTextColor': '#ffffff',
+  'primaryBorderColor': '#2d47b8',
+  'secondaryColor': '#ecfdf5',
+  'tertiaryColor': '#fff7ed',
+  'lineColor': '#64748b',
+  'fontSize': '14px'
+}}}%%
+flowchart TB
+  subgraph L1["接入层 · 前端"]
+    direction LR
+    VUE["vue 生产端<br/>:5173"]
+    VNEXT["vue-next 新版<br/>:5174"]
   end
-  subgraph Java["Java · aegis-kb-business-chat"]
-    API[REST / 会话]
-    RAG[检索编排 · RetrievalPlan]
-    Cite[显式引用绑定]
+
+  subgraph L2["编排层 · Java / Spring Boot"]
+    direction TB
+    API["API · 会话 · 知识库"]
+    PLAN["RetrievalPlan<br/>一次解释 scope / 通道 / 预算"]
+    subgraph PIPE["RAG 闭环"]
+      direction LR
+      RET["多通道检索"]
+      FUS["特征融合"]
+      RER["重排序窗口"]
+      FIN["Source Evidence 选定"]
+    end
+    PROMPT["Prompt 渲染<br/>Source ⊕ Context 分池"]
+    CITE["显式引用 [n] 绑定"]
+    API --> PLAN --> RET --> FUS --> RER --> FIN --> PROMPT --> CITE
   end
-  subgraph Python["Python · aegis-kb-rag-tools"]
-    Parse[解析 / OCR / 表格]
-    Rank[重排序等模型工具]
+
+  subgraph L3["算法层 · Python rag-tools :18080"]
+    direction LR
+    DOC["解析 · OCR · 表格"]
+    RK["Rerank · 模型工具"]
   end
-  subgraph Data
-    MySQL[(MySQL)]
-    Redis[(Redis)]
-    PG[(PostgreSQL + pgvector)]
-    ES[(Elasticsearch)]
-    Neo4j[(Neo4j)]
-    Kafka[Kafka]
-    MinIO[MinIO]
+
+  subgraph L4["数据与基础设施 · Docker Compose"]
+    direction TB
+    subgraph BIZ["业务态"]
+      MYSQL[(MySQL)]
+      REDIS[(Redis)]
+    end
+    subgraph SEARCH["检索索引"]
+      ES[(Elasticsearch IK)]
+      PGV[(pgvector)]
+      NEO[(Neo4j)]
+    end
+    subgraph OBJ["文件与消息"]
+      MINIO[(MinIO)]
+      KAFKA>Kafka]
+    end
   end
-  UI --> API
-  API --> RAG
-  RAG --> Parse
-  RAG --> Rank
-  RAG --> ES
-  RAG --> PG
-  RAG --> Neo4j
-  API --> MySQL
-  API --> Redis
-  API --> Cite
+
+  subgraph L5["外部模型"]
+    LLM["DashScope 百炼<br/>Embedding · 生成"]
+  end
+
+  VUE --> API
+  VNEXT --> API
+  PLAN -.文档任务.-> DOC
+  RER --> RK
+  RET --> ES & PGV & NEO
+  DOC --> MINIO
+  API --> MYSQL & REDIS
+  PROMPT --> LLM
+  LLM --> CITE
+
+  style L1 fill:#a7f3d0,stroke:#059669,stroke-width:3px,color:#064e3b
+  style L2 fill:#fed7aa,stroke:#ea580c,stroke-width:3px,color:#7c2d12
+  style PIPE fill:#ffedd5,stroke:#fb923c,stroke-width:2px,color:#9a3412
+  style L3 fill:#bfdbfe,stroke:#2563eb,stroke-width:3px,color:#1e3a8a
+  style L4 fill:#ddd6fe,stroke:#7c3aed,stroke-width:3px,color:#3b0764
+  style BIZ fill:#ede9fe,stroke:#a78bfa,color:#4c1d95
+  style SEARCH fill:#e9d5ff,stroke:#a855f7,color:#581c87
+  style OBJ fill:#f3e8ff,stroke:#c084fc,color:#6b21a8
+  style L5 fill:#fecaca,stroke:#dc2626,stroke-width:3px,color:#7f1d1d
+
+  classDef hub fill:#3f5ee8,stroke:#1e2a7a,color:#ffffff,font-weight:bold
+  class API,PLAN,PROMPT hub
+```
+
+| 色块 | 含义 |
+| :---: | :--- |
+| 绿 | 前端双轨 UI，只连 Java，不持密钥 |
+| 橙 | **业务权威**：计划、检索闭环、Prompt、引用 |
+| 蓝 | Python 工具箱，被编排调用 |
+| 紫 | 可替换的基础设施与索引 |
+| 红 | 外部大模型（经服务端调用） |
+
+### 单次问答链路（面试速讲）
+
+```mermaid
+sequenceDiagram
+  autonumber
+  box rgba(5,150,105,0.22) 接入
+    participant U as 用户
+    participant F as Vue
+  end
+  box rgba(234,88,12,0.22) Java 编排
+    participant J as Spring Boot
+    participant P as RetrievalPlan
+    participant R as 检索 / 融合 / 重排
+    participant C as 引用绑定
+  end
+  box rgba(37,99,235,0.22) Python
+    participant T as rag-tools
+  end
+  box rgba(124,58,237,0.18) 索引
+    participant I as ES · pgvector · Neo4j
+  end
+  box rgba(220,38,38,0.18) 模型
+    participant M as 百炼 API
+  end
+
+  U->>F: 提问 + 知识范围
+  F->>J: POST /api（SSE 流式）
+  J->>P: 解析 scope / filter / channel
+  P->>R: 下发统一计划
+  R->>I: 并行多通道召回
+  R->>T: 可选 Rerank
+  T-->>R: 排序分数
+  R->>J: Source Evidence 窗口
+  J->>M: Prompt（仅可见 Source 进引用池）
+  M-->>J: 流式答案 + [n]
+  J->>C: 解析 [n] → manifest 对齐
+  C-->>F: 答案 + 可点击来源
+  F-->>U: 渲染（无前端猜引用）
 ```
 
 **职责边界（简述）**
