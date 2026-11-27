@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="970" viewBox="0 0 1600 970" role="img" aria-labelledby="title desc"><title id="title">AegisKB 系统架构</title><desc id="desc">Vue 前端、Java 编排模块、Python 算法服务、模型服务及数据中间件的分层架构。</desc><defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7" fill="#94a3b8"/></marker></defs>
+<rect x="0" y="0" width="1600" height="970" rx="20" fill="#f8fafc" stroke="none"/>
+<rect x="0" y="0" width="1600" height="88" rx="20" fill="#14263d" stroke="none"/>
+<rect x="0" y="48" width="1600" height="40" rx="0" fill="#14263d" stroke="none"/>
+<text x="34" y="54" font-family="Microsoft YaHei, Arial, sans-serif" font-size="29" font-weight="700" fill="#ffffff">AegisKB</text>
+<text x="210" y="53" font-family="Microsoft YaHei, Arial, sans-serif" font-size="21" font-weight="400" fill="#cbd5e1">系统架构</text>
+<rect x="1136" y="29" width="133" height="28" rx="7" fill="#243c56" stroke="none"/>
+<text x="1148" y="49" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" font-weight="600" fill="#bfdbfe">Hybrid Retrieval</text>
+<rect x="1275" y="29" width="128" height="28" rx="7" fill="#243c56" stroke="none"/>
+<text x="1287" y="49" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" font-weight="600" fill="#99f6e4">Source Citation</text>
+<rect x="1408" y="29" width="158" height="28" rx="7" fill="#243c56" stroke="none"/>
+<text x="1420" y="49" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" font-weight="600" fill="#ddd6fe">Evaluation &amp; Trace</text>
+<rect x="30" y="114" width="1190" height="92" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<rect x="48" y="132" width="88" height="28" rx="7" fill="#f1f5f9" stroke="none"/>
+<text x="60" y="152" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" font-weight="600" fill="#64748b">FRONTEND</text>
+<text x="145" y="155" font-family="Microsoft YaHei, Arial, sans-serif" font-size="21" font-weight="600" fill="#1e293b">Vue 3</text>
+<text x="270" y="154" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569">知识库  /  文档  /  对话  /  执行链路</text>
+<text x="145" y="185" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#94a3b8">HTTP API  ·  SSE</text>
+<path d="M625 207 L625 238" fill="none" stroke="#94a3b8" stroke-width="1.6"  marker-end="url(#arrow)"/>
+<rect x="30" y="240" width="1190" height="390" rx="14" fill="#edf4ff" stroke="#c8daf5"/>
+<text x="50" y="277" font-family="Microsoft YaHei, Arial, sans-serif" font-size="23" font-weight="700" fill="#1e3a5f">Java 17</text>
+<text x="173" y="276" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="400" fill="#527195">Spring Boot · Spring AI Alibaba</text>
+<rect x="1050" y="257" width="150" height="28" rx="7" fill="#dce9fc" stroke="none"/>
+<text x="1062" y="277" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" font-weight="600" fill="#37608b">ORCHESTRATION</text>
+<text x="50" y="312" font-family="Microsoft YaHei, Arial, sans-serif" font-size="15" font-weight="600" fill="#527195">文档建库</text>
+<rect x="50" y="324" width="274" height="95" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="64" y="341" width="4" height="20" rx="2" fill="#3b82f6" stroke="none"/>
+<text x="79" y="358" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">接入与任务</text>
+<text x="66" y="385" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">上传校验 · 元数据</text>
+<text x="66" y="407" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">Kafka · 状态追踪</text>
+<rect x="342" y="324" width="274" height="95" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="356" y="341" width="4" height="20" rx="2" fill="#3b82f6" stroke="none"/>
+<text x="371" y="358" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">解析与分块</text>
+<text x="358" y="385" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">结构 / 递归 / 语义 / LLM</text>
+<text x="358" y="407" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">父子块 · 表格</text>
+<rect x="634" y="324" width="274" height="95" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="648" y="341" width="4" height="20" rx="2" fill="#3b82f6" stroke="none"/>
+<text x="663" y="358" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">索引构建</text>
+<text x="650" y="385" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">向量 · 关键词 · 结构图</text>
+<text x="650" y="407" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">GraphRAG · RAPTOR</text>
+<rect x="926" y="324" width="274" height="95" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="940" y="341" width="4" height="20" rx="2" fill="#3b82f6" stroke="none"/>
+<text x="955" y="358" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">构建诊断</text>
+<text x="942" y="385" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">进度 · 耗时 · 失败原因</text>
+<text x="942" y="407" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">重试 · 任务日志</text>
+<path d="M324 370 L340 370" fill="none" stroke="#94a3b8" stroke-width="1.6"  marker-end="url(#arrow)"/>
+<path d="M616 370 L632 370" fill="none" stroke="#94a3b8" stroke-width="1.6"  marker-end="url(#arrow)"/>
+<text x="50" y="459" font-family="Microsoft YaHei, Arial, sans-serif" font-size="15" font-weight="600" fill="#527195">对话问答</text>
+<rect x="50" y="472" width="274" height="95" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="64" y="489" width="4" height="20" rx="2" fill="#3b82f6" stroke="none"/>
+<text x="79" y="506" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">问题规划</text>
+<text x="66" y="533" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">历史改写 · 子问题拆分</text>
+<text x="66" y="555" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">RetrievalPlan · Scope</text>
+<rect x="342" y="472" width="274" height="95" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="356" y="489" width="4" height="20" rx="2" fill="#3b82f6" stroke="none"/>
+<text x="371" y="506" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">检索与排序</text>
+<text x="358" y="533" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" font-weight="400" fill="#64748b">向量 / 关键词 / 表格 / 图谱 / 摘要</text>
+<text x="358" y="555" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">Fusion · Rerank</text>
+<rect x="634" y="472" width="274" height="95" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="648" y="489" width="4" height="20" rx="2" fill="#14b8a6" stroke="none"/>
+<text x="663" y="506" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">证据与生成</text>
+<text x="650" y="533" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">Source / Context</text>
+<text x="650" y="555" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">Prompt 预算 · 无证据回复</text>
+<rect x="926" y="472" width="274" height="95" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="940" y="489" width="4" height="20" rx="2" fill="#14b8a6" stroke="none"/>
+<text x="955" y="506" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">引用与归档</text>
+<text x="942" y="533" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">[n] → 当轮有效原文</text>
+<text x="942" y="555" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">SSE · 问答快照</text>
+<path d="M324 518 L340 518" fill="none" stroke="#94a3b8" stroke-width="1.6"  marker-end="url(#arrow)"/>
+<path d="M616 518 L632 518" fill="none" stroke="#94a3b8" stroke-width="1.6"  marker-end="url(#arrow)"/>
+<path d="M908 518 L924 518" fill="none" stroke="#94a3b8" stroke-width="1.6"  marker-end="url(#arrow)"/>
+<text x="50" y="608" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="600" fill="#527195">≤ 4 子问题</text>
+<text x="342" y="608" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="600" fill="#527195">40 candidates  →  24 rerank  →  6 evidence</text>
+<text x="926" y="608" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#527195">默认预算 · 可配置</text>
+<path d="M625 631 L625 666" fill="none" stroke="#94a3b8" stroke-width="1.6"  marker-end="url(#arrow)"/>
+<rect x="30" y="668" width="1190" height="116" rx="14" fill="#edf9f6" stroke="#bde3d8"/>
+<text x="50" y="704" font-family="Microsoft YaHei, Arial, sans-serif" font-size="23" font-weight="700" fill="#176b5b">Python</text>
+<text x="173" y="703" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="400" fill="#4b8b7e">FastAPI</text>
+<rect x="1050" y="684" width="150" height="28" rx="7" fill="#d6eee7" stroke="none"/>
+<text x="1062" y="704" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" font-weight="600" fill="#287a68">ALGORITHM TOOLS</text>
+<text x="50" y="750" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="400" fill="#397b6c">解析 · OCR · 表格</text>
+<text x="400" y="750" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="400" fill="#397b6c">Rerank · 模型推理</text>
+<text x="805" y="750" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="400" fill="#397b6c">GraphRAG · RAPTOR</text>
+<rect x="1250" y="114" width="320" height="516" rx="14" fill="#f3f0fb" stroke="#ddd5ef"/>
+<text x="1270" y="153" font-family="Microsoft YaHei, Arial, sans-serif" font-size="21" font-weight="600" fill="#59487e">模型与扩展</text>
+<rect x="1270" y="180" width="280" height="100" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="1284" y="197" width="4" height="20" rx="2" fill="#9b87c0" stroke="none"/>
+<text x="1299" y="214" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">模型服务</text>
+<text x="1286" y="241" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">Embedding · Generation</text>
+<text x="1286" y="263" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">模型 API</text>
+<rect x="1270" y="312" width="280" height="100" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="1284" y="329" width="4" height="20" rx="2" fill="#9b87c0" stroke="none"/>
+<text x="1299" y="346" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">开放问答</text>
+<text x="1286" y="373" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">ReAct Agent</text>
+<text x="1286" y="395" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">Tavily · Web Search</text>
+<rect x="1270" y="444" width="280" height="100" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="1284" y="461" width="4" height="20" rx="2" fill="#9b87c0" stroke="none"/>
+<text x="1299" y="478" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e293b">质量评测</text>
+<text x="1286" y="505" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">RAGAS · Hit@K</text>
+<text x="1286" y="527" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">快照 · 分组对照</text>
+<text x="1270" y="591" font-family="Microsoft YaHei, Arial, sans-serif" font-size="15" font-weight="400" fill="#82719d">检索 / 生成 / 引用追踪</text>
+<path d="M1221 265 L1235 265 L1235 230 L1268 230" fill="none" stroke="#94a3b8" stroke-width="1.6"  marker-end="url(#arrow)"/>
+<path d="M1221 362 L1268 362" fill="none" stroke="#94a3b8" stroke-width="1.6"  marker-end="url(#arrow)"/>
+<path d="M1221 494 L1268 494" fill="none" stroke="#94a3b8" stroke-width="1.6"  stroke-dasharray="5 5" marker-end="url(#arrow)"/>
+<path d="M625 785 L625 820" fill="none" stroke="#94a3b8" stroke-width="1.6"  marker-end="url(#arrow)"/>
+<path d="M1210 630 L1235 630 L1235 821" fill="none" stroke="#94a3b8" stroke-width="1.6"  stroke-dasharray="5 5" marker-end="url(#arrow)"/>
+<text x="1270" y="697" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#64748b">实线  服务调用 / 数据流</text>
+<text x="1270" y="730" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#94a3b8">虚线  依赖 / 观测</text>
+<rect x="30" y="823" width="1540" height="122" rx="14" fill="#ffffff" stroke="#dce5ef"/>
+<text x="50" y="853" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">DATA &amp; INFRASTRUCTURE</text>
+<text x="50" y="891" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#334155">MySQL</text>
+<text x="50" y="919" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#94a3b8">元数据 · 会话</text>
+<path d="M253 871 L253 926" stroke="#e2e8f0"/>
+<text x="265" y="891" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#334155">Redis</text>
+<text x="265" y="919" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#94a3b8">缓存 · 租约</text>
+<path d="M468 871 L468 926" stroke="#e2e8f0"/>
+<text x="480" y="891" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#334155">Kafka</text>
+<text x="480" y="919" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#94a3b8">异步消息</text>
+<path d="M683 871 L683 926" stroke="#e2e8f0"/>
+<text x="695" y="891" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#334155">MinIO</text>
+<text x="695" y="919" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#94a3b8">文件存储</text>
+<path d="M898 871 L898 926" stroke="#e2e8f0"/>
+<text x="910" y="891" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#334155">pgvector</text>
+<text x="910" y="919" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#94a3b8">向量索引</text>
+<path d="M1113 871 L1113 926" stroke="#e2e8f0"/>
+<text x="1125" y="891" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#334155">Elasticsearch</text>
+<text x="1125" y="919" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#94a3b8">关键词索引</text>
+<path d="M1328 871 L1328 926" stroke="#e2e8f0"/>
+<text x="1340" y="891" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="600" fill="#334155">Neo4j</text>
+<text x="1340" y="919" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="400" fill="#94a3b8">结构 · 实体关系</text>
+<text x="1050" y="965" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" font-weight="400" fill="#94a3b8">PostgreSQL / pgvector · GraphRAG / RAPTOR 按配置启用</text>
+</svg>

@@ -1,210 +1,115 @@
-# AegisKB
+<div align="center">
 
-<p align="center">
-  <strong>企业级 RAG 知识库与可溯源对话</strong><br />
-  Java 编排 · Python 算法工具箱 · 五通道混合检索
-</p>
+# AegisKB · 智能知识库
 
-<p align="center">
-  <a href="https://github.com/xfu4739-commits/AegisKB"><img src="https://img.shields.io/badge/Java-17-blue?logo=openjdk&logoColor=white" alt="Java 17" /></a>
-  <a href="https://github.com/xfu4739-commits/AegisKB"><img src="https://img.shields.io/badge/Spring%20Boot-3.5-brightgreen?logo=springboot&logoColor=white" alt="Spring Boot 3.5" /></a>
-  <a href="https://github.com/xfu4739-commits/AegisKB"><img src="https://img.shields.io/badge/Spring%20AI-1.1-6DB33F?logo=spring&logoColor=white" alt="Spring AI" /></a>
-  <a href="https://github.com/xfu4739-commits/AegisKB"><img src="https://img.shields.io/badge/Vue-3-4FC08D?logo=vuedotjs&logoColor=white" alt="Vue 3" /></a>
-  <a href="https://github.com/xfu4739-commits/AegisKB"><img src="https://img.shields.io/badge/Python-rag--tools-3776AB?logo=python&logoColor=white" alt="Python rag-tools" /></a>
-  <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache 2.0" /></a>
-</p>
+**让技术资料可检索，让回答有原文可查。**
 
-<p align="center">
-  作者 <a href="https://github.com/xfu4739-commits">xfu-4739</a> · 北京交通大学<br />
-  仓库：<a href="https://github.com/xfu4739-commits/AegisKB">github.com/xfu4739-commits/AegisKB</a>
-</p>
+面向技术文档与研究资料的检索增强生成系统
+
+<img src="https://img.shields.io/badge/Java-17-2563eb?logo=openjdk&logoColor=white" alt="Java 17" />
+<img src="https://img.shields.io/badge/Spring_Boot-3.5-16a34a?logo=springboot&logoColor=white" alt="Spring Boot 3.5" />
+<img src="https://img.shields.io/badge/Python-FastAPI-009688?logo=fastapi&logoColor=white" alt="Python / FastAPI" />
+<img src="https://img.shields.io/badge/RAG-Hybrid_Retrieval-7c3aed" alt="混合检索 RAG" />
+
+**4 种分块策略 · 5 类检索通道 · 当轮原文引用 · 评测与链路追踪**
+
+[文档与索引](#01-文档分块与索引构建) · [检索与重排](#02-并行检索与融合重排) · [引用与证据](#03-答案引用与证据校验) · [评测与定位](#04-评测链路与问题定位)
+
+</div>
 
 ---
 
-面向技术文档与企业资料场景的 **检索增强生成（RAG）** 系统：文档解析与多路索引、知识路由、混合检索、可溯源对话与开放式 Agent **统一由 Java 主链路编排**；Python `aegis-kb-rag-tools` 提供解析、重排等能力，不决定最终 scope 与引用。
+AegisKB 支持文档建库、对话问答与原文溯源，面向查找技术细节、关联多份资料、核对回答依据等场景。项目围绕三个问题展开：**如何找全相关内容、如何保留必要上下文、如何让答案引用到有效原文。**
 
-> 环境安装、启动步骤与 182 篇源码讲解见个人配套教程，本页仅展示**架构**与**亮点**。
+Java / Spring Boot 编排知识范围、检索计划、候选筛选、答案生成与引用绑定；Python / FastAPI 提供文档解析、OCR 与语义重排等算法能力。向量、关键词与图谱索引协同工作，检索和生成的中间结果可追踪、可评测。
 
-## 项目亮点
+## 系统架构
 
-| | 亮点 | 说明 |
-| :---: | :--- | :--- |
-| 1 | **五通道并行检索** | 向量 · 关键词（ES+IK）· 表格 · **GraphRAG** · **RAPTOR** 同计划并发；**加权融合 + RRF** 收敛窗口，Python **Cross-Encoder Rerank**（可降级） |
-| 2 | **Neo4j 知识路由** | 文档结构图 + **三级漏斗**自动缩小检索范围；子问题改写与并发；**RetrievalPlan** 一次解释 scope / filter / 通道 / 预算 |
-| 3 | **可溯源引用** | Source Evidence 与 Context Only **分池**；答案仅 **`[n]` 显式绑定**当轮 Prompt 中的 Source，前后端不猜、不补引用 |
-| 4 | **GraphRAG & RAPTOR** | 构建期可选实体图谱与摘要树；检索期社区报告、关系遍历与原文下钻，与经典向量/关键词同一融合窗口 |
-| 5 | **双执行器** | 库内问题走 **RAG 执行器**（SSE 流式）；开放/时效问题分流 **ReAct + Tavily**，检查点与工具轨迹可观测 |
-| 6 | **全链路可观测** | 通道级 / 候选级观测、同轮快照守恒、执行链路可视化；支持 **RAGAS**、Hit@K 等评测闭环（示例：Faithfulness **0.81**、Context Recall **0.85**、Hit@6 **0.90**） |
-| 7 | **清晰工程边界** | **Java**：范围、检索编排、终证据、Prompt、引用权威；**Python**：解析/OCR/重排工具；**Vue**：经 API 代理，不持模型密钥 |
+![AegisKB 系统架构：交互层、Java 业务编排、Python 算法服务、数据中间件与模型能力](assets/architecture.svg)
 
-## 架构一览
+Java 统一编排文档建库与对话问答；Python 提供算法服务；检索索引、业务存储与外部模型各自承担明确职责。
 
-### 分层总览
+## 01 文档分块与索引构建
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {
-  'primaryColor': '#3f5ee8',
-  'primaryTextColor': '#ffffff',
-  'primaryBorderColor': '#2d47b8',
-  'secondaryColor': '#ecfdf5',
-  'tertiaryColor': '#fff7ed',
-  'lineColor': '#64748b',
-  'fontSize': '14px'
-}}}%%
-flowchart TB
-  subgraph L1["接入层 · 前端"]
-    direction LR
-    VUE["vue 生产端"]
-    VNEXT["vue-next"]
-  end
+**小片段便于命中，完整上下文帮助理解；跨文档关联补足单篇资料的边界。**
 
-  subgraph L2["编排层 · Java / Spring Boot"]
-    direction TB
-    API["API · 会话 · 知识库"]
-    PLAN["RetrievalPlan"]
-    subgraph PIPE["RAG 闭环"]
-      direction LR
-      RET["多通道检索"]
-      FUS["特征融合"]
-      RER["重排序"]
-      FIN["Source Evidence"]
-    end
-    PROMPT["Prompt<br/>Source / Context 分池"]
-    CITE["显式引用 [n]"]
-    API --> PLAN --> RET --> FUS --> RER --> FIN --> PROMPT --> CITE
-  end
+- **四种分块策略**：支持基于文档结构、递归、语义和大模型的切块方式，适配不同文档组织形式。
+- **父子块结构**：以细粒度子块参与检索，结合父块与结构锚点补充上下文，缓解长文档片段脱离章节语境的问题。
+- **多路索引**：构建 PostgreSQL / pgvector 向量索引、Elasticsearch 关键词索引与 Neo4j 图谱，分别服务语义匹配、精确词匹配和关联查询。
+- **关联知识组织**：结合实体消歧组织图谱，以层级摘要概括长文档；图谱和摘要用于扩展检索线索，最终回答仍需落回有效原文。
 
-  subgraph L3["算法层 · Python rag-tools"]
-    direction LR
-    DOC["解析 · OCR · 表格"]
-    RK["Rerank · 模型工具"]
-    AG["ReAct 工具侧"]
-  end
+实现入口：[DocumentStrategyTypeEnum.java](aegis-kb-common/aegis-kb-common-frame/src/main/java/org/aegiskb/enums/DocumentStrategyTypeEnum.java) · [GraphRagTypedChunkServiceImpl.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/manage/service/impl/GraphRagTypedChunkServiceImpl.java)
 
-  subgraph L4["数据与中间件"]
-    direction TB
-    subgraph BIZ["业务态"]
-      MYSQL[(MySQL)]
-      REDIS[(Redis)]
-    end
-    subgraph SEARCH["检索索引"]
-      ES[(Elasticsearch)]
-      PGV[(pgvector)]
-      NEO[(Neo4j)]
-    end
-    subgraph OBJ["文件与消息"]
-      MINIO[(MinIO)]
-      KAFKA>Kafka]
-    end
-  end
+## 02 并行检索与融合重排
 
-  subgraph L5["外部服务"]
-    LLM["DashScope · Embedding / 生成"]
-    WEB["Tavily 联网"]
-  end
+**先扩大相关信息的覆盖，再逐步收敛为有限的回答证据。**
 
-  VUE --> API
-  VNEXT --> API
-  PLAN -.解析任务.-> DOC
-  RER --> RK
-  RET --> ES & PGV & NEO
-  DOC --> MINIO
-  API --> MYSQL & REDIS
-  PROMPT --> LLM
-  LLM --> CITE
-  API -.开放问答.-> AG
-  AG --> WEB
-  AG --> LLM
+结合会话历史改写问题，拆分为最多 **4 个子问题**。检索计划统一确定范围、过滤条件、通道和预算，各子问题按计划并行调度通道：
 
-  style L1 fill:#a7f3d0,stroke:#059669,stroke-width:3px,color:#064e3b
-  style L2 fill:#fed7aa,stroke:#ea580c,stroke-width:3px,color:#7c2d12
-  style PIPE fill:#ffedd5,stroke:#fb923c,stroke-width:2px,color:#9a3412
-  style L3 fill:#bfdbfe,stroke:#2563eb,stroke-width:3px,color:#1e3a8a
-  style L4 fill:#ddd6fe,stroke:#7c3aed,stroke-width:3px,color:#3b0764
-  style BIZ fill:#ede9fe,stroke:#a78bfa,color:#4c1d95
-  style SEARCH fill:#e9d5ff,stroke:#a855f7,color:#581c87
-  style OBJ fill:#f3e8ff,stroke:#c084fc,color:#6b21a8
-  style L5 fill:#fecaca,stroke:#dc2626,stroke-width:3px,color:#7f1d1d
+- **向量**：召回语义接近的原文片段。
+- **关键词**：匹配术语、名称与精确表述。
+- **表格**：查询结构化数据并返回单元格证据。
+- **图谱**：利用实体、关系与社区信息发现关联内容。
+- **层级摘要**：检索摘要节点，再向相关原文下钻。
 
-  classDef hub fill:#3f5ee8,stroke:#1e2a7a,color:#ffffff,font-weight:bold
-  class API,PLAN,PROMPT hub
-```
+融合阶段结合**加权 RRF、归一化原始分与元数据特征**，合并重复候选；随后通过语义重排调整相关性顺序，由 Java 执行最终证据选择。重排服务失败时可回退到融合排序。
 
-| 色块 | 含义 |
-| :---: | :--- |
-| 绿 | 前端 UI，只访问 Java API |
-| 橙 | **业务权威**：计划 → 检索 → Prompt → 引用 |
-| 蓝 | Python 工具箱（解析 / 重排 / Agent 工具） |
-| 紫 | 业务库 + 多路检索索引 + 对象存储 |
-| 红 | 大模型与外部搜索 |
+> **默认窗口：40 → 24 → 6**
+> 融合候选上限 → 重排窗口上限 → 最终证据预算。窗口可配置，实际数量受去重、证据资格和筛选结果影响；五类通道也按计划与索引可用性启用。
 
-### 文档入库与索引（构建链路）
+实现入口：[RetrievalPlanAssembler.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/service/RetrievalPlanAssembler.java) · [RagRetrievalEngine.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/service/RagRetrievalEngine.java) · [HybridFusionService.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/service/HybridFusionService.java) · [ChatRagProperties.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/config/ChatRagProperties.java)
 
-```mermaid
-flowchart LR
-  subgraph IN["接入"]
-    UP[上传 / 策略确认]
-  end
-  subgraph ASYNC["异步构建"]
-    KF[Kafka 任务]
-    PY[Python 解析路由]
-    MD[统一 Markdown / 结构树]
-    CH[父子块 · QA 切块]
-    IDX[向量化 + ES + 结构图]
-    GR[GraphRAG · RAPTOR 可选]
-  end
-  subgraph OUT["可检索态"]
-    READY[多通道可读]
-  end
+## 03 答案引用与证据校验
 
-  UP --> KF --> PY --> MD --> CH --> IDX --> GR --> READY
+**检索到的内容并不都具备引用资格，模型输出的编号也必须有对应原文。**
 
-  style IN fill:#d1fae5,stroke:#059669,stroke-width:2px
-  style ASYNC fill:#dbeafe,stroke:#2563eb,stroke-width:2px
-  style OUT fill:#fde68a,stroke:#d97706,stroke-width:2px
-```
+检索结果分为两类：**Source Evidence** 保存可引用原文，**Context Only** 提供摘要、导航等辅助上下文。两类内容分池处理，辅助上下文不会因为排序靠前而自动获得引用资格。
 
-### 单次问答（RAG 速讲）
+1. **生成前登记**：按照证据预算组装 Prompt，登记实际进入本轮 Prompt 的有效 Source 与引用编号。
+2. **生成后绑定**：解析答案中的合法 `[n]` 编号，只绑定本轮清单内的原文；未知、越界或不具备资格的引用不会进入最终来源。
+3. **归档保持一致**：引用绑定、最终结果与归档来源使用一致的证据身份，便于从答案回查原文。
+4. **证据不足时收口**：没有足够有效原文时返回无证据回复，减少无依据回答。
 
-```mermaid
-sequenceDiagram
-  autonumber
-  box rgba(5,150,105,0.22) 接入
-    participant U as 用户
-    participant F as Vue
-  end
-  box rgba(234,88,12,0.22) Java 编排
-    participant J as Spring Boot
-    participant P as RetrievalPlan
-    participant R as 检索 / 融合 / 重排
-    participant C as 引用绑定
-  end
-  box rgba(37,99,235,0.22) Python
-    participant T as rag-tools
-  end
-  box rgba(124,58,237,0.18) 索引
-    participant I as ES · pgvector · Neo4j
-  end
-  box rgba(220,38,38,0.18) 模型
-    participant M as 百炼 API
-  end
+这套机制约束的是**引用来源的合法性与一致性**；答案是否忠实于原文，继续由评测与人工核对检验。
 
-  U->>F: 提问 + 知识范围
-  F->>J: SSE 流式 API
-  J->>P: scope / filter / channel
-  P->>R: 统一计划
-  R->>I: 五通道并行召回
-  R->>T: Rerank
-  T-->>R: 分数
-  R->>J: Source 窗口
-  J->>M: Prompt（引用池仅含 Source）
-  M-->>J: 流式答案 + [n]
-  J->>C: manifest 对齐
-  C-->>F: 答案 + 来源
-```
+实现入口：[FinalEvidenceSelectionPolicy.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/service/FinalEvidenceSelectionPolicy.java) · [ExplicitCitationBindingService.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/service/ExplicitCitationBindingService.java) · [RagChatExecutor.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/executor/RagChatExecutor.java)
+
+## 04 评测链路与问题定位
+
+**从“答案看起来合理”走向“能够指出问题发生在哪个阶段”。**
+
+基于版本化数据快照与不可变评测产物，记录检索、生成和引用校验结果，支持实验复现与分组对照。结合 RAGAS 与 Hit@K，分别观察答案忠实度、上下文召回和目标证据命中情况。
+
+> **项目评测记录 · 与简历口径一致**
+> **48 条用例** ｜ **忠实度 0.81** ｜ **上下文召回率 0.85** ｜ **Hit@6 0.90**
+>
+> 以上为项目记录值，适用于对应样本与配置。当前分支 README 未附该批次的完整运行报告、模型配置和逐例评分，不能据此推断其他语料或配置下的效果。
+
+排查时沿链路检查：**原文解析 → 通道召回 → 融合重排 → 最终证据 → Prompt 渲染 → 答案生成 → 引用绑定**，区分“没有召回”“排序靠后”“预算省略”和“生成遗漏”，再针对具体环节迭代。
+
+评测中关注候选排序与长文档摘要的薄弱环节，为检索窗口、证据预算与摘要策略的调整提供依据。
+
+## 技术组成
+
+- **后端编排**：Java、Spring Boot、Spring AI Alibaba。
+- **检索与存储**：PostgreSQL / pgvector、Elasticsearch、Neo4j。
+- **算法服务**：Python、FastAPI，提供解析、OCR、重排等能力。
+- **工程支撑**：MySQL、Redis、Kafka、MinIO；SSE 流式响应与执行链路观测。
+- **质量评估**：RAGAS、Hit@K、问答快照与分组对照。
+
+<details>
+<summary><strong>继续阅读实现</strong></summary>
+
+- [RetrievalPlanAssembler.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/service/RetrievalPlanAssembler.java)：知识范围、通道参数与窗口预算的统一装配。
+- [HybridFusionService.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/service/HybridFusionService.java)：多通道候选融合与分项评分。
+- [FinalEvidenceSelectionPolicy.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/service/FinalEvidenceSelectionPolicy.java)：最终证据资格、覆盖与预算选择。
+- [ExplicitCitationBindingService.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/service/ExplicitCitationBindingService.java)：答案编号与本轮原文的显式绑定。
+- [ChatRagProperties.java](aegis-kb-business/aegis-kb-business-chat/src/main/java/org/aegiskb/ai/chatagent/rag/config/ChatRagProperties.java)：子问题数量、检索窗口、超时和证据预算配置。
+
+</details>
 
 ---
 
-<p align="center">
-  <sub>Spring Boot 3.5 · Spring AI · MyBatis-Plus · Kafka · Neo4j · pgvector · FastAPI rag-tools</sub>
-</p>
+<div align="center">
+<sub>AegisKB · 文档建库 / 混合检索 / 原文溯源 / 评测迭代</sub>
+</div>
