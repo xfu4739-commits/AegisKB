@@ -1,8 +1,8 @@
 # AegisKB
 
 <p align="center">
-  <strong>企业知识库检索与问答</strong><br />
-  多通道检索 · 显式可审计引用 · Java 业务编排 + Python 算法工具箱
+  <strong>企业级 RAG 知识库与可溯源对话</strong><br />
+  五通道混合检索 · GraphRAG / RAPTOR · 显式引用 · RAG + ReAct 双执行器
 </p>
 
 <p align="center">
@@ -40,13 +40,17 @@
 
 ## 核心能力
 
-| 领域 | 说明 |
+> 能力划分与项目学习路线（文档入库 → 准备编排 → RAG 执行器 → 观测评测）一致，便于对照源码阅读。
+
+| 能力域 | 要点 |
 | :--- | :--- |
-| 知识库与文档 | 上传、解析路由、策略确认、索引与任务状态管理 |
-| 检索 | 向量 / 关键词 / 结构导航等多通道；融合、重排后选出可引用证据 |
-| 问答与引用 | Source Evidence 与 Context Only 分池；`[n]` 仅绑定已渲染 Source |
-| 管理端与对话 | 生产 UI 在 `vue/`；实验性新版见 `vue-next/` |
-| 示例与扩展 | `ai-example/` 收录 Spring AI / RAG 示例，**不**接入主产品链路 |
+| **文档入库与多路索引** | 上传至 MinIO、Kafka 异步解析；Python 路由（含 Document Mind）+ 统一 Markdown 产物；父子块 / QA 切块；**pgvector + Elasticsearch（IK）+ Neo4j 结构图**；可选 **GraphRAG 实体图谱** 与 **RAPTOR 摘要树** 构建 |
+| **知识路由与查询理解** | **Neo4j 文档结构图** + 三级漏斗自动缩小知识范围；会话记忆（长期摘要 + 近期窗口）；检索问题改写与子问题并发；元数据过滤 → **RetrievalPlan** 一次固化 scope / 通道 / 预算 |
+| **五通道混合检索** | **向量 · 关键词 · 表格 · GraphRAG · RAPTOR** 并行召回；父块提升与结构导航补全；**加权融合 + RRF** 收敛候选窗；Java 编排 **Python Cross-Encoder Rerank**（失败可降级） |
+| **可溯源 RAG 对话** | Source Evidence 与 Context Only **物理分池**；Prompt 证据预算与引用清单；答案 **`[n]` 显式绑定**原文，禁止前端/模型猜引用；**SSE 流式**输出与会话取消 |
+| **开放式 Agent** | 时间敏感 / 开放类问题分流至 **ReAct**；DashScope 流式 + **Tavily** 联网；MySQL 检查点、工具轨迹与调用上限 |
+| **可观测与质量评测** | 执行链路可视化、通道/候选级观测与同轮快照守恒；**RAGAS** 与 Hit@K 等检索对比实验（示例基线：Faithfulness 0.81、Context Recall 0.85、Hit@6 0.90） |
+| **工程边界** | **Java** 拥有范围、计划、融合、终证据、Prompt、引用权威；**Python rag-tools** 负责解析与模型工具；**vue / vue-next** 管理端与对话 UI |
 
 ## 架构一览
 
